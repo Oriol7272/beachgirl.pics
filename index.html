@@ -128,6 +128,13 @@
         .ad-container { margin: 30px 0; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 15px; text-align: center; min-height: 100px; display: flex; align-items: center; justify-content: center; }
         .ad-placeholder { color: rgba(255,255,255,0.5); font-size: 0.9em; }
         
+        /* Lazy loading */
+        .lazy-image { opacity: 0; transition: opacity 0.3s; }
+        .lazy-image[src] { opacity: 1; }
+        
+        /* Smooth scroll */
+        .section { scroll-margin-top: 100px; }
+        
         @media (max-width: 1200px) { .hero-title { font-size: 6em; } .hero-subtitle { font-size: 2.5em; } .nav-links { gap: 20px; padding: 20px 40px; } }
         @media (max-width: 768px) { .hero-title { font-size: 4em; } .hero-subtitle { font-size: 2em; } .nav-links { flex-direction: column; gap: 10px; padding: 20px 30px; width: 90%; } .nav-container { bottom: 60px; } .section { padding: 60px 20px; } .section-title { font-size: 3em; } .content-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; } .floating-palm { font-size: 2em !important; } }
         @media (max-width: 480px) { .hero-title { font-size: 3em; } .hero-subtitle { font-size: 1.5em; } .section-title { font-size: 2.5em; } .nav-links { padding: 15px 20px; } .nav-links a { padding: 10px 15px; font-size: 1em; } }
