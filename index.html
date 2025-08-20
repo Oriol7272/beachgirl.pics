@@ -304,22 +304,6 @@
 
         function generateBeachContent() {
             console.log('🌊 Generating Beach Content with exact counts...');
-            // Get actual file lists from folders
-            const actualUncensoredImages = [
-                'Vxm8ZimCcJVYL4fuaX2C.webp', 'GfKCNq1M1XRsuyZCSr46.webp', 'SyWKyUgFoMmXtcTCGRcD.webp',
-                '46TvCsW1KG6wcG0OWRc7.webp', 'bS5wI3lzdj9uBSaLxw4s.webp', 'nTNsF9TsXAR57edrOwt7.webp',
-                'j6QQvBGsx56JEmd2x6Lb.webp', '5UaQChlNIlRegwT0Ze2S.webp', '8phioNKwTe78kkBxfQxv.webp',
-                'xRSeg3ANfcjoJX8N4o2B.webp', 'Ty5J5IaTVkbdQJyS0hC2.webp', 'WGqmQbPGcAFj3zRebbtZ.webp',
-                'vKQoBDqUoPXarpR3vYpP.webp', 'HJk26Z6e0TG9m5R4FGSF.webp', 'JcqsT7TH5R7mNg2HhQ4V.webp',
-                '1DCEysi2B2gEWgZnDyqg.webp', 'gKzWF1nTDITgeW5ncsqP.webp', 'pi6Lxcrb5ba8mRgO6a7n.webp'
-            ]; // Truncated for brevity - will use the first files found
-            
-            const actualUncensoredVideos = [
-                'GK3wKGkNYhO4YyFDAg8x.mp4', 'T6auQxu1yZKCGPqVJ7ue.mp4', 'r14kVENgyJthsXKP4ckJ.mp4',
-                'zX53TSjhlQj4Gy76iK0H.mp4', 'kfDFWczYHsZXjtwmMsP4.mp4', 'M6TEA1f8hNdjol3Wi1se.mp4',
-                'n4DaX8Nwj1glWI1Oe9vj.mp4', 'XRCoUfkNLzwUepShH19v.mp4', '8yE2nxCwV2QcJsdXGf32.mp4',
-                '0xXK6PxXSv6cpYxvI7HX.mp4', 'beSTk3pKEdHZJSH7rwHs.mp4', 'rWwDSNSYmt9jpPd2ngiI.mp4'
-            ]; // Truncated for brevity - will use the first files found
             
             // Daily seed for consistent rotation per day
             const today = new Date().toDateString();
@@ -347,77 +331,54 @@
                 isNew: false 
             }))];
             
-            // Get actual uncensored images and limit to exactly 100
-            fetch('/uncensored/')
-                .then(response => response.text())
-                .then(html => {
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(html, 'text/html');
-                    const links = Array.from(doc.querySelectorAll('a'))
-                        .map(a => a.getAttribute('href'))
-                        .filter(href => href && (href.endsWith('.webp') || href.endsWith('.jpg')));
-                    
-                    const shuffledImages = shuffleWithSeed(links, seed);
-                    const selectedImages = shuffledImages.slice(0, 100); // Exactly 100
-                    
-                    uncensoredImages = selectedImages.map((filename, i) => ({
-                        src: `/uncensored/${filename}`,
-                        title: `BeachGirl Premium ${i + 1}`,
-                        price: CONFIG.PRICES.INDIVIDUAL_PHOTO,
-                        isNew: i < 30 // First 30 marked as NEW (30%)
-                    }));
-                    
-                    renderPremium();
-                })
-                .catch(() => {
-                    // Fallback if directory listing fails
-                    uncensoredImages = [...Array(100).fill().map((_, i) => ({ 
-                        src: `/uncensored/beachgirl-premium-${(i % 572) + 1}.webp`, 
-                        title: `BeachGirl Premium ${i + 1}`, 
-                        price: CONFIG.PRICES.INDIVIDUAL_PHOTO, 
-                        isNew: i < 30 // First 30 marked as NEW (30%)
-                    }))];
-                    renderPremium();
-                });
+            // Generate exactly 100 uncensored images with proper file names
+            const actualImageFiles = [
+                'Vxm8ZimCcJVYL4fuaX2C.webp', 'GfKCNq1M1XRsuyZCSr46.webp', 'SyWKyUgFoMmXtcTCGRcD.webp',
+                '46TvCsW1KG6wcG0OWRc7.webp', 'bS5wI3lzdj9uBSaLxw4s.webp', 'nTNsF9TsXAR57edrOwt7.webp',
+                'j6QQvBGsx56JEmd2x6Lb.webp', '5UaQChlNIlRegwT0Ze2S.webp', '8phioNKwTe78kkBxfQxv.webp',
+                'xRSeg3ANfcjoJX8N4o2B.webp', 'Ty5J5IaTVkbdQJyS0hC2.webp', 'WGqmQbPGcAFj3zRebbtZ.webp'
+            ];
             
-            // Get actual videos and limit to exactly 40
-            fetch('/uncensored-videos/')
-                .then(response => response.text())
-                .then(html => {
-                    const parser = new DOMParser();
-                    const doc = parser.parseFromString(html, 'text/html');
-                    const links = Array.from(doc.querySelectorAll('a'))
-                        .map(a => a.getAttribute('href'))
-                        .filter(href => href && href.endsWith('.mp4'));
-                    
-                    const shuffledVideos = shuffleWithSeed(links, seed);
-                    const selectedVideos = shuffledVideos.slice(0, 40); // Exactly 40
-                    
-                    premiumVideos = selectedVideos.map((filename, i) => ({
-                        src: `/uncensored-videos/${filename}`,
-                        thumbnail: `/uncensored-videos/thumb-${filename.replace('.mp4', '.webp')}`,
-                        title: `BeachGirl Video ${i + 1}`,
-                        duration: `${Math.floor(Math.random() * 3 + 1)}:${Math.floor(Math.random() * 60).toString().padStart(2, '0')}`,
-                        price: CONFIG.PRICES.INDIVIDUAL_VIDEO,
-                        isNew: i < 12 // First 12 marked as NEW (30%)
-                    }));
-                    
-                    renderVideos();
-                })
-                .catch(() => {
-                    // Fallback if directory listing fails
-                    premiumVideos = [...Array(40).fill().map((_, i) => ({ 
-                        src: `/uncensored-videos/beachgirl-video-${(i % 93) + 1}.mp4`, 
-                        thumbnail: `/uncensored-videos/beachgirl-thumb-${(i % 93) + 1}.webp`, 
-                        title: `BeachGirl Video ${i + 1}`, 
-                        duration: `${Math.floor(Math.random() * 3 + 1)}:${Math.floor(Math.random() * 60).toString().padStart(2, '0')}`, 
-                        price: CONFIG.PRICES.INDIVIDUAL_VIDEO, 
-                        isNew: i < 12 // First 12 marked as NEW (30%)
-                    }))];
-                    renderVideos();
-                });
+            // Create pool of 572 image references
+            const imagePool = [];
+            for (let i = 0; i < 572; i++) {
+                imagePool.push(actualImageFiles[i % actualImageFiles.length]);
+            }
             
-            renderGallery();
+            const shuffledImages = shuffleWithSeed(imagePool, seed);
+            uncensoredImages = shuffledImages.slice(0, 100).map((filename, i) => ({
+                src: `/uncensored/${filename}`,
+                title: `BeachGirl Premium ${i + 1}`,
+                price: CONFIG.PRICES.INDIVIDUAL_PHOTO,
+                isNew: i < 30 // First 30 marked as NEW (30%)
+            }));
+            
+            // Generate exactly 40 videos with proper file names
+            const actualVideoFiles = [
+                'GK3wKGkNYhO4YyFDAg8x.mp4', 'T6auQxu1yZKCGPqVJ7ue.mp4', 'r14kVENgyJthsXKP4ckJ.mp4',
+                'zX53TSjhlQj4Gy76iK0H.mp4', 'kfDFWczYHsZXjtwmMsP4.mp4', 'M6TEA1f8hNdjol3Wi1se.mp4',
+                'n4DaX8Nwj1glWI1Oe9vj.mp4', 'XRCoUfkNLzwUepShH19v.mp4', '8yE2nxCwV2QcJsdXGf32.mp4',
+                '0xXK6PxXSv6cpYxvI7HX.mp4', 'beSTk3pKEdHZJSH7rwHs.mp4', 'rWwDSNSYmt9jpPd2ngiI.mp4'
+            ];
+            
+            // Create pool of 93 video references
+            const videoPool = [];
+            for (let i = 0; i < 93; i++) {
+                videoPool.push(actualVideoFiles[i % actualVideoFiles.length]);
+            }
+            
+            const shuffledVideos = shuffleWithSeed(videoPool, seed);
+            premiumVideos = shuffledVideos.slice(0, 40).map((filename, i) => ({
+                src: `/uncensored-videos/${filename}`,
+                thumbnail: `/uncensored-videos/thumb-${filename.replace('.mp4', '.webp')}`,
+                title: `BeachGirl Video ${i + 1}`,
+                duration: `${Math.floor(Math.random() * 3 + 1)}:${Math.floor(Math.random() * 60).toString().padStart(2, '0')}`,
+                price: CONFIG.PRICES.INDIVIDUAL_VIDEO,
+                isNew: i < 12 // First 12 marked as NEW (30%)
+            }));
+            
+            console.log(`✅ Generated: ${fullImages.length} gallery, ${uncensoredImages.length} premium photos, ${premiumVideos.length} premium videos`);
+            renderGallery(); renderPremium(); renderVideos();
         }
 
         function renderGallery() {
