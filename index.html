@@ -513,9 +513,20 @@
         }
 
         function showSection(sectionName) {
-            document.querySelectorAll('.section').forEach(section => { section.style.display = 'none'; });
-            document.getElementById(sectionName).style.display = 'block';
-            document.getElementById(sectionName).scrollIntoView({ behavior: 'smooth' });
+            document.querySelectorAll('.section').forEach(section => { 
+                section.style.display = 'none'; 
+            });
+            
+            const targetSection = document.getElementById(sectionName);
+            targetSection.style.display = 'block';
+            
+            // Smooth scroll with better timing
+            requestAnimationFrame(() => {
+                targetSection.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start'
+                });
+            });
         }
 
         function initializePayPal() {
