@@ -414,30 +414,95 @@
         }
 
         function renderGallery() {
-            const grid = document.getElementById('galleryGrid'); grid.innerHTML = '';
+            const grid = document.getElementById('galleryGrid'); 
+            grid.innerHTML = '';
+            
+            const fragment = document.createDocumentFragment();
             fullImages.forEach((item, index) => {
-                const div = document.createElement('div'); div.className = 'content-item';
-                div.innerHTML = `<img src="${item.src}" alt="${item.title}" loading="lazy" onerror="this.src='/decorative-images/paradise-beach.png'">${item.isNew ? '<div class="new-badge">NUEVO</div>' : ''}<div class="content-overlay"><div class="content-title">${item.title}</div><div class="content-price">GRATIS</div></div>`;
-                grid.appendChild(div);
+                const div = document.createElement('div'); 
+                div.className = 'content-item';
+                div.innerHTML = `
+                    <img data-src="${item.src}" alt="${item.title}" loading="lazy" class="lazy-image" onerror="this.src='/decorative-images/paradise-beach.png'">
+                    ${item.isNew ? '<div class="new-badge">NUEVO</div>' : ''}
+                    <div class="content-overlay">
+                        <div class="content-title">${item.title}</div>
+                        <div class="content-price">GRATIS</div>
+                    </div>
+                `;
+                fragment.appendChild(div);
             });
+            
+            grid.appendChild(fragment);
+            initLazyLoading();
         }
 
         function renderPremium() {
-            const grid = document.getElementById('premiumGrid'); grid.innerHTML = '';
+            const grid = document.getElementById('premiumGrid'); 
+            grid.innerHTML = '';
+            
+            const fragment = document.createDocumentFragment();
             uncensoredImages.forEach((item, index) => {
-                const div = document.createElement('div'); div.className = 'content-item';
-                div.innerHTML = `<img src="${item.src}" alt="${item.title}" loading="lazy" class="blur-content" onerror="this.src='/decorative-images/paradise-beach.png'">${item.isNew ? '<div class="new-badge">NUEVO</div>' : ''}<div class="unlock-overlay"><div class="unlock-icon">🔒</div><div class="unlock-text">Contenido Premium</div><button class="paypal-button" onclick="createPayPalPayment(${item.price}, 'photo', ${index})">€${item.price.toFixed(2)} PayPal</button></div>`;
-                grid.appendChild(div);
+                const div = document.createElement('div'); 
+                div.className = 'content-item';
+                div.innerHTML = `
+                    <img data-src="${item.src}" alt="${item.title}" loading="lazy" class="blur-content lazy-image" onerror="this.src='/decorative-images/paradise-beach.png'">
+                    ${item.isNew ? '<div class="new-badge">NUEVO</div>' : ''}
+                    <div class="unlock-overlay">
+                        <div class="unlock-icon">🔒</div>
+                        <div class="unlock-text">Contenido Premium</div>
+                        <button class="paypal-button" onclick="createPayPalPayment(${item.price}, 'photo', ${index})">€${item.price.toFixed(2)} PayPal</button>
+                    </div>
+                `;
+                fragment.appendChild(div);
             });
+            
+            grid.appendChild(fragment);
+            initLazyLoading();
         }
 
         function renderVideos() {
-            const grid = document.getElementById('videosGrid'); grid.innerHTML = '';
+            const grid = document.getElementById('videosGrid'); 
+            grid.innerHTML = '';
+            
+            const fragment = document.createDocumentFragment();
             premiumVideos.forEach((item, index) => {
-                const div = document.createElement('div'); div.className = 'content-item';
-                div.innerHTML = `<div class="video-thumbnail blur-content"><img src="${item.thumbnail}" alt="${item.title}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='/decorative-images/paradise-beach.png'"><div class="video-play-icon">▶️</div><div class="video-duration">${item.duration}</div></div>${item.isNew ? '<div class="new-badge">NUEVO</div>' : ''}<div class="unlock-overlay"><div class="unlock-icon">🔒</div><div class="unlock-text">Descargar €${item.price.toFixed(2)}</div><button class="paypal-button" onclick="createPayPalPayment(${item.price}, 'video', ${index})">€${item.price.toFixed(2)} PayPal</button></div>`;
-                grid.appendChild(div);
+                const div = document.createElement('div'); 
+                div.className = 'content-item';
+                div.innerHTML = `
+                    <div class="video-thumbnail blur-content">
+                        <img data-src="${item.thumbnail}" alt="${item.title}" loading="lazy" class="lazy-image" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='/decorative-images/paradise-beach.png'">
+                        <div class="video-play-icon">▶️</div>
+                        <div class="video-duration">${item.duration}</div>
+                    </div>
+                    ${item.isNew ? '<div class="new-badge">NUEVO</div>' : ''}
+                    <div class="unlock-overlay">
+                        <div class="unlock-icon">🔒</div>
+                        <div class="unlock-text">Descargar €${item.price.toFixed(2)}</div>
+                        <button class="paypal-button" onclick="createPayPalPayment(${item.price}, 'video', ${index})">€${item.price.toFixed(2)} PayPal</button>
+                    </div>
+                `;
+                fragment.appendChild(div);
             });
+            
+            grid.appendChild(fragment);
+            initLazyLoading();
+        }
+
+        function initLazyLoading() {
+            const lazyImages = document.querySelectorAll('.lazy-image');
+            
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.dataset.src;
+                        img.classList.remove('lazy-image');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+            
+            lazyImages.forEach(img => imageObserver.observe(img));
         }
 
         function showSection(sectionName) {
