@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery - BeachGirl.pics</title>
+    <title>Gallery - IbizaGirl.pics</title>
     
     <style>
         * {
@@ -42,7 +42,6 @@
             border-radius: 20px;
             background: rgba(255,255,255,0.2);
             transition: background 0.3s;
-            display: inline-block;
         }
         
         .nav a:hover {
@@ -60,16 +59,6 @@
             margin: 30px 0;
         }
         
-        .gallery-info h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-        
-        .gallery-info p {
-            font-size: 1.2em;
-            margin-bottom: 10px;
-        }
-        
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -82,7 +71,6 @@
             border-radius: 10px;
             overflow: hidden;
             transition: transform 0.3s;
-            position: relative;
         }
         
         .photo-card:hover {
@@ -99,15 +87,6 @@
         .photo-info {
             padding: 10px;
             text-align: center;
-        }
-        
-        .new-label {
-            background: #ff4757;
-            color: white;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 0.8em;
-            display: inline-block;
         }
         
         .loading {
@@ -134,14 +113,12 @@
             position: fixed;
             top: 20px;
             right: 20px;
-            z-index: 1000;
         }
         
         .language-selector select {
             padding: 8px;
             border-radius: 5px;
             border: none;
-            cursor: pointer;
         }
         
         .ad-banner {
@@ -153,34 +130,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        
-        .placeholder-img {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2em;
-        }
-        
-        @media (max-width: 768px) {
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-                gap: 10px;
-            }
-            
-            .gallery-info h1 {
-                font-size: 2em;
-            }
-            
-            .nav a {
-                margin: 5px;
-                padding: 6px 12px;
-                font-size: 0.9em;
-            }
         }
     </style>
 </head>
@@ -197,7 +146,7 @@
     </div>
 
     <div class="header">
-        <div class="logo">🌴 BeachGirl.pics 🌴</div>
+        <div class="logo">🌴 IbizaGirl.pics 🌴</div>
         <div class="nav">
             <a href="/">Home</a>
             <a href="/gallery.html">Gallery</a>
@@ -210,7 +159,7 @@
     <div class="container">
         <div class="gallery-info">
             <h1 id="galleryTitle">📸 Free Gallery</h1>
-            <p id="galleryDesc">Beautiful beach photos - Updated daily</p>
+            <p id="galleryDesc">Beautiful photos from Ibiza - Updated daily</p>
             <p id="totalPhotos">Total photos: <span id="photoCount">Loading...</span></p>
         </div>
 
@@ -228,85 +177,29 @@
     </div>
 
     <!-- Content Data -->
-    <script>
-        // Load content data with error handling
-        function loadScript(src) {
-            return new Promise((resolve) => {
-                const script = document.createElement('script');
-                script.src = src;
-                script.onload = () => {
-                    console.log(`✅ Loaded: ${src}`);
-                    resolve();
-                };
-                script.onerror = () => {
-                    console.warn(`⚠️ Failed to load: ${src}`);
-                    resolve(); // Continue even if file doesn't exist
-                };
-                document.head.appendChild(script);
-            });
-        }
-        
-        // Load content data
-        loadScript('content-data2.js').then(() => {
-            loadGallery();
-        });
-    </script>
+    <script src="content-data2.js"></script>
 
     <script>
         // Translations
         const translations = {
             es: {
                 galleryTitle: "📸 Galería Gratuita",
-                galleryDesc: "Hermosas fotos de playa - Actualizadas diariamente",
+                galleryDesc: "Hermosas fotos desde Ibiza - Actualizadas diariamente",
                 totalPhotos: "Total de fotos:",
                 loadingText: "Cargando galería...",
-                newLabel: "¡NUEVO!",
-                errorLoading: "Error al cargar la galería"
+                newLabel: "¡NUEVO!"
             },
             en: {
                 galleryTitle: "📸 Free Gallery",
-                galleryDesc: "Beautiful beach photos - Updated daily",
+                galleryDesc: "Beautiful photos from Ibiza - Updated daily",
                 totalPhotos: "Total photos:",
                 loadingText: "Loading gallery...",
-                newLabel: "NEW!",
-                errorLoading: "Error loading gallery"
-            },
-            de: {
-                galleryTitle: "📸 Kostenlose Galerie",
-                galleryDesc: "Schöne Strandfotos - Täglich aktualisiert",
-                totalPhotos: "Gesamtfotos:",
-                loadingText: "Galerie wird geladen...",
-                newLabel: "NEU!",
-                errorLoading: "Fehler beim Laden der Galerie"
-            },
-            it: {
-                galleryTitle: "📸 Galleria Gratuita",
-                galleryDesc: "Belle foto di spiaggia - Aggiornate quotidianamente",
-                totalPhotos: "Foto totali:",
-                loadingText: "Caricamento galleria...",
-                newLabel: "NUOVO!",
-                errorLoading: "Errore nel caricamento della galleria"
-            },
-            fr: {
-                galleryTitle: "📸 Galerie Gratuite",
-                galleryDesc: "Belles photos de plage - Mise à jour quotidienne",
-                totalPhotos: "Total des photos:",
-                loadingText: "Chargement de la galerie...",
-                newLabel: "NOUVEAU!",
-                errorLoading: "Erreur lors du chargement de la galerie"
+                newLabel: "NEW!"
             }
         };
 
         let currentLanguage = 'es';
         let allPhotos = [];
-
-        // Create placeholder image
-        function createPlaceholder(text = "🌴") {
-            const div = document.createElement('div');
-            div.className = 'placeholder-img';
-            div.textContent = text;
-            return div;
-        }
 
         // Language functions
         function changeLanguage() {
@@ -317,28 +210,13 @@
             document.getElementById('galleryDesc').textContent = t.galleryDesc;
             document.getElementById('loadingText').textContent = t.loadingText;
             
-            const totalPhotosText = document.getElementById('totalPhotos');
-            if (totalPhotosText) {
-                totalPhotosText.innerHTML = t.totalPhotos + ' <span id="photoCount">' + allPhotos.length + '</span>';
+            // Update photo count
+            const photoCountElement = document.getElementById('photoCount');
+            if (photoCountElement && allPhotos.length > 0) {
+                photoCountElement.textContent = allPhotos.length;
             }
-            
-            // Update NEW labels
-            const newLabels = document.querySelectorAll('.new-label');
-            newLabels.forEach(label => {
-                label.textContent = t.newLabel;
-            });
             
             localStorage.setItem('preferred-language', currentLanguage);
-        }
-
-        // Shuffle array function
-        function shuffleArray(array) {
-            const arr = [...array];
-            for (let i = arr.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [arr[i], arr[j]] = [arr[j], arr[i]];
-            }
-            return arr;
         }
 
         // Load and display photos
@@ -347,36 +225,38 @@
                 // Get photos from content-data2.js
                 if (typeof FULL_IMAGES_POOL !== 'undefined') {
                     allPhotos = FULL_IMAGES_POOL;
-                    console.log(`📸 BeachGirl.pics: Loaded ${allPhotos.length} photos from FULL_IMAGES_POOL`);
+                    console.log(`📸 Loaded ${allPhotos.length} photos from FULL_IMAGES_POOL`);
                     
                     // Randomize photos daily
                     const today = new Date().toDateString();
                     const savedDate = localStorage.getItem('gallery-date');
                     
                     if (savedDate !== today) {
-                        allPhotos = shuffleArray(allPhotos);
+                        shuffleArray(allPhotos);
                         localStorage.setItem('gallery-date', today);
                         console.log('🔄 Daily shuffle applied');
                     }
                     
                     displayPhotos();
                 } else {
-                    // Use placeholder images if content not found
-                    console.warn('⚠️ FULL_IMAGES_POOL not found, using placeholders');
-                    allPhotos = Array(50).fill(null).map((_, i) => `placeholder-${i}`);
-                    displayPhotos();
+                    throw new Error('FULL_IMAGES_POOL not found');
                 }
             } catch (error) {
                 console.error('Error loading gallery:', error);
-                const t = translations[currentLanguage] || translations.en;
-                document.getElementById('loadingText').textContent = t.errorLoading;
+                document.getElementById('loadingText').textContent = 'Error loading gallery';
+            }
+        }
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
             }
         }
 
         function displayPhotos() {
             const galleryGrid = document.getElementById('galleryGrid');
             const photoCountElement = document.getElementById('photoCount');
-            const t = translations[currentLanguage] || translations.en;
             
             // Update photo count
             photoCountElement.textContent = allPhotos.length;
@@ -390,25 +270,10 @@
                 const photoCard = document.createElement('div');
                 photoCard.className = 'photo-card';
                 
-                if (photo.includes('placeholder')) {
-                    // Create placeholder
-                    const placeholder = createPlaceholder(`🌴 ${index + 1}`);
-                    photoCard.appendChild(placeholder);
-                } else {
-                    // Create image
-                    const img = document.createElement('img');
-                    img.src = photo;
-                    img.alt = `Beach Photo ${index + 1}`;
-                    img.loading = 'lazy';
-                    
-                    // Add error handler
-                    img.onerror = function() {
-                        const placeholder = createPlaceholder(`🌴 ${index + 1}`);
-                        this.parentElement.replaceChild(placeholder, this);
-                    };
-                    
-                    photoCard.appendChild(img);
-                }
+                const img = document.createElement('img');
+                img.src = photo;
+                img.alt = `Ibiza Photo ${index + 1}`;
+                img.loading = 'lazy';
                 
                 const photoInfo = document.createElement('div');
                 photoInfo.className = 'photo-info';
@@ -416,11 +281,16 @@
                 // Mark first 15 as NEW
                 if (index < 15) {
                     const newLabel = document.createElement('span');
-                    newLabel.className = 'new-label';
-                    newLabel.textContent = t.newLabel;
+                    newLabel.textContent = translations[currentLanguage].newLabel || 'NEW!';
+                    newLabel.style.background = '#ff4757';
+                    newLabel.style.color = 'white';
+                    newLabel.style.padding = '2px 8px';
+                    newLabel.style.borderRadius = '10px';
+                    newLabel.style.fontSize = '0.8em';
                     photoInfo.appendChild(newLabel);
                 }
                 
+                photoCard.appendChild(img);
                 photoCard.appendChild(photoInfo);
                 galleryGrid.appendChild(photoCard);
             });
@@ -429,7 +299,7 @@
             document.getElementById('loadingSection').style.display = 'none';
             galleryGrid.style.display = 'grid';
             
-            console.log(`✅ BeachGirl.pics: Displayed ${photosToShow.length} photos`);
+            console.log(`✅ Displayed ${photosToShow.length} photos`);
         }
 
         // Initialize
@@ -440,7 +310,10 @@
             
             document.getElementById('languageSelect').addEventListener('change', changeLanguage);
             
-            console.log('🌴 BeachGirl.pics Gallery page initialized');
+            // Load gallery after a short delay
+            setTimeout(loadGallery, 1000);
+            
+            console.log('🌴 Gallery page loaded');
         });
     </script>
 </body>

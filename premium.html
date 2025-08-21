@@ -24,10 +24,7 @@
             text-align: center;
         }
         
-        .logo { 
-            font-size: 2em; 
-            margin-bottom: 10px; 
-        }
+        .logo { font-size: 2em; margin-bottom: 10px; }
         
         .nav {
             margin-top: 15px;
@@ -41,12 +38,9 @@
             border-radius: 20px;
             background: rgba(255,255,255,0.2);
             transition: background 0.3s;
-            display: inline-block;
         }
         
-        .nav a:hover { 
-            background: rgba(255,255,255,0.3); 
-        }
+        .nav a:hover { background: rgba(255,255,255,0.3); }
         
         .container {
             max-width: 1200px;
@@ -60,11 +54,6 @@
             background: rgba(255,255,255,0.1);
             padding: 30px;
             border-radius: 15px;
-        }
-        
-        .premium-info h1 {
-            font-size: 2.5em;
-            margin-bottom: 15px;
         }
         
         .price-tag {
@@ -90,9 +79,7 @@
             cursor: pointer;
         }
         
-        .photo-card:hover { 
-            transform: scale(1.05); 
-        }
+        .photo-card:hover { transform: scale(1.05); }
         
         .photo-card img {
             width: 100%;
@@ -100,12 +87,9 @@
             object-fit: cover;
             display: block;
             filter: blur(8px);
-            transition: filter 0.3s;
         }
         
-        .photo-card.unlocked img { 
-            filter: none; 
-        }
+        .photo-card.unlocked img { filter: none; }
         
         .overlay {
             position: absolute;
@@ -118,17 +102,9 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            transition: opacity 0.3s;
         }
         
-        .photo-card.unlocked .overlay { 
-            display: none; 
-        }
-        
-        .lock-icon {
-            font-size: 2em;
-            margin-bottom: 10px;
-        }
+        .photo-card.unlocked .overlay { display: none; }
         
         .unlock-btn {
             background: #ff4757;
@@ -138,25 +114,18 @@
             border-radius: 25px;
             cursor: pointer;
             margin-top: 10px;
-            transition: background 0.3s;
-        }
-        
-        .unlock-btn:hover {
-            background: #ff3838;
         }
         
         .language-selector {
             position: fixed;
             top: 20px;
             right: 20px;
-            z-index: 1000;
         }
         
         .language-selector select {
             padding: 8px;
             border-radius: 5px;
             border: none;
-            cursor: pointer;
         }
         
         .modal {
@@ -189,60 +158,8 @@
             color: #999;
         }
         
-        .close-btn:hover {
-            color: #333;
-        }
-        
         #paypal-button-container {
             margin-top: 20px;
-        }
-        
-        .loading {
-            text-align: center;
-            padding: 50px;
-        }
-        
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 4px solid rgba(255,255,255,0.3);
-            border-top: 4px solid white;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .placeholder-img {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 2em;
-        }
-        
-        @media (max-width: 768px) {
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-                gap: 10px;
-            }
-            
-            .premium-info h1 {
-                font-size: 2em;
-            }
-            
-            .nav a {
-                margin: 5px;
-                padding: 6px 12px;
-                font-size: 0.9em;
-            }
         }
     </style>
 </head>
@@ -277,12 +194,7 @@
             <p id="totalPhotos">200+ premium photos available</p>
         </div>
 
-        <div class="loading" id="loadingSection">
-            <div class="spinner"></div>
-            <p id="loadingText">Loading premium content...</p>
-        </div>
-
-        <div class="gallery-grid" id="premiumGrid" style="display: none;">
+        <div class="gallery-grid" id="premiumGrid">
             <!-- Premium photos will be loaded here -->
         </div>
     </div>
@@ -297,32 +209,7 @@
         </div>
     </div>
 
-    <script>
-        // Load content data
-        function loadScript(src) {
-            return new Promise((resolve) => {
-                const script = document.createElement('script');
-                script.src = src;
-                script.onload = () => {
-                    console.log(`✅ Loaded: ${src}`);
-                    resolve();
-                };
-                script.onerror = () => {
-                    console.warn(`⚠️ Failed to load: ${src}`);
-                    resolve();
-                };
-                document.head.appendChild(script);
-            });
-        }
-        
-        // Load premium content
-        Promise.all([
-            loadScript('content-data3.js'),
-            loadScript('content-data4.js')
-        ]).then(() => {
-            setTimeout(loadPremiumPhotos, 500);
-        });
-    </script>
+    <script src="content-data3.js"></script>
 
     <script>
         const translations = {
@@ -332,10 +219,7 @@
                 totalPhotos: "200+ fotos premium disponibles",
                 unlockText: "€0.10 - Desbloquear",
                 modalTitle: "Desbloquear Foto Premium",
-                modalDesc: "Paga €0.10 para desbloquear esta foto exclusiva",
-                loadingText: "Cargando contenido premium...",
-                paymentSuccess: "¡Pago exitoso! Foto desbloqueada.",
-                paymentError: "Error en el pago. Por favor intenta de nuevo."
+                modalDesc: "Paga €0.10 para desbloquear esta foto exclusiva"
             },
             en: {
                 premiumTitle: "💎 Premium Photos",
@@ -343,58 +227,13 @@
                 totalPhotos: "200+ premium photos available",
                 unlockText: "€0.10 - Unlock",
                 modalTitle: "Unlock Premium Photo",
-                modalDesc: "Pay €0.10 to unlock this exclusive photo",
-                loadingText: "Loading premium content...",
-                paymentSuccess: "Payment successful! Photo unlocked.",
-                paymentError: "Payment failed. Please try again."
-            },
-            de: {
-                premiumTitle: "💎 Premium-Fotos",
-                premiumDesc: "Exklusive hochwertige Fotos aus Ibiza",
-                totalPhotos: "200+ Premium-Fotos verfügbar",
-                unlockText: "€0.10 - Freischalten",
-                modalTitle: "Premium-Foto freischalten",
-                modalDesc: "Zahlen Sie €0.10, um dieses exklusive Foto freizuschalten",
-                loadingText: "Premium-Inhalte werden geladen...",
-                paymentSuccess: "Zahlung erfolgreich! Foto freigeschaltet.",
-                paymentError: "Zahlung fehlgeschlagen. Bitte versuchen Sie es erneut."
-            },
-            it: {
-                premiumTitle: "💎 Foto Premium",
-                premiumDesc: "Foto esclusive di alta qualità da Ibiza",
-                totalPhotos: "200+ foto premium disponibili",
-                unlockText: "€0.10 - Sblocca",
-                modalTitle: "Sblocca Foto Premium",
-                modalDesc: "Paga €0.10 per sbloccare questa foto esclusiva",
-                loadingText: "Caricamento contenuti premium...",
-                paymentSuccess: "Pagamento riuscito! Foto sbloccata.",
-                paymentError: "Pagamento fallito. Riprova."
-            },
-            fr: {
-                premiumTitle: "💎 Photos Premium",
-                premiumDesc: "Photos exclusives de haute qualité d'Ibiza",
-                totalPhotos: "200+ photos premium disponibles",
-                unlockText: "€0.10 - Débloquer",
-                modalTitle: "Débloquer Photo Premium",
-                modalDesc: "Payez €0.10 pour débloquer cette photo exclusive",
-                loadingText: "Chargement du contenu premium...",
-                paymentSuccess: "Paiement réussi! Photo débloquée.",
-                paymentError: "Échec du paiement. Veuillez réessayer."
+                modalDesc: "Pay €0.10 to unlock this exclusive photo"
             }
         };
 
         let currentLanguage = 'es';
         let selectedPhoto = null;
         let unlockedPhotos = JSON.parse(localStorage.getItem('unlockedPhotos') || '[]');
-        let premiumPhotos = [];
-
-        // Create placeholder
-        function createPlaceholder(text = "💎") {
-            const div = document.createElement('div');
-            div.className = 'placeholder-img';
-            div.textContent = text;
-            return div;
-        }
 
         function changeLanguage() {
             currentLanguage = document.getElementById('languageSelect').value;
@@ -405,98 +244,59 @@
             document.getElementById('totalPhotos').textContent = t.totalPhotos;
             document.getElementById('modalTitle').textContent = t.modalTitle;
             document.getElementById('modalDesc').textContent = t.modalDesc;
-            document.getElementById('loadingText').textContent = t.loadingText;
-            
-            // Update unlock buttons
-            const unlockBtns = document.querySelectorAll('.unlock-btn');
-            unlockBtns.forEach(btn => {
-                if (!btn.dataset.unlocked) {
-                    btn.textContent = t.unlockText;
-                }
-            });
             
             localStorage.setItem('preferred-language', currentLanguage);
+            loadPremiumPhotos();
         }
 
         function loadPremiumPhotos() {
-            const grid = document.getElementById('premiumGrid');
-            const loading = document.getElementById('loadingSection');
-            const t = translations[currentLanguage] || translations.en;
-            
             try {
-                // Combine premium images
-                if (typeof PREMIUM_IMAGES_PART1 !== 'undefined' && typeof PREMIUM_IMAGES_PART2 !== 'undefined') {
-                    premiumPhotos = [...PREMIUM_IMAGES_PART1, ...PREMIUM_IMAGES_PART2].slice(0, 50);
+                if (typeof PREMIUM_IMAGES_PART1 !== 'undefined') {
+                    const premiumPhotos = PREMIUM_IMAGES_PART1.slice(0, 50);
+                    displayPremiumPhotos(premiumPhotos);
                     console.log(`💎 Loaded ${premiumPhotos.length} premium photos`);
-                } else if (typeof PREMIUM_IMAGES_PART1 !== 'undefined') {
-                    premiumPhotos = PREMIUM_IMAGES_PART1.slice(0, 50);
                 } else {
-                    // Use placeholders
-                    console.warn('⚠️ Premium images not found, using placeholders');
-                    premiumPhotos = Array(50).fill(null).map((_, i) => `premium-placeholder-${i}`);
+                    console.error('PREMIUM_IMAGES_PART1 not found');
                 }
-                
-                displayPremiumPhotos();
             } catch (error) {
                 console.error('Error loading premium photos:', error);
-                loading.innerHTML = '<p style="color: #ff4757;">Error loading premium content</p>';
             }
         }
 
-        function displayPremiumPhotos() {
+        function displayPremiumPhotos(photos) {
             const grid = document.getElementById('premiumGrid');
-            const loading = document.getElementById('loadingSection');
             const t = translations[currentLanguage] || translations.en;
             
             grid.innerHTML = '';
             
-            premiumPhotos.forEach((photo, index) => {
+            photos.forEach((photo, index) => {
                 const photoCard = document.createElement('div');
                 photoCard.className = 'photo-card';
                 
-                // Check if unlocked
-                const isUnlocked = unlockedPhotos.includes(photo) || unlockedPhotos.includes('all');
-                if (isUnlocked) {
+                if (unlockedPhotos.includes(photo)) {
                     photoCard.classList.add('unlocked');
                 }
                 
-                if (photo.includes('placeholder')) {
-                    photoCard.appendChild(createPlaceholder(`💎 ${index + 1}`));
-                } else {
-                    const img = document.createElement('img');
-                    img.src = photo;
-                    img.alt = `Premium Photo ${index + 1}`;
-                    img.loading = 'lazy';
-                    img.onerror = function() {
-                        const placeholder = createPlaceholder(`💎 ${index + 1}`);
-                        this.parentElement.replaceChild(placeholder, this);
-                    };
-                    photoCard.appendChild(img);
-                }
+                const img = document.createElement('img');
+                img.src = photo;
+                img.alt = `Premium Photo ${index + 1}`;
+                img.loading = 'lazy';
                 
-                if (!isUnlocked) {
-                    const overlay = document.createElement('div');
-                    overlay.className = 'overlay';
-                    
-                    const lockIcon = document.createElement('div');
-                    lockIcon.className = 'lock-icon';
-                    lockIcon.textContent = '🔒';
-                    
-                    const unlockBtn = document.createElement('button');
-                    unlockBtn.className = 'unlock-btn';
-                    unlockBtn.textContent = t.unlockText;
-                    unlockBtn.onclick = () => openPaymentModal(photo);
-                    
-                    overlay.appendChild(lockIcon);
-                    overlay.appendChild(unlockBtn);
-                    photoCard.appendChild(overlay);
-                }
+                const overlay = document.createElement('div');
+                overlay.className = 'overlay';
                 
+                const unlockBtn = document.createElement('button');
+                unlockBtn.className = 'unlock-btn';
+                unlockBtn.textContent = t.unlockText || '€0.10 - Unlock';
+                unlockBtn.onclick = () => openPaymentModal(photo);
+                
+                overlay.appendChild(document.createTextNode('🔒'));
+                overlay.appendChild(unlockBtn);
+                
+                photoCard.appendChild(img);
+                photoCard.appendChild(overlay);
                 grid.appendChild(photoCard);
             });
-            
-            loading.style.display = 'none';
-            grid.style.display = 'grid';
         }
 
         function openPaymentModal(photo) {
@@ -507,12 +307,9 @@
 
         function closeModal() {
             document.getElementById('paymentModal').style.display = 'none';
-            // Clear PayPal button container
-            document.getElementById('paypal-button-container').innerHTML = '';
         }
 
         function initPayPal() {
-            const t = translations[currentLanguage] || translations.en;
             document.getElementById('paypal-button-container').innerHTML = '';
             
             paypal.Buttons({
@@ -532,15 +329,14 @@
                         unlockedPhotos.push(selectedPhoto);
                         localStorage.setItem('unlockedPhotos', JSON.stringify(unlockedPhotos));
                         
-                        alert(t.paymentSuccess);
+                        alert('Payment successful! Photo unlocked.');
                         closeModal();
-                        displayPremiumPhotos(); // Refresh display
+                        loadPremiumPhotos(); // Refresh display
                     });
                 },
                 onError: function(err) {
                     console.error('PayPal error:', err);
-                    const t = translations[currentLanguage] || translations.en;
-                    alert(t.paymentError);
+                    alert('Payment failed. Please try again.');
                 }
             }).render('#paypal-button-container');
         }
@@ -553,7 +349,9 @@
             
             document.getElementById('languageSelect').addEventListener('change', changeLanguage);
             
-            console.log('💎 Premium page initialized');
+            setTimeout(loadPremiumPhotos, 1000);
+            
+            console.log('💎 Premium page loaded');
         });
     </script>
 </body>
