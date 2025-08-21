@@ -1,0 +1,51 @@
+<!-- ad-zones.html - Zonas de anuncios -->
+
+<!-- EroAdvertising Banner 468x80 -->
+<div class="ad-zone ero-advertising" id="ero-ad-zone">
+    <div style="width: 468px; height: 80px; margin: 20px auto;">
+        <!-- EroAdvertising se cargará aquí -->
+        <script type="text/javascript">
+            document.write('<scr' + 'ipt type="text/javascript" src="https://www.eroadvertising.com/ads/show.php?z=8179717&b=2309173"></scr' + 'ipt>');
+        </script>
+    </div>
+</div>
+
+<!-- ExoClick Banner 300x250 -->
+<div class="ad-zone exoclick" id="exo-ad-zone">
+    <div style="width: 300px; height: 250px; margin: 20px auto;">
+        <ins class="eas6a97888e2" data-zoneid="5702700"></ins>
+        <script>(AdProvider = window.AdProvider || []).push({"serve": {"zone": 5702700}});</script>
+    </div>
+</div>
+
+<!-- JuicyAds Leaderboard 728x90 -->
+<div class="ad-zone juicyads" id="juicy-ad-zone">
+    <div style="width: 728px; height: 90px; margin: 20px auto;">
+        <ins id="1099077" data-width="728" data-height="90"></ins>
+        <script type="text/javascript">
+            if (typeof adsbyjuicy !== 'undefined') {
+                adsbyjuicy.cmd.push(function() {
+                    adsbyjuicy.display('1099077');
+                });
+            }
+        </script>
+    </div>
+</div>
+
+<style>
+    .ad-zone {
+        background: rgba(255,255,255,0.05);
+        border-radius: 10px;
+        padding: 10px;
+        margin: 20px 0;
+        text-align: center;
+        min-height: 100px;
+    }
+    
+    @media (max-width: 768px) {
+        .ad-zone > div {
+            max-width: 100%;
+            overflow: hidden;
+        }
+    }
+</style>
