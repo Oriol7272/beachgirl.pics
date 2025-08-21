@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery - IbizaGirl.pics</title>
+    <title>Gallery - BeachGirl.pics</title>
     
     <style>
         * {
@@ -197,7 +197,7 @@
     </div>
 
     <div class="header">
-        <div class="logo">🌴 IbizaGirl.pics 🌴</div>
+        <div class="logo">🌴 BeachGirl.pics 🌴</div>
         <div class="nav">
             <a href="/">Home</a>
             <a href="/gallery.html">Gallery</a>
@@ -210,7 +210,7 @@
     <div class="container">
         <div class="gallery-info">
             <h1 id="galleryTitle">📸 Free Gallery</h1>
-            <p id="galleryDesc">Beautiful photos from Ibiza - Updated daily</p>
+            <p id="galleryDesc">Beautiful beach photos - Updated daily</p>
             <p id="totalPhotos">Total photos: <span id="photoCount">Loading...</span></p>
         </div>
 
@@ -257,7 +257,7 @@
         const translations = {
             es: {
                 galleryTitle: "📸 Galería Gratuita",
-                galleryDesc: "Hermosas fotos desde Ibiza - Actualizadas diariamente",
+                galleryDesc: "Hermosas fotos de playa - Actualizadas diariamente",
                 totalPhotos: "Total de fotos:",
                 loadingText: "Cargando galería...",
                 newLabel: "¡NUEVO!",
@@ -265,7 +265,7 @@
             },
             en: {
                 galleryTitle: "📸 Free Gallery",
-                galleryDesc: "Beautiful photos from Ibiza - Updated daily",
+                galleryDesc: "Beautiful beach photos - Updated daily",
                 totalPhotos: "Total photos:",
                 loadingText: "Loading gallery...",
                 newLabel: "NEW!",
@@ -273,7 +273,7 @@
             },
             de: {
                 galleryTitle: "📸 Kostenlose Galerie",
-                galleryDesc: "Schöne Fotos aus Ibiza - Täglich aktualisiert",
+                galleryDesc: "Schöne Strandfotos - Täglich aktualisiert",
                 totalPhotos: "Gesamtfotos:",
                 loadingText: "Galerie wird geladen...",
                 newLabel: "NEU!",
@@ -281,7 +281,7 @@
             },
             it: {
                 galleryTitle: "📸 Galleria Gratuita",
-                galleryDesc: "Belle foto da Ibiza - Aggiornate quotidianamente",
+                galleryDesc: "Belle foto di spiaggia - Aggiornate quotidianamente",
                 totalPhotos: "Foto totali:",
                 loadingText: "Caricamento galleria...",
                 newLabel: "NUOVO!",
@@ -289,7 +289,7 @@
             },
             fr: {
                 galleryTitle: "📸 Galerie Gratuite",
-                galleryDesc: "Belles photos d'Ibiza - Mise à jour quotidienne",
+                galleryDesc: "Belles photos de plage - Mise à jour quotidienne",
                 totalPhotos: "Total des photos:",
                 loadingText: "Chargement de la galerie...",
                 newLabel: "NOUVEAU!",
@@ -347,7 +347,7 @@
                 // Get photos from content-data2.js
                 if (typeof FULL_IMAGES_POOL !== 'undefined') {
                     allPhotos = FULL_IMAGES_POOL;
-                    console.log(`📸 Loaded ${allPhotos.length} photos from FULL_IMAGES_POOL`);
+                    console.log(`📸 BeachGirl.pics: Loaded ${allPhotos.length} photos from FULL_IMAGES_POOL`);
                     
                     // Randomize photos daily
                     const today = new Date().toDateString();
@@ -398,7 +398,7 @@
                     // Create image
                     const img = document.createElement('img');
                     img.src = photo;
-                    img.alt = `Ibiza Photo ${index + 1}`;
+                    img.alt = `Beach Photo ${index + 1}`;
                     img.loading = 'lazy';
                     
                     // Add error handler
@@ -429,7 +429,7 @@
             document.getElementById('loadingSection').style.display = 'none';
             galleryGrid.style.display = 'grid';
             
-            console.log(`✅ Displayed ${photosToShow.length} photos`);
+            console.log(`✅ BeachGirl.pics: Displayed ${photosToShow.length} photos`);
         }
 
         // Initialize
@@ -440,7 +440,7 @@
             
             document.getElementById('languageSelect').addEventListener('change', changeLanguage);
             
-            console.log('🌴 Gallery page initialized');
+            console.log('🌴 BeachGirl.pics Gallery page initialized');
         });
     </script>
 </body>
