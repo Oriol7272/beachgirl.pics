@@ -24,7 +24,10 @@
             text-align: center;
         }
         
-        .logo { font-size: 2em; margin-bottom: 10px; }
+        .logo { 
+            font-size: 2em; 
+            margin-bottom: 10px; 
+        }
         
         .nav {
             margin-top: 15px;
@@ -38,9 +41,12 @@
             border-radius: 20px;
             background: rgba(255,255,255,0.2);
             transition: background 0.3s;
+            display: inline-block;
         }
         
-        .nav a:hover { background: rgba(255,255,255,0.3); }
+        .nav a:hover { 
+            background: rgba(255,255,255,0.3); 
+        }
         
         .container {
             max-width: 1000px;
@@ -51,6 +57,11 @@
         .subscription-info {
             text-align: center;
             margin: 30px 0;
+        }
+        
+        .subscription-info h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
         }
         
         .plans {
@@ -67,9 +78,12 @@
             text-align: center;
             position: relative;
             transition: transform 0.3s;
+            backdrop-filter: blur(10px);
         }
         
-        .plan-card:hover { transform: translateY(-10px); }
+        .plan-card:hover { 
+            transform: translateY(-10px); 
+        }
         
         .plan-card.recommended {
             border: 3px solid #ff4757;
@@ -86,6 +100,7 @@
             padding: 8px 20px;
             border-radius: 20px;
             font-size: 0.9em;
+            font-weight: bold;
         }
         
         .plan-title {
@@ -109,6 +124,7 @@
         .features {
             list-style: none;
             margin: 30px 0;
+            text-align: left;
         }
         
         .features li {
@@ -135,18 +151,22 @@
             transition: background 0.3s;
         }
         
-        .subscribe-btn:hover { background: #ff3742; }
+        .subscribe-btn:hover { 
+            background: #ff3838; 
+        }
         
         .language-selector {
             position: fixed;
             top: 20px;
             right: 20px;
+            z-index: 1000;
         }
         
         .language-selector select {
             padding: 8px;
             border-radius: 5px;
             border: none;
+            cursor: pointer;
         }
         
         .modal {
@@ -179,6 +199,10 @@
             color: #999;
         }
         
+        .close-btn:hover {
+            color: #333;
+        }
+        
         #paypal-button-container {
             margin-top: 20px;
         }
@@ -194,6 +218,31 @@
         .status.active {
             background: rgba(0,212,170,0.2);
             border: 2px solid #00d4aa;
+        }
+        
+        .status h3 {
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .plans {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .plan-card {
+                padding: 30px 20px;
+            }
+            
+            .plan-price {
+                font-size: 2.5em;
+            }
+            
+            .nav a {
+                margin: 5px;
+                padding: 6px 12px;
+                font-size: 0.9em;
+            }
         }
     </style>
 </head>
@@ -317,9 +366,12 @@
                 feature4: "Calidad HD",
                 feature5: "Optimizado para móvil",
                 featureA6: "Ahorra 58% vs mensual",
+                featureL3: "Todo el contenido futuro",
                 featureL6: "Contenido exclusivo",
                 modalTitle: "Completar Suscripción",
-                modalDesc: "Elige tu plan de suscripción"
+                modalDesc: "Elige tu plan de suscripción",
+                paymentSuccess: "¡Suscripción activada! Ahora tienes acceso a todo el contenido premium.",
+                paymentError: "Error en el pago. Por favor intenta de nuevo."
             },
             en: {
                 subscriptionTitle: "⭐ Premium Subscription",
@@ -343,9 +395,99 @@
                 feature4: "HD quality",
                 feature5: "Mobile optimized",
                 featureA6: "Save 58% vs monthly",
+                featureL3: "All future content",
                 featureL6: "Exclusive content",
                 modalTitle: "Complete Subscription",
-                modalDesc: "Choose your subscription plan"
+                modalDesc: "Choose your subscription plan",
+                paymentSuccess: "Subscription activated! You now have access to all premium content.",
+                paymentError: "Payment failed. Please try again."
+            },
+            de: {
+                subscriptionTitle: "⭐ Premium-Abonnement",
+                subscriptionDesc: "Erhalten Sie unbegrenzten Zugang zu allen Premium-Inhalten",
+                statusTitle: "Abonnement-Status",
+                statusActive: "Aktives Abonnement",
+                statusInactive: "Kein aktives Abonnement",
+                monthlyTitle: "Monatsplan",
+                monthlyPeriod: "pro Monat",
+                monthlyBtn: "Monatlich abonnieren",
+                annualTitle: "Jahresplan",
+                annualPeriod: "pro Jahr",
+                annualBtn: "Jährlich abonnieren",
+                lifetimeTitle: "Lebenslanger Plan",
+                lifetimePeriod: "einmalige Zahlung",
+                lifetimeBtn: "Lebenslangen Zugang erhalten",
+                recommendedBadge: "Bester Wert",
+                feature1: "Unbegrenzte Premium-Fotos",
+                feature2: "Unbegrenzte Premium-Videos",
+                feature3: "Täglich neue Inhalte",
+                feature4: "HD-Qualität",
+                feature5: "Mobil optimiert",
+                featureA6: "Sparen Sie 58% vs monatlich",
+                featureL3: "Alle zukünftigen Inhalte",
+                featureL6: "Exklusive Inhalte",
+                modalTitle: "Abonnement abschließen",
+                modalDesc: "Wählen Sie Ihren Abonnementplan",
+                paymentSuccess: "Abonnement aktiviert! Sie haben jetzt Zugang zu allen Premium-Inhalten.",
+                paymentError: "Zahlung fehlgeschlagen. Bitte versuchen Sie es erneut."
+            },
+            it: {
+                subscriptionTitle: "⭐ Abbonamento Premium",
+                subscriptionDesc: "Ottieni accesso illimitato a tutti i contenuti premium",
+                statusTitle: "Stato Abbonamento",
+                statusActive: "Abbonamento Attivo",
+                statusInactive: "Nessun abbonamento attivo",
+                monthlyTitle: "Piano Mensile",
+                monthlyPeriod: "al mese",
+                monthlyBtn: "Abbonamento Mensile",
+                annualTitle: "Piano Annuale",
+                annualPeriod: "all'anno",
+                annualBtn: "Abbonamento Annuale",
+                lifetimeTitle: "Piano a Vita",
+                lifetimePeriod: "pagamento unico",
+                lifetimeBtn: "Ottieni Accesso a Vita",
+                recommendedBadge: "Miglior Valore",
+                feature1: "Foto premium illimitate",
+                feature2: "Video premium illimitati",
+                feature3: "Nuovi contenuti giornalieri",
+                feature4: "Qualità HD",
+                feature5: "Ottimizzato per mobile",
+                featureA6: "Risparmia il 58% vs mensile",
+                featureL3: "Tutti i contenuti futuri",
+                featureL6: "Contenuti esclusivi",
+                modalTitle: "Completa Abbonamento",
+                modalDesc: "Scegli il tuo piano di abbonamento",
+                paymentSuccess: "Abbonamento attivato! Ora hai accesso a tutti i contenuti premium.",
+                paymentError: "Pagamento fallito. Riprova."
+            },
+            fr: {
+                subscriptionTitle: "⭐ Abonnement Premium",
+                subscriptionDesc: "Obtenez un accès illimité à tout le contenu premium",
+                statusTitle: "Statut d'Abonnement",
+                statusActive: "Abonnement Actif",
+                statusInactive: "Aucun abonnement actif",
+                monthlyTitle: "Plan Mensuel",
+                monthlyPeriod: "par mois",
+                monthlyBtn: "Abonnement Mensuel",
+                annualTitle: "Plan Annuel",
+                annualPeriod: "par an",
+                annualBtn: "Abonnement Annuel",
+                lifetimeTitle: "Plan à Vie",
+                lifetimePeriod: "paiement unique",
+                lifetimeBtn: "Obtenir l'Accès à Vie",
+                recommendedBadge: "Meilleure Valeur",
+                feature1: "Photos premium illimitées",
+                feature2: "Vidéos premium illimitées",
+                feature3: "Nouveau contenu quotidien",
+                feature4: "Qualité HD",
+                feature5: "Optimisé pour mobile",
+                featureA6: "Économisez 58% vs mensuel",
+                featureL3: "Tout le contenu futur",
+                featureL6: "Contenu exclusif",
+                modalTitle: "Compléter l'Abonnement",
+                modalDesc: "Choisissez votre plan d'abonnement",
+                paymentSuccess: "Abonnement activé! Vous avez maintenant accès à tout le contenu premium.",
+                paymentError: "Échec du paiement. Veuillez réessayer."
             }
         };
 
@@ -363,14 +505,9 @@
             document.getElementById('monthlyTitle').textContent = t.monthlyTitle;
             document.getElementById('monthlyPeriod').textContent = t.monthlyPeriod;
             document.getElementById('monthlyBtn').textContent = t.monthlyBtn;
-            
-            // Annual plan translations
-            if (document.getElementById('annualTitle')) {
-                document.getElementById('annualTitle').textContent = t.annualTitle;
-                document.getElementById('annualPeriod').textContent = t.annualPeriod;
-                document.getElementById('annualBtn').textContent = t.annualBtn;
-            }
-            
+            document.getElementById('annualTitle').textContent = t.annualTitle;
+            document.getElementById('annualPeriod').textContent = t.annualPeriod;
+            document.getElementById('annualBtn').textContent = t.annualBtn;
             document.getElementById('lifetimeTitle').textContent = t.lifetimeTitle;
             document.getElementById('lifetimePeriod').textContent = t.lifetimePeriod;
             document.getElementById('lifetimeBtn').textContent = t.lifetimeBtn;
@@ -382,15 +519,15 @@
             document.getElementById('feature3').textContent = t.feature3;
             document.getElementById('feature4').textContent = t.feature4;
             document.getElementById('feature5').textContent = t.feature5;
-            
-            // Annual features
-            if (document.getElementById('featureA6')) {
-                document.getElementById('featureA6').textContent = t.featureA6;
-            }
-            
+            document.getElementById('featureA1').textContent = t.feature1;
+            document.getElementById('featureA2').textContent = t.feature2;
+            document.getElementById('featureA3').textContent = t.feature3;
+            document.getElementById('featureA4').textContent = t.feature4;
+            document.getElementById('featureA5').textContent = t.feature5;
+            document.getElementById('featureA6').textContent = t.featureA6;
             document.getElementById('featureL1').textContent = t.feature1;
             document.getElementById('featureL2').textContent = t.feature2;
-            document.getElementById('featureL3').textContent = t.feature3;
+            document.getElementById('featureL3').textContent = t.featureL3;
             document.getElementById('featureL4').textContent = t.feature4;
             document.getElementById('featureL5').textContent = t.feature5;
             document.getElementById('featureL6').textContent = t.featureL6;
@@ -410,6 +547,18 @@
             if (subscription && (subscription.type === 'lifetime' || subscription.active)) {
                 statusElement.classList.add('active');
                 statusTextElement.textContent = t.statusActive;
+                
+                // Check expiry for time-limited plans
+                if (subscription.expiryDate) {
+                    const expiry = new Date(subscription.expiryDate);
+                    const now = new Date();
+                    if (expiry < now) {
+                        subscription.active = false;
+                        localStorage.setItem('subscription', JSON.stringify(subscription));
+                        statusElement.classList.remove('active');
+                        statusTextElement.textContent = t.statusInactive;
+                    }
+                }
             } else {
                 statusElement.classList.remove('active');
                 statusTextElement.textContent = t.statusInactive;
@@ -424,9 +573,11 @@
 
         function closeModal() {
             document.getElementById('paymentModal').style.display = 'none';
+            document.getElementById('paypal-button-container').innerHTML = '';
         }
 
         function initPayPal() {
+            const t = translations[currentLanguage] || translations.en;
             document.getElementById('paypal-button-container').innerHTML = '';
             
             let amount, description;
@@ -489,14 +640,14 @@
                         localStorage.setItem('unlockedPhotos', JSON.stringify(['all']));
                         localStorage.setItem('unlockedVideos', JSON.stringify(['all']));
                         
-                        alert('Subscription activated! You now have access to all premium content.');
+                        alert(t.paymentSuccess);
                         closeModal();
                         updateSubscriptionStatus();
                     });
                 },
                 onError: function(err) {
                     console.error('PayPal error:', err);
-                    alert('Payment failed. Please try again.');
+                    alert(t.paymentError);
                 }
             }).render('#paypal-button-container');
         }
@@ -509,7 +660,7 @@
             
             document.getElementById('languageSelect').addEventListener('change', changeLanguage);
             
-            console.log('⭐ Subscription page loaded');
+            console.log('⭐ Subscription page initialized');
         });
     </script>
 </body>
