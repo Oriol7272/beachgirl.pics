@@ -48,14 +48,34 @@
             right: 20px;
             width: 80px;
             height: 80px;
-            background: radial-gradient(circle, #0ea5e9 0%, #0284c7 100%);
+            background: radial-gradient(circle, #ffd700 0%, #ffa500 100%);
             border-radius: 50%;
             animation: glow 4s ease-in-out infinite alternate;
         }
         
         @keyframes glow {
-            0% { box-shadow: 0 0 20px rgba(14, 165, 233, 0.5); }
-            100% { box-shadow: 0 0 40px rgba(14, 165, 233, 0.8); }
+            0% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.5); }
+            100% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.8); }
+        }
+        
+        .palm-trees {
+            position: absolute;
+            bottom: 180px;
+            left: 10px;
+            font-size: 60px;
+            opacity: 0.7;
+            animation: sway 4s ease-in-out infinite;
+        }
+        
+        .palm-trees:nth-child(2) {
+            right: 10px;
+            left: auto;
+            animation-delay: -2s;
+        }
+        
+        @keyframes sway {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
         }
         
         .container {
@@ -75,7 +95,10 @@
         .logo {
             font-family: 'Allura', cursive;
             font-size: 3em;
-            color: #1e3a8a;
+            background: linear-gradient(45deg, #1e3a8a, #0ea5e9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
@@ -161,6 +184,22 @@
             line-height: 1.4;
         }
         
+        .language-selector {
+            position: fixed;
+            top: 20px;
+            right: 120px;
+            z-index: 20;
+        }
+        
+        .language-selector select {
+            padding: 8px 12px;
+            border-radius: 20px;
+            border: 2px solid rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.9);
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
         /* Mobile responsiveness */
         @media (max-width: 768px) {
             .container {
@@ -185,187 +224,10 @@
                 width: 100%;
                 max-width: 250px;
             }
-        }
-    </style>
-</head>
-<body>
-    <div class="waves"></div>
-    <div class="sun"></div>
-    
-    <div class="container">
-        <div class="logo">IbizaGirl.pics</div>
-        
-        <h1>Verificación de Edad</h1>
-        
-        <div class="warning">
-            <h3>⚠️ AVISO IMPORTANTE</h3>
-            <p>Este sitio contiene contenido para adultos. Debes ser mayor de 18 años para continuar. Al acceder, confirmas que tienes la edad legal en tu jurisdicción.</p>
-        </div>
-        
-        <div class="question">¿Eres mayor de 18 años?</div>
-        
-        <div class="buttons">
-            <button class="btn btn-yes" onclick="verifyAge(true)">✓ Sí, soy mayor de 18</button>
-            <button class="btn btn-no" onclick="verifyAge(false)">✗ No, soy menor de 18</button>
-        </div>
-        
-        <div class="disclaimer">
-            Al hacer clic en "Sí", confirmas que cumples con los requisitos de edad y aceptas ver contenido para adultos.
-        </div>
-    </div>
-
-    <script>
-        function verifyAge(isAdult) {
-            if (isAdult) {
-                // Store verification in localStorage
-                localStorage.setItem('ageVerified', 'true');
-                localStorage.setItem('ageVerificationDate', new Date().toISOString());
-                
-                // Redirect to main site
-                window.location.href = '/';
-            } else {
-                // Redirect away or show message
-                alert('Debes ser mayor de 18 años para acceder a este contenido.');
-                window.history.back();
-            }
-        }
-        
-        // Check if already verified (within 24 hours)
-        const verified = localStorage.getItem('ageVerified');
-        const verificationDate = localStorage.getItem('ageVerificationDate');
-        
-        if (verified === 'true' && verificationDate) {
-            const verifyTime = new Date(verificationDate);
-            const now = new Date();
-            const hoursDiff = (now - verifyTime) / (1000 * 60 * 60);
             
-            // Auto-redirect if verified within last 24 hours
-            if (hoursDiff < 24) {
-                window.location.href = '/';
+            .language-selector {
+                right: 20px;
             }
-        }
-    </script>
-</body>
-</html>
-        }
-        
-        @keyframes glow {
-            from { box-shadow: 0 0 20px #ffd700; }
-            to { box-shadow: 0 0 40px #ffd700, 0 0 60px #ffa500; }
-        }
-        
-        .palm-trees {
-            position: absolute;
-            bottom: 180px;
-            left: 10px;
-            font-size: 60px;
-            opacity: 0.7;
-            animation: sway 4s ease-in-out infinite;
-        }
-        
-        .palm-trees:nth-child(2) {
-            right: 10px;
-            left: auto;
-            animation-delay: -2s;
-        }
-        
-        @keyframes sway {
-            0%, 100% { transform: rotate(-3deg); }
-            50% { transform: rotate(3deg); }
-        }
-        
-        .container {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 50px;
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 500px;
-            width: 90%;
-            position: relative;
-            z-index: 10;
-        }
-        
-        .logo {
-            font-size: 3em;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        h1 {
-            color: #333;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-        }
-        
-        .warning {
-            background: #ffe6e6;
-            border-left: 4px solid #ff6b6b;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 5px;
-            text-align: left;
-        }
-        
-        .age-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 30px;
-        }
-        
-        .btn {
-            padding: 15px 30px;
-            border: none;
-            border-radius: 30px;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: all 0.3s;
-            min-width: 120px;
-        }
-        
-        .btn-enter {
-            background: linear-gradient(45deg, #4facfe, #00f2fe);
-            color: white;
-        }
-        
-        .btn-enter:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(79, 172, 254, 0.4);
-        }
-        
-        .btn-exit {
-            background: #ff6b6b;
-            color: white;
-        }
-        
-        .btn-exit:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.4);
-        }
-        
-        .language-selector {
-            position: absolute;
-            top: 20px;
-            right: 120px;
-        }
-        
-        .language-selector select {
-            padding: 8px 12px;
-            border-radius: 20px;
-            border: 2px solid rgba(255,255,255,0.3);
-            background: rgba(255,255,255,0.9);
-            font-size: 14px;
-        }
-        
-        .disclaimer {
-            margin-top: 20px;
-            font-size: 0.9em;
-            color: #666;
-            line-height: 1.4;
         }
     </style>
 </head>
@@ -386,14 +248,14 @@
             <option value="fr">🇫🇷 Français</option>
         </select>
     </div>
-
+    
     <div class="container">
         <div class="logo">🌴 IbizaGirl.pics 🌴</div>
         
         <h1 id="title">Verificación de Edad</h1>
         
         <div class="warning">
-            <strong id="warningTitle">⚠️ AVISO IMPORTANTE</strong>
+            <h3 id="warningTitle">⚠️ AVISO IMPORTANTE</h3>
             <p id="warningText">
                 Este sitio contiene contenido para adultos. 
                 Debes ser mayor de 18 años para continuar.
@@ -401,13 +263,13 @@
             </p>
         </div>
         
-        <p id="questionText">¿Eres mayor de 18 años?</p>
+        <div class="question" id="questionText">¿Eres mayor de 18 años?</div>
         
-        <div class="age-buttons">
-            <button class="btn btn-enter" onclick="enterSite()" id="enterBtn">
+        <div class="buttons">
+            <button class="btn btn-yes" onclick="verifyAge(true)" id="enterBtn">
                 ✓ Sí, soy mayor de 18
             </button>
-            <button class="btn btn-exit" onclick="exitSite()" id="exitBtn">
+            <button class="btn btn-no" onclick="verifyAge(false)" id="exitBtn">
                 ✗ No, soy menor de 18
             </button>
         </div>
@@ -429,7 +291,8 @@
                 questionText: "¿Eres mayor de 18 años?",
                 enterBtn: "✓ Sí, soy mayor de 18",
                 exitBtn: "✗ No, soy menor de 18",
-                disclaimerText: "Al hacer clic en \"Sí\", confirmas que cumples con los requisitos de edad y aceptas ver contenido para adultos."
+                disclaimerText: "Al hacer clic en \"Sí\", confirmas que cumples con los requisitos de edad y aceptas ver contenido para adultos.",
+                exitMessage: "Gracias por tu honestidad. Te recomendamos visitar sitios apropiados para tu edad."
             },
             en: {
                 title: "Age Verification",
@@ -438,7 +301,8 @@
                 questionText: "Are you over 18 years old?",
                 enterBtn: "✓ Yes, I'm over 18",
                 exitBtn: "✗ No, I'm under 18",
-                disclaimerText: "By clicking \"Yes\", you confirm that you meet the age requirements and agree to view adult content."
+                disclaimerText: "By clicking \"Yes\", you confirm that you meet the age requirements and agree to view adult content.",
+                exitMessage: "Thank you for your honesty. We recommend visiting age-appropriate sites."
             },
             de: {
                 title: "Altersverifikation",
@@ -447,7 +311,8 @@
                 questionText: "Sind Sie über 18 Jahre alt?",
                 enterBtn: "✓ Ja, ich bin über 18",
                 exitBtn: "✗ Nein, ich bin unter 18",
-                disclaimerText: "Mit dem Klick auf \"Ja\" bestätigen Sie, dass Sie die Altersanforderungen erfüllen und damit einverstanden sind, Inhalte für Erwachsene zu sehen."
+                disclaimerText: "Mit dem Klick auf \"Ja\" bestätigen Sie, dass Sie die Altersanforderungen erfüllen und damit einverstanden sind, Inhalte für Erwachsene zu sehen.",
+                exitMessage: "Vielen Dank für Ihre Ehrlichkeit. Wir empfehlen Ihnen, altersgerechte Seiten zu besuchen."
             },
             it: {
                 title: "Verifica dell'Età",
@@ -456,7 +321,8 @@
                 questionText: "Hai più di 18 anni?",
                 enterBtn: "✓ Sì, ho più di 18 anni",
                 exitBtn: "✗ No, ho meno di 18 anni",
-                disclaimerText: "Cliccando \"Sì\", confermi di soddisfare i requisiti di età e accetti di visualizzare contenuti per adulti."
+                disclaimerText: "Cliccando \"Sì\", confermi di soddisfare i requisiti di età e accetti di visualizzare contenuti per adulti.",
+                exitMessage: "Grazie per la tua onestà. Ti consigliamo di visitare siti appropriati per la tua età."
             },
             fr: {
                 title: "Vérification d'Âge",
@@ -465,13 +331,16 @@
                 questionText: "Avez-vous plus de 18 ans?",
                 enterBtn: "✓ Oui, j'ai plus de 18 ans",
                 exitBtn: "✗ Non, j'ai moins de 18 ans",
-                disclaimerText: "En cliquant sur \"Oui\", vous confirmez que vous remplissez les conditions d'âge et acceptez de voir du contenu pour adultes."
+                disclaimerText: "En cliquant sur \"Oui\", vous confirmez que vous remplissez les conditions d'âge et acceptez de voir du contenu pour adultes.",
+                exitMessage: "Merci pour votre honnêteté. Nous vous recommandons de visiter des sites appropriés à votre âge."
             }
         };
 
+        let currentLanguage = 'es';
+
         function changeLanguage() {
-            const lang = document.getElementById('languageSelect').value;
-            const t = translations[lang] || translations.en;
+            currentLanguage = document.getElementById('languageSelect').value;
+            const t = translations[currentLanguage] || translations.es;
             
             document.getElementById('title').textContent = t.title;
             document.getElementById('warningTitle').innerHTML = t.warningTitle;
@@ -481,32 +350,28 @@
             document.getElementById('exitBtn').textContent = t.exitBtn;
             document.getElementById('disclaimerText').textContent = t.disclaimerText;
             
-            localStorage.setItem('preferred-language', lang);
+            localStorage.setItem('preferred-language', currentLanguage);
         }
 
-        function enterSite() {
-            // Set age verification flag
-            localStorage.setItem('ageVerified', 'true');
-            localStorage.setItem('ageVerificationDate', new Date().toISOString());
-            
-            // Redirect to main site
-            window.location.href = '/index.html';
-        }
-
-        function exitSite() {
-            alert('Gracias por tu honestidad. Te recomendamos visitar sitios apropiados para tu edad.');
-            window.location.href = 'https://www.google.com';
+        function verifyAge(isAdult) {
+            if (isAdult) {
+                // Store verification in localStorage
+                localStorage.setItem('ageVerified', 'true');
+                localStorage.setItem('ageVerificationDate', new Date().toISOString());
+                
+                // Redirect to main site
+                window.location.href = '/';
+            } else {
+                // Show exit message and redirect
+                const t = translations[currentLanguage] || translations.es;
+                alert(t.exitMessage);
+                window.location.href = 'https://www.google.com';
+            }
         }
 
         // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            const savedLang = localStorage.getItem('preferred-language') || 'es';
-            document.getElementById('languageSelect').value = savedLang;
-            changeLanguage();
-            
-            document.getElementById('languageSelect').addEventListener('change', changeLanguage);
-            
-            // Check if already verified (within last 24 hours)
+            // Check if already verified (within 24 hours)
             const verified = localStorage.getItem('ageVerified');
             const verificationDate = localStorage.getItem('ageVerificationDate');
             
@@ -517,9 +382,16 @@
                 
                 // Auto-redirect if verified within last 24 hours
                 if (hoursDiff < 24) {
-                    window.location.href = '/index.html';
+                    window.location.href = '/';
                 }
             }
+            
+            // Set language
+            const savedLang = localStorage.getItem('preferred-language') || 'es';
+            document.getElementById('languageSelect').value = savedLang;
+            changeLanguage();
+            
+            document.getElementById('languageSelect').addEventListener('change', changeLanguage);
             
             console.log('🛡️ Age verification loaded');
         });
