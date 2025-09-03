@@ -3,33 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BeachGirl.pics</title>
-    <meta name="description" content="BeachGirl.pics - Premium Adult Content">
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #000;
-            color: white;
-            padding: 20px;
-        }
-        h1 {
-            text-align: center;
-            color: #fff;
-        }
-        .warning {
-            background: #ff0000;
-            color: white;
-            padding: 10px;
-            text-align: center;
-            font-weight: bold;
-        }
-    </style>
+    <title>BeachGirl.pics - Premium Adult Content</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-    <div class="warning">🔞 ADULTS ONLY - 18+ CONTENT</div>
-    <h1>BeachGirl.pics</h1>
-    <p style="text-align:center">Premium Beach Content</p>
-    <p style="text-align:center">Site under construction</p>
+    <script>
+        // Age verification check
+        if (!localStorage.getItem('age_verified')) {
+            window.location.href = '/age-verification.html';
+        }
+    </script>
+
+    <!-- Header with banner -->
+    <header class="main-header">
+        <div class="hero-banner">
+            <h1 class="site-title">BeachGirl.pics</h1>
+            <p class="site-tagline">Premium Beach Content</p>
+        </div>
+    </header>
+
+    <!-- Top Ad Zone -->
+    <div class="ad-container" id="top-banner-ad">
+        <!-- Ad code will go here -->
+    </div>
+
+    <!-- Main Navigation -->
+    <nav class="main-nav">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/gallery.html">Gallery</a></li>
+            <li><a href="/videos.html">Videos</a></li>
+            <li><a href="/premium.html">Premium</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="content-wrapper">
+        <!-- Featured Carousel -->
+        <section class="featured-carousel">
+            <div id="carousel-container"></div>
+        </section>
+
+        <!-- Middle Ad -->
+        <div class="ad-container" id="middle-ad">
+            <!-- Ad code here -->
+        </div>
+
+        <!-- Gallery Grid -->
+        <section class="gallery-grid">
+            <div id="gallery-container"></div>
+        </section>
+
+        <!-- Bottom Ad -->
+        <div class="ad-container" id="bottom-ad">
+            <!-- Ad code here -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 BeachGirl.pics - All Rights Reserved</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="/js/content-data1.js"></script>
+    <script src="/js/content-data2.js"></script>
+    <script src="/js/content-data3.js"></script>
+    <script src="/js/content-manager.js"></script>
+    <script src="/js/ads-manager.js"></script>
+    <script>
+        // Initialize content
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load gallery content
+            if (typeof loadGalleryContent === 'function') {
+                loadGalleryContent();
+            }
+            // Load carousel
+            if (typeof loadCarousel === 'function') {
+                loadCarousel();
+            }
+            // Initialize ads
+            if (typeof initializeAds === 'function') {
+                initializeAds();
+            }
+        });
+    </script>
 </body>
 </html>
