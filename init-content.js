@@ -1,23 +1,34 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Loading BeachGirl.pics content...');
     
-    // Esperar un momento para que todos los scripts carguen
+    // Esperar a que todos los scripts carguen
     setTimeout(function() {
         const galleryContainer = document.getElementById('gallery-container');
         const carouselContainer = document.getElementById('carousel-container');
         
-        // Debug: ver qué hay disponible
-        console.log('Window.G exists?', typeof window.G !== 'undefined');
-        console.log('PublicImages?', window.G?.publicImages?.length);
+        // Los datos están en window (global) pero no en window.G
+        // content-data2.js los expone directamente
+        let allImages = [];
         
-        if (window.G && window.G.publicImages && window.G.publicImages.length > 0) {
-            const allImages = window.G.publicImages;
-            console.log(`Using ${allImages.length} images from G.publicImages`);
-            
-            // Carousel con TODAS las imágenes
+        // Intentar obtener las imágenes de diferentes formas
+        if (window.contentData2 && window.contentData2.publicImages) {
+            allImages = window.contentData2.publicImages;
+            console.log('Found images in contentData2');
+        } else {
+            // Si no están disponibles, usar un conjunto hardcodeado temporal
+            console.log('Using hardcoded images as fallback');
+            // Listar todos los archivos webp de /full/
+            const files = ['0456996c-b56e-42ef-9049-56b1a1ae2646.webp','0lySugcO4Pp4pEZKvz9U.webp','0nSaCJQxbVw4BDrhnhHO.webp','0Tc8Vtd0mEIvNHZwYGBq.webp','13TXvyRVZ7LtvAOx7kme.webp','18VQaczW5kdfdiqUVasH.webp','1dEu25K0mS3zxRlXRjHR.webp','1qEBcg9QbkZRRdLt0Chc.webp','1tt8H4fX3XzyV90HjNG3.webp','27bGIzFFpej5ubUkvykD.webp','2gjqH68H586TKLDK9lh9.webp','2yw4sowPh3Tyln5oxRdw.webp','39GYGt3bticS0Mjbud0p.webp','3IWka3fnP9b8yz6j5l91.webp','3ZYL4GCUOs3rfq3iTPJ7.webp','4GN6i0Db2hl4Ck9vf0LE.webp','4YhoIAWSbVaOqBhAOGqR.webp'];
+            allImages = files.map(f => `/full/${f}`);
+        }
+        
+        console.log(`Found ${allImages.length} images total`);
+        
+        if (allImages.length > 0) {
+            // Carousel con todas las imágenes
             if (carouselContainer) {
                 carouselContainer.innerHTML = `
-                    <h2 style="padding: 0 2rem; margin-bottom: 1rem;">Featured Content</h2>
+                    <h2 style="padding: 0 2rem; margin-bottom: 1rem; font-family: 'Sexy Beachy', cursive; font-size: 2.5rem;">Featured Content</h2>
                     <div class="carousel-track">
                         ${allImages.map(img => `
                             <div class="carousel-slide">
@@ -26,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         `).join('')}
                     </div>
                 `;
-                console.log('Carousel loaded with', allImages.length, 'images');
+                console.log('Carousel populated');
             }
             
             // Gallery con 40 imágenes aleatorias
@@ -39,10 +50,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         <img src="${img}" alt="Gallery" loading="lazy">
                     </div>
                 `).join('');
-                console.log('Gallery loaded with', galleryImages.length, 'images');
+                console.log('Gallery populated with', galleryImages.length, 'images');
             }
-        } else {
-            console.error('No images found in window.G.publicImages');
         }
-    }, 500); // Esperar 500ms para que todo cargue
+    }, 1000); // Aumentar el delay a 1 segundo
 });
