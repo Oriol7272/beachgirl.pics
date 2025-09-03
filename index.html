@@ -1,19 +1,66 @@
-<!doctype html><html lang="es"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>BEACHGIRL.PICS — Home</title>
-<link rel="stylesheet" href="/css/ibg.css">
-<link rel="stylesheet" href="/css/ibg-home.css">
-<script src="js/ibg-env.global.js?v=1756848826"></script>
-<script src="/content-data1.js"></script>
-<script src="/content-data2.js"></script>
-<script src="/content-data3.js"></script>
-<script src="/content-data4.js"></script>
-<script src="/content-data5.js"></script>
-<script src="/content-data6.js"></script>
-</head><body>
-<aside id="ad-left" class="side-ad left"></aside>
-<aside id="ad-right" class="side-ad right"></aside>
-<div class="page-shell"><div id="app"></div></div>
-<script type="module" src="js/i18n.global.js?v=1756848826"></script>
-<script type="module" src="/js/bootstrap-ibg.js"></script>
-</body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeachGirl.pics - Premium Adult Content</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: Arial, sans-serif;
+            background: #1a1a1a;
+            color: white;
+        }
+        header {
+            background: #2a5298;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .content-item {
+            background: #2a2a2a;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #444;
+        }
+    </style>
+    <script>
+        // Check age verification
+        if (!localStorage.getItem('age_verified')) {
+            window.location.href = '/age-verification.html';
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>BeachGirl.pics</h1>
+        <p>Premium Adult Content</p>
+    </header>
+    
+    <div class="container">
+        <h2>Welcome to BeachGirl.pics</h2>
+        <p>Exclusive content updated daily</p>
+        
+        <div class="content-grid">
+            <div class="content-item">Content 1</div>
+            <div class="content-item">Content 2</div>
+            <div class="content-item">Content 3</div>
+            <div class="content-item">Content 4</div>
+        </div>
+    </div>
+</body>
+</html>
