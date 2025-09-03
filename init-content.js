@@ -1,29 +1,36 @@
-// Initialize content when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Initializing content display...');
+    console.log('Initializing BeachGirl.pics content...');
     
-    // Get containers
     const galleryContainer = document.getElementById('gallery-container');
     const contentGrid = document.getElementById('content-grid');
     
-    // Check if we have public images
-    if (window.G && window.G.publicImages) {
-        console.log('Loading public images:', window.G.publicImages.length);
+    // Las imágenes están definidas en content-data2.js en window.G.publicImages
+    if (window.G && window.G.publicImages && window.G.publicImages.length > 0) {
+        console.log('Found', window.G.publicImages.length, 'public images');
         
-        // Display first 12 images in gallery
-        const images = window.G.publicImages.slice(0, 12);
-        
+        // Mostrar las primeras 12 imágenes en la galería
         if (galleryContainer) {
-            galleryContainer.innerHTML = images.map(img => `
+            const galleryImages = window.G.publicImages.slice(0, 12);
+            galleryContainer.innerHTML = galleryImages.map(img => `
                 <div class="gallery-item">
-                    <img src="${img}" alt="Beach content" loading="lazy">
+                    <img src="${img}" alt="Beach Girl" loading="lazy">
                 </div>
             `).join('');
         }
-    }
-    
-    // Initialize ads if needed
-    if (window.AdsManager) {
-        console.log('Ads manager is available');
+        
+        // Crear carousel con algunas imágenes
+        const carouselContainer = document.getElementById('carousel-container');
+        if (carouselContainer) {
+            const carouselImages = window.G.publicImages.slice(12, 17);
+            carouselContainer.innerHTML = `
+                <div class="carousel-track">
+                    ${carouselImages.map(img => `
+                        <div class="carousel-slide">
+                            <img src="${img}" alt="Featured">
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+        }
     }
 });

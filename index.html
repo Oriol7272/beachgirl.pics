@@ -9,13 +9,11 @@
 </head>
 <body>
     <script>
-        // Age verification
         if (!localStorage.getItem('age_verified')) {
             window.location.href = '/age-verification.html';
         }
     </script>
 
-    <!-- Header -->
     <header>
         <div class="hero-banner">
             <h1>BeachGirl.pics</h1>
@@ -23,10 +21,6 @@
         </div>
     </header>
 
-    <!-- Ad Zones que el script está buscando -->
-    <div id="ero-ad-1" class="ad-container"></div>
-    
-    <!-- Navigation -->
     <nav>
         <ul>
             <li><a href="/">Home</a></li>
@@ -36,25 +30,23 @@
         </ul>
     </nav>
 
-    <!-- Main Content -->
     <main>
+        <!-- Ad Zones -->
+        <div id="ero-ad-1" class="ad-container"></div>
+        
+        <!-- Carousel -->
+        <div id="carousel-container"></div>
+        
         <div id="exoclick-ad-1" class="ad-container"></div>
         
-        <!-- Gallery Container -->
+        <!-- Gallery -->
         <div id="gallery-container" class="gallery-grid"></div>
         
         <div id="juicy-ad-1" class="ad-container"></div>
-        
-        <!-- Carousel -->
-        <div id="carousel-container" class="carousel"></div>
-        
-        <!-- Content Grid -->
-        <div id="content-grid" class="content-grid"></div>
     </main>
 
-    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 BeachGirl.pics</p>
+        <p>&copy; 2025 BeachGirl.pics - All Rights Reserved</p>
     </footer>
 
     <!-- Scripts -->
@@ -63,25 +55,6 @@
     <script src="/content-data3.js"></script>
     <script src="/content-manager.js"></script>
     <script src="/ads-manager.js"></script>
-    
-    <!-- Initialize everything -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Initializing BeachGirl.pics...');
-            
-            // Initialize content manager if available
-            if (typeof ContentManager !== 'undefined') {
-                console.log('Loading content...');
-                // Content will auto-initialize
-            }
-            
-            // Initialize ads if available
-            if (typeof AdsManager !== 'undefined') {
-                console.log('Loading ads...');
-                // Ads will auto-initialize
-            }
-        });
-    </script>
+    <script src="/init-content.js"></script>
 </body>
 </html>
-<script src="/init-content.js"></script>
