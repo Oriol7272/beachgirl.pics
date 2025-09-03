@@ -4,5 +4,8 @@
   "github": {
     "silent": true,
     "autoAlias": false
-  }
+  },
+  "buildCommand": "",
+  "outputDirectory": ".",
+  "framework": null
 }
