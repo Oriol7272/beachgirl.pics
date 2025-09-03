@@ -1,10 +1,7 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "github": {
-    "silent": true,
-    "autoAlias": false
-  },
+  "ignoreCommand": "bash check-deploy.sh",
   "buildCommand": "",
   "outputDirectory": ".",
   "framework": null
