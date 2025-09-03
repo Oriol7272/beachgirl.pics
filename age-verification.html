@@ -5,44 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Age Verification - BeachGirl.pics</title>
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            margin: 0;
-            padding: 0;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: #2a5298;
-            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
         .verify-box {
             background: white;
-            padding: 40px;
-            border-radius: 10px;
+            padding: 60px 40px;
+            border-radius: 20px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 500px;
         }
-        h1 { color: #333; }
-        p { color: #666; margin: 20px 0; }
+        .logo { font-size: 60px; margin-bottom: 20px; }
+        h1 { 
+            color: #333; 
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+        .warning {
+            background: #ff0000;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        p { color: #666; margin: 15px 0; line-height: 1.6; }
+        .buttons { margin-top: 30px; }
         button {
-            padding: 15px 30px;
+            padding: 15px 40px;
             margin: 10px;
             border: none;
-            border-radius: 5px;
-            font-size: 16px;
+            border-radius: 50px;
+            font-size: 18px;
             cursor: pointer;
+            transition: transform 0.2s;
         }
-        .enter { background: #4CAF50; color: white; }
-        .leave { background: #f44336; color: white; }
+        button:hover { transform: scale(1.05); }
+        .enter {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .leave { 
+            background: #e0e0e0; 
+            color: #666;
+        }
     </style>
 </head>
 <body>
     <div class="verify-box">
-        <h1>🔞 Age Verification Required</h1>
-        <p><strong>BeachGirl.pics</strong></p>
-        <p>This website contains adult content.<br>You must be 18 years or older to enter.</p>
-        <button class="leave" onclick="window.location='https://google.com'">I'm Under 18 - Leave</button>
-        <button class="enter" onclick="verifyAge()">I'm 18+ - Enter</button>
+        <div class="logo">🏖️</div>
+        <h1>BeachGirl.pics</h1>
+        <div class="warning">⚠️ ADULTS ONLY - 18+</div>
+        <p>This website contains adult material unsuitable for minors.</p>
+        <p>By entering, you confirm that you are at least 18 years old and agree to our Terms of Service.</p>
+        <div class="buttons">
+            <button class="leave" onclick="window.location='https://google.com'">Leave</button>
+            <button class="enter" onclick="verifyAge()">I am 18+ Enter</button>
+        </div>
     </div>
     <script>
         function verifyAge() {
