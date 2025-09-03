@@ -2,24 +2,53 @@
     font-family: 'Sexy Beachy';
     src: url('/decorative-images/Sexy Beachy.otf') format('opentype'),
          url('/decorative-images/Sexy Beachy.ttf') format('truetype');
-    font-weight: normal;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    background: #0a0a0a;
+    background: url('/decorative-images/paradise-beach.png') fixed center/cover;
     color: #fff;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: -1;
+}
+
+nav {
+    background: rgba(0,0,0,0.8);
+    padding: 1.5rem;
+    backdrop-filter: blur(10px);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    font-family: 'Sexy Beachy', cursive;
+    font-size: 1.5rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
 }
 
 .hero-banner {
-    background: url('/full/bikbanner.webp') center/cover;
-    min-height: 500px;
+    height: 600px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background: url('/decorative-images/81f55fd4-b0df-49f4-9020-cbb0f5042c08.jpg') center/cover;
     position: relative;
 }
 
@@ -27,59 +56,86 @@ body {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.4);
 }
 
 .hero-banner h1 {
     font-family: 'Sexy Beachy', cursive;
-    font-size: 6rem;
+    font-size: 7rem;
     color: #fff;
-    text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
+    text-shadow: 4px 4px 10px rgba(0,0,0,0.9);
     position: relative;
     z-index: 1;
 }
 
-nav {
-    background: #1a1a1a;
-    padding: 1rem;
+.hero-banner p {
+    font-size: 2rem;
+    position: relative;
+    z-index: 1;
 }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-}
-
-nav a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 1.5rem;
-    padding: 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.gallery-item img {
-    width: 100%;
-    height: 280px;
-    object-fit: cover;
-    border-radius: 10px;
+.carousel-container {
+    background: rgba(0,0,0,0.7);
+    padding: 2rem 0;
+    margin: 2rem 0;
 }
 
 .carousel-track {
     display: flex;
-    gap: 1rem;
     overflow-x: auto;
-    padding: 2rem;
+    gap: 1rem;
+    padding: 0 2rem;
+    scroll-behavior: smooth;
 }
 
 .carousel-slide img {
-    height: 350px;
+    height: 400px;
+    width: auto;
     border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 3rem 2rem;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    transition: transform 0.3s;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+
+.ad-container {
+    background: rgba(255,255,255,0.1);
+    min-height: 100px;
+    margin: 2rem auto;
+    max-width: 1200px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer {
+    background: rgba(0,0,0,0.9);
+    padding: 3rem;
+    text-align: center;
+    margin-top: 4rem;
 }
