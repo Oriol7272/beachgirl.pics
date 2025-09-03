@@ -42,7 +42,7 @@
             el: slot,
             amount: price,
             currency: (cfg.currency||'EUR'),
-            description: 'Compra vídeo IbizaGirl'
+            description: 'Compra vídeo BeachGirl'
           });
         });
       }

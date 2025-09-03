@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ibizagirl-v1.0.0';
+const CACHE_NAME = 'beachgirl-v1.0.0';
 const urlsToCache = [
     '/',
     '/index.html',
@@ -88,6 +88,6 @@ self.addEventListener('push', event => {
     };
 
     event.waitUntil(
-        self.registration.showNotification('IbizaGirl.pics', options)
+        self.registration.showNotification('BeachGirl.pics', options)
     );
 });

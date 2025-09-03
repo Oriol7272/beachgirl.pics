@@ -94,7 +94,7 @@ import { t, lang, setLang } from './i18n.js';
 export function header(){
   return `
   <div class="header">
-    <div class="brand">ibizagirl.pics</div>
+    <div class="brand">beachgirl.pics</div>
     <nav>
       <a href="/index.html">${t('home')}</a>
       <a href="/premium.html">${t('premium')}</a>
@@ -242,7 +242,7 @@ export async function initHome(){
     <section class="hero" id="hero">
       <img class="hero-bg" id="heroImg" src="/decorative-images/paradise-beach.png" alt="">
       <div class="hero-overlay"></div>
-      <div class="hero-title">ibizagirl.pics</div>
+      <div class="hero-title">beachgirl.pics</div>
       <div class="hero-sub">${t('welcome')}</div>
     </section>
     <h2 style="padding:10px 12px">${t('home')}</h2>
@@ -398,7 +398,7 @@ export async function mountLifetime(sel){
   if(!host) return;
   paypal.Buttons({
     style:{shape:'pill',label:'pay'},
-    createOrder:(d,a)=>a.order.create({purchase_units:[{amount:{currency_code:'EUR',value:'100.00'},description:'IBIZAGIRL.PICS Lifetime'}]}),
+    createOrder:(d,a)=>a.order.create({purchase_units:[{amount:{currency_code:'EUR',value:'100.00'},description:'BEACHGIRL.PICS Lifetime'}]}),
     onApprove:async(d,a)=>{ await a.order.capture(); localStorage.setItem('ibg_lifetime','1'); localStorage.setItem('ibg_sub_active','1'); location.href='/index.html'; }
   }).render(host);
 }
@@ -409,7 +409,7 @@ export async function mountPayPerItem(selector){
     const host = document.createElement('div'); host.style.marginTop='6px'; btn.parentElement.appendChild(host);
     paypal.Buttons({
       style:{shape:'pill',label:'pay'},
-      createOrder:(d,a)=>a.order.create({purchase_units:[{amount:{currency_code:'EUR',value:amount},description:'IBIZAGIRL.PICS item'}]}),
+      createOrder:(d,a)=>a.order.create({purchase_units:[{amount:{currency_code:'EUR',value:amount},description:'BEACHGIRL.PICS item'}]}),
       onApprove:async(d,a)=>{ await a.order.capture(); /* aquí podrías desbloquear el item si quisieras; guardamos sub_active para UX */ localStorage.setItem('ibg_sub_active','1'); location.reload(); }
     }).render(host);
   });
@@ -447,7 +447,7 @@ EOT
 cat > index.html <<'EOT'
 <!doctype html><html lang="es"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>IBIZAGIRL.PICS — Home</title>
+<title>BEACHGIRL.PICS — Home</title>
 <link rel="stylesheet" href="/css/ibg.css">
 <link rel="stylesheet" href="/css/ibg-home.css">
 <script src="/ibg-env.js"></script>
@@ -469,7 +469,7 @@ EOT
 cat > premium.html <<'EOT'
 <!doctype html><html lang="es"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>IBIZAGIRL.PICS — Premium</title>
+<title>BEACHGIRL.PICS — Premium</title>
 <link rel="stylesheet" href="/css/ibg.css">
 <script src="/ibg-env.js"></script>
 <script src="/content-data1.js"></script>
@@ -490,7 +490,7 @@ EOT
 cat > videos.html <<'EOT'
 <!doctype html><html lang="es"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>IBIZAGIRL.PICS — Videos</title>
+<title>BEACHGIRL.PICS — Videos</title>
 <link rel="stylesheet" href="/css/ibg.css">
 <script src="/ibg-env.js"></script>
 <script src="/content-data1.js"></script>
@@ -511,7 +511,7 @@ EOT
 cat > subscription.html <<'EOT'
 <!doctype html><html lang="es"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>IBIZAGIRL.PICS — Suscripciones</title>
+<title>BEACHGIRL.PICS — Suscripciones</title>
 <link rel="stylesheet" href="/css/ibg.css">
 <script src="/ibg-env.js"></script>
 </head><body>

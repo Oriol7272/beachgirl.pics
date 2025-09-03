@@ -1,6 +1,6 @@
 {
-  "name": "IbizaGirl.pics - Premium Gallery",
-  "short_name": "IbizaGirl",
+  "name": "BeachGirl.pics - Premium Gallery",
+  "short_name": "BeachGirl",
   "description": "Premium Ibiza gallery with exclusive photos and videos. Daily updates with paradise content.",
   "start_url": "/index.html",
   "display": "standalone",
@@ -116,7 +116,7 @@
   ],
   "protocol_handlers": [
     {
-      "protocol": "web+ibizagirl",
+      "protocol": "web+beachgirl",
       "url": "/main.html?content=%s"
     }
   ],

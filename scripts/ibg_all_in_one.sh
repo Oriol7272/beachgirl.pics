@@ -174,7 +174,7 @@ export async function initHome(){
     <section class="hero" id="hero" style="background-image:url('/decorative-images/cover.png');background-size:cover;background-position:center;">
       <img class="hero-bg" id="heroImg" alt="">
       <div class="hero-overlay"></div>
-      <div class="hero-title" style="font-family:'Sexy Beachy',system-ui">IbizaGirl.pics</div>
+      <div class="hero-title" style="font-family:'Sexy Beachy',system-ui">BeachGirl.pics</div>
       <div class="hero-sub">${t('welcome')}</div>
     </section>
     <h2 style="padding:10px 12px">${t('home')}</h2>
@@ -246,7 +246,7 @@ EOT
 cat > index.html <<'EOT'
 <!doctype html><html lang="es"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>IBIZAGIRL.PICS — Home</title>
+<title>BEACHGIRL.PICS — Home</title>
 <link rel="stylesheet" href="/css/ibg.css">
 <script src="/ibg-env.js"></script>
 <script src="/content-data1.js"></script>

@@ -317,7 +317,7 @@ make_page(){ # $1=title $2=filename
 cat > "$2" <<HTML
 <!doctype html><html lang="es"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>$1 — IBIZAGIRL.PICS</title>
+<title>$1 — BEACHGIRL.PICS</title>
 <link rel="stylesheet" href="/css/ibg.css">
 <script src="/env.js"></script>
 <script src="/content-data1.js"></script>

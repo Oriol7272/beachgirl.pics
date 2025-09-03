@@ -3,7 +3,7 @@ module.exports = async (req, res) => {
     const env = (process.env.PAYPAL_ENV || 'live').toLowerCase();
     const clientId = process.env.PAYPAL_CLIENT_ID || '';
     const currency = process.env.IBG_DEFAULT_CURRENCY || 'EUR';
-    const brand = process.env.IBG_BRAND || 'IbizaGirl';
+    const brand = process.env.IBG_BRAND || 'BeachGirl';
     // lee tus variables de Vercel (las que me mostraste en la captura)
     const monthlyPlanId = process.env.PAYPAL_PLAN_MONTHLY_1499 || null;
     const annualPlanId  = process.env.PAYPAL_PLAN_ANNUAL_4999  || null;

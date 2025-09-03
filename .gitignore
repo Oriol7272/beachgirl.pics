@@ -5,11 +5,11 @@ Thumbs.db
 
 # evitar zips pesados
 *.zip
-ibizagirl-deployable2-main.zip
+beachgirl-deployable2-main.zip
 .vercel
 .env*.local
 # evitar archivos gigantes
-ibizagirl-deployable2-main.zip
+beachgirl-deployable2-main.zip
 *.zip
 .vercel/
 .vercel/

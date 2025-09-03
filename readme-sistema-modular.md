@@ -1,5 +1,5 @@
 # 🌊 GUÍA DE IMPLEMENTACIÓN COMPLETA
-## IbizaGirl.pics - Sistema Modular v4.1.0 FIXED
+## BeachGirl.pics - Sistema Modular v4.1.0 FIXED
 
 ---
 

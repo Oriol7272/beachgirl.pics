@@ -117,7 +117,7 @@ export async function initHome(){
     <section class="hero" id="hero">
       <img class="hero-bg" id="heroImg" alt="">
       <div class="hero-overlay"></div>
-      <div class="hero-title">IbizaGirl.pics</div>
+      <div class="hero-title">BeachGirl.pics</div>
       <div class="hero-sub">Exclusive mediterranean vibes</div>
     </section>
     <div id="menuMount"></div>
@@ -179,7 +179,7 @@ JS
 cat > index.html <<'HTML'
 <!doctype html><html lang="es"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>IBIZAGIRL.PICS — Home</title>
+<title>BEACHGIRL.PICS — Home</title>
 <link rel="stylesheet" href="/css/ibg.css">
 <link rel="stylesheet" href="/css/ibg-home.css">
 <script src="/env.js"></script>

@@ -1,6 +1,6 @@
 module.exports = async (req, res) => {
   try{
-    const brand    = process.env.IBG_BRAND || 'IbizaGirl';
+    const brand    = process.env.IBG_BRAND || 'BeachGirl';
     const currency = process.env.IBG_DEFAULT_CURRENCY || 'EUR';
     const clientId = process.env.PAYPAL_CLIENT_ID || '';
 

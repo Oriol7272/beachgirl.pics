@@ -70,7 +70,7 @@ export async function initHome(){
     <section class="hero" id="hero">
       <img class="hero-bg" id="heroImg" alt="">
       <div class="hero-overlay"></div>
-      <div class="hero-title">IbizaGirl.pics</div>
+      <div class="hero-title">BeachGirl.pics</div>
       <div class="hero-sub">${t('welcome')}</div>
     </section>
     <h2 style="padding:10px 12px">${t('home')}</h2>

@@ -1,5 +1,5 @@
 {
-  "name": "ibizagirl-deployable2",
+  "name": "beachgirl-pics",
   "private": true,
   "scripts": {
     "build": "node tools/inject_env.mjs"

@@ -12,8 +12,8 @@
     var cards=document.querySelectorAll('[data-item-id]');
     cards.forEach(function(card){
       var t=detectType(card);
-      if(t==="video"){ ensureButton(card, 0.30, "Compra vídeo IbizaGirl"); }
-      else{ ensureButton(card, 0.10, "Compra imagen IbizaGirl"); }
+      if(t==="video"){ ensureButton(card, 0.30, "Compra vídeo BeachGirl"); }
+      else{ ensureButton(card, 0.10, "Compra imagen BeachGirl"); }
     });
   });
 })();

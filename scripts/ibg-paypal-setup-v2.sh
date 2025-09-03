@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-DOMAIN="ibizagirl.pics"     # tu dominio
+DOMAIN="beachgirl.pics"     # tu dominio
 CURRENCY="EUR"
 BRAND="IBIZA GIRL"
 

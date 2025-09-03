@@ -2,7 +2,7 @@ import { t, lang, setLang } from './i18n.js';
 export function header(){
   return `
   <div class="header">
-    <div class="brand">ibizagirl.pics</div>
+    <div class="brand">beachgirl.pics</div>
     <nav>
       <a href="/index.html">${t('home')}</a>
       <a href="/premium.html">${t('premium')}</a>

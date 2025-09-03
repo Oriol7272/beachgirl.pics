@@ -338,9 +338,9 @@ function updateOpenGraph(contentData = {}) {
     const trans = window.TRANSLATIONS?.[lang] || {};
     
     const defaultData = {
-        title: trans.photos_seo_title || 'IbizaGirl.pics - Galería Premium Ibiza | 400+ Fotos Diarias',
+        title: trans.photos_seo_title || 'BeachGirl.pics - Galería Premium Ibiza | 400+ Fotos Diarias',
         description: trans.meta_description || 'Galería premium de Ibiza con 400+ fotos y 80+ videos HD actualizados diariamente.',
-        image: 'https://ibizagirl.pics/full/bikini.webp',
+        image: 'https://beachgirl.pics/full/bikini.webp',
         url: window.location.href,
         type: 'website'
     };
@@ -354,7 +354,7 @@ function updateOpenGraph(contentData = {}) {
         { property: 'og:image', content: data.image },
         { property: 'og:url', content: data.url },
         { property: 'og:type', content: data.type },
-        { property: 'og:site_name', content: 'IbizaGirl.pics' },
+        { property: 'og:site_name', content: 'BeachGirl.pics' },
         { property: 'og:locale', content: lang === 'es' ? 'es_ES' : 
                                         lang === 'en' ? 'en_US' :
                                         lang === 'fr' ? 'fr_FR' :
@@ -365,7 +365,7 @@ function updateOpenGraph(contentData = {}) {
         
         // Twitter Cards
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:site', content: '@ibizagirlpics' },
+        { name: 'twitter:site', content: '@beachgirlpics' },
         { name: 'twitter:title', content: data.title },
         { name: 'twitter:description', content: data.description },
         { name: 'twitter:image', content: data.image },
@@ -454,11 +454,11 @@ function injectAdvancedJSONLD() {
     const websiteSchema = {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "@id": "https://ibizagirl.pics/#website",
-        "name": "IbizaGirl.pics",
+        "@id": "https://beachgirl.pics/#website",
+        "name": "BeachGirl.pics",
         "alternateName": ["Galería Ibiza", "Ibiza Photos", "Paradise Gallery"],
         "description": trans.meta_description || "Galería premium de Ibiza con contenido exclusivo",
-        "url": "https://ibizagirl.pics/",
+        "url": "https://beachgirl.pics/",
         "inLanguage": lang === 'es' ? 'es-ES' : 
                       lang === 'en' ? 'en-US' :
                       lang === 'fr' ? 'fr-FR' :
@@ -470,20 +470,20 @@ function injectAdvancedJSONLD() {
         "dateModified": new Date().toISOString(),
         "publisher": {
             "@type": "Organization",
-            "@id": "https://ibizagirl.pics/#organization"
+            "@id": "https://beachgirl.pics/#organization"
         },
         "potentialAction": [
             {
                 "@type": "SearchAction",
                 "target": {
                     "@type": "EntryPoint",
-                    "urlTemplate": "https://ibizagirl.pics/search?q={search_term_string}"
+                    "urlTemplate": "https://beachgirl.pics/search?q={search_term_string}"
                 },
                 "query-input": "required name=search_term_string"
             },
             {
                 "@type": "ViewAction",
-                "target": "https://ibizagirl.pics/main.html",
+                "target": "https://beachgirl.pics/main.html",
                 "name": "Ver Galería Premium"
             }
         ],
@@ -498,31 +498,31 @@ function injectAdvancedJSONLD() {
     const organizationSchema = {
         "@context": "https://schema.org",
         "@type": "Organization",
-        "@id": "https://ibizagirl.pics/#organization",
-        "name": "IbizaGirl.pics",
-        "legalName": "IbizaGirl.pics",
-        "url": "https://ibizagirl.pics/",
+        "@id": "https://beachgirl.pics/#organization",
+        "name": "BeachGirl.pics",
+        "legalName": "BeachGirl.pics",
+        "url": "https://beachgirl.pics/",
         "logo": {
             "@type": "ImageObject",
-            "url": "https://ibizagirl.pics/full/bikini.webp",
+            "url": "https://beachgirl.pics/full/bikini.webp",
             "width": 1200,
             "height": 630,
-            "caption": "IbizaGirl.pics Logo"
+            "caption": "BeachGirl.pics Logo"
         },
         "image": [
-            "https://ibizagirl.pics/full/bikini.webp",
-            "https://ibizagirl.pics/full/bikbanner.webp"
+            "https://beachgirl.pics/full/bikini.webp",
+            "https://beachgirl.pics/full/bikbanner.webp"
         ],
         "sameAs": [
-            "https://instagram.com/ibizagirl.pics",
-            "https://tiktok.com/@ibizagirl.pics",
-            "https://twitter.com/ibizagirlpics"
+            "https://instagram.com/beachgirl.pics",
+            "https://tiktok.com/@beachgirl.pics",
+            "https://twitter.com/beachgirlpics"
         ],
         "contactPoint": {
             "@type": "ContactPoint",
             "contactType": "customer service",
             "availableLanguage": ["Spanish", "English", "French", "German", "Italian", "Portuguese"],
-            "email": "contact@ibizagirl.pics"
+            "email": "contact@beachgirl.pics"
         },
         "address": {
             "@type": "PostalAddress",
@@ -536,18 +536,18 @@ function injectAdvancedJSONLD() {
     const imageGallerySchema = {
         "@context": "https://schema.org",
         "@type": "ImageGallery",
-        "@id": "https://ibizagirl.pics/main.html#gallery",
+        "@id": "https://beachgirl.pics/main.html#gallery",
         "name": trans.photos_seo_title || "Galería de Fotos de Ibiza",
         "description": trans.gallery_description || "Colección exclusiva de fotos de Ibiza",
-        "url": "https://ibizagirl.pics/main.html",
+        "url": "https://beachgirl.pics/main.html",
         "mainEntity": {
             "@type": "WebPage",
-            "@id": "https://ibizagirl.pics/main.html#webpage",
+            "@id": "https://beachgirl.pics/main.html#webpage",
             "name": trans.photos_seo_title || "Fotos de Ibiza",
             "description": trans.gallery_description || "Galería premium",
             "primaryImageOfPage": {
                 "@type": "ImageObject",
-                "url": "https://ibizagirl.pics/full/bikini.webp",
+                "url": "https://beachgirl.pics/full/bikini.webp",
                 "caption": trans.seo_keywords?.primary || "Ibiza paradise gallery",
                 "width": 1200,
                 "height": 800,
@@ -583,18 +583,18 @@ function injectAdvancedJSONLD() {
         "keywords": trans.seo_keywords?.primary || "ibiza photos gallery premium content",
         "author": {
             "@type": "Organization",
-            "@id": "https://ibizagirl.pics/#organization"
+            "@id": "https://beachgirl.pics/#organization"
         },
         "publisher": {
             "@type": "Organization",
-            "@id": "https://ibizagirl.pics/#organization"
+            "@id": "https://beachgirl.pics/#organization"
         },
         "copyrightHolder": {
             "@type": "Organization",
-            "@id": "https://ibizagirl.pics/#organization"
+            "@id": "https://beachgirl.pics/#organization"
         },
         "copyrightYear": 2025,
-        "license": "https://ibizagirl.pics/terms"
+        "license": "https://beachgirl.pics/terms"
     };
 
     // Schema de destino turístico mejorado
@@ -603,10 +603,10 @@ function injectAdvancedJSONLD() {
         "@type": "TouristDestination",
         "name": "Ibiza Paradise Beaches",
         "description": "Las mejores playas y calas de Ibiza capturadas en nuestra galería premium",
-        "url": "https://ibizagirl.pics/",
+        "url": "https://beachgirl.pics/",
         "image": [
-            "https://ibizagirl.pics/full/bikbanner.webp",
-            "https://ibizagirl.pics/full/bikbanner2.webp"
+            "https://beachgirl.pics/full/bikbanner.webp",
+            "https://beachgirl.pics/full/bikbanner2.webp"
         ],
         "geo": {
             "@type": "GeoCoordinates",
@@ -625,19 +625,19 @@ function injectAdvancedJSONLD() {
                 "@type": "TouristAttraction",
                 "name": "Playa de Ses Illetes",
                 "description": "Una de las playas más hermosas de Ibiza",
-                "image": "https://ibizagirl.pics/full/bikini.webp"
+                "image": "https://beachgirl.pics/full/bikini.webp"
             },
             {
                 "@type": "TouristAttraction", 
                 "name": "Cala Comte",
                 "description": "Famosa por sus increíbles atardeceres",
-                "image": "https://ibizagirl.pics/full/bikini3.webp"
+                "image": "https://beachgirl.pics/full/bikini3.webp"
             },
             {
                 "@type": "TouristAttraction",
                 "name": "Cala Bassa",
                 "description": "Aguas cristalinas y arena blanca",
-                "image": "https://ibizagirl.pics/full/bikini5.webp"
+                "image": "https://beachgirl.pics/full/bikini5.webp"
             }
         ],
         "publicAccess": true,
@@ -654,7 +654,7 @@ function injectAdvancedJSONLD() {
         "description": "Servicio de galería fotográfica premium con contenido exclusivo de Ibiza",
         "provider": {
             "@type": "Organization",
-            "@id": "https://ibizagirl.pics/#organization"
+            "@id": "https://beachgirl.pics/#organization"
         },
         "areaServed": {
             "@type": "Place",
@@ -677,7 +677,7 @@ function injectAdvancedJSONLD() {
                 "priceCurrency": "EUR",
                 "availability": "https://schema.org/InStock",
                 "validFrom": "2025-01-15",
-                "url": "https://ibizagirl.pics/main.html",
+                "url": "https://beachgirl.pics/main.html",
                 "priceValidUntil": "2025-12-31",
                 "category": "Premium Subscription"
             },
@@ -689,7 +689,7 @@ function injectAdvancedJSONLD() {
                 "priceCurrency": "EUR",
                 "availability": "https://schema.org/InStock",
                 "validFrom": "2025-01-15",
-                "url": "https://ibizagirl.pics/main.html",
+                "url": "https://beachgirl.pics/main.html",
                 "category": "Monthly Subscription"
             },
             {
@@ -734,13 +734,13 @@ function injectAdvancedJSONLD() {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Inicio",
-                "item": "https://ibizagirl.pics/"
+                "item": "https://beachgirl.pics/"
             },
             {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Galería Premium",
-                "item": "https://ibizagirl.pics/main.html"
+                "item": "https://beachgirl.pics/main.html"
             }
         ]
     };

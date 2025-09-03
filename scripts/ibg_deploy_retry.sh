@@ -21,7 +21,7 @@ while [ $attempt -le $TRIES ]; do
 done
 
 if [ $ok -eq 1 ]; then
-  echo "✅ Deploy OK. Abre: https://ibizagirl.pics/index.html"
+  echo "✅ Deploy OK. Abre: https://beachgirl.pics/index.html"
 else
   echo "❌ No se pudo desplegar tras $TRIES intentos."
   echo "   Abre el panel de Vercel y pulsa **Redeploy** en el último commit."

@@ -9,7 +9,7 @@ const listFromFile = (file) => {
 };
 
 const names = listFromFile('content-data2.js');
-const host = 'ibizagirl.pics';
+const host = 'beachgirl.pics';
 const outMissing = 'tools/out/missing-full.txt';
 fs.writeFileSync(outMissing,'');
 

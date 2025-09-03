@@ -39,8 +39,8 @@ export default async function handler(req, res) {
     const { access_token } = await tokRes.json();
 
     const currency = process.env.IBG_CURRENCY || process.env.CURRENCY || 'EUR';
-    const returnUrl = process.env.IBG_RETURN_URL || 'https://ibizagirl.pics/premium.html?paypalReturn=1';
-    const cancelUrl = process.env.IBG_CANCEL_URL || 'https://ibizagirl.pics/premium.html?paypalCancel=1';
+    const returnUrl = process.env.IBG_RETURN_URL || 'https://beachgirl.pics/premium.html?paypalReturn=1';
+    const cancelUrl = process.env.IBG_CANCEL_URL || 'https://beachgirl.pics/premium.html?paypalCancel=1';
     const brand = process.env.IBG_BRAND || 'IBIZA GIRL';
 
     // Pedido SIN items[] => solo amount.value
