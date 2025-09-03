@@ -1,8 +1,8 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "ignoreCommand": "bash check-deploy.sh",
   "buildCommand": "",
   "outputDirectory": ".",
-  "framework": null
+  "framework": null,
+  "ignoreCommand": "git log -1 --pretty=format:'%ae' | grep -q 'emergent' && exit 0 || exit 1"
 }
