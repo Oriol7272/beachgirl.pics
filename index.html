@@ -3,51 +3,396 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BeachGirl.pics - Paradise Content</title>
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>BeachGirl.pics - Paradise for Your Enjoyment</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: Arial, sans-serif; background: #1a1a2e; color: white; }
-        header { background: linear-gradient(135deg, #667eea, #764ba2); text-align: center; padding: 40px 20px; }
-        .notice { background: #ff6b6b; padding: 15px; text-align: center; font-weight: bold; }
-        .section { margin: 40px 20px; background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; }
-        .main-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; }
-        .gallery-item img { width: 100%; height: 300px; object-fit: cover; border-radius: 10px; }
-        .videos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 20px; }
-        .video-item video { width: 100%; height: 250px; }
+        body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: white; }
+        
+        /* Header con menú */
+        header { 
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        }
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo h1 { 
+            font-size: 2.5em; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        /* Menú navegación */
+        nav {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        nav a, .btn-paypal {
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-weight: 600;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        nav a:hover, .btn-paypal:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        .btn-paypal {
+            background: #ffc439;
+            color: #003087;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+        
+        /* Banner rotativo */
+        .banner-section {
+            height: 500px;
+            margin: 20px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(255,107,107,0.3);
+        }
+        .banner-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s;
+        }
+        .banner-slide.active { opacity: 1; }
+        .banner-slide img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover;
+        }
+        .banner-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .dot.active {
+            background: white;
+            width: 30px;
+            border-radius: 6px;
+        }
+        
+        /* Carousel */
+        .carousel-section {
+            margin: 40px 20px;
+            padding: 30px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        .carousel-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px 0;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+        }
+        .carousel-item {
+            min-width: 350px;
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        .carousel-item:hover { 
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255,107,107,0.4);
+        }
+        .carousel-item img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover;
+        }
+        
+        /* Secciones */
+        .section {
+            margin: 40px 20px;
+            padding: 30px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+            backdrop-filter: blur(5px);
+        }
+        .section h2 {
+            color: #ff6b6b;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        /* Galería principal */
+        .main-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .gallery-item:hover { 
+            transform: scale(1.03);
+            box-shadow: 0 10px 30px rgba(255,107,107,0.4);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+        
+        /* Premium con blur */
+        .premium-item {
+            position: relative;
+        }
+        .premium-item img {
+            filter: blur(8px);
+            transition: filter 0.3s;
+        }
+        .premium-item:hover img {
+            filter: blur(5px);
+        }
+        .premium-badge {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #333;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.2em;
+            box-shadow: 0 5px 20px rgba(255,215,0,0.5);
+        }
+        
+        /* Videos */
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 25px;
+        }
+        .video-item {
+            border-radius: 15px;
+            overflow: hidden;
+            background: #111;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            transition: transform 0.3s;
+        }
+        .video-item:hover {
+            transform: scale(1.02);
+        }
+        .video-item video {
+            width: 100%;
+            height: 300px;
+        }
+        
+        /* Anuncios */
+        .ad-left, .ad-right {
+            position: fixed;
+            width: 160px;
+            height: 600px;
+            top: 120px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 5px;
+            backdrop-filter: blur(5px);
+        }
+        .ad-left { left: 10px; }
+        .ad-right { right: 10px; }
+        .ad-bottom {
+            margin: 40px auto;
+            width: 728px;
+            height: 90px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 10px;
+            padding: 5px;
+        }
+        
+        /* Footer */
+        footer {
+            margin-top: 60px;
+            padding: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            text-align: center;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1400px) {
+            .ad-left, .ad-right { display: none; }
+        }
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; gap: 20px; }
+            nav { flex-wrap: wrap; justify-content: center; }
+            .carousel-item { min-width: 250px; }
+            .videos-grid { grid-template-columns: 1fr; }
+            .ad-bottom { width: 100%; }
+        }
     </style>
 </head>
 <body>
-    <div class="notice">
-        ⚠️ Si los videos no cargan, presiona Ctrl+Shift+Delete, limpia "Service Workers" y recarga
-    </div>
-    
+    <!-- Header con menú -->
     <header>
-        <h1>🌴 BEACHGIRL.PICS 🌴</h1>
-        <p>Paradise Content - Clean Version</p>
+        <div class="header-content">
+            <div class="logo">
+                <h1>🌴 BEACHGIRL.PICS</h1>
+                <p>Paradise for Your Enjoyment</p>
+            </div>
+            <nav>
+                <a href="#home">🏠 Home</a>
+                <a href="#gallery">📸 Gallery</a>
+                <a href="#premium">⭐ Premium</a>
+                <a href="#videos">🎥 Videos</a>
+                <button class="btn-paypal">
+                    💳 Lifetime $100
+                </button>
+            </nav>
+        </div>
     </header>
     
-    <section class="section">
-        <h2>📸 Gallery</h2>
-        <div class="main-gallery" id="gallery"></div>
+    <!-- Banner rotativo -->
+    <section class="banner-section" id="banner">
+        <div class="banner-slide active">
+            <img src="/full/bikbanner.webp" alt="Banner 1">
+        </div>
+        <div class="banner-dots" id="banner-dots"></div>
     </section>
     
-    <section class="section">
-        <h2>🎥 Videos (Without SW Errors)</h2>
-        <div class="videos-grid" id="videos"></div>
+    <!-- Carousel horizontal -->
+    <section class="carousel-section">
+        <h2>🔥 Hot Picks - Featured Content</h2>
+        <div class="carousel-container" id="carousel"></div>
     </section>
     
+    <!-- Galería principal -->
+    <section class="section" id="gallery">
+        <h2>📸 Photo Gallery</h2>
+        <div class="main-gallery" id="gallery-grid"></div>
+    </section>
+    
+    <!-- Sección Premium con blur -->
+    <section class="section" id="premium">
+        <h2>⭐ Premium Exclusive Content</h2>
+        <div class="main-gallery" id="premium-grid"></div>
+    </section>
+    
+    <!-- Videos -->
+    <section class="section" id="videos">
+        <h2>🎥 Video Collection</h2>
+        <div class="videos-grid" id="videos-grid"></div>
+    </section>
+    
+    <!-- Anuncio inferior -->
+    <div class="ad-bottom" id="ad-bottom"></div>
+    
+    <!-- Footer -->
+    <footer>
+        <h3>🌴 BeachGirl.pics - 2024 🌴</h3>
+        <p>Premium Adult Content Paradise</p>
+    </footer>
+    
+    <!-- Anuncios laterales -->
+    <div class="ad-left" id="ad-left"></div>
+    <div class="ad-right" id="ad-right"></div>
+    
+    <!-- Scripts -->
+    <script src="content-data1.js"></script>
     <script src="content-data2.js"></script>
+    <script src="content-data3.js"></script>
+    <script src="content-data4.js"></script>
     <script src="content-data5.js"></script>
+    <script src="content-data6.js"></script>
     
     <script>
-    // NO SERVICE WORKER CODE AT ALL
-    
     window.addEventListener('load', function() {
-        // Gallery
-        const gallery = document.getElementById('gallery');
+        // BANNER ROTATIVO
+        if (window.PUBLIC_BANNERS_POOL) {
+            const banner = document.getElementById('banner');
+            const dotsContainer = document.getElementById('banner-dots');
+            let currentBanner = 0;
+            
+            // Crear slides y dots
+            window.PUBLIC_BANNERS_POOL.forEach((img, i) => {
+                if (i > 0) {
+                    const slide = document.createElement('div');
+                    slide.className = 'banner-slide';
+                    slide.innerHTML = '<img src="/' + img + '">';
+                    banner.appendChild(slide);
+                }
+                const dot = document.createElement('div');
+                dot.className = 'dot' + (i === 0 ? ' active' : '');
+                dot.onclick = () => goToSlide(i);
+                dotsContainer.appendChild(dot);
+            });
+            
+            const slides = banner.querySelectorAll('.banner-slide');
+            const dots = dotsContainer.querySelectorAll('.dot');
+            
+            function goToSlide(n) {
+                slides[currentBanner].classList.remove('active');
+                dots[currentBanner].classList.remove('active');
+                currentBanner = n;
+                slides[currentBanner].classList.add('active');
+                dots[currentBanner].classList.add('active');
+            }
+            
+            // Auto-rotar
+            setInterval(() => {
+                goToSlide((currentBanner + 1) % slides.length);
+            }, 4000);
+        }
+        
+        // CAROUSEL
+        const carousel = document.getElementById('carousel');
+        if (window.PUBLIC_TEASERS_POOL) {
+            window.PUBLIC_TEASERS_POOL.forEach((img, i) => {
+                const item = document.createElement('div');
+                item.className = 'carousel-item';
+                item.innerHTML = '<img src="/' + img + '">';
+                carousel.appendChild(item);
+            });
+        }
+        
+        // GALERÍA PRINCIPAL
+        const gallery = document.getElementById('gallery-grid');
         if (window.PUBLIC_IMAGES_POOL) {
-            window.PUBLIC_IMAGES_POOL.slice(0, 20).forEach(function(img) {
+            window.PUBLIC_IMAGES_POOL.slice(0, 24).forEach((img, i) => {
                 const item = document.createElement('div');
                 item.className = 'gallery-item';
                 item.innerHTML = '<img src="/' + img + '">';
@@ -55,23 +400,44 @@
             });
         }
         
-        // Videos - con mensaje de error si falla
-        const videos = document.getElementById('videos');
-        if (window.PREMIUM_VIDEOS_POOL) {
-            window.PREMIUM_VIDEOS_POOL.slice(0, 6).forEach(function(video) {
+        // GALERÍA PREMIUM CON BLUR
+        const premiumGrid = document.getElementById('premium-grid');
+        if (window.PREMIUM_IMAGES_POOL_1) {
+            window.PREMIUM_IMAGES_POOL_1.slice(0, 12).forEach((img, i) => {
                 const item = document.createElement('div');
-                item.className = 'video-item';
-                const v = document.createElement('video');
-                v.src = '/' + video;
-                v.controls = true;
-                v.preload = 'metadata';
-                v.onerror = function() {
-                    item.innerHTML = '<p style="padding:20px;background:red;">Video bloqueado por SW - Limpia caché del navegador</p>';
-                };
-                item.appendChild(v);
-                videos.appendChild(item);
+                item.className = 'gallery-item premium-item';
+                item.innerHTML = '<img src="/' + img + '"><div class="premium-badge">PREMIUM</div>';
+                premiumGrid.appendChild(item);
             });
         }
+        
+        // VIDEOS
+        const videosGrid = document.getElementById('videos-grid');
+        if (window.PREMIUM_VIDEOS_POOL) {
+            window.PREMIUM_VIDEOS_POOL.slice(0, 9).forEach((video, i) => {
+                const item = document.createElement('div');
+                item.className = 'video-item';
+                item.innerHTML = '<video src="/' + video + '" controls preload="metadata"></video>';
+                videosGrid.appendChild(item);
+            });
+        }
+        
+        // ANUNCIOS
+        document.getElementById('ad-left').innerHTML = '<ins class="eas6a97888e2" data-zoneid="5696328"></ins>';
+        document.getElementById('ad-right').innerHTML = '<ins class="eas6a97888e2" data-zoneid="5696328"></ins>';
+        document.getElementById('ad-bottom').innerHTML = '<ins class="eas6a97888e2" data-zoneid="5696328"></ins>';
+        
+        if (!document.querySelector('script[src*="magsrv.com"]')) {
+            const script = document.createElement('script');
+            script.async = true;
+            script.src = 'https://a.magsrv.com/ad-provider.js';
+            document.head.appendChild(script);
+            script.onload = function() {
+                (window.AdProvider = window.AdProvider || []).push({"serve": {}});
+            };
+        }
+        
+        console.log('✅ TODO CARGADO CORRECTAMENTE');
     });
     </script>
 </body>
