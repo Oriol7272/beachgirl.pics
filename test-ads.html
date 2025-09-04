@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Test de Anuncios - BeachGirl</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .content {
+            max-width: 800px;
+            margin: 100px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        h1 { color: #333; }
+        .status { margin: 20px 0; padding: 10px; background: #f0f0f0; border-radius: 5px; }
+        .ok { color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>🧪 Página de Prueba de Anuncios</h1>
+        <div class="status" id="status">
+            <p>Comprobando anuncios...</p>
+        </div>
+        <p>Los anuncios deberían aparecer:</p>
+        <ul>
+            <li>Lateral izquierdo (160x600)</li>
+            <li>Lateral derecho (160x600)</li>
+            <li>Banner inferior (728x90)</li>
+        </ul>
+    </div>
+    
+    <script src="inject-ads.js"></script>
+    
+    <script>
+        setTimeout(function() {
+            const status = document.getElementById('status');
+            const leftAd = document.getElementById('ad-left');
+            const rightAd = document.getElementById('ad-right');
+            const bottomAd = document.getElementById('ad-bottom');
+            
+            let html = '<h3>Estado de los anuncios:</h3>';
+            
+            if (leftAd) {
+                html += '<p class="ok">✅ Anuncio izquierdo: CREADO</p>';
+            } else {
+                html += '<p class="error">❌ Anuncio izquierdo: NO ENCONTRADO</p>';
+            }
+            
+            if (rightAd) {
+                html += '<p class="ok">✅ Anuncio derecho: CREADO</p>';
+            } else {
+                html += '<p class="error">❌ Anuncio derecho: NO ENCONTRADO</p>';
+            }
+            
+            if (bottomAd) {
+                html += '<p class="ok">✅ Banner inferior: CREADO</p>';
+            } else {
+                html += '<p class="error">❌ Banner inferior: NO ENCONTRADO</p>';
+            }
+            
+            status.innerHTML = html;
+        }, 2000);
+    </script>
+</body>
+</html>
