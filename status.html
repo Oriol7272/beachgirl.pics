@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Estado del Sistema - BeachGirl</title>
+    <style>
+        body { font-family: Arial; padding: 20px; background: #f0f0f0; }
+        .status { padding: 20px; margin: 10px; background: white; border-radius: 8px; }
+        .ok { color: green; }
+        .error { color: red; }
+        .warning { color: orange; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Estado del Sistema</h1>
+    <div class="status" id="results"></div>
+    
+    <script src="/content-data1.js"></script>
+    <script src="/content-data2.js"></script>
+    <script src="/content-data3.js"></script>
+    <script src="/content-data4.js"></script>
+    <script src="/content-data5.js"></script>
+    <script src="/content-data6.js"></script>
+    
+    <script>
+        window.addEventListener('load', function() {
+            const results = document.getElementById('results');
+            let html = '<h2>Verificación de Componentes:</h2>';
+            
+            // Verificar APIs
+            if (window.UnifiedContentAPI) {
+                html += '<p class="ok">✅ UnifiedContentAPI cargada</p>';
+                try {
+                    const api = new window.UnifiedContentAPI();
+                    const content = api.getMixedContent(1);
+                    html += '<p class="ok">✅ API funcional - ' + content.length + ' items</p>';
+                } catch(e) {
+                    html += '<p class="error">❌ Error en API: ' + e.message + '</p>';
+                }
+            } else {
+                html += '<p class="error">❌ UnifiedContentAPI no encontrada</p>';
+            }
+            
+            // Verificar contenido
+            if (window.PUBLIC_IMAGES_POOL) {
+                html += '<p class="ok">✅ Imágenes públicas: ' + window.PUBLIC_IMAGES_POOL.length + '</p>';
+            }
+            if (window.PREMIUM_IMAGES_POOL_1) {
+                html += '<p class="ok">✅ Imágenes premium: ' + window.PREMIUM_IMAGES_POOL_1.length + '</p>';
+            }
+            if (window.PREMIUM_VIDEOS_POOL) {
+                html += '<p class="ok">✅ Videos: ' + window.PREMIUM_VIDEOS_POOL.length + '</p>';
+            }
+            
+            // Verificar anuncios
+            if (window.AdProvider) {
+                html += '<p class="ok">✅ ExoClick cargado</p>';
+            } else {
+                html += '<p class="warning">⚠️ ExoClick no detectado</p>';
+            }
+            
+            // Service Worker
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.getRegistration().then(function(reg) {
+                    if (reg) {
+                        html += '<p class="ok">✅ Service Worker activo</p>';
+                    } else {
+                        html += '<p class="warning">⚠️ Service Worker no registrado</p>';
+                    }
+                    results.innerHTML = html;
+                });
+            }
+        });
+    </script>
+</body>
+</html>
