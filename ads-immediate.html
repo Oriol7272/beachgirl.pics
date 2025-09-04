@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prueba de Anuncios</title>
+    <meta charset="UTF-8">
+    <style>
+        body { margin: 0; padding: 20px; font-family: Arial; }
+        .test-content { max-width: 1000px; margin: 0 auto; padding: 20px; background: #f0f0f0; }
+        h1 { color: #333; }
+    </style>
+</head>
+<body>
+    <div class="test-content">
+        <h1>Página de prueba de anuncios</h1>
+        <p>Los anuncios deberían aparecer en los laterales y abajo.</p>
+        <p>Si ves esta página pero no los anuncios, revisa la consola (F12).</p>
+    </div>
+    
+    <!-- Anuncios directos sin JavaScript -->
+    <div style="position:fixed;left:10px;top:100px;width:160px;height:600px;background:#fff;z-index:9999;box-shadow:0 4px 12px rgba(0,0,0,0.15);padding:5px;">
+        <ins class="eas6a97888e2" data-zoneid="5696328" style="display:inline-block;width:160px;height:600px"></ins>
+    </div>
+    
+    <div style="position:fixed;right:10px;top:100px;width:160px;height:600px;background:#fff;z-index:9999;box-shadow:0 4px 12px rgba(0,0,0,0.15);padding:5px;">
+        <ins id="1021557" data-width="160" data-height="600"></ins>
+    </div>
+    
+    <div style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:728px;height:90px;background:#fff;z-index:9999;box-shadow:0 -4px 12px rgba(0,0,0,0.15);padding:5px;">
+        <ins class="eas6a97888e2" data-zoneid="5696330" style="display:inline-block;width:728px;height:90px"></ins>
+    </div>
+    
+    <!-- Scripts de redes publicitarias -->
+    <script async type="application/javascript" src="https://a.magsrv.com/ad-provider.js"></script>
+    <script>(AdProvider = window.AdProvider || []).push({"serve": {}});</script>
+    
+    <script async type="text/javascript" src="https://poweredby.jads.co/js/jads.js"></script>
+    <script>(adsbyjuicy = window.adsbyjuicy || []).push({'adzone': 1021557});</script>
+    
+    <script>
+        console.log('Página de prueba de anuncios cargada');
+        setTimeout(() => {
+            const ads = document.querySelectorAll('ins');
+            console.log('Elementos de anuncios encontrados:', ads.length);
+            ads.forEach((ad, i) => {
+                console.log(`Anuncio ${i+1}:`, ad.offsetWidth + 'x' + ad.offsetHeight, 'visible:', ad.offsetParent !== null);
+            });
+        }, 2000);
+    </script>
+</body>
+</html>
