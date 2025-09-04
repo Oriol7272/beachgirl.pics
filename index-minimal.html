@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeachGirl.pics</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>🌴 BEACHGIRL.PICS 🌴</h1>
+        <p>Bienvenido al paraíso</p>
+    </header>
+    
+    <main id="gallery">
+        <p>Cargando galería...</p>
+    </main>
+    
+    <!-- Scripts esenciales -->
+    <script src="content-data1.js"></script>
+    <script src="content-data2.js"></script>
+    <script src="content-data3.js"></script>
+    <script src="content-data4.js"></script>
+    <script src="content-data5.js"></script>
+    <script src="content-data6.js"></script>
+    
+    <!-- Sistema de anuncios -->
+    <script src="inject-ads.js"></script>
+    
+    <!-- Inicialización -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Página cargada');
+            if (window.UnifiedContentAPI) {
+                const api = new window.UnifiedContentAPI();
+                const gallery = document.getElementById('gallery');
+                const content = api.getMixedContent(20);
+                
+                gallery.innerHTML = '';
+                content.forEach(item => {
+                    const img = document.createElement('img');
+                    img.src = item.url;
+                    img.style.width = '200px';
+                    img.style.margin = '10px';
+                    gallery.appendChild(img);
+                });
+            }
+        });
+    </script>
+</body>
+</html>
