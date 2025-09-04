@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unregister SW</title>
+</head>
+<body>
+    <h1>Unregistering Service Worker...</h1>
+    <script>
+    navigator.serviceWorker.getRegistrations().then(function(registrations) {
+        for(let registration of registrations) {
+            registration.unregister();
+        }
+        console.log('Service Worker unregistered');
+        alert('Service Worker unregistered! Redirecting...');
+        setTimeout(() => window.location.href = '/', 2000);
+    });
+    </script>
+</body>
+</html>
