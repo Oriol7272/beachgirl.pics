@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Initializing BeachGirl.pics...');
     
-    // Intentar varias veces hasta que los datos estén disponibles
     let attempts = 0;
     const maxAttempts = 10;
     
@@ -14,29 +13,26 @@ document.addEventListener('DOMContentLoaded', function() {
         
         let allImages = [];
         
-        // Verificar diferentes posibles ubicaciones
+        // Verificar si window.G existe y tiene publicImages
         if (window.G && window.G.publicImages) {
             allImages = window.G.publicImages;
-            console.log('Found images in window.G.publicImages');
-        } else if (window.publicImages) {
-            allImages = window.publicImages;
-            console.log('Found images in window.publicImages');
-        } else if (window.contentData2 && window.contentData2.images) {
-            allImages = window.contentData2.images;
-            console.log('Found images in window.contentData2.images');
+            console.log(`Found ${allImages.length} images in window.G.publicImages`);
+            
+            // Si las rutas no empiezan con /, añadirlo
+            allImages = allImages.map(img => img.startsWith('/') ? img : '/' + img);
         } else {
-            console.log('Images not available yet. Available objects:', Object.keys(window).filter(k => k.includes('content') || k === 'G'));
+            console.log('G not ready. Available:', typeof window.G);
             
             if (attempts < maxAttempts) {
                 setTimeout(loadContent, 500);
                 return;
             } else {
-                console.error('Could not find images after', maxAttempts, 'attempts');
+                console.error('Could not load images after', maxAttempts, 'attempts');
                 return;
             }
         }
         
-        console.log(`Loading ${allImages.length} images`);
+        console.log(`Displaying ${allImages.length} images`);
         
         // Carousel
         if (carouselContainer && allImages.length > 0) {
@@ -50,9 +46,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     `).join('')}
                 </div>
             `;
+            console.log('Carousel loaded');
         }
         
-        // Gallery
+        // Gallery con 40 imágenes aleatorias
         if (galleryContainer && allImages.length > 0) {
             const shuffled = [...allImages].sort(() => Math.random() - 0.5);
             const galleryImages = shuffled.slice(0, 40);
@@ -62,9 +59,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     <img src="${img}" alt="Gallery" loading="lazy">
                 </div>
             `).join('');
+            console.log('Gallery loaded with', galleryImages.length, 'images');
         }
     };
     
-    // Empezar a intentar cargar
-    setTimeout(loadContent, 1000);
+    // Empezar después de un delay
+    setTimeout(loadContent, 1500);
 });
