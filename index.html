@@ -71,62 +71,13 @@
 
     <!-- Inicialización principal -->
     <script>
-                document.addEventListener('DOMContentLoaded', function() {
-            console.log('🌴 BeachGirl.pics loaded successfully');
-            
-            // Inicializar con la API correcta
-            if (window.UnifiedContentAPI) {
-                const api = new window.UnifiedContentAPI();
-                const gallery = document.getElementById('gallery');
-                const premiumGrid = document.getElementById('premium-grid');
-                const videosGrid = document.getElementById('videos-grid');
-                
-                // Cargar contenido mixto para la galería
-                const mixedContent = api.getMixedContent(20);
-                mixedContent.forEach(function(item) {
-                    const div = document.createElement('div');
-                    div.className = 'gallery-item';
-                    if (item.type === 'video') {
-                        div.innerHTML = '<video src="' + item.url + '" controls preload="metadata"></video>';
-                    } else {
-                        div.innerHTML = '<img src="' + item.url + '" loading="lazy" alt="' + (item.isPremium ? 'Premium' : 'Public') + '">';
-                    }
-                    gallery.appendChild(div);
-                });
-                
-                // Cargar más contenido premium
-                const premiumContent = api.getPremiumContent(10);
-                premiumContent.forEach(function(item) {
-                    const div = document.createElement('div');
-                    div.className = 'premium-item';
-                    div.innerHTML = '<img src="' + item.url + '" loading="lazy" alt="Premium">';
-                    premiumGrid.appendChild(div);
-                });
-                
-                // Cargar videos
-                const videos = api.getVideoContent(6);
-                videos.forEach(function(item) {
-                    const div = document.createElement('div');
-                    div.className = 'video-item';
-                    div.innerHTML = '<video src="' + item.url + '" controls preload="metadata"></video>';
-                    videosGrid.appendChild(div);
-                });
-                
-                console.log('Content loaded successfully');
-            }
-            
-            // Service Worker
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('/service-worker.js')
-                    .then(function(reg) {
-                        console.log('Service Worker registered');
-                    })
-                    .catch(function(err) {
-                        console.log('Service Worker error:', err);
-                    });
-            }
-        });
-
-    </script>
+                </script>
 </body>
 </html>
+<script>
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/service-worker.js")
+        .then(function(reg) { console.log("SW OK"); })
+        .catch(function(err) { console.log("SW Error:", err); });
+}
+</script>
