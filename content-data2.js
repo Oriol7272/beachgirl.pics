@@ -151,3 +151,8 @@ console.log('📊 Estadísticas de contenido público:', {
     banners: window.BANNER_IMAGES.length,
     teasers: window.TEASER_IMAGES.length
 });
+
+// Exponer globalmente
+window.PUBLIC_IMAGES_POOL = PUBLIC_IMAGES_POOL;
+window.PUBLIC_BANNERS_POOL = PUBLIC_BANNERS_POOL;
+window.PUBLIC_TEASERS_POOL = PUBLIC_TEASERS_POOL;

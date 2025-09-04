@@ -292,3 +292,6 @@ const PREMIUM_IMAGES_PART1 = [
 console.log("✅ 286 imágenes premium parte 1 cargadas desde /uncensored/");
 
 window.PREMIUM_IMAGES_PART1 = PREMIUM_IMAGES_PART1;
+
+// Exponer globalmente
+window.PREMIUM_IMAGES_POOL_1 = PREMIUM_IMAGES_POOL_1;
