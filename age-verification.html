@@ -1,79 +1,228 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Age Verification - BeachGirl.pics</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Allura:wght@400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            height: 100vh;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #0ea5e9 25%, #0284c7 75%, #60a5fa 100%);
+            min-height: 100vh;
             display: flex;
-            justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
-        .verify-box {
-            background: white;
-            padding: 60px 40px;
-            border-radius: 20px;
+        
+        .waves {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(to top, rgba(255,255,255,0.1), transparent);
+            animation: wave 8s ease-in-out infinite;
+        }
+        
+        @keyframes wave {
+            0%, 100% { transform: translateX(0px); }
+            50% { transform: translateX(-25px); }
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px;
             text-align: center;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             max-width: 500px;
+            width: 90%;
+            box-shadow: 0 20px 50px rgba(30, 58, 138, 0.2);
+            border: 2px solid rgba(30, 58, 138, 0.1);
+            z-index: 10;
+            position: relative;
         }
-        .logo { font-size: 60px; margin-bottom: 20px; }
-        h1 { 
-            color: #333; 
-            margin-bottom: 10px;
-            font-size: 2.5rem;
+        
+        .logo {
+            font-family: 'Allura', cursive;
+            font-size: 3em;
+            color: #1e3a8a;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
+        
+        h1 {
+            font-family: 'Allura', cursive;
+            color: #1e3a8a;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+        
         .warning {
-            background: #ff0000;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            margin: 20px 0;
-            font-weight: bold;
+            background: rgba(239, 68, 68, 0.1);
+            border: 2px solid #ef4444;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            color: #dc2626;
         }
-        p { color: #666; margin: 15px 0; line-height: 1.6; }
-        .buttons { margin-top: 30px; }
-        button {
-            padding: 15px 40px;
-            margin: 10px;
+        
+        .warning h3 {
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .question {
+            font-size: 1.3em;
+            color: #1e3a8a;
+            margin: 30px 0;
+            font-weight: 500;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        
+        .btn {
+            padding: 15px 30px;
             border: none;
             border-radius: 50px;
-            font-size: 18px;
+            font-size: 1.1em;
+            font-weight: 600;
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            min-width: 150px;
         }
-        button:hover { transform: scale(1.05); }
-        .enter {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        
+        .btn-yes {
+            background: linear-gradient(45deg, #0ea5e9, #0284c7);
             color: white;
+            box-shadow: 0 4px 15px rgba(14, 165, 233, 0.3);
         }
-        .leave { 
-            background: #e0e0e0; 
-            color: #666;
+        
+        .btn-yes:hover {
+            background: linear-gradient(45deg, #0284c7, #1e3a8a);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
+        }
+        
+        .btn-no {
+            background: linear-gradient(45deg, #ef4444, #dc2626);
+            color: white;
+            box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+        }
+        
+        .btn-no:hover {
+            background: linear-gradient(45deg, #dc2626, #b91c1c);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+        }
+        
+        .disclaimer {
+            font-size: 0.9em;
+            color: #64748b;
+            margin-top: 20px;
+            line-height: 1.4;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+            
+            .logo {
+                font-size: 2.5em;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            .buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 250px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="verify-box">
-        <div class="logo">🏖️</div>
-        <h1>BeachGirl.pics</h1>
-        <div class="warning">⚠️ ADULTS ONLY - 18+</div>
-        <p>This website contains adult material unsuitable for minors.</p>
-        <p>By entering, you confirm that you are at least 18 years old and agree to our Terms of Service.</p>
+    <div class="waves"></div>
+    
+    <div class="container">
+        <div class="logo">BeachGirl.pics</div>
+        
+        <h1>Verificación de Edad</h1>
+        
+        <div class="warning">
+            <h3>⚠️ AVISO IMPORTANTE</h3>
+            <p>Este sitio contiene contenido para adultos. Debes ser mayor de 18 años para continuar. Al acceder, confirmas que tienes la edad legal en tu jurisdicción.</p>
+        </div>
+        
+        <div class="question">¿Eres mayor de 18 años?</div>
+        
         <div class="buttons">
-            <button class="leave" onclick="window.location='https://google.com'">Leave</button>
-            <button class="enter" onclick="verifyAge()">I am 18+ Enter</button>
+            <button class="btn btn-yes" onclick="verifyAge(true)">✓ Sí, soy mayor de 18</button>
+            <button class="btn btn-no" onclick="verifyAge(false)">✗ No, soy menor de 18</button>
+        </div>
+        
+        <div class="disclaimer">
+            Al hacer clic en "Sí", confirmas que cumples con los requisitos de edad y aceptas ver contenido para adultos.
         </div>
     </div>
+
     <script>
-        function verifyAge() {
-            localStorage.setItem('age_verified', 'true');
-            window.location.href = '/';
+        function verifyAge(isAdult) {
+            if (isAdult) {
+                // Store verification in localStorage
+                localStorage.setItem('ageVerified', 'true');
+                localStorage.setItem('ageVerificationDate', new Date().toISOString());
+                
+                // Redirect to main site
+                window.location.href = '/';
+            } else {
+                // Redirect away or show message
+                alert('Debes ser mayor de 18 años para acceder a este contenido.');
+                window.location.href = 'https://www.google.com';
+            }
+        }
+        
+        // Check if already verified (within 24 hours)
+        const verified = localStorage.getItem('ageVerified');
+        const verificationDate = localStorage.getItem('ageVerificationDate');
+        
+        if (verified === 'true' && verificationDate) {
+            const verifyTime = new Date(verificationDate);
+            const now = new Date();
+            const hoursDiff = (now - verifyTime) / (1000 * 60 * 60);
+            
+            // Auto-redirect if verified within last 24 hours
+            if (hoursDiff < 24) {
+                window.location.href = '/';
+            }
         }
     </script>
 </body>
