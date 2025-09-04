@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Limpiando...</title>
+</head>
+<body>
+    <h1>Limpiando Service Worker...</h1>
+    <script>
+    // Forzar eliminación de TODOS los Service Workers
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(function(registrations) {
+            registrations.forEach(function(registration) {
+                registration.unregister();
+            });
+        });
+        // Limpiar caches también
+        if ('caches' in window) {
+            caches.keys().then(function(names) {
+                names.forEach(function(name) {
+                    caches.delete(name);
+                });
+            });
+        }
+    }
+    // Redirigir después de limpiar
+    setTimeout(function() {
+        window.location.href = '/';
+    }, 2000);
+    </script>
+</body>
+</html>
