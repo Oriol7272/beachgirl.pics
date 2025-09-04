@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Limpiar Cache - BeachGirl</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+        h1 { color: #333; }
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧹 Limpiando caché...</h1>
+        <div class="spinner"></div>
+        <p>Por favor espera, esto tomará solo un momento</p>
+    </div>
+    <script>
+    async function clearEverything() {
+        console.log('Limpiando Service Workers...');
+        if ('serviceWorker' in navigator) {
+            const registrations = await navigator.serviceWorker.getRegistrations();
+            for(let registration of registrations) {
+                await registration.unregister();
+                console.log('Service Worker desregistrado');
+            }
+        }
+        
+        console.log('Limpiando caches...');
+        if ('caches' in window) {
+            const names = await caches.keys();
+            for (let name of names) {
+                await caches.delete(name);
+                console.log('Cache eliminado:', name);
+            }
+        }
+        
+        console.log('Limpieza completada, redirigiendo...');
+        setTimeout(() => {
+            window.location.href = '/';
+        }, 2000);
+    }
+    
+    clearEverything();
+    </script>
+</body>
+</html>

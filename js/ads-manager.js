@@ -1,310 +1,161 @@
-/**
- * ads-manager.js - Sistema de anuncios unificado
- * Gestiona JuicyAds, ExoClick, EroAdvertising y PopAds
- */
-
-'use strict';
-
 class AdsManager {
-    constructor() {
-        this.config = {
-            // EroAdvertising
-            eroAdvertising: {
-                zoneId: '8179717',
-                bannerId: '2309173',
-                enabled: true
-            },
-            
-            // ExoClick
-            exoClick: {
-                zoneId: '5702700',
-                enabled: true
-            },
-            
-            // JuicyAds
-            juicyAds: {
-                zoneId: '1099077',
-                adId: '2093063',
-                enabled: true
-            },
-            
-            // PopAds - agregar tu Site ID cuando lo tengas
-            popAds: {
-                enabled: false, // Activar cuando tengas el Site ID
-                siteId: null
-            }
-        };
-        
-        this.initialized = false;
-        this.vipUser = false;
+  constructor() {
+    this.initialized = false;
+    this.adSlots = {
+      left: null,
+      right: null,
+      top: null,
+      bottom: null
+    };
+  }
+  
+  init() {
+    if (this.initialized) return;
+    this.initialized = true;
+    
+    // Crear contenedores si no existen
+    this.createAdContainers();
+    
+    // Cargar redes de anuncios
+    setTimeout(() => {
+      this.loadExoClick();
+      this.loadJuicyAds();
+      this.loadEroAdvertising();
+      this.loadPopAds();
+    }, 500);
+  }
+  
+  createAdContainers() {
+    // Sidebar izquierdo
+    if (!document.getElementById('ad-left')) {
+      const left = document.createElement('aside');
+      left.id = 'ad-left';
+      left.className = 'ad-sidebar ad-left';
+      left.innerHTML = '<div class="ad-container" id="ad-left-slot"></div>';
+      document.body.insertBefore(left, document.body.firstChild);
+      this.adSlots.left = document.getElementById('ad-left-slot');
     }
-
-    // Inicializar sistema de anuncios
-    initialize() {
-        console.log('🎯 Inicializando AdsManager...');
-        
-        // Verificar estado VIP
-        this.checkVIPStatus();
-        
-        if (this.vipUser) {
-            console.log('👑 Usuario VIP - anuncios deshabilitados');
-            this.hideAllAds();
-            return;
-        }
-        
-        // Cargar anuncios según configuración
-        this.loadAds();
-        
-        this.initialized = true;
-        console.log('✅ AdsManager inicializado');
+    
+    // Sidebar derecho
+    if (!document.getElementById('ad-right')) {
+      const right = document.createElement('aside');
+      right.id = 'ad-right';
+      right.className = 'ad-sidebar ad-right';
+      right.innerHTML = '<div class="ad-container" id="ad-right-slot"></div>';
+      document.body.appendChild(right);
+      this.adSlots.right = document.getElementById('ad-right-slot');
     }
-
-    // Verificar estado VIP
-    checkVIPStatus() {
-        this.vipUser = localStorage.getItem('vipAccess') === 'true';
-        
-        if (this.vipUser) {
-            document.body.classList.add('vip-active');
-        }
+    
+    // Banner superior
+    const main = document.querySelector('main') || document.querySelector('.content') || document.querySelector('#gallery');
+    if (main && !document.getElementById('ad-top')) {
+      const top = document.createElement('div');
+      top.id = 'ad-top';
+      top.className = 'ad-banner ad-top';
+      main.parentNode.insertBefore(top, main);
+      this.adSlots.top = top;
     }
-
-    // Cargar todos los anuncios
-    loadAds() {
-        if (this.config.eroAdvertising.enabled) {
-            this.loadEroAdvertising();
-        }
-        
-        if (this.config.exoClick.enabled) {
-            this.loadExoClick();
-        }
-        
-        if (this.config.juicyAds.enabled) {
-            this.loadJuicyAds();
-        }
-        
-        if (this.config.popAds.enabled && this.config.popAds.siteId) {
-            this.loadPopAds();
-        }
+    
+    // Banner inferior
+    if (main && !document.getElementById('ad-bottom')) {
+      const bottom = document.createElement('div');
+      bottom.id = 'ad-bottom';
+      bottom.className = 'ad-banner ad-bottom';
+      main.parentNode.insertBefore(bottom, main.nextSibling);
+      this.adSlots.bottom = bottom;
     }
-
-    // Cargar EroAdvertising
-    loadEroAdvertising() {
-        console.log('💎 Cargando EroAdvertising...');
-        
-        // Crear contenedores para EroAdvertising
-        this.createAdContainer('ero-ad-1', 'EroAdvertising Premium Space');
-        
-        // Script de EroAdvertising
-        const script = document.createElement('script');
-        script.innerHTML = `
-            var ero_ads_zone = ${this.config.eroAdvertising.zoneId};
-            var ero_ads_width = 468;
-            var ero_ads_height = 80;
-        `;
-        document.head.appendChild(script);
-        
-        // Cargar script principal
-        const eroScript = document.createElement('script');
-        eroScript.src = 'https://www.eroadvertising.com/show_ads.js';
-        eroScript.async = true;
-        eroScript.onload = () => {
-            console.log('✅ EroAdvertising cargado');
-        };
-        document.head.appendChild(eroScript);
+  }
+  
+  loadExoClick() {
+    // Sidebar izquierdo - 160x600
+    if (this.adSlots.left) {
+      const ins = document.createElement('ins');
+      ins.className = 'eas6a97888e2';
+      ins.setAttribute('data-zoneid', '5696328');
+      ins.style.cssText = 'display:inline-block;width:160px;height:600px';
+      this.adSlots.left.appendChild(ins);
     }
-
-    // Cargar ExoClick
-    loadExoClick() {
-        console.log('🎯 Cargando ExoClick...');
-        
-        // Crear contenedores para ExoClick
-        this.createAdContainer('exoclick-ad-1', 'ExoClick Premium Space');
-        
-        // Script de ExoClick
-        const script = document.createElement('script');
-        script.type = 'application/javascript';
-        script.src = 'https://a.exdynsrv.com/ad-provider.js';
-        script.async = true;
-        script.onload = () => {
-            console.log('✅ ExoClick script cargado');
-            
-            // Configurar zona
-            if (window.AdProvider) {
-                window.AdProvider.push({
-                    "serve": {
-                        "zone": parseInt(this.config.exoClick.zoneId)
-                    }
-                });
-            }
-        };
-        document.head.appendChild(script);
-        
-        // Crear elemento de anuncio
-        setTimeout(() => {
-            const adElement = document.createElement('ins');
-            adElement.className = 'eas6a97888e2';
-            adElement.setAttribute('data-zoneid', this.config.exoClick.zoneId);
-            adElement.style.cssText = 'display: block; width: 300px; height: 250px; margin: 0 auto;';
-            
-            const container = document.getElementById('exoclick-ad-1');
-            if (container) {
-                container.appendChild(adElement);
-            }
-        }, 1000);
+    
+    // Banner superior - 728x90
+    if (this.adSlots.top) {
+      const ins = document.createElement('ins');
+      ins.className = 'eas6a97888e2';
+      ins.setAttribute('data-zoneid', '5696330');
+      ins.style.cssText = 'display:inline-block;width:728px;height:90px';
+      this.adSlots.top.appendChild(ins);
     }
-
-    // Cargar JuicyAds
-    loadJuicyAds() {
-        console.log('🍊 Cargando JuicyAds...');
-        
-        // Crear contenedores para JuicyAds
-        this.createAdContainer('juicy-ad-1', 'JuicyAds Premium Space');
-        
-        // Inicializar namespace
-        window.adsbyjuicy = window.adsbyjuicy || {};
-        window.adsbyjuicy.cmd = window.adsbyjuicy.cmd || [];
-        
-        // Cargar script principal
-        const script = document.createElement('script');
-        script.src = 'https://poweredby.jads.co/js/jads.js';
-        script.async = true;
-        script.onload = () => {
-            console.log('✅ JuicyAds script cargado');
-            
-            // Configurar zona
-            window.adsbyjuicy.cmd.push(() => {
-                window.adsbyjuicy.display(this.config.juicyAds.zoneId);
-            });
-        };
-        document.head.appendChild(script);
-        
-        // Crear elemento de anuncio
-        setTimeout(() => {
-            const adElement = document.createElement('ins');
-            adElement.id = this.config.juicyAds.zoneId;
-            adElement.setAttribute('data-width', '728');
-            adElement.setAttribute('data-height', '90');
-            adElement.style.cssText = 'display: block; width: 728px; height: 90px; margin: 0 auto;';
-            
-            const container = document.getElementById('juicy-ad-1');
-            if (container) {
-                container.appendChild(adElement);
-            }
-        }, 1500);
+    
+    // Cargar script
+    if (!document.querySelector('script[src*="magsrv.com"]')) {
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://a.magsrv.com/ad-provider.js';
+      document.head.appendChild(script);
+      script.onload = () => {
+        (window.AdProvider = window.AdProvider || []).push({"serve": {}});
+      };
     }
-
-    // Cargar PopAds (cuando tengas el Site ID)
-    loadPopAds() {
-        console.log('🎪 Cargando PopAds...');
-        
-        // Script para PopAds - agregar cuando tengas el Site ID
-        const script = document.createElement('script');
-        script.innerHTML = `
-            var _paq = window._paq = window._paq || [];
-            _paq.push(['setSiteId', '${this.config.popAds.siteId}']);
-            _paq.push(['trackPageView']);
-        `;
-        document.head.appendChild(script);
+  }
+  
+  loadJuicyAds() {
+    // Sidebar derecho - 160x600
+    if (this.adSlots.right) {
+      const ins = document.createElement('ins');
+      ins.id = '1021557';
+      ins.setAttribute('data-width', '160');
+      ins.setAttribute('data-height', '600');
+      this.adSlots.right.appendChild(ins);
     }
-
-    // Crear contenedor de anuncio
-    createAdContainer(id, label) {
-        const container = document.getElementById(id);
-        if (!container) {
-            console.warn(`⚠️ Contenedor ${id} no encontrado`);
-            return;
-        }
-        
-        container.innerHTML = `
-            <div style="
-                background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-                border: 1px solid rgba(255,255,255,0.2);
-                border-radius: 10px;
-                padding: 20px;
-                text-align: center;
-                min-height: 120px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-size: 0.9em;
-                color: rgba(255,255,255,0.7);
-            ">
-                ${label}
-            </div>
-        `;
+    
+    // Banner inferior - 728x90
+    if (this.adSlots.bottom) {
+      const ins = document.createElement('ins');
+      ins.id = '1021558';
+      ins.setAttribute('data-width', '728');
+      ins.setAttribute('data-height', '90');
+      this.adSlots.bottom.appendChild(ins);
     }
-
-    // Ocultar todos los anuncios para usuarios VIP
-    hideAllAds() {
-        const adElements = document.querySelectorAll('.ad-zone, [data-zoneid], [id*="ad"]');
-        adElements.forEach(element => {
-            element.style.display = 'none';
-        });
-        
-        // Mostrar badge VIP en su lugar
-        this.showVIPBadges();
+    
+    // Cargar script
+    if (!document.querySelector('script[src*="jads.co"]')) {
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://poweredby.jads.co/js/jads.js';
+      document.head.appendChild(script);
+      script.onload = () => {
+        (window.adsbyjuicy = window.adsbyjuicy || []).push({'adzone': 1021557});
+        (window.adsbyjuicy = window.adsbyjuicy || []).push({'adzone': 1021558});
+      };
     }
-
-    // Mostrar badges VIP
-    showVIPBadges() {
-        const adZones = document.querySelectorAll('.ad-zone');
-        adZones.forEach(zone => {
-            zone.innerHTML = `
-                <div style="
-                    background: linear-gradient(45deg, #ffd700, #ffed4e);
-                    color: #333;
-                    padding: 20px;
-                    border-radius: 15px;
-                    text-align: center;
-                    font-weight: bold;
-                    box-shadow: 0 4px 15px rgba(255,215,0,0.3);
-                ">
-                    👑 VIP Premium - Sin Anuncios
-                    <div style="font-size: 0.9em; margin-top: 8px;">
-                        Disfruta de la experiencia completa
-                    </div>
-                </div>
-            `;
-        });
+  }
+  
+  loadEroAdvertising() {
+    if (typeof window.eaCtrl === 'undefined') {
+      window.eaCtrlRecs = [];
+      window.eaCtrl = {
+        add: function(ag) { window.eaCtrlRecs.push(ag); }
+      };
+      const script = document.createElement('script');
+      script.src = '//go.easrv.cl/loadeactrl.go?pid=152716&spaceid=8177575&ctrlid=798544';
+      document.head.appendChild(script);
     }
-
-    // Tracking de clics en anuncios
-    trackAdClick(network, zone) {
-        if (typeof gtag !== 'undefined') {
-            gtag('event', 'ad_click', {
-                event_category: 'Advertising',
-                event_label: `${network} - Zone: ${zone}`,
-                value: 1
-            });
-        }
-        
-        console.log(`📊 Ad click tracked: ${network} - ${zone}`);
-    }
-
-    // Actualizar estado VIP
-    updateVIPStatus() {
-        this.checkVIPStatus();
-        
-        if (this.vipUser) {
-            this.hideAllAds();
-        } else {
-            // Recargar anuncios si perdió estado VIP
-            location.reload();
-        }
-    }
+  }
+  
+  loadPopAds() {
+    const code = `(function(){var p=window,j="e494ffb82839a29122608e933394c091",d=[["siteId",4601234],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],v=[],e=-1,a,y,m=function(){clearTimeout(y);e++;a=p.document.createElement("script");a.type="text/javascript";a.async=!0;var s=p.document.getElementsByTagName("script")[0];a.src="https://www.premiumvertising.com/zS/bwdvf/ttabletop.min.js";a.crossOrigin="anonymous";a.onerror=m;a.onload=function(){clearTimeout(y);p[j.slice(0,16)+j.slice(0,16)]||m()};y=setTimeout(m,5E3);s.parentNode.insertBefore(a,s)};if(!p[j]){try{Object.freeze(p[j]=d)}catch(e){}m()}})();`;
+    const script = document.createElement('script');
+    script.textContent = code;
+    document.body.appendChild(script);
+  }
 }
 
-// Exportar globalmente
-window.AdsManager = AdsManager;
-
-// Auto-inicializar
-document.addEventListener('DOMContentLoaded', () => {
+// Inicializar cuando el DOM esté listo
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
     window.adsManager = new AdsManager();
-    
-    // Esperar un poco para que carguen otros scripts
-    setTimeout(() => {
-        window.adsManager.initialize();
-    }, 2000);
-});
-
-console.log('🎯 AdsManager loaded');
+    window.adsManager.init();
+  });
+} else {
+  window.adsManager = new AdsManager();
+  window.adsManager.init();
+}

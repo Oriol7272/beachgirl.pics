@@ -43,3 +43,122 @@ h1{font-size:28px;margin:12px 0 16px}
 
 /* Lifetime promo */
 .notice{margin:10px 0;padding:8px 10px;border:1px dashed #34507a;background:#0f1520;border-radius:10px;color:#d2d9e6;font-size:13px}
+
+/* ===== ESTILOS PARA ANUNCIOS ===== */
+.ad-sidebar {
+  position: fixed;
+  top: 100px;
+  width: 160px;
+  z-index: 100;
+}
+
+.ad-sidebar.ad-left {
+  left: 10px;
+}
+
+.ad-sidebar.ad-right {
+  right: 10px;
+}
+
+.ad-container {
+  width: 160px;
+  min-height: 600px;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.ad-banner {
+  width: 100%;
+  max-width: 728px;
+  margin: 20px auto;
+  min-height: 90px;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive - ocultar sidebars en móvil */
+@media (max-width: 1200px) {
+  .ad-sidebar {
+    display: none;
+  }
+}
+
+/* Ajustar contenido principal para dejar espacio a los anuncios */
+@media (min-width: 1201px) {
+  main, .content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+}
+
+/* ===== ESTILOS PARA ANUNCIOS ===== */
+.ad-sidebar {
+  position: fixed;
+  top: 100px;
+  width: 160px;
+  z-index: 100;
+}
+
+.ad-sidebar.ad-left {
+  left: 10px;
+}
+
+.ad-sidebar.ad-right {
+  right: 10px;
+}
+
+.ad-container {
+  width: 160px;
+  min-height: 600px;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.ad-banner {
+  width: 100%;
+  max-width: 728px;
+  margin: 20px auto;
+  min-height: 90px;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Responsive - ocultar sidebars en móvil */
+@media (max-width: 1200px) {
+  .ad-sidebar {
+    display: none;
+  }
+}
+
+/* Ajustar contenido principal para dejar espacio a los anuncios */
+@media (min-width: 1201px) {
+  main, .content, #gallery {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+}
+
+/* Fix para que los anuncios no se superpongan al contenido */
+body {
+  padding: 0 180px;
+}
+
+@media (max-width: 1200px) {
+  body {
+    padding: 0;
+  }
+}
