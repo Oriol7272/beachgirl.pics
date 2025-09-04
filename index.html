@@ -92,7 +92,6 @@
             position: relative;
         }
         
-        /* Decorative elements using gradients */
         body::before {
             content: '';
             position: fixed;
@@ -108,7 +107,6 @@
             z-index: 0;
         }
         
-        /* Simple wave decoration */
         .wave-decoration {
             position: absolute;
             bottom: 0;
@@ -119,7 +117,6 @@
             pointer-events: none;
         }
         
-        /* Floating decorative elements */
         .floating-elements {
             position: fixed;
             top: 0;
@@ -140,7 +137,6 @@
             50% { transform: translateY(-20px); }
         }
         
-        /* Hero Banner */
         .hero-banner {
             height: 70vh;
             display: flex;
@@ -179,7 +175,6 @@
             opacity: 0.95;
         }
         
-        /* Navigation */
         .nav-bar {
             background: rgba(0,0,0,0.3);
             backdrop-filter: blur(20px);
@@ -219,7 +214,6 @@
             transform: translateY(-2px);
         }
         
-        /* Sections */
         .section {
             padding: 80px 20px;
             max-width: 1400px;
@@ -244,7 +238,6 @@
             opacity: 0.9;
         }
         
-        /* Content Grid */
         .content-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -309,7 +302,6 @@
             background: #003087;
         }
         
-        /* Carousel */
         .carousel-container {
             overflow: hidden;
             border-radius: 20px;
@@ -347,7 +339,6 @@
             color: white;
         }
         
-        /* Video Items */
         .video-item {
             background: rgba(255,255,255,0.1);
             border-radius: 12px;
@@ -406,7 +397,6 @@
             font-size: 0.8em;
         }
         
-        /* Language Selector */
         .language-selector {
             position: fixed;
             top: 20px;
@@ -423,7 +413,6 @@
             cursor: pointer;
         }
         
-        /* Chatbot */
         .chatbot-container {
             position: fixed;
             bottom: 30px;
@@ -501,7 +490,6 @@
             cursor: pointer;
         }
         
-        /* Loading */
         .loading {
             display: flex;
             justify-content: center;
@@ -523,7 +511,6 @@
             100% { transform: rotate(360deg); }
         }
         
-        /* Footer */
         footer {
             padding: 50px 20px 30px;
             text-align: center;
@@ -531,7 +518,6 @@
             margin-top: 80px;
         }
         
-        /* Responsive */
         @media (max-width: 768px) {
             .hero-title { font-size: 3.5em; }
             .hero-subtitle { font-size: 1.5em; }
@@ -544,7 +530,6 @@
     </style>
 </head>
 <body>
-    <!-- Load Content Data Files -->
     <script src="content-data1.js"></script>
     <script src="content-data2.js"></script>
     <script src="content-data3.js"></script>
@@ -552,7 +537,6 @@
     <script src="content-data5.js"></script>
     <script src="content-data6.js"></script>
 
-    <!-- Tropical decorations with emojis -->
     <div class="floating-elements">
         <span class="floating-emoji" style="top: 10%; left: 5%; font-size: 3em; opacity: 0.2;">🌴</span>
         <span class="floating-emoji" style="top: 70%; right: 8%; font-size: 2.5em; opacity: 0.2;">🏖️</span>
@@ -560,7 +544,6 @@
         <span class="floating-emoji" style="top: 40%; right: 15%; font-size: 2.8em; opacity: 0.2;">☀️</span>
     </div>
 
-    <!-- Language Selector -->
     <div class="language-selector">
         <select id="languageSelect">
             <option value="es">🇪🇸 Español</option>
@@ -571,7 +554,6 @@
         </select>
     </div>
 
-    <!-- Hero Banner -->
     <div class="hero-banner">
         <div class="hero-content">
             <h1 class="hero-title">BEACHGIRL</h1>
@@ -580,7 +562,6 @@
         <div class="wave-decoration"></div>
     </div>
 
-    <!-- Navigation -->
     <nav class="nav-bar">
         <div class="nav-container">
             <div class="nav-links">
@@ -592,19 +573,15 @@
         </div>
     </nav>
 
-    <!-- Gallery Section -->
     <div class="section" id="gallery">
         <h2 class="section-title">Paradise Gallery</h2>
         <p class="section-desc">Colección actualizada diariamente desde la playa</p>
         
         <div class="carousel-container">
-            <div class="carousel" id="galleryCarousel">
-                <!-- Carousel items will be loaded here -->
-            </div>
+            <div class="carousel" id="galleryCarousel"></div>
         </div>
     </div>
 
-    <!-- Premium Photos Section -->
     <div class="section" id="premium">
         <h2 class="section-title">Premium Photos Collection</h2>
         <p class="section-desc">
@@ -616,12 +593,9 @@
             <div class="spinner"></div>
         </div>
         
-        <div class="content-grid" id="premiumGrid" style="display: none;">
-            <!-- Premium photos will be loaded here -->
-        </div>
+        <div class="content-grid" id="premiumGrid" style="display: none;"></div>
     </div>
 
-    <!-- Videos Section -->
     <div class="section" id="videos">
         <h2 class="section-title">Premium Videos Collection</h2>
         <p class="section-desc">20 videos HD exclusivos • €0.30 c/u</p>
@@ -630,12 +604,9 @@
             <div class="spinner"></div>
         </div>
         
-        <div class="content-grid" id="videosGrid" style="display: none;">
-            <!-- Premium videos will be loaded here -->
-        </div>
+        <div class="content-grid" id="videosGrid" style="display: none;"></div>
     </div>
 
-    <!-- Chatbot -->
     <div class="chatbot-container">
         <button class="chatbot-toggle" onclick="toggleChatbot()">💬</button>
         <div class="chatbot-window" id="chatWindow">
@@ -655,23 +626,19 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer>
         <p>🌴 BeachGirl.pics - Paradise Collection 🌴</p>
         <p style="margin-top: 10px; opacity: 0.7;">© 2025 - Premium Content from Paradise Beach</p>
     </footer>
 
     <script>
-        // Global variables
         let currentLanguage = 'es';
         let fullImages = [];
         let premiumImages = [];
         let premiumVideos = [];
         let chatbotOpen = false;
 
-        // Initialize content
         function initializeContent() {
-            // Get content from data files
             if (window.FULL_IMAGES_POOL) {
                 fullImages = window.FULL_IMAGES_POOL.slice(0, 20);
             }
@@ -694,7 +661,6 @@
             });
         }
 
-        // Load gallery carousel
         function loadGalleryCarousel() {
             const carousel = document.getElementById('galleryCarousel');
             const items = fullImages.slice(0, 10);
@@ -704,24 +670,20 @@
             items.forEach((image, index) => {
                 const item = document.createElement('div');
                 item.className = 'carousel-item';
-                item.innerHTML = \`
-                    <img src="\${image}" alt="Paradise \${index + 1}" loading="lazy">
-                    <div class="carousel-overlay">
-                        <strong>Paradise \${index + 1}</strong>
-                    </div>
-                \`;
+                item.innerHTML = '<img src="' + image + '" alt="Paradise ' + (index + 1) + '" loading="lazy">' +
+                    '<div class="carousel-overlay">' +
+                    '<strong>Paradise ' + (index + 1) + '</strong>' +
+                    '</div>';
                 carousel.appendChild(item);
             });
 
-            // Auto-scroll
             let scrollPos = 0;
             setInterval(() => {
                 scrollPos = (scrollPos + 1) % Math.max(items.length - 3, 1);
-                carousel.style.transform = \`translateX(-\${scrollPos * 320}px)\`;
+                carousel.style.transform = 'translateX(-' + (scrollPos * 320) + 'px)';
             }, 4000);
         }
 
-        // Load premium photos
         function loadPremiumPhotos() {
             setTimeout(() => {
                 const grid = document.getElementById('premiumGrid');
@@ -732,15 +694,13 @@
                 premiumImages.slice(0, 100).forEach((photo, index) => {
                     const item = document.createElement('div');
                     item.className = 'content-item';
-                    item.innerHTML = \`
-                        <img src="\${photo}" alt="Premium \${index + 1}" loading="lazy">
-                        <div class="content-overlay-simple">
-                            <div class="price-small">€0.10</div>
-                            <button class="paypal-icon-btn" onclick="showPaymentModal('photo', '0.10', 'Premium Photo \${index + 1}')">
-                                💳
-                            </button>
-                        </div>
-                    \`;
+                    item.innerHTML = '<img src="' + photo + '" alt="Premium ' + (index + 1) + '" loading="lazy">' +
+                        '<div class="content-overlay-simple">' +
+                        '<div class="price-small">€0.10</div>' +
+                        '<button class="paypal-icon-btn" onclick="showPaymentModal(\'photo\', \'0.10\', \'Premium Photo ' + (index + 1) + '\')">' +
+                        '💳' +
+                        '</button>' +
+                        '</div>';
                     grid.appendChild(item);
                 });
                 
@@ -749,7 +709,6 @@
             }, 1500);
         }
 
-        // Load premium videos
         function loadPremiumVideos() {
             setTimeout(() => {
                 const grid = document.getElementById('videosGrid');
@@ -760,21 +719,19 @@
                 premiumVideos.forEach((video, index) => {
                     const item = document.createElement('div');
                     item.className = 'video-item';
-                    item.innerHTML = \`
-                        <div class="video-thumbnail">
-                            <video muted preload="metadata">
-                                <source src="\${video}" type="video/mp4">
-                            </video>
-                            <div class="play-button">▶️</div>
-                            <div class="video-duration">2:30</div>
-                            <div class="content-overlay-simple">
-                                <div class="price-small">€0.30</div>
-                                <button class="paypal-icon-btn" onclick="showPaymentModal('video', '0.30', 'Premium Video \${index + 1}')">
-                                    💳
-                                </button>
-                            </div>
-                        </div>
-                    \`;
+                    item.innerHTML = '<div class="video-thumbnail">' +
+                        '<video muted preload="metadata">' +
+                        '<source src="' + video + '" type="video/mp4">' +
+                        '</video>' +
+                        '<div class="play-button">▶️</div>' +
+                        '<div class="video-duration">2:30</div>' +
+                        '<div class="content-overlay-simple">' +
+                        '<div class="price-small">€0.30</div>' +
+                        '<button class="paypal-icon-btn" onclick="showPaymentModal(\'video\', \'0.30\', \'Premium Video ' + (index + 1) + '\')">' +
+                        '💳' +
+                        '</button>' +
+                        '</div>' +
+                        '</div>';
                     grid.appendChild(item);
                 });
                 
@@ -783,13 +740,11 @@
             }, 1500);
         }
 
-        // Show payment modal
         function showPaymentModal(type, price, description) {
-            console.log(\`Payment: \${type} - €\${price} - \${description}\`);
-            alert(\`PayPal: \${description} - €\${price}\`);
+            console.log('Payment: ' + type + ' - €' + price + ' - ' + description);
+            alert('PayPal: ' + description + ' - €' + price);
         }
 
-        // Chatbot functions
         function toggleChatbot() {
             chatbotOpen = !chatbotOpen;
             document.getElementById('chatWindow').style.display = chatbotOpen ? 'flex' : 'none';
@@ -802,19 +757,17 @@
             
             if (!message) return;
             
-            // Add user message
             const userMsg = document.createElement('div');
             userMsg.style.cssText = 'text-align: right; margin: 15px 0;';
-            userMsg.innerHTML = \`<span style="background: #0ea5e9; color: white; padding: 10px 15px; border-radius: 15px; display: inline-block; max-width: 70%;">\${message}</span>\`;
+            userMsg.innerHTML = '<span style="background: #0ea5e9; color: white; padding: 10px 15px; border-radius: 15px; display: inline-block; max-width: 70%;">' + message + '</span>';
             messages.appendChild(userMsg);
             
             input.value = '';
             
-            // Bot response
             setTimeout(() => {
                 const botMsg = document.createElement('div');
                 botMsg.style.cssText = 'margin: 15px 0;';
-                botMsg.innerHTML = \`<span style="background: #f0f0f0; padding: 10px 15px; border-radius: 15px; display: inline-block; max-width: 70%; color: #333;"><strong>Isabella:</strong> ¡Gracias por tu mensaje! Estoy aquí para ayudarte con cualquier duda sobre nuestro contenido premium. 🌴</span>\`;
+                botMsg.innerHTML = '<span style="background: #f0f0f0; padding: 10px 15px; border-radius: 15px; display: inline-block; max-width: 70%; color: #333;"><strong>Isabella:</strong> ¡Gracias por tu mensaje! Estoy aquí para ayudarte con cualquier duda sobre nuestro contenido premium. 🌴</span>';
                 messages.appendChild(botMsg);
                 messages.scrollTop = messages.scrollHeight;
             }, 1000);
@@ -828,7 +781,6 @@
             }
         }
 
-        // Check age verification
         function checkAgeVerification() {
             const verified = localStorage.getItem('ageVerified');
             if (!verified || verified !== 'true') {
@@ -838,24 +790,19 @@
             return true;
         }
 
-        // Initialize
         document.addEventListener('DOMContentLoaded', function() {
-            // Check age
             if (!checkAgeVerification()) return;
             
-            // Initialize content
             initializeContent();
             loadGalleryCarousel();
             loadPremiumPhotos();
             loadPremiumVideos();
             
-            // Language selector
             document.getElementById('languageSelect').addEventListener('change', function() {
                 currentLanguage = this.value;
                 console.log('Language changed to:', currentLanguage);
             });
             
-            // Service Worker
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('/service-worker.js')
                     .then(reg => console.log('Service Worker registered'))
