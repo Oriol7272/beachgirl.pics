@@ -71,51 +71,51 @@
 
     <!-- Inicialización principal -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+                document.addEventListener('DOMContentLoaded', function() {
             console.log('🌴 BeachGirl.pics loaded successfully');
             
-            // Inicializar galería
-            if (window.ContentAPI) {
-                const api = new window.ContentAPI();
+            // Inicializar con la API correcta
+            if (window.UnifiedContentAPI) {
+                const api = new window.UnifiedContentAPI();
                 const gallery = document.getElementById('gallery');
                 const premiumGrid = document.getElementById('premium-grid');
                 const videosGrid = document.getElementById('videos-grid');
                 
-                // Cargar imágenes públicas
-                const publicImages = api.getPublicImages(20);
-                publicImages.forEach(function(img) {
+                // Cargar contenido mixto para la galería
+                const mixedContent = api.getMixedContent(20);
+                mixedContent.forEach(function(item) {
                     const div = document.createElement('div');
                     div.className = 'gallery-item';
-                    div.innerHTML = '<img src="' + img + '" loading="lazy" alt="Beach content">';
+                    if (item.type === 'video') {
+                        div.innerHTML = '<video src="' + item.url + '" controls preload="metadata"></video>';
+                    } else {
+                        div.innerHTML = '<img src="' + item.url + '" loading="lazy" alt="' + (item.isPremium ? 'Premium' : 'Public') + '">';
+                    }
                     gallery.appendChild(div);
                 });
                 
-                // Cargar contenido premium
-                const premiumImages = api.getPremiumImages(10);
-                premiumImages.forEach(function(img) {
+                // Cargar más contenido premium
+                const premiumContent = api.getPremiumContent(10);
+                premiumContent.forEach(function(item) {
                     const div = document.createElement('div');
                     div.className = 'premium-item';
-                    div.innerHTML = '<img src="' + img + '" loading="lazy" alt="Premium content">';
+                    div.innerHTML = '<img src="' + item.url + '" loading="lazy" alt="Premium">';
                     premiumGrid.appendChild(div);
                 });
                 
                 // Cargar videos
-                const videos = api.getVideos(6);
-                videos.forEach(function(video) {
+                const videos = api.getVideoContent(6);
+                videos.forEach(function(item) {
                     const div = document.createElement('div');
                     div.className = 'video-item';
-                    div.innerHTML = '<video src="' + video + '" controls preload="metadata"></video>';
+                    div.innerHTML = '<video src="' + item.url + '" controls preload="metadata"></video>';
                     videosGrid.appendChild(div);
                 });
                 
-                console.log('Content loaded:', {
-                    public: publicImages.length,
-                    premium: premiumImages.length,
-                    videos: videos.length
-                });
+                console.log('Content loaded successfully');
             }
             
-            // Service Worker (simplificado)
+            // Service Worker
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.register('/service-worker.js')
                     .then(function(reg) {
@@ -126,6 +126,7 @@
                     });
             }
         });
+
     </script>
 </body>
 </html>
