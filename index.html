@@ -803,10 +803,6 @@
                 console.log('Language changed to:', currentLanguage);
             });
             
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('/service-worker.js')
-                    .then(reg => console.log('Service Worker registered'))
-                    .catch(err => console.log('Service Worker error:', err));
             }
             
             console.log('🌴 BeachGirl.pics loaded successfully');
