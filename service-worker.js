@@ -1,1 +1,1 @@
-// Service Worker temporarily disabled
+// Service Worker temporarily disabled for debugging
