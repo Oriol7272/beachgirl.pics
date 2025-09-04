@@ -1,57 +1,48 @@
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Loading BeachGirl.pics content...');
+    console.log('Initializing BeachGirl.pics...');
     
-    // Esperar a que todos los scripts carguen
+    // Esperar a que content-data2.js cargue y exponga window.G.publicImages
     setTimeout(function() {
         const galleryContainer = document.getElementById('gallery-container');
         const carouselContainer = document.getElementById('carousel-container');
         
-        // Los datos están en window (global) pero no en window.G
-        // content-data2.js los expone directamente
         let allImages = [];
         
-        // Intentar obtener las imágenes de diferentes formas
-        if (window.contentData2 && window.contentData2.publicImages) {
-            allImages = window.contentData2.publicImages;
-            console.log('Found images in contentData2');
+        // Los datos están en window.G.publicImages (cargados por content-data2.js)
+        if (window.G && window.G.publicImages) {
+            allImages = window.G.publicImages;
+            console.log(`Found ${allImages.length} images from content-data2.js`);
         } else {
-            // Si no están disponibles, usar un conjunto hardcodeado temporal
-            console.log('Using hardcoded images as fallback');
-            // Listar todos los archivos webp de /full/
-            const files = ['0456996c-b56e-42ef-9049-56b1a1ae2646.webp','0lySugcO4Pp4pEZKvz9U.webp','0nSaCJQxbVw4BDrhnhHO.webp','0Tc8Vtd0mEIvNHZwYGBq.webp','13TXvyRVZ7LtvAOx7kme.webp','18VQaczW5kdfdiqUVasH.webp','1dEu25K0mS3zxRlXRjHR.webp','1qEBcg9QbkZRRdLt0Chc.webp','1tt8H4fX3XzyV90HjNG3.webp','27bGIzFFpej5ubUkvykD.webp','2gjqH68H586TKLDK9lh9.webp','2yw4sowPh3Tyln5oxRdw.webp','39GYGt3bticS0Mjbud0p.webp','3IWka3fnP9b8yz6j5l91.webp','3ZYL4GCUOs3rfq3iTPJ7.webp','4GN6i0Db2hl4Ck9vf0LE.webp','4YhoIAWSbVaOqBhAOGqR.webp'];
-            allImages = files.map(f => `/full/${f}`);
+            console.error('window.G.publicImages not available yet');
+            return;
         }
         
-        console.log(`Found ${allImages.length} images total`);
+        // Carousel con TODAS las imágenes de window.G.publicImages
+        if (carouselContainer && allImages.length > 0) {
+            carouselContainer.innerHTML = `
+                <h2 style="padding: 0 2rem; margin-bottom: 1rem; font-family: 'Sexy Beachy', cursive; font-size: 3rem;">Featured Content</h2>
+                <div class="carousel-track">
+                    ${allImages.map(img => `
+                        <div class="carousel-slide">
+                            <img src="${img}" alt="Beach Content" loading="lazy">
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            console.log('Carousel loaded with all', allImages.length, 'images');
+        }
         
-        if (allImages.length > 0) {
-            // Carousel con todas las imágenes
-            if (carouselContainer) {
-                carouselContainer.innerHTML = `
-                    <h2 style="padding: 0 2rem; margin-bottom: 1rem; font-family: 'Sexy Beachy', cursive; font-size: 2.5rem;">Featured Content</h2>
-                    <div class="carousel-track">
-                        ${allImages.map(img => `
-                            <div class="carousel-slide">
-                                <img src="${img}" alt="Beach Girl" loading="lazy">
-                            </div>
-                        `).join('')}
-                    </div>
-                `;
-                console.log('Carousel populated');
-            }
+        // Gallery con 40 imágenes aleatorias
+        if (galleryContainer && allImages.length > 0) {
+            const shuffled = [...allImages].sort(() => Math.random() - 0.5);
+            const galleryImages = shuffled.slice(0, 40);
             
-            // Gallery con 40 imágenes aleatorias
-            if (galleryContainer) {
-                const shuffled = [...allImages].sort(() => Math.random() - 0.5);
-                const galleryImages = shuffled.slice(0, 40);
-                
-                galleryContainer.innerHTML = galleryImages.map(img => `
-                    <div class="gallery-item">
-                        <img src="${img}" alt="Gallery" loading="lazy">
-                    </div>
-                `).join('');
-                console.log('Gallery populated with', galleryImages.length, 'images');
-            }
+            galleryContainer.innerHTML = galleryImages.map(img => `
+                <div class="gallery-item">
+                    <img src="${img}" alt="Gallery" loading="lazy">
+                </div>
+            `).join('');
+            console.log('Gallery loaded with', galleryImages.length, 'random images');
         }
-    }, 1000); // Aumentar el delay a 1 segundo
+    }, 2000); // Esperar 2 segundos para asegurar que todo esté cargado
 });
