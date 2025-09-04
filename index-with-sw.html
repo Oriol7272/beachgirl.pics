@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeachGirl.pics - Paradise Content</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #1a1a2e; color: white; }
+        
+        /* Header */
+        header { 
+            background: linear-gradient(135deg, #667eea, #764ba2); 
+            text-align: center; 
+            padding: 40px 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        header h1 { font-size: 3em; margin-bottom: 10px; }
+        
+        /* Banner rotativo */
+        .banner-section {
+            height: 400px;
+            background: #222;
+            position: relative;
+            overflow: hidden;
+            margin: 20px;
+            border-radius: 10px;
+        }
+        .banner-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+        .banner-slide.active { opacity: 1; }
+        .banner-slide img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover;
+        }
+        
+        /* Carousel */
+        .carousel-section {
+            margin: 40px 20px;
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .carousel-container {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            padding: 20px 0;
+            scroll-behavior: smooth;
+        }
+        .carousel-item {
+            min-width: 300px;
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .carousel-item:hover { transform: scale(1.05); }
+        .carousel-item img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover;
+        }
+        
+        /* Secciones */
+        .section {
+            margin: 40px 20px;
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .section h2 {
+            color: #ff6b6b;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+        
+        /* Grid principal */
+        .main-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .gallery-item:hover { transform: scale(1.05); }
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        /* Videos */
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        .video-item {
+            border-radius: 10px;
+            overflow: hidden;
+            background: #000;
+        }
+        .video-item video {
+            width: 100%;
+            height: 250px;
+        }
+        
+        /* Premium section */
+        .premium-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: gold;
+            color: black;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+        
+        /* Anuncios */
+        .ad-left, .ad-right {
+            position: fixed;
+            width: 160px;
+            height: 600px;
+            top: 120px;
+            z-index: 1000;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 5px;
+        }
+        .ad-left { left: 10px; }
+        .ad-right { right: 10px; }
+        .ad-bottom {
+            margin: 40px auto;
+            width: 728px;
+            height: 90px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 5px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1400px) {
+            .ad-left, .ad-right { display: none; }
+        }
+        @media (max-width: 768px) {
+            .carousel-item { min-width: 200px; }
+            .videos-grid { grid-template-columns: 1fr; }
+            .ad-bottom { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🌴 BEACHGIRL.PICS 🌴</h1>
+        <p>Paradise for Your Enjoyment - Premium Content</p>
+    </header>
+    
+    <!-- Banner rotativo -->
+    <section class="banner-section" id="banner">
+        <div class="banner-slide active">
+            <img src="/full/bikbanner.webp" alt="Banner 1">
+        </div>
+    </section>
+    
+    <!-- Carousel horizontal -->
+    <section class="carousel-section">
+        <h2>🔥 Hot Picks</h2>
+        <div class="carousel-container" id="carousel"></div>
+    </section>
+    
+    <!-- Galería principal -->
+    <section class="section">
+        <h2>📸 Photo Gallery</h2>
+        <div class="main-gallery" id="gallery"></div>
+    </section>
+    
+    <!-- Sección Premium -->
+    <section class="section">
+        <h2>⭐ Premium Content</h2>
+        <div class="main-gallery" id="premium-gallery"></div>
+    </section>
+    
+    <!-- Videos -->
+    <section class="section">
+        <h2>🎥 Video Collection</h2>
+        <div class="videos-grid" id="videos"></div>
+    </section>
+    
+    <!-- Anuncio inferior -->
+    <div class="ad-bottom" id="ad-bottom"></div>
+    
+    <!-- Anuncios laterales -->
+    <div class="ad-left" id="ad-left"></div>
+    <div class="ad-right" id="ad-right"></div>
+    
+    <!-- Scripts de contenido -->
+    <script src="content-data1.js"></script>
+    <script src="content-data2.js"></script>
+    <script src="content-data3.js"></script>
+    <script src="content-data4.js"></script>
+    <script src="content-data5.js"></script>
+    <script src="content-data6.js"></script>
+    
+    <script>
+    window.addEventListener('load', function() {
+        // BANNER ROTATIVO
+        if (window.PUBLIC_BANNERS_POOL) {
+            const banner = document.getElementById('banner');
+            let currentBanner = 0;
+            
+            // Crear slides del banner
+            window.PUBLIC_BANNERS_POOL.forEach((img, i) => {
+                if (i === 0) return; // Primera ya está
+                const slide = document.createElement('div');
+                slide.className = 'banner-slide';
+                slide.innerHTML = '<img src="/' + img + '" alt="Banner ' + (i+1) + '">';
+                banner.appendChild(slide);
+            });
+            
+            // Rotar banners cada 3 segundos
+            setInterval(() => {
+                const slides = banner.querySelectorAll('.banner-slide');
+                slides[currentBanner].classList.remove('active');
+                currentBanner = (currentBanner + 1) % slides.length;
+                slides[currentBanner].classList.add('active');
+            }, 3000);
+        }
+        
+        // CAROUSEL
+        const carousel = document.getElementById('carousel');
+        if (window.PUBLIC_TEASERS_POOL) {
+            window.PUBLIC_TEASERS_POOL.forEach((img, i) => {
+                const item = document.createElement('div');
+                item.className = 'carousel-item';
+                item.innerHTML = '<img src="/' + img + '" alt="Teaser ' + i + '">';
+                carousel.appendChild(item);
+            });
+        }
+        
+        // GALERÍA PRINCIPAL
+        const gallery = document.getElementById('gallery');
+        if (window.PUBLIC_IMAGES_POOL) {
+            window.PUBLIC_IMAGES_POOL.slice(0, 24).forEach((img, i) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.innerHTML = '<img src="/' + img + '" alt="Gallery ' + i + '">';
+                gallery.appendChild(item);
+            });
+        }
+        
+        // GALERÍA PREMIUM
+        const premiumGallery = document.getElementById('premium-gallery');
+        if (window.PREMIUM_IMAGES_POOL_1) {
+            window.PREMIUM_IMAGES_POOL_1.slice(0, 12).forEach((img, i) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.innerHTML = '<img src="/' + img + '" alt="Premium ' + i + '"><span class="premium-badge">PREMIUM</span>';
+                premiumGallery.appendChild(item);
+            });
+        }
+        
+        // VIDEOS
+        const videos = document.getElementById('videos');
+        if (window.PREMIUM_VIDEOS_POOL) {
+            window.PREMIUM_VIDEOS_POOL.slice(0, 6).forEach((video, i) => {
+                const item = document.createElement('div');
+                item.className = 'video-item';
+                item.innerHTML = '<video src="/' + video + '" controls preload="metadata"></video>';
+                videos.appendChild(item);
+            });
+        }
+        
+        // ANUNCIOS
+        function loadAds() {
+            // Lateral izquierdo
+            document.getElementById('ad-left').innerHTML = '<ins class="eas6a97888e2" data-zoneid="5696328"></ins>';
+            // Lateral derecho
+            document.getElementById('ad-right').innerHTML = '<ins class="eas6a97888e2" data-zoneid="5696328"></ins>';
+            // Inferior
+            document.getElementById('ad-bottom').innerHTML = '<ins class="eas6a97888e2" data-zoneid="5696328"></ins>';
+            
+            // Cargar ExoClick
+            if (!document.querySelector('script[src*="magsrv.com"]')) {
+                const script = document.createElement('script');
+                script.async = true;
+                script.src = 'https://a.magsrv.com/ad-provider.js';
+                document.head.appendChild(script);
+                script.onload = function() {
+                    (window.AdProvider = window.AdProvider || []).push({"serve": {}});
+                };
+            }
+        }
+        
+        loadAds();
+        
+        console.log('✅ Todo el contenido cargado');
+    });
+    </script>
+</body>
+</html>
