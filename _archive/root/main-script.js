@@ -1,5 +1,5 @@
 // ============================
-// IBIZAGIRL.PICS - MAIN SCRIPT v4.1.0
+// beachgirl.pics - MAIN SCRIPT v4.1.0
 // Sistema Principal con Integración Modular
 // ============================
 
@@ -13,7 +13,7 @@ const CONFIG = {
     version: '4.1.0',
     debug: false,
     api: {
-        baseUrl: 'https://ibizagirl.pics',
+        baseUrl: 'https://beachgirl.pics',
         timeout: 10000,
         retryAttempts: 3
     },
@@ -39,7 +39,7 @@ const CONFIG = {
 
 const ENVIRONMENT = {
     isDevelopment: window.location.hostname === 'localhost',
-    isProduction: window.location.hostname === 'ibizagirl.pics',
+    isProduction: window.location.hostname === 'beachgirl.pics',
     isMobile: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
 };
 
@@ -474,7 +474,7 @@ function selectPlan(planType) {
                             value: price.toFixed(2),
                             currency_code: 'EUR'
                         },
-                        description: `VIP ${planType} - IbizaGirl.pics`
+                        description: `VIP ${planType} - beachgirl.pics`
                     }]
                 });
             },
@@ -517,7 +517,7 @@ function initializePayment(type, item, price) {
                             value: price.toFixed(2),
                             currency_code: 'EUR'
                         },
-                        description: `${type} - ${item} - IbizaGirl.pics`
+                        description: `${type} - ${item} - beachgirl.pics`
                     }]
                 });
             },
@@ -750,7 +750,7 @@ function toggleIsabella() {
 
 async function initializeApplication() {
     try {
-        console.log('🚀 Initializing IbizaGirl.pics v' + CONFIG.version);
+        console.log('🚀 Initializing beachgirl.pics v' + CONFIG.version);
         
         // Generar ID de sesión
         state.sessionId = generateSessionId();
@@ -991,7 +991,7 @@ function showFallbackContent() {
             padding: 2rem;
         ">
             <div>
-                <h1>🌊 IbizaGirl.pics</h1>
+                <h1>🌊 beachgirl.pics</h1>
                 <p>Estamos experimentando dificultades técnicas.</p>
                 <p>Por favor, recarga la página en unos momentos.</p>
                 <button onclick="window.location.reload()" style="

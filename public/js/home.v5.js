@@ -52,7 +52,7 @@
     return el('header',{className:'header'},
       el('div',{className:'container'},
         el('nav',{className:'nav'},[
-          el('div',{className:'brand'},'ibizagirl.pics'),
+          el('div',{className:'brand'},'beachgirl.pics'),
           el('div',{className:'menu'},[
             el('a',{href:'/'},'Home'),
             el('a',{href:'/premium.html'},'Premium'),
@@ -67,7 +67,7 @@
   function buildHero(){
     return el('section',{className:'hero'},
       el('div',{className:'container'},[
-        el('h1',{},'ibizagirl.pics'),
+        el('h1',{},'beachgirl.pics'),
         el('p',{},'Bienvenidos al paraíso')
       ])
     );

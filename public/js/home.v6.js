@@ -7,7 +7,7 @@
   function nav(){return el('header',{className:'header'},
     el('div',{className:'container'},
       el('nav',{className:'nav'},[
-        el('div',{className:'brand'},'ibizagirl.pics'),
+        el('div',{className:'brand'},'beachgirl.pics'),
         el('div',{className:'menu'},[
           el('a',{href:'/'},'Home'),
           el('a',{href:'/premium.html'},'Premium'),
@@ -18,7 +18,7 @@
     )
   );}
   const hero=()=>el('section',{className:'hero'},
-    el('div',{className:'container'},[el('h1',{},'ibizagirl.pics'),el('p',{},'Bienvenidos al paraíso')])
+    el('div',{className:'container'},[el('h1',{},'beachgirl.pics'),el('p',{},'Bienvenidos al paraíso')])
   );
   const ads=()=>el('aside',{className:'sidebar'},el('div',{className:'box ads-slot'},'Ad slot'));
 
