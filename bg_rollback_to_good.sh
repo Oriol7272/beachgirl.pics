@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# ibg_rollback_to_good.sh — Vuelve EXACTO a un commit bueno y despliega en Vercel.
+# bg_rollback_to_good.sh — Vuelve EXACTO a un commit bueno y despliega en Vercel.
 # - Crea un tag de rescate de tu estado actual por si quieres volver.
 # - Resetea 'main' al commit indicado.
 # - Empuja con --force-with-lease.
@@ -7,7 +7,7 @@
 set -euo pipefail
 
 TEAM="oriols-projects-ed6b9b04"
-PROJECT="ibizagirl-deployable2"
+PROJECT="beachgirl-deployable2"
 BRANCH="main"
 COMMIT="db8c40ef634741f841b94edaa3a5988b09086c28"   # <- cámbialo si quieres otro
 

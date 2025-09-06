@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PROJECT="${PROJECT:-ibizagirl-final}"
+PROJECT="${PROJECT:-beachgirl-final}"
 TEAM="${TEAM:-oriols-projects-ed6b9b04}"
-DOMAIN="${DOMAIN:-ibizagirl.pics}"
+DOMAIN="${DOMAIN:-beachgirl.pics}"
 
 command -v node >/dev/null || { echo "Falta node"; exit 1; }
 command -v npm  >/dev/null || { echo "Falta npm"; exit 1; }
@@ -29,7 +29,7 @@ node_modules/
 *.log
 .DS_Store
 .vscode/
-ibg_audit/
+bg_audit/
 _backup_*/
 scripts/
 tools/
@@ -62,7 +62,7 @@ add_env JUICYADS_ZONE "1099637"
 add_env POPADS_SITE_ID "e494ffb82839a29122608e933394c091"
 add_env EXOCLICK_ZONE "5696328"
 add_env EROADVERTISING_ZONE "8177575"
-add_env IBG_ASSETS_BASE_URL "https://ibizagirl-assets.s3.eu-north-1.amazonaws.com"
+add_env IBG_ASSETS_BASE_URL "https://beachgirl-assets.s3.eu-north-1.amazonaws.com"
 
 # 4) Dominio en Vercel (idempotente)
 vercel domains add "$DOMAIN" --scope "$TEAM" >/dev/null || true

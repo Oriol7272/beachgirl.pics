@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# ibg_hotfix_hide_artifacts_and_empty_slots.sh
+# bg_hotfix_hide_artifacts_and_empty_slots.sh
 # - No toca la lógica de anuncios existente.
 # - Mantiene: laterales (#ad-left/#ad-right/.ad-left/.ad-right) y el inferior (#ad-bottom/#ad-sticky-bottom/.ad-bottom/.ad-sticky-bottom).
 # - Oculta SOLO contenedores de anuncios vacíos (sin iframe/img/ins) y el artefacto visual sobre el menú.
@@ -7,7 +7,7 @@
 set -euo pipefail
 
 TEAM="oriols-projects-ed6b9b04"
-PROJECT="ibizagirl-deployable2"
+PROJECT="beachgirl-deployable2"
 
 echo "== 0) Prechequeos =="
 [ -d .git ] || { echo "❌ No veo .git. Sitúate en la carpeta del repo."; exit 1; }

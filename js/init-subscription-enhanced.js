@@ -20,7 +20,7 @@
         Payments.renderLifetime({
           container: '#paypal-lifetime',
           price: cfg.lifetime?.price || 100.00,
-          description: cfg.lifetime?.description || 'Acceso lifetime a IbizaGirl.pics'
+          description: cfg.lifetime?.description || 'Acceso lifetime a BeachGirl.pics'
         });
       }
     }catch(e){ console.warn('subs/lifetime', e); }

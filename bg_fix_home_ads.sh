@@ -2,7 +2,7 @@
 set -euo pipefail
 
 TEAM="oriols-projects-ed6b9b04"
-PROJECT="ibizagirl-deployable2"
+PROJECT="beachgirl-deployable2"
 
 echo "== 0) Verificaciones previas =="
 [ -d .git ] || { echo "❌ No estás en la raíz del repo (no hay .git)"; exit 1; }

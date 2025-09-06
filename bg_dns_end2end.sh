@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-DOMAIN="${DOMAIN:-ibizagirl.pics}"
+DOMAIN="${DOMAIN:-beachgirl.pics}"
 TTL="${TTL:-300}"
 
 need(){ command -v "$1" >/dev/null || { echo "Falta $1"; exit 1; }; }

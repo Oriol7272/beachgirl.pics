@@ -2,8 +2,8 @@
 set -euo pipefail
 
 TEAM="oriols-projects-ed6b9b04"
-PROJECT="ibizagirl-final"
-DOMAIN="ibizagirl.pics"
+PROJECT="beachgirl-final"
+DOMAIN="beachgirl.pics"
 
 need(){ command -v "$1" >/dev/null || { echo "Falta $1"; exit 1; }; }
 need node; need npm; command -v vercel >/dev/null || npm i -g vercel@latest >/dev/null
@@ -22,8 +22,8 @@ echo "== 2) Refrescar estado en Vercel (UI) =="
 open_url "https://vercel.com/dashboard?team=$TEAM"
 open_url "https://vercel.com/$TEAM/$PROJECT/settings/domains"
 echo "En esa pantalla, pulsa 'Refresh' en:"
-echo "  • ibizagirl.pics"
-echo "  • www.ibizagirl.pics"
+echo "  • beachgirl.pics"
+echo "  • www.beachgirl.pics"
 echo "hasta que marque 'Valid Configuration'."
 read -r -p "Pulsa ENTER cuando lo hayas hecho... " _
 

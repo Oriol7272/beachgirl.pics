@@ -5,7 +5,7 @@
 set -euo pipefail
 
 TEAM="oriols-projects-ed6b9b04"
-PROJECT="ibizagirl-deployable2"
+PROJECT="beachgirl-deployable2"
 
 echo "== 0) Prechequeos =="
 [ -f "index.html" ] || { echo "❌ No encuentro index.html en la raíz."; exit 1; }

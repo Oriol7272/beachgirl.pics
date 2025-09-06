@@ -8,5 +8,5 @@ window.IBG_ENV = {
   JUICYADS_ZONE: "1099637",
   EXOCLICK_ZONE: "5696328",
   EROADVERTISING_ZONE: "8177575",
-  IBG_ASSETS_BASE_URL: "https://ibizagirl-assets.s3.eu-north-1.amazonaws.com"
+  IBG_ASSETS_BASE_URL: "https://beachgirl-assets.s3.eu-north-1.amazonaws.com"
 };

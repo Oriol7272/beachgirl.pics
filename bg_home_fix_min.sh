@@ -2,7 +2,7 @@
 set -euo pipefail
 
 TEAM="oriols-projects-ed6b9b04"
-PROJECT="ibizagirl-deployable2"
+PROJECT="beachgirl-deployable2"
 FILE="index.html"
 
 echo "== PRE =="

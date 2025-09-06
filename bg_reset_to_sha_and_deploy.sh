@@ -7,7 +7,7 @@ REMOTE="origin"
 
 # Ajusta si tu scope/proyecto cambian
 TEAM="oriols-projects-ed6b9b04"
-PROJECT="ibizagirl-deployable2"
+PROJECT="beachgirl-deployable2"
 
 echo "== Verificaciones previas =="
 [ -d .git ] || { echo "❌ Aquí no hay un repo git."; exit 1; }

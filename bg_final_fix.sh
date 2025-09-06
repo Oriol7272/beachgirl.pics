@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
-# ibg_final_fix.sh — Repara 404 de JS, orden de carga, artefacto header,
+# bg_final_fix.sh — Repara 404 de JS, orden de carga, artefacto header,
 # oculta solo slots vacíos inferiores, asegura PopAds, commit y despliegue.
 set -euo pipefail
 
 TEAM="oriols-projects-ed6b9b04"
-PROJECT="ibizagirl-deployable2"
+PROJECT="beachgirl-deployable2"
 
 [ -f index.html ] || { echo "❌ No encuentro index.html en la raíz del repo."; exit 1; }
 mkdir -p public/js
@@ -51,7 +51,7 @@ cat > public/js/ibg-home-fixes.js <<'JS'
       if(keep) return; if(!hasAdContent(el)) hide(el);
     });
   }
-  function ensurePopAds(){var a=window.__IBG_ADS||{}; if(!(a.POPADS_ENABLE&&a.POPADS_SITE_ID)) return; var init=window.__IBG_POPADS_INIT||window.__ibg_popads_init||window.ibgPopadsInit; try{if(typeof init==='function')init();}catch(e){}}
+  function ensurePopAds(){var a=window.__IBG_ADS||{}; if(!(a.POPADS_ENABLE&&a.POPADS_SITE_ID)) return; var init=window.__IBG_POPADS_INIT||window.__bg_popads_init||window.ibgPopadsInit; try{if(typeof init==='function')init();}catch(e){}}
   function run(){fixHeaderArtifact();restoreWanted();removeEmptyBottom();ensurePopAds();}
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();
 })();

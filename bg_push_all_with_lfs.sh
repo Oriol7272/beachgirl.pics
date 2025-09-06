@@ -5,10 +5,10 @@
 set -euo pipefail
 
 # === Ajustes básicos ===
-REPO_EXPECTED="ibizagirl-deployable2"
+REPO_EXPECTED="beachgirl-deployable2"
 BRANCH="main"
 REMOTE="origin"
-REPO_URL_DEFAULT="https://github.com/Oriol7272/ibizagirl-deployable2.git"
+REPO_URL_DEFAULT="https://github.com/Oriol7272/beachgirl-deployable2.git"
 
 echo "== 0) Comprobaciones previas =="
 # 0.1 Asegúrate de estar en la raíz del repo correcto

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# ibg_fix_home.sh
+# bg_fix_home.sh
 # - Restaura anuncio derecho + mantiene sticky inferior
 # - Re-asegura PopAds (sin duplicar)
 # - Elimina SOLO slots vacíos inferiores
@@ -9,7 +9,7 @@
 set -euo pipefail
 
 TEAM="oriols-projects-ed6b9b04"
-PROJECT="ibizagirl-deployable2"
+PROJECT="beachgirl-deployable2"
 
 [ -f index.html ] || { echo "❌ No encuentro index.html en la raíz del repo."; exit 1; }
 mkdir -p public/js
@@ -114,7 +114,7 @@ cat > public/js/ibg-home-fixes.js <<'JS'
     if (!window.__IBG_ADS) return;
     if (!window.__IBG_ADS.POPADS_ENABLE || !window.__IBG_ADS.POPADS_SITE_ID) return;
     // Reintento amable: si existe un init expuesto por tu integrador, llámalo; si no, no pasa nada
-    var init = window.__IBG_POPADS_INIT || window.__ibg_popads_init || window.ibgPopadsInit;
+    var init = window.__IBG_POPADS_INIT || window.__bg_popads_init || window.ibgPopadsInit;
     try { if (typeof init === 'function') init(); } catch(e){}
   }
 

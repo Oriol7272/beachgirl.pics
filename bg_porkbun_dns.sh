@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-DOMAIN="${DOMAIN:-ibizagirl.pics}"
+DOMAIN="${DOMAIN:-beachgirl.pics}"
 PORKBUN_API_KEY="${PORKBUN_API_KEY:-CHANGE_ME}"
 PORKBUN_SECRET_KEY="${PORKBUN_SECRET_KEY:-CHANGE_ME}"
 TTL="${TTL:-300}"

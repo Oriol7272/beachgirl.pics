@@ -2,13 +2,13 @@
 set -euo pipefail
 
 # === Valores que Vercel te recomienda en tu captura ===
-DOMAIN="${DOMAIN:-ibizagirl.pics}"
+DOMAIN="${DOMAIN:-beachgirl.pics}"
 NEW_APEX_A="${NEW_APEX_A:-216.150.1.1}"
 NEW_WWW_CNAME="${NEW_WWW_CNAME:-7e70297310cbcf57.vercel-dns-016.com.}"   # FQDN (con punto final OK)
 TTL="${TTL:-300}"
 
 TEAM="oriols-projects-ed6b9b04"
-PROJECT="ibizagirl-final"
+PROJECT="beachgirl-final"
 
 need(){ command -v "$1" >/dev/null || { echo "Falta $1"; exit 1; }; }
 need curl
@@ -108,12 +108,12 @@ fi
 # --- Refresco/inspección en Vercel ---
 echo "== Abre y pulsa REFRESH en Settings → Domains =="
 open_url "https://vercel.com/oriols-projects-ed6b9b04/$PROJECT/settings/domains"
-echo "   (en ibizagirl.pics y www.ibizagirl.pics) hasta ver 'Valid Configuration'."
+echo "   (en beachgirl.pics y www.beachgirl.pics) hasta ver 'Valid Configuration'."
 
 # Comprobaciones rápidas HTTP
 echo "== HTTP check =="
-curl -sS -o /dev/null -w "ibizagirl.pics -> %{http_code}\n" "https://$DOMAIN/"
-curl -sS -o /dev/null -w "www.ibizagirl.pics -> %{http_code}\n" "https://www.$DOMAIN/"
+curl -sS -o /dev/null -w "beachgirl.pics -> %{http_code}\n" "https://$DOMAIN/"
+curl -sS -o /dev/null -w "www.beachgirl.pics -> %{http_code}\n" "https://www.$DOMAIN/"
 
 # (Opcional) inspección CLI
 if command -v vercel >/dev/null; then

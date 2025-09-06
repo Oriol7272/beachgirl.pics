@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-DOMAIN="${DOMAIN:-ibizagirl.pics}"
+DOMAIN="${DOMAIN:-beachgirl.pics}"
 NEW_APEX_A="${NEW_APEX_A:-216.150.1.1}"
 NEW_WWW_CNAME="${NEW_WWW_CNAME:-7e70297310cbcf57.vercel-dns-016.com.}"
 TTL="${TTL:-300}"

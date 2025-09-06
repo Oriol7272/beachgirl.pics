@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# ibg_audit_cleanup.sh — Audita el repo y propone qué eliminar con seguridad.
+# bg_audit_cleanup.sh — Audita el repo y propone qué eliminar con seguridad.
 # NO borra nada. Genera:
 #   - cleanup_report.txt   (informe)
 #   - delete_candidates.sh (rm -rf de candidatos, NO se ejecuta)
@@ -63,7 +63,7 @@ if [ -d "ads" ]; then
   find ads -maxdepth 1 -type f -name "test-*.html" -print >> .candidates.tmp || true
 fi
 # Scripts de mantenimiento que no quieres en el repo
-find . -maxdepth 1 -type f -name "ibg_*.sh" -print >> .candidates.tmp || true
+find . -maxdepth 1 -type f -name "bg_*.sh" -print >> .candidates.tmp || true
 
 # 2) Archivos 0 bytes o directorios vacíos
 echo "== Archivos 0 bytes / directorios vacíos ==" | tee -a "$REPORT"

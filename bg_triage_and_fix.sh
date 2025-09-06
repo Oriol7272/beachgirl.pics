@@ -2,8 +2,8 @@
 set -euo pipefail
 
 TEAM="oriols-projects-ed6b9b04"
-PROJECT="ibizagirl-final"
-DOMAIN="ibizagirl.pics"
+PROJECT="beachgirl-final"
+DOMAIN="beachgirl.pics"
 
 need(){ command -v "$1" >/dev/null || { echo "Falta $1"; exit 1; }; }
 need curl; need sed; need awk

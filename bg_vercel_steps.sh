@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PROJECT="${PROJECT:-ibizagirl-final}"
+PROJECT="${PROJECT:-beachgirl-final}"
 TEAM_SLUG="${TEAM_SLUG:-oriols-projects-ed6b9b04}"
-DOMAIN="${DOMAIN:-ibizagirl.pics}"
+DOMAIN="${DOMAIN:-beachgirl.pics}"
 
 command -v node >/dev/null || { echo "Falta node"; exit 1; }
 command -v npm  >/dev/null || { echo "Falta npm"; exit 1; }
@@ -31,7 +31,7 @@ echo
 echo "== PASO 2 · Revisar DOMAINS asignados =="
 echo "   Ambos dominios deben estar 'Assigned to Production'."
 open_url "https://vercel.com/$TEAM_SLUG/$PROJECT/settings/domains"
-read -r -p "Pulsa ENTER tras confirmar que ibizagirl.pics y www.ibizagirl.pics están asignados... " _
+read -r -p "Pulsa ENTER tras confirmar que beachgirl.pics y www.beachgirl.pics están asignados... " _
 
 echo
 echo "== PASO 3 · (Opcional) Forzar nuevo deploy de producción =="

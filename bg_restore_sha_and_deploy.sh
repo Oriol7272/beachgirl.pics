@@ -6,7 +6,7 @@ BRANCH="main"
 REMOTE="origin"
 
 TEAM="oriols-projects-ed6b9b04"
-PROJECT="ibizagirl-deployable2"
+PROJECT="beachgirl-deployable2"
 
 echo "== 1) Verificaciones =="
 [ -d .git ] || { echo "❌ No veo .git aquí. Sitúate en la carpeta del repo."; exit 1; }

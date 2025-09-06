@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-PROJECT="${PROJECT:-ibizagirl-final}"
+PROJECT="${PROJECT:-beachgirl-final}"
 TEAM_SLUG="${TEAM_SLUG:-oriols-projects-ed6b9b04}"
-DOMAIN="${DOMAIN:-ibizagirl.pics}"
+DOMAIN="${DOMAIN:-beachgirl.pics}"
 
 need(){ command -v "$1" >/dev/null || { echo "Falta $1"; exit 1; }; }
 need node; need npm; command -v vercel >/dev/null || npm i -g vercel@latest >/dev/null
@@ -45,7 +45,7 @@ Ahora, dentro de Settings, haz esto manualmente:
      - Protected Paths: vacío (borra /* si existe)
      Guarda cambios.
   B) Menú lateral -> "Domains"
-     - Asegúrate de que ibizagirl.pics y www.ibizagirl.pics están "Assigned to Production".
+     - Asegúrate de que beachgirl.pics y www.beachgirl.pics están "Assigned to Production".
 TXT
 read -r -p "Pulsa ENTER cuando hayas aplicado A) y B)... " _
 
