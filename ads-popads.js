@@ -16,7 +16,7 @@
       try{
         PopAds.setSiteId(sid);
         PopAds.start();
-        console.log("IBG_ADS: POP mounted ->", sid);
+        console.log("BG_ADS: POP mounted ->", sid);
         done=true;
       }catch(e){ console.log("[ads-popads] API not ready, retry", e); setTimeout(tryLoad, 1200); }
     });

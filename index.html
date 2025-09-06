@@ -4,7 +4,7 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <title>BeachGirl · Home</title>
   <link rel="icon" href="/favicon.ico">
-  <link rel="stylesheet" href="/css/ibg.css">
+  <link rel="stylesheet" href="/css/bg.css">
   <script defer src="/js/env-inline.js"></script>
   <script defer src="/js/decorative-manifest.js"></script>
   <script defer src="/js/utils.js"></script>
@@ -29,14 +29,14 @@
   <script defer src="/js/ads-ero-ctrl.js"></script>
   <script defer src="/js/ads-debug.js"></script>
   <script defer src="/js/ads-exo-sides.js"></script>
-  <style>/* IBG_ADS_BASE */ .ad-side{position:fixed;top:120px;z-index:9998;width:300px}.ad-side#ad-left{left:8px}.ad-side#ad-right{right:8px}@media(max-width:1200px){.ad-side{display:none}} .ad-box{max-width:300px;margin:16px auto}</style>
+  <style>/* BG_ADS_BASE */ .ad-side{position:fixed;top:120px;z-index:9998;width:300px}.ad-side#ad-left{left:8px}.ad-side#ad-right{right:8px}@media(max-width:1200px){.ad-side{display:none}} .ad-box{max-width:300px;margin:16px auto}</style>
   <style id="ads-sides-css">\n  .ad-side{position:fixed;top:80px;z-index:9999;width:160px;min-height:600px;display:flex;justify-content:center}\n  #ad-left{left:0}\n  #ad-right{right:0}\n  @media (max-width:1200px){ .ad-side{display:none} }\n  </style>\n
   <style id="ads-core-css">.ad-side{min-width:300px}.ad-box{width:300px;min-height:250px;margin:16px auto;display:block}@media(max-width:1200px){.ad-side{display:none}}</style>
 
   <style id="ads-fallback-css">\n  .ad-side{min-width:300px}\n  #ad-left,#ad-right{width:300px;min-height:250px;margin:16px auto;display:block}\n  @media(max-width:1200px){#ad-left,#ad-right{display:none}}\n  .house-ad{display:flex;flex-direction:column;align-items:center;justify-content:center;width:300px;height:250px;border-radius:10px;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.15);background:linear-gradient(135deg,#0ea5e9,#6366f1);color:white;font-weight:600;gap:8px}\n  .house-ad strong{font-size:22px;letter-spacing:.3px}\n  .house-ad span{font-size:13px;opacity:.9}\n  </style>\n
   <style id="ads-bottom-css">\n  .ads-bottom-row{display:grid;grid-template-columns:repeat(2,300px);gap:20px;place-content:center;margin:24px 0}\n  .ad-box{width:300px;min-height:250px}\n  @media(max-width:900px){.ads-bottom-row{grid-template-columns:1fr}.ad-box{margin:0 auto}}\n  /* Desactiva cualquier badge/house anterior */\n  [data-house], .house-ad, .sponsored-badge{display:none!important}\n  </style>\n
   <script defer src="/js/ads-bottom-row.js"></script>
-  <style id="ibg-home-trim">
+  <style id="bg-home-trim">
     /* ===== HOME: ocultar slots vacíos; mantener laterales y bottom ===== */
     /* Placeholders/debug vacíos */
     .ad-placeholder, .ad-box.debug, .ad-debug-frame, .ad-empty, .ad-slot.empty {
@@ -59,7 +59,7 @@
     #ad-bottom, .ad-bottom { display:block !important; }
   </style>
 
-  <style id="ibg-cleanup-css">
+  <style id="bg-cleanup-css">
     /* Oculta artefacto fino sobre el menú */
     header + .artifact, .top-artifact, .menu-artifact { display: none !important; }
     body > .artifact, body > .decorative-line { display: none !important; }
@@ -120,10 +120,10 @@
   </div>
 
   <div class="container"><div class="slot-bottom" id="slot-bottom"></div></div>
-<script>document.addEventListener("DOMContentLoaded",function(){ try{ (window.IBG_ADS.initAds||window.IBG_ADS.init)(); }catch(e){ console.warn(e);} });</script>  <script src="js/ads-ero-ctrl.js"></script>
+<script>document.addEventListener("DOMContentLoaded",function(){ try{ (window.BG_ADS.initAds||window.BG_ADS.init)(); }catch(e){ console.warn(e);} });</script>  <script src="js/ads-ero-ctrl.js"></script>
   <script src="js/ads-popads.js"></script>
 <div id="ad-sponsor" class="ad-box ad-sponsor"></div>
-  <!-- IBG_ADS_START -->
+  <!-- BG_ADS_START -->
   <script src="/js/env-ads-inline.js" defer></script>
   <script src="/js/ads-exo-common.js" defer></script>
   <script src="/js/ads-exo-sides.js" defer></script>
