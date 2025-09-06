@@ -7,7 +7,6 @@
 console.log("📦 Cargando módulo content-data2.js - Imágenes públicas (127 archivos)...");
 
 const FULL_IMAGES_POOL = [
-    "full/0456996c-b56e-42ef-9049-56b1a1ae2646.webp",
     "full/0Tc8Vtd0mEIvNHZwYGBq.webp",
     "full/0lySugcO4Pp4pEZKvz9U.webp",
     "full/0nSaCJQxbVw4BDrhnhHO.webp",
