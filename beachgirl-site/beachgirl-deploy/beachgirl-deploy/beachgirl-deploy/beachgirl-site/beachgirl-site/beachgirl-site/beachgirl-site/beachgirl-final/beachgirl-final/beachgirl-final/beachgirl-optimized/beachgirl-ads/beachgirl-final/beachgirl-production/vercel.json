@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "name": "beachgirl-pics",
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        }
+      ]
+    }
+  ]
+}

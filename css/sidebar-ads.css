@@ -1,0 +1,81 @@
+/* ==================== ANUNCIOS LATERALES FIJOS ==================== */
+:root {
+    --sidebar-width: 300px;
+    --sidebar-gap: 20px;
+    --header-height: 60px;
+}
+
+/* Reset de anuncios centrales - OCULTAR TODOS */
+.ad-sponsor, .ad-top, .ad-header, .ad-center,
+#ad-sponsor, #ad-ero, #ad-bottom-row,
+.slot-bottom, .slot-center {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Contenedor principal con espacio para laterales */
+body {
+    position: relative;
+    min-height: 100vh;
+}
+
+main, .main-content, .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+/* LATERALES FIJOS - SIEMPRE VISIBLES */
+#ad-left, #ad-right,
+.ad-lateral.left, .ad-lateral.right {
+    position: fixed !important;
+    top: calc(var(--header-height) + 20px) !important;
+    width: var(--sidebar-width) !important;
+    min-height: 600px !important;
+    z-index: 100 !important;
+    display: block !important;
+    visibility: visible !important;
+    background: transparent;
+}
+
+#ad-left, .ad-lateral.left {
+    left: var(--sidebar-gap) !important;
+}
+
+#ad-right, .ad-lateral.right {
+    right: var(--sidebar-gap) !important;
+}
+
+/* Contenedor de anuncio ExoClick */
+#ad-left ins, #ad-right ins,
+.ad-lateral ins {
+    display: block !important;
+    width: 300px !important;
+    height: 250px !important;
+    margin-bottom: 20px;
+}
+
+/* Ocultar en móviles y tablets */
+@media (max-width: 1600px) {
+    #ad-left, #ad-right,
+    .ad-lateral {
+        display: none !important;
+    }
+}
+
+/* En pantallas muy grandes, ajustar contenido principal */
+@media (min-width: 1600px) {
+    main, .main-content {
+        padding: 0 calc(var(--sidebar-width) + var(--sidebar-gap) * 2);
+    }
+}
+
+/* Limpiar cualquier sticky bottom */
+#ad-sticky-bottom, .ad-sticky-bottom,
+#ad-bottom, .ad-bottom {
+    display: none !important;
+}

@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeachGirl.pics - Bienvenido al Paraíso</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- JuicyAds -->
+    <script type="text/javascript" src="https://poweredby.jads.co/js/jads.js"></script>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            background: linear-gradient(135deg, #051a2b 0%, #0a304f 50%, #16578b 100%);
+            color: white;
+            font-family: 'Dancing Script', cursive;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Contenedor principal con espacio para anuncios */
+        .main-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            padding: 0 180px; /* Espacio para anuncios laterales */
+        }
+        
+        /* ANUNCIOS LATERALES */
+        .ad-lateral {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 160px;
+            height: 600px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+        
+        .ad-lateral.left {
+            left: 10px;
+        }
+        
+        .ad-lateral.right {
+            right: 10px;
+        }
+        
+        /* Navegación */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 25px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        
+        nav a:hover {
+            transform: translateY(-2px);
+            text-shadow: 0 5px 15px rgba(255,255,255,0.5);
+        }
+        
+        /* Título Principal */
+        h1 {
+            font-family: 'Alex Brush', cursive;
+            font-size: 140px;
+            text-align: center;
+            margin: 60px 0 20px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            background: linear-gradient(45deg, #fff, #f4e4c1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 60px;
+            opacity: 0.95;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+        
+        /* CARRUSEL AUTOMÁTICO */
+        .carousel-section {
+            position: relative;
+            margin: 50px 0;
+        }
+        
+        .carousel-title {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 30px;
+            font-family: 'Alex Brush', cursive;
+        }
+        
+        .carousel-container {
+            position: relative;
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
+            padding: 30px;
+            overflow: hidden;
+        }
+        
+        .carousel-wrapper {
+            overflow: hidden;
+            position: relative;
+            height: 400px;
+        }
+        
+        .carousel-track {
+            display: flex;
+            gap: 20px;
+            animation: slideShow 40s linear infinite;
+            position: absolute;
+        }
+        
+        @keyframes slideShow {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        
+        .carousel-item {
+            flex: 0 0 300px;
+            height: 380px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .carousel-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Botones del Carrusel */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.2);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+        
+        .carousel-btn:hover {
+            background: rgba(255,255,255,0.4);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carousel-btn.prev { left: 10px; }
+        .carousel-btn.next { right: 10px; }
+        
+        /* Galería */
+        .gallery-section {
+            margin: 50px 0;
+        }
+        
+        .gallery-title {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 30px;
+            font-family: 'Alex Brush', cursive;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
+        }
+        
+        .gallery-item {
+            aspect-ratio: 4/5;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* ANUNCIO INFERIOR */
+        .ad-bottom {
+            margin: 60px auto 40px;
+            max-width: 728px;
+            height: 90px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(0,0,0,0.5);
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+        }
+        
+        /* Responsive - Ocultar anuncios en móvil */
+        @media (max-width: 1400px) {
+            .main-wrapper { padding: 0 20px; }
+            .ad-lateral { display: none; }
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 80px; }
+            .carousel-item { flex: 0 0 200px; height: 250px; }
+            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+            .ad-bottom { 
+                max-width: 320px;
+                height: 50px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 { font-size: 60px; }
+            nav { gap: 15px; }
+            nav a { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- ANUNCIO LATERAL IZQUIERDO -->
+    <div class="ad-lateral left">
+        <div id="ad-left">
+            <!-- JuicyAds 160x600 -->
+            <script type="text/javascript">
+                (adsbyjuicy = window.adsbyjuicy || []).push({'adzone': 1014470});
+            </script>
+            <ins id="1014470" data-width="160" data-height="600"></ins>
+        </div>
+    </div>
+    
+    <!-- ANUNCIO LATERAL DERECHO -->
+    <div class="ad-lateral right">
+        <div id="ad-right">
+            <!-- ExoClick 160x600 -->
+            <script type="text/javascript">
+                var ExoLoader = ExoLoader || {};
+                ExoLoader.addZone({"zone_id": 5702700, "width": 160, "height": 600});
+            </script>
+            <script src="https://a.exoclick.com/ads.js"></script>
+        </div>
+    </div>
+    
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="main-wrapper">
+        <!-- Navegación -->
+        <nav>
+            <a href="/">Home</a>
+            <a href="/premium.html">Premium</a>
+            <a href="/videos.html">Videos</a>
+            <a href="/subscriptions.html">Subscriptions</a>
+        </nav>
+        
+        <!-- Banner Principal -->
+        <h1>beachgirl.pics</h1>
+        <p class="subtitle">Bienvenido al Paraíso</p>
+        
+        <!-- CARRUSEL AUTOMÁTICO -->
+        <section class="carousel-section">
+            <h2 class="carousel-title">Galería Destacada - Rotación Automática</h2>
+            <div class="carousel-container">
+                <button class="carousel-btn prev" onclick="pauseAndMove(-1)">❮</button>
+                <div class="carousel-wrapper">
+                    <div id="carousel" class="carousel-track"></div>
+                </div>
+                <button class="carousel-btn next" onclick="pauseAndMove(1)">❯</button>
+            </div>
+        </section>
+        
+        <!-- GALERÍA -->
+        <section class="gallery-section">
+            <h2 class="gallery-title">Explora el Paraíso</h2>
+            <div id="gallery" class="gallery-grid"></div>
+        </section>
+        
+        <!-- ANUNCIO INFERIOR -->
+        <div class="ad-bottom">
+            <div id="ad-bottom">
+                <!-- EroAdvertising 728x90 -->
+                <script type="text/javascript">
+                    var ero_ads_zone = 8177575;
+                    var ero_ads_width = 728;
+                    var ero_ads_height = 90;
+                </script>
+                <script type="text/javascript" src="https://ads.ero-advertising.com/iframe.js"></script>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2025 BeachGirl.pics - Premium Beach Paradise Gallery</p>
+            <p>🌴 Welcome to Paradise 🌴</p>
+        </footer>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="js/content-data2.js"></script>
+    <script>
+        // JavaScript para Carrusel Automático y Galería
+        const BASE_URL = "https://raw.githubusercontent.com/Oriol7272/beachgirl.pics/main/";
+        let carouselInterval;
+        let currentIndex = 0;
+        let carouselItems = [];
+        
+        function initImages() {
+            if (typeof FULL_IMAGES_POOL === 'undefined') {
+                console.error('content-data2.js no cargado');
+                return;
+            }
+            
+            // Mezclar imágenes
+            const shuffled = [...FULL_IMAGES_POOL].sort(() => Math.random() - 0.5);
+            
+            // CARRUSEL: 40 imágenes (duplicadas para loop infinito)
+            const carousel = document.getElementById('carousel');
+            const carouselImages = shuffled.slice(0, 40);
+            
+            // Crear elementos del carrusel (duplicar para efecto infinito)
+            [...carouselImages, ...carouselImages].forEach((img, i) => {
+                const div = document.createElement('div');
+                div.className = 'carousel-item';
+                div.innerHTML = `<img src="${BASE_URL}${img}" alt="Beach ${i+1}" loading="lazy">`;
+                carousel.appendChild(div);
+            });
+            
+            carouselItems = carousel.querySelectorAll('.carousel-item');
+            
+            // GALERÍA: otras 40 imágenes
+            const gallery = document.getElementById('gallery');
+            shuffled.slice(40, 80).forEach((img, i) => {
+                const div = document.createElement('div');
+                div.className = 'gallery-item';
+                div.innerHTML = `<img src="${BASE_URL}${img}" alt="Paradise ${i+1}" loading="lazy">`;
+                gallery.appendChild(div);
+            });
+            
+            console.log('✅ Cargadas 40 imágenes en carrusel + 40 en galería');
+            
+            // Iniciar rotación automática
+            startAutoRotation();
+        }
+        
+        // Rotación automática - 1 imagen por segundo
+        function startAutoRotation() {
+            const carousel = document.getElementById('carousel');
+            carousel.style.animation = 'none';
+            
+            carouselInterval = setInterval(() => {
+                currentIndex++;
+                const itemWidth = 320; // 300px + 20px gap
+                const offset = currentIndex * itemWidth;
+                carousel.style.transform = `translateX(-${offset}px)`;
+                carousel.style.transition = 'transform 1s ease';
+                
+                // Reset cuando llegue al final
+                if (currentIndex >= 40) {
+                    setTimeout(() => {
+                        carousel.style.transition = 'none';
+                        currentIndex = 0;
+                        carousel.style.transform = 'translateX(0)';
+                        setTimeout(() => {
+                            carousel.style.transition = 'transform 1s ease';
+                        }, 50);
+                    }, 1000);
+                }
+            }, 2000); // Cambiar cada 2 segundos (1s animación + 1s pausa)
+        }
+        
+        // Pausar y mover manualmente
+        function pauseAndMove(direction) {
+            clearInterval(carouselInterval);
+            
+            const carousel = document.getElementById('carousel');
+            const itemWidth = 320;
+            
+            currentIndex += direction;
+            if (currentIndex < 0) currentIndex = 39;
+            if (currentIndex >= 40) currentIndex = 0;
+            
+            carousel.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+            
+            // Reiniciar rotación después de 5 segundos
+            setTimeout(startAutoRotation, 5000);
+        }
+        
+        // Iniciar cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', initImages);
+    </script>
+    
+    <!-- Códigos de anuncios adicionales -->
+    <script type="text/javascript" src="https://a.exoclick.com/tag_gen.js"></script>
+    <script type="text/javascript" src="https://js.juicyads.com/jac.js"></script>
+</body>
+</html>

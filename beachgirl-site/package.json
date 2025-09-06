@@ -1,0 +1,21 @@
+{
+  "name": "beachgirl-pics",
+  "version": "1.0.0",
+  "description": "BeachGirl.pics - Premium Beach Paradise Gallery",
+  "homepage": "https://beachgirl.pics",
+  "scripts": {
+    "dev": "npx live-server --port=8080",
+    "build": "echo 'No build needed for static site'",
+    "deploy": "vercel --prod",
+    "preview": "vercel",
+    "clone-repo": "git clone https://github.com/Oriol7272/beachgirl.pics.git temp-repo",
+    "copy-images": "cp -r temp-repo/full/* ./full/ && cp -r temp-repo/decorative-images/* ./decorative-images/ && rm -rf temp-repo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Oriol7272/beachgirl.pics.git"
+  },
+  "keywords": ["beachgirl", "beach", "gallery", "paradise", "pics"],
+  "author": "BeachGirl",
+  "license": "ISC"
+}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeachGirl.pics - Bienvenido al Paraíso</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Dancing+Script&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: linear-gradient(135deg, #051a2b, #16578b); 
+            color: white; 
+            font-family: 'Dancing Script', cursive;
+            min-height: 100vh;
+        }
+        nav { 
+            display: flex; 
+            justify-content: center; 
+            gap: 40px; 
+            padding: 25px; 
+            background: rgba(0,0,0,0.4); 
+        }
+        nav a { 
+            color: white; 
+            text-decoration: none; 
+            font-size: 22px;
+            transition: transform 0.3s;
+        }
+        nav a:hover {
+            transform: scale(1.1);
+        }
+        h1 { 
+            font-family: 'Alex Brush', cursive; 
+            font-size: 120px; 
+            text-align: center; 
+            margin: 50px 0 20px;
+            text-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        }
+        .subtitle { 
+            text-align: center; 
+            font-size: 36px; 
+            margin-bottom: 50px;
+            opacity: 0.9;
+        }
+        .section {
+            max-width: 1400px;
+            margin: 50px auto;
+            padding: 30px;
+        }
+        h2 {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 30px;
+            font-family: 'Alex Brush', cursive;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .img-box {
+            aspect-ratio: 4/5;
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .img-box:hover {
+            transform: scale(1.05);
+        }
+        .img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .error {
+            text-align: center;
+            padding: 50px;
+            font-size: 24px;
+            color: #ff6b6b;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Premium</a>
+        <a href="#">Videos</a>
+        <a href="#">Subscriptions</a>
+    </nav>
+    
+    <h1>beachgirl.pics</h1>
+    <p class="subtitle">Bienvenido al Paraíso</p>
+    
+    <div class="section">
+        <h2>Galería Destacada</h2>
+        <div id="carousel" class="grid"></div>
+    </div>
+    
+    <div class="section">
+        <h2>Explora el Paraíso</h2>
+        <div id="gallery" class="grid"></div>
+    </div>
+    
+    <script src="js/content-data2.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

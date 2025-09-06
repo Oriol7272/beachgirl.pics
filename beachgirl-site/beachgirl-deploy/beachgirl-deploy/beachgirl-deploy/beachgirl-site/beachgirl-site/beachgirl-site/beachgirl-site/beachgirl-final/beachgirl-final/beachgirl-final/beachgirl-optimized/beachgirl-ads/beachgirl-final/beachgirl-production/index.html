@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeachGirl.pics - Bienvenido al Paraíso</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- PopAds Code -->
+    <script type="text/javascript">
+    /*<![CDATA[/* */
+    var _pop = _pop || [];
+    _pop.push(['siteId', 5235546]);
+    _pop.push(['minBid', 0]);
+    _pop.push(['popundersPerIP', 0]);
+    _pop.push(['delayBetween', 0]);
+    _pop.push(['default', false]);
+    _pop.push(['defaultPerDay', 0]);
+    _pop.push(['topmostLayer', 'auto']);
+    var PopAds = _pop;
+    (function(){
+        var pa = document.createElement('script'); pa.type = 'text/javascript'; pa.async = true;
+        var s = document.getElementsByTagName('script')[0]; 
+        pa.src = '//c1.popads.net/pop.js';
+        pa.onerror = function() {
+            var sa = document.createElement('script'); sa.type = 'text/javascript'; sa.async = true;
+            sa.src = '//c2.popads.net/pop.js';
+            s.parentNode.insertBefore(sa, s);
+        };
+        s.parentNode.insertBefore(pa, s);
+    })();
+    /*]]>/* */
+    </script>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            background: linear-gradient(135deg, #051a2b 0%, #0a304f 50%, #16578b 100%);
+            color: white;
+            font-family: 'Dancing Script', cursive;
+            min-height: 100vh;
+        }
+        
+        .main-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 25px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        
+        nav a:hover {
+            transform: translateY(-2px);
+            text-shadow: 0 5px 15px rgba(255,255,255,0.5);
+        }
+        
+        h1 {
+            font-family: 'Alex Brush', cursive;
+            font-size: 120px;
+            text-align: center;
+            margin: 50px 0 20px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            background: linear-gradient(45deg, #fff, #f4e4c1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 50px;
+            opacity: 0.95;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+        
+        .ad-container {
+            text-align: center;
+            margin: 30px auto;
+            min-height: 90px;
+        }
+        
+        .carousel-section {
+            margin: 40px 0;
+        }
+        
+        .carousel-title {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 25px;
+            font-family: 'Alex Brush', cursive;
+        }
+        
+        .carousel-container {
+            position: relative;
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
+            padding: 25px;
+            overflow: hidden;
+        }
+        
+        .carousel-wrapper {
+            overflow: hidden;
+            position: relative;
+            height: 380px;
+        }
+        
+        .carousel-track {
+            display: flex;
+            gap: 15px;
+            position: absolute;
+            transition: transform 1s ease;
+        }
+        
+        .carousel-item {
+            flex: 0 0 280px;
+            height: 360px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .carousel-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.2);
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 20px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+        
+        .carousel-btn:hover {
+            background: rgba(255,255,255,0.4);
+        }
+        
+        .carousel-btn.prev { left: 10px; }
+        .carousel-btn.next { right: 10px; }
+        
+        .gallery-section {
+            margin: 40px 0;
+        }
+        
+        .gallery-title {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 25px;
+            font-family: 'Alex Brush', cursive;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 18px;
+            padding: 25px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
+        }
+        
+        .gallery-item {
+            aspect-ratio: 4/5;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        footer {
+            background: rgba(0,0,0,0.5);
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 70px; }
+            .subtitle { font-size: 28px; }
+            .carousel-item { flex: 0 0 200px; height: 250px; }
+            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+        }
+        
+        @media (max-width: 480px) {
+            h1 { font-size: 50px; }
+            nav { gap: 15px; }
+            nav a { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-wrapper">
+        <nav>
+            <a href="/">Home</a>
+            <a href="/premium.html">Premium</a>
+            <a href="/videos.html">Videos</a>
+            <a href="/subscriptions.html">Subscriptions</a>
+        </nav>
+        
+        <h1>beachgirl.pics</h1>
+        <p class="subtitle">Bienvenido al Paraíso</p>
+        
+        <!-- ANUNCIO 1: EroAdvertising 8182114 -->
+        <div class="ad-container">
+            <div id="sp_8182114_node">&nbsp;</div>
+        </div>
+        
+        <section class="carousel-section">
+            <h2 class="carousel-title">Galería Destacada</h2>
+            <div class="carousel-container">
+                <button class="carousel-btn prev" onclick="moveCarousel(-1)">❮</button>
+                <div class="carousel-wrapper">
+                    <div id="carousel" class="carousel-track"></div>
+                </div>
+                <button class="carousel-btn next" onclick="moveCarousel(1)">❯</button>
+            </div>
+        </section>
+        
+        <!-- ANUNCIO 2: EroAdvertising 8182132 -->
+        <div class="ad-container">
+            <div id="sp_8182132_node">&nbsp;</div>
+        </div>
+        
+        <!-- ANUNCIO 3: ExoClick 5702700 -->
+        <div class="ad-container">
+            <script type="application/javascript">
+                var ad_idzone = "5702700",
+                    ad_width = "300",
+                    ad_height = "250",
+                    v_pos = "middle",
+                    h_pos = "center"; 
+            </script>
+            <script type="application/javascript" src="https://a.exoclick.com/ads.js"></script>
+        </div>
+        
+        <section class="gallery-section">
+            <h2 class="gallery-title">Explora el Paraíso</h2>
+            <div id="gallery" class="gallery-grid"></div>
+        </section>
+        
+        <!-- ANUNCIO 4: EroAdvertising 8182135 -->
+        <div class="ad-container">
+            <div id="sp_8182135_node">&nbsp;</div>
+        </div>
+        
+        <!-- ANUNCIO 5: ExoClick 5716850 -->
+        <div class="ad-container">
+            <script type="application/javascript">
+                var ad_idzone2 = "5716850",
+                    ad_width2 = "300",
+                    ad_height2 = "250";
+            </script>
+            <script type="application/javascript" src="https://a.exoclick.com/tag_gen.js"></script>
+            <noscript><iframe src="https://syndication.exoclick.com/iframe.php?idzone=5716850" width="300" height="250" frameborder="0"></iframe></noscript>
+        </div>
+        
+        <!-- ANUNCIO 6: ExoClick 5717070 -->
+        <div class="ad-container">
+            <script type="application/javascript">
+                var ad_idzone3 = "5717070",
+                    ad_width3 = "300",  
+                    ad_height3 = "250";
+            </script>
+            <script type="application/javascript" src="https://syndication.exoclick.com/ads.js"></script>
+            <noscript><iframe src="https://syndication.exoclick.com/iframe.php?idzone=5717070" width="300" height="250" frameborder="0"></iframe></noscript>
+        </div>
+        
+        <footer>
+            <p>&copy; 2025 BeachGirl.pics - Premium Beach Paradise Gallery</p>
+            <p>Welcome to Paradise</p>
+        </footer>
+    </div>
+    
+    <!-- Scripts de contenido -->
+    <script src="js/content-data2.js"></script>
+    <script>
+        const BASE_URL = "https://raw.githubusercontent.com/Oriol7272/beachgirl.pics/main/";
+        let carouselInterval;
+        let currentIndex = 0;
+        
+        function initImages() {
+            if (typeof FULL_IMAGES_POOL === 'undefined') {
+                console.error('ERROR: content-data2.js no cargado');
+                return;
+            }
+            
+            const totalImages = FULL_IMAGES_POOL.length;
+            console.log('✅ Iniciando con ' + totalImages + ' imágenes');
+            
+            const shuffled = [...FULL_IMAGES_POOL].sort(() => Math.random() - 0.5);
+            
+            // Carrusel
+            const carousel = document.getElementById('carousel');
+            const carouselImages = shuffled.slice(0, 40);
+            
+            [...carouselImages, ...carouselImages].forEach((img, i) => {
+                const div = document.createElement('div');
+                div.className = 'carousel-item';
+                div.innerHTML = '<img src="' + BASE_URL + img + '" alt="Beach ' + (i+1) + '" loading="lazy">';
+                carousel.appendChild(div);
+            });
+            
+            // Galería
+            const gallery = document.getElementById('gallery');
+            shuffled.slice(40, 80).forEach((img, i) => {
+                const div = document.createElement('div');
+                div.className = 'gallery-item';
+                div.innerHTML = '<img src="' + BASE_URL + img + '" alt="Paradise ' + (i+1) + '" loading="lazy">';
+                gallery.appendChild(div);
+            });
+            
+            console.log('✅ Contenido cargado correctamente');
+            setTimeout(startAutoRotation, 3000);
+        }
+        
+        function startAutoRotation() {
+            carouselInterval = setInterval(() => {
+                moveCarousel(1);
+            }, 2000);
+        }
+        
+        function moveCarousel(direction) {
+            if (carouselInterval) {
+                clearInterval(carouselInterval);
+            }
+            
+            const carousel = document.getElementById('carousel');
+            const items = carousel.querySelectorAll('.carousel-item');
+            if (!items.length) return;
+            
+            const itemWidth = 295;
+            currentIndex += direction;
+            
+            if (currentIndex < 0) {
+                currentIndex = 39;
+            } else if (currentIndex >= 40) {
+                currentIndex = 0;
+                carousel.style.transition = 'none';
+                carousel.style.transform = 'translateX(0)';
+                setTimeout(() => {
+                    carousel.style.transition = 'transform 1s ease';
+                }, 50);
+                return;
+            }
+            
+            carousel.style.transform = 'translateX(-' + (currentIndex * itemWidth) + 'px)';
+            setTimeout(startAutoRotation, 5000);
+        }
+        
+        document.addEventListener('DOMContentLoaded', initImages);
+    </script>
+    
+    <!-- EroAdvertising Scripts -->
+    <script type="text/javascript" charset="utf-8">
+    if (typeof eaCtrl == "undefined") { 
+        var eaCtrlRecs = [];
+        var eaCtrl = {add: function(ag) { eaCtrlRecs.push(ag) }};
+        var js = document.createElement('script');
+        js.setAttribute("src", "//go.easrv.cl/loadeactrl.go?pid=152716&spaceid=8182114&ctrlid=798919");
+        document.head.appendChild(js);
+    }
+    eaCtrl.add({"display": "sp_8182114_node", "sid": 8182114, "plugin": "banner"});
+    eaCtrl.add({"display": "sp_8182132_node", "sid": 8182132, "plugin": "banner"});
+    eaCtrl.add({"display": "sp_8182135_node", "sid": 8182135, "plugin": "banner"});
+    </script>
+</body>
+</html>

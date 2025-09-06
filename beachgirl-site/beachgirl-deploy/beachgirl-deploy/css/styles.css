@@ -1,0 +1,342 @@
+/* BeachGirl.pics - Estilos Completos */
+:root {
+    --ocean-dark: #051a2b;
+    --ocean-medium: #0a304f;
+    --ocean-light: #16578b;
+    --ocean-bright: #2196F3;
+    --sand: #f4e4c1;
+    --coral: #ff6b6b;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.9);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Dancing Script', 'Great Vibes', 'Alex Brush', cursive, serif;
+    background: linear-gradient(135deg, var(--ocean-dark) 0%, var(--ocean-medium) 50%, var(--ocean-light) 100%);
+    color: var(--text-primary);
+    min-height: 100vh;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.05" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,138.7C672,149,768,203,864,213.3C960,224,1056,192,1152,165.3C1248,139,1344,117,1392,106.7L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') bottom repeat-x;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Navegación */
+.navbar {
+    position: relative;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 25px;
+    background: linear-gradient(180deg, rgba(5, 26, 43, 0.95), rgba(10, 48, 79, 0.7));
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.nav-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 600;
+    font-family: 'Great Vibes', cursive;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 5px 15px;
+}
+
+.nav-link:hover {
+    transform: translateY(-3px);
+    text-shadow: 0 5px 20px rgba(255, 255, 255, 0.6);
+}
+
+.nav-link.active {
+    color: var(--sand);
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--sand), transparent);
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* Banner Principal */
+.main-banner {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.banner-images {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://picsum.photos/1920/500?ocean') center/cover;
+    filter: brightness(0.6);
+    animation: zoomIn 20s infinite alternate;
+}
+
+.banner-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 20;
+}
+
+.site-title {
+    font-family: 'Alex Brush', 'Great Vibes', cursive;
+    font-size: 140px;
+    font-weight: 400;
+    text-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, #fff, var(--sand), #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: float 6s ease-in-out infinite;
+}
+
+.site-subtitle {
+    font-family: 'Dancing Script', cursive;
+    font-size: 42px;
+    color: var(--text-secondary);
+    text-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+    animation: float 6s ease-in-out infinite reverse;
+}
+
+/* Títulos de Sección */
+.section-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 56px;
+    text-align: center;
+    margin: 60px 0 40px;
+    text-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+    z-index: 10;
+}
+
+/* Carrusel */
+.carousel-section {
+    padding: 40px 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.carousel-container {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    background: rgba(5, 26, 43, 0.7);
+    border-radius: 20px;
+    padding: 30px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+}
+
+.carousel-wrapper {
+    overflow: hidden;
+    margin: 0 60px;
+}
+
+.carousel-track {
+    display: flex;
+    gap: 20px;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.carousel-item {
+    flex: 0 0 calc(25% - 15px);
+    aspect-ratio: 4/5;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, var(--ocean-bright), var(--coral));
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.carousel-item:hover img {
+    transform: scale(1.1);
+}
+
+.carousel-item .number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 48px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: none;
+    font-size: 36px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-btn:hover {
+    background: rgba(255, 255, 255, 0.4);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+
+/* Galería Principal */
+.gallery-section {
+    padding: 40px 20px 80px;
+    position: relative;
+    z-index: 10;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 30px;
+    background: rgba(5, 26, 43, 0.6);
+    border-radius: 20px;
+    backdrop-filter: blur(8px);
+}
+
+.gallery-item {
+    aspect-ratio: 4/5;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(45deg, var(--ocean-bright), var(--coral));
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.15);
+    filter: brightness(1.2);
+}
+
+.gallery-item .number {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Footer */
+.site-footer {
+    background: linear-gradient(180deg, rgba(5, 26, 43, 0.9), rgba(5, 26, 43, 1));
+    text-align: center;
+    padding: 40px 20px;
+    margin-top: 60px;
+    position: relative;
+    z-index: 10;
+}
+
+.site-footer a {
+    color: var(--sand);
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Animaciones */
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+@keyframes glow {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+@keyframes zoomIn {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    .carousel-item { flex: 0 0 calc(33.333% - 15px); }
+}
+
+@media (max-width: 768px) {
+    .site-title { font-size: 80px; }
+    .site-subtitle { font-size: 28px; }
+    .navbar { flex-wrap: wrap; gap: 15px; }
+    .carousel-item { flex: 0 0 calc(50% - 10px); }
+    .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+}
+
+@media (max-width: 480px) {
+    .site-title { font-size: 60px; }
+    .carousel-item { flex: 0 0 100%; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+}

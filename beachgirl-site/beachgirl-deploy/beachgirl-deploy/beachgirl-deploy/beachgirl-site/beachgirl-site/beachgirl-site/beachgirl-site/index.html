@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeachGirl.pics - Bienvenido al Paraíso</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            background: linear-gradient(135deg, #051a2b 0%, #0a304f 50%, #16578b 100%);
+            color: white;
+            font-family: 'Dancing Script', cursive;
+            min-height: 100vh;
+        }
+        
+        /* Navegación */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 25px;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: 700;
+            transition: all 0.3s;
+        }
+        
+        nav a:hover {
+            transform: translateY(-2px);
+            text-shadow: 0 5px 15px rgba(255,255,255,0.5);
+        }
+        
+        /* Título Principal */
+        h1 {
+            font-family: 'Alex Brush', cursive;
+            font-size: 140px;
+            text-align: center;
+            margin: 60px 0 20px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.7);
+            background: linear-gradient(45deg, #fff, #f4e4c1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 60px;
+            opacity: 0.95;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+        
+        /* CARRUSEL REAL */
+        .carousel-section {
+            position: relative;
+            max-width: 1400px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .carousel-title {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 30px;
+            font-family: 'Alex Brush', cursive;
+        }
+        
+        .carousel-container {
+            position: relative;
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
+            padding: 30px;
+            overflow: hidden;
+        }
+        
+        .carousel-wrapper {
+            overflow: hidden;
+            margin: 0 60px;
+        }
+        
+        .carousel-track {
+            display: flex;
+            gap: 20px;
+            transition: transform 0.5s ease;
+        }
+        
+        .carousel-item {
+            flex: 0 0 calc(25% - 15px);
+            aspect-ratio: 4/5;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.1);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .carousel-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Botones del Carrusel */
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.2);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+        
+        .carousel-btn:hover {
+            background: rgba(255,255,255,0.4);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carousel-btn.prev { left: 10px; }
+        .carousel-btn.next { right: 10px; }
+        
+        /* Galería */
+        .gallery-section {
+            max-width: 1400px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+        
+        .gallery-title {
+            text-align: center;
+            font-size: 48px;
+            margin-bottom: 30px;
+            font-family: 'Alex Brush', cursive;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 20px;
+        }
+        
+        .gallery-item {
+            aspect-ratio: 4/5;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .carousel-item { flex: 0 0 calc(33.333% - 15px); }
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 80px; }
+            .carousel-item { flex: 0 0 calc(50% - 10px); }
+            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+        }
+        
+        @media (max-width: 480px) {
+            h1 { font-size: 60px; }
+            .carousel-item { flex: 0 0 100%; }
+            .carousel-wrapper { margin: 0 40px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegación -->
+    <nav>
+        <a href="/">Home</a>
+        <a href="#premium">Premium</a>
+        <a href="#videos">Videos</a>
+        <a href="#subscriptions">Subscriptions</a>
+    </nav>
+    
+    <!-- Banner Principal -->
+    <h1>beachgirl.pics</h1>
+    <p class="subtitle">Bienvenido al Paraíso</p>
+    
+    <!-- CARRUSEL FUNCIONAL -->
+    <section class="carousel-section">
+        <h2 class="carousel-title">Galería Destacada - 40 Fotos</h2>
+        <div class="carousel-container">
+            <button class="carousel-btn prev" onclick="moveCarousel(-1)">❮</button>
+            <div class="carousel-wrapper">
+                <div id="carousel" class="carousel-track"></div>
+            </div>
+            <button class="carousel-btn next" onclick="moveCarousel(1)">❯</button>
+        </div>
+    </section>
+    
+    <!-- GALERÍA -->
+    <section class="gallery-section">
+        <h2 class="gallery-title">Explora el Paraíso - 40 Fotos</h2>
+        <div id="gallery" class="gallery-grid"></div>
+    </section>
+    
+    <script src="js/content-data2.js"></script>
+    <script>
+        // JavaScript para Carrusel y Galería
+        const BASE_URL = "https://raw.githubusercontent.com/Oriol7272/beachgirl.pics/main/";
+        let carouselPosition = 0;
+        
+        function initImages() {
+            if (typeof FULL_IMAGES_POOL === 'undefined') {
+                console.error('content-data2.js no cargado');
+                return;
+            }
+            
+            // Mezclar imágenes
+            const shuffled = [...FULL_IMAGES_POOL].sort(() => Math.random() - 0.5);
+            
+            // CARRUSEL: 40 imágenes
+            const carousel = document.getElementById('carousel');
+            shuffled.slice(0, 40).forEach((img, i) => {
+                const div = document.createElement('div');
+                div.className = 'carousel-item';
+                div.innerHTML = `<img src="${BASE_URL}${img}" alt="Beach ${i+1}" loading="lazy">`;
+                carousel.appendChild(div);
+            });
+            
+            // GALERÍA: otras 40 imágenes
+            const gallery = document.getElementById('gallery');
+            shuffled.slice(40, 80).forEach((img, i) => {
+                const div = document.createElement('div');
+                div.className = 'gallery-item';
+                div.innerHTML = `<img src="${BASE_URL}${img}" alt="Paradise ${i+1}" loading="lazy">`;
+                gallery.appendChild(div);
+            });
+            
+            console.log('✅ Cargadas 40 imágenes en carrusel + 40 en galería');
+        }
+        
+        // Función para mover el carrusel
+        function moveCarousel(direction) {
+            const carousel = document.getElementById('carousel');
+            const items = carousel.querySelectorAll('.carousel-item');
+            if (!items.length) return;
+            
+            const itemWidth = items[0].offsetWidth + 20;
+            const containerWidth = carousel.parentElement.offsetWidth;
+            const maxScroll = Math.max(0, (items.length * itemWidth) - containerWidth);
+            
+            carouselPosition += direction * itemWidth * 4;
+            carouselPosition = Math.max(0, Math.min(carouselPosition, maxScroll));
+            
+            carousel.style.transform = `translateX(-${carouselPosition}px)`;
+        }
+        
+        // Iniciar cuando el DOM esté listo
+        document.addEventListener('DOMContentLoaded', initImages);
+    </script>
+</body>
+</html>

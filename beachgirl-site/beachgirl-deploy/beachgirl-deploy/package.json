@@ -1,0 +1,13 @@
+{
+  "name": "beachgirl-pics",
+  "version": "1.0.0",
+  "description": "BeachGirl.pics - Premium Beach Paradise Gallery",
+  "scripts": {
+    "start": "python3 -m http.server 8080",
+    "deploy": "vercel --prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Oriol7272/beachgirl.pics.git"
+  }
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeachGirl.pics - Bienvenido al Paraíso</title>
+    <meta name="description" content="BeachGirl.pics - Premium Beach Paradise Gallery">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Dancing+Script:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header con Navegación -->
+    <header>
+        <nav class="navbar">
+            <a href="/" class="nav-link active">Home</a>
+            <a href="/premium.html" class="nav-link">Premium</a>
+            <a href="/videos.html" class="nav-link">Videos</a>
+            <a href="/subscriptions.html" class="nav-link">Subscriptions</a>
+        </nav>
+        
+        <!-- Banner Principal - BEACHGIRL.PICS -->
+        <div class="main-banner">
+            <h1 class="site-title">beachgirl.pics</h1>
+            <p class="site-subtitle">Bienvenido al Paraíso</p>
+            <div id="banner-rotator" class="banner-bg"></div>
+        </div>
+    </header>
+
+    <!-- Contenedor Principal -->
+    <main class="container">
+        <!-- Carrusel de Imágenes -->
+        <section class="carousel-section">
+            <h2 class="section-title">Galería Destacada</h2>
+            <div class="carousel-container">
+                <button class="carousel-btn prev" onclick="moveCarousel(-1)">❮</button>
+                <div class="carousel-wrapper">
+                    <div id="carousel" class="carousel-track"></div>
+                </div>
+                <button class="carousel-btn next" onclick="moveCarousel(1)">❯</button>
+            </div>
+        </section>
+
+        <!-- Galería Principal -->
+        <section class="gallery-section">
+            <h2 class="section-title">Explora el Paraíso</h2>
+            <div id="gallery" class="gallery-grid"></div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <p>&copy; 2025 BeachGirl.pics - All Rights Reserved</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/content-data2.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

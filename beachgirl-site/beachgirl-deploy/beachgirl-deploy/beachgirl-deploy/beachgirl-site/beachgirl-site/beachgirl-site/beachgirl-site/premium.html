@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium - BeachGirl.pics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reutilizar estilos de index.html */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: linear-gradient(135deg, #051a2b 0%, #0a304f 50%, #16578b 100%);
+            color: white;
+            font-family: 'Dancing Script', cursive;
+            min-height: 100vh;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 25px;
+            background: rgba(0,0,0,0.5);
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+        }
+        h1 {
+            font-family: 'Alex Brush', cursive;
+            font-size: 100px;
+            text-align: center;
+            margin: 40px 0;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.7);
+        }
+        .premium-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .price-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        .price-card {
+            background: rgba(0,0,0,0.5);
+            padding: 30px;
+            border-radius: 20px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .price-card h3 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        .price {
+            font-size: 48px;
+            color: #f4e4c1;
+            margin: 20px 0;
+        }
+        .paypal-button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/premium.html">Premium</a>
+        <a href="/videos.html">Videos</a>
+        <a href="/subscriptions.html">Subscriptions</a>
+    </nav>
+    
+    <h1>Premium Content</h1>
+    
+    <div class="premium-content">
+        <h2>Elige tu Plan Premium</h2>
+        
+        <div class="price-cards">
+            <div class="price-card">
+                <h3>Mensual</h3>
+                <p class="price">€14.99</p>
+                <p>Acceso completo por 30 días</p>
+                <div class="paypal-button" id="paypal-monthly"></div>
+            </div>
+            
+            <div class="price-card">
+                <h3>Anual</h3>
+                <p class="price">€49.99</p>
+                <p>Ahorra 70% - Mejor oferta</p>
+                <div class="paypal-button" id="paypal-annual"></div>
+            </div>
+            
+            <div class="price-card">
+                <h3>Lifetime</h3>
+                <p class="price">€100.00</p>
+                <p>Acceso de por vida</p>
+                <div class="paypal-button" id="paypal-lifetime"></div>
+            </div>
+        </div>
+        
+        <p style="margin-top: 40px; opacity: 0.8;">
+            <!-- Aquí añadiremos los botones de PayPal cuando me pases la configuración -->
+            Los botones de PayPal se configurarán próximamente
+        </p>
+    </div>
+</body>
+</html>
