@@ -1,0 +1,2 @@
+// Carousel functionality
+function initCarousel() {}
