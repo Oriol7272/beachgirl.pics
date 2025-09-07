@@ -5,275 +5,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BeachGirl.pics - Premium Beach Content</title>
     
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <!-- CSS existentes en el repo -->
+    <link rel="stylesheet" href="/css/site.css">
     
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: 'Dancing Script', cursive;
-            background: url('/decorative-images/paradise-beach.png') no-repeat center center fixed;
-            background-size: cover;
-            min-height: 100vh;
-        }
-        
-        /* Menu Superior */
-        .menu-top {
-            background: rgba(255,255,255,0.95);
-            padding: 15px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .menu-top nav {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-        }
-        
-        .menu-top a {
-            color: #333;
-            text-decoration: none;
-            font-size: 1.2em;
-            padding: 10px 20px;
-            border-radius: 25px;
-            transition: all 0.3s;
-            font-weight: 700;
-        }
-        
-        .menu-top a:hover {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-        }
-        
-        /* Banner */
-        .banner {
-            position: relative;
-            height: 400px;
-            margin: 20px;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            background: linear-gradient(135deg, #667eea, #764ba2);
-        }
-        
-        .banner-content {
-            position: relative;
-            z-index: 2;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: rgba(0,0,0,0.3);
-            color: white;
-            text-align: center;
-        }
-        
-        .banner-content h1 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 5em;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
-            margin-bottom: 20px;
-        }
-        
-        .banner-content p {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-        
-        /* Carousel */
-        .carousel-section {
-            margin: 40px 20px;
-            background: rgba(255,255,255,0.95);
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-        
-        .carousel {
-            display: flex;
-            overflow-x: auto;
-            gap: 15px;
-            padding: 20px 0;
-            scroll-behavior: smooth;
-        }
-        
-        .carousel::-webkit-scrollbar {
-            height: 10px;
-        }
-        
-        .carousel::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
-        
-        .carousel::-webkit-scrollbar-thumb {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 10px;
-        }
-        
-        .carousel-item {
-            flex: 0 0 250px;
-            height: 350px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-            transition: transform 0.3s;
-            background: #f0f0f0;
-        }
-        
-        .carousel-item:hover {
-            transform: scale(1.05);
-        }
-        
-        .carousel-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        /* Gallery */
-        .gallery-section {
-            margin: 40px 20px;
-            background: rgba(255,255,255,0.95);
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-        
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 20px 0;
-        }
-        
-        .gallery-item {
-            position: relative;
-            height: 300px;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-            transition: transform 0.3s;
-            background: #f0f0f0;
-        }
-        
-        .gallery-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        h2 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5em;
-            color: #333;
-        }
-    </style>
+    <!-- Scripts de configuración -->
+    <script src="/js/env.js"></script>
+    <script src="/js/site.config.js"></script>
 </head>
 <body>
     <!-- Menu Superior -->
-    <div class="menu-top">
-        <nav>
+    <header class="site-header">
+        <nav class="main-nav">
             <a href="/">HOME</a>
             <a href="/premium.html">PREMIUM</a>
             <a href="/videos.html">VIDEOS</a>
             <a href="/subscription.html">SUBSCRIPTIONS</a>
         </nav>
-    </div>
+    </header>
     
-    <!-- Banner -->
-    <div class="banner">
+    <!-- Banner con fondo de decorative-images -->
+    <div class="banner-section" style="background-image: url('/decorative-images/paradise-beach.png');">
         <div class="banner-content">
-            <h1>BeachGirl.pics</h1>
-            <p>Bienvenido al Paraíso</p>
+            <h1 class="site-title">BEACHGIRL.PICS</h1>
+            <p class="site-tagline">Bienvenido al Paraíso</p>
         </div>
     </div>
     
-    <!-- Carousel -->
-    <div class="carousel-section">
-        <h2 style="text-align:center; margin-bottom:20px;">Daily Selection</h2>
-        <div class="carousel" id="carousel"></div>
-    </div>
+    <!-- Carousel Section -->
+    <section class="carousel-section">
+        <h2>Daily Selection</h2>
+        <div id="carousel" class="carousel-container"></div>
+    </section>
     
-    <!-- Gallery -->
-    <div class="gallery-section">
-        <h2 style="text-align:center; margin-bottom:20px;">Explore Gallery</h2>
-        <div class="gallery" id="gallery"></div>
-    </div>
+    <!-- Gallery Section -->
+    <section class="gallery-section">
+        <h2>Explore Gallery</h2>
+        <div id="gallery" class="gallery-container"></div>
+    </section>
     
-    <!-- Scripts -->
+    <!-- Scripts del repositorio en orden correcto -->
+    <script src="/content-data.js"></script>
+    <script src="/content-data1.js"></script>
     <script src="/content-data2.js"></script>
+    <script src="/content-data3.js"></script>
+    <script src="/content-data4.js"></script>
+    <script src="/content-data5.js"></script>
+    <script src="/content-data6.js"></script>
+    
+    <!-- Scripts de utilidades -->
+    <script src="/js/utils.js"></script>
+    <script src="/js/decorative-manifest.js"></script>
+    <script src="/js/decorative-list.js"></script>
+    
+    <!-- Scripts de contenido -->
+    <script src="/js/content-loader.js"></script>
+    <script src="/js/carousel.js"></script>
+    <script src="/js/gallery.js"></script>
+    <script src="/js/fs-pools.js"></script>
+    
+    <!-- Scripts de UI -->
+    <script src="/js/ui-render.js"></script>
+    <script src="/js/ui-fixes.js"></script>
+    <script src="/js/banner-rotator.js"></script>
+    
+    <!-- Bootstrap e inicialización -->
+    <script src="/js/bootstrap.js"></script>
+    <script src="/js/init-home.js"></script>
+    <script src="/js/page-init.js"></script>
+    
+    <!-- Script de inicialización inline -->
     <script>
-        // Obtener 40 imágenes aleatorias del pool
-        function getRandomImages(count) {
-            // Usar el array de content-data2.js si está disponible
-            if (typeof window.publicContent !== 'undefined' && window.publicContent.length > 0) {
-                const shuffled = [...window.publicContent].sort(() => 0.5 - Math.random());
-                return shuffled.slice(0, Math.min(count, shuffled.length));
-            }
-            
-            // Fallback: generar URLs directamente
-            const images = [];
-            for (let i = 1; i <= count; i++) {
-                images.push({
-                    thumb: `/full/${i}.webp`,
-                    full: `/full/${i}.webp`,
-                    title: `Beach Photo ${i}`
-                });
-            }
-            return images;
-        }
-        
-        // Cargar carousel
-        function loadCarousel() {
-            const carousel = document.getElementById('carousel');
-            const images = getRandomImages(40);
-            
-            images.forEach((img, index) => {
-                const item = document.createElement('div');
-                item.className = 'carousel-item';
-                item.innerHTML = `
-                    <img src="${img.thumb || img.full || '/full/' + (index + 1) + '.webp'}" 
-                         alt="${img.title || 'Beach photo ' + (index + 1)}"
-                         loading="lazy"
-                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 300\"%3E%3Crect fill=\"%23ddd\" width=\"400\" height=\"300\"/%3E%3Ctext x=\"50%25\" y=\"50%25\" text-anchor=\"middle\" fill=\"%23999\"%3EImage ${index + 1}%3C/text%3E%3C/svg%3E'">
-                `;
-                carousel.appendChild(item);
-            });
-        }
-        
-        // Cargar gallery
-        function loadGallery() {
-            const gallery = document.getElementById('gallery');
-            const images = getRandomImages(40);
-            
-            images.forEach((img, index) => {
-                const item = document.createElement('div');
-                item.className = 'gallery-item';
-                item.innerHTML = `
-                    <img src="${img.thumb || img.full || '/full/' + (index + 41) + '.webp'}" 
-                         alt="${img.title || 'Beach photo ' + (index + 41)}"
-                         loading="lazy"
-                         onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 400 300\"%3E%3Crect fill=\"%23ddd\" width=\"400\" height=\"300\"/%3E%3Ctext x=\"50%25\" y=\"50%25\" text-anchor=\"middle\" fill=\"%23999\"%3EImage ${index + 41}%3C/text%3E%3C/svg%3E'">
-                `;
-                gallery.appendChild(item);
-            });
-        }
-        
-        // Inicializar todo cuando cargue la página
-        window.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function() {
+            // Esperar a que content-data2 esté cargado
             setTimeout(function() {
-                loadCarousel();
-                loadGallery();
-            }, 100);
+                // Inicializar carousel con 40 imágenes aleatorias
+                if (window.publicContent && window.publicContent.length > 0) {
+                    const carouselEl = document.getElementById('carousel');
+                    const shuffled = [...window.publicContent].sort(() => 0.5 - Math.random());
+                    const carouselImages = shuffled.slice(0, 40);
+                    
+                    carouselImages.forEach(img => {
+                        const item = document.createElement('div');
+                        item.className = 'carousel-item';
+                        item.innerHTML = '<img src="' + (img.thumb || img.full) + '" alt="' + (img.title || '') + '">';
+                        carouselEl.appendChild(item);
+                    });
+                }
+                
+                // Inicializar gallery con otras 40 imágenes aleatorias
+                if (window.publicContent && window.publicContent.length > 0) {
+                    const galleryEl = document.getElementById('gallery');
+                    const shuffled2 = [...window.publicContent].sort(() => 0.5 - Math.random());
+                    const galleryImages = shuffled2.slice(0, 40);
+                    
+                    galleryImages.forEach(img => {
+                        const item = document.createElement('div');
+                        item.className = 'gallery-item';
+                        item.innerHTML = '<img src="' + (img.thumb || img.full) + '" alt="' + (img.title || '') + '">';
+                        galleryEl.appendChild(item);
+                    });
+                }
+            }, 500);
         });
     </script>
 </body>
