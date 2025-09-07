@@ -5,72 +5,342 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BeachGirl.pics - Premium Beach Content</title>
     
-    <!-- CSS existentes en el repo -->
-    <link rel="stylesheet" href="/css/site.css">
-    
-    <!-- Scripts de configuración -->
-    <script src="/js/env.js"></script>
-    <script src="/js/site.config.js"></script>
+    <style>
+        @font-face {
+            font-family: 'BeachFont';
+            src: url('/decorative-images/allura-regular.ttf') format('truetype');
+        }
+        
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        body {
+            font-family: 'BeachFont', cursive, sans-serif;
+            background: url('/decorative-images/paradise-beach.png') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+        }
+        
+        /* Menu Superior */
+        .menu-top {
+            background: rgba(255,255,255,0.95);
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .menu-top nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .menu-top a {
+            font-family: 'BeachFont', cursive;
+            color: #333;
+            text-decoration: none;
+            font-size: 1.5em;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+        
+        .menu-top a:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        /* Banner con imágenes rotatorias */
+        .banner {
+            position: relative;
+            height: 500px;
+            margin: 20px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .banner-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .banner-bg img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            animation: rotateImages 12s infinite;
+        }
+        
+        .banner-bg img:nth-child(1) { animation-delay: 0s; }
+        .banner-bg img:nth-child(2) { animation-delay: 4s; }
+        .banner-bg img:nth-child(3) { animation-delay: 8s; }
+        
+        @keyframes rotateImages {
+            0%, 33.33% { opacity: 0; }
+            8.33%, 25% { opacity: 1; }
+        }
+        
+        .banner-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0,0,0,0.4);
+            color: white;
+            text-align: center;
+        }
+        
+        .banner-content h1 {
+            font-family: 'BeachFont', cursive;
+            font-size: 6em;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+        }
+        
+        .banner-content p {
+            font-family: 'BeachFont', cursive;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            letter-spacing: 2px;
+        }
+        
+        /* Carousel Section */
+        .carousel-section {
+            margin: 40px 20px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        
+        .carousel-section h2 {
+            font-family: 'BeachFont', cursive;
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        .carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px 0;
+            scroll-behavior: smooth;
+        }
+        
+        .carousel::-webkit-scrollbar {
+            height: 12px;
+        }
+        
+        .carousel::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .carousel::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 10px;
+        }
+        
+        .carousel-item {
+            flex: 0 0 280px;
+            height: 380px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        
+        .carousel-item:hover {
+            transform: scale(1.05) translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+        
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Gallery Section */
+        .gallery-section {
+            margin: 40px 20px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        
+        .gallery-section h2 {
+            font-family: 'BeachFont', cursive;
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            height: 350px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body>
     <!-- Menu Superior -->
-    <header class="site-header">
-        <nav class="main-nav">
+    <div class="menu-top">
+        <nav>
             <a href="/">HOME</a>
             <a href="/premium.html">PREMIUM</a>
             <a href="/videos.html">VIDEOS</a>
             <a href="/subscription.html">SUBSCRIPTIONS</a>
         </nav>
-    </header>
+    </div>
     
-    <!-- Banner con fondo de decorative-images -->
-    <div class="banner-section" style="background-image: url('/decorative-images/paradise-beach.png');">
+    <!-- Banner con imágenes rotatorias -->
+    <div class="banner">
+        <div class="banner-bg" id="bannerBg">
+            <!-- Las imágenes se cargarán dinámicamente -->
+        </div>
         <div class="banner-content">
-            <h1 class="site-title">BEACHGIRL.PICS</h1>
-            <p class="site-tagline">Bienvenido al Paraíso</p>
+            <h1>BEACHGIRL.PICS</h1>
+            <p>Bienvenido al Paraíso</p>
         </div>
     </div>
     
     <!-- Carousel Section -->
-    <section class="carousel-section">
+    <div class="carousel-section">
         <h2>Daily Selection</h2>
-        <div id="carousel" class="carousel-container"></div>
-    </section>
+        <div class="carousel" id="carousel"></div>
+    </div>
     
     <!-- Gallery Section -->
-    <section class="gallery-section">
+    <div class="gallery-section">
         <h2>Explore Gallery</h2>
-        <div id="gallery" class="gallery-container"></div>
-    </section>
+        <div class="gallery" id="gallery"></div>
+    </div>
     
-    <!-- Scripts del repositorio en orden correcto -->
-    <script src="/content-data.js"></script>
-    <script src="/content-data1.js"></script>
+    <!-- Cargar content-data2.js para obtener los nombres de archivos -->
     <script src="/content-data2.js"></script>
-    <script src="/content-data3.js"></script>
-    <script src="/content-data4.js"></script>
-    <script src="/content-data5.js"></script>
-    <script src="/content-data6.js"></script>
     
-    <!-- Scripts de utilidades -->
-    <script src="/js/utils.js"></script>
-    <script src="/js/decorative-manifest.js"></script>
-    <script src="/js/decorative-list.js"></script>
-    
-    <!-- Scripts de contenido -->
-    <script src="/js/content-loader.js"></script>
-    <script src="/js/carousel.js"></script>
-    <script src="/js/gallery.js"></script>
-    <script src="/js/fs-pools.js"></script>
-    
-    <!-- Scripts de UI -->
-    <script src="/js/ui-render.js"></script>
-    <script src="/js/ui-fixes.js"></script>
-    <script src="/js/banner-rotator.js"></script>
-    
-    <!-- Bootstrap e inicialización -->
-    <script src="/js/bootstrap.js"></script>
-    <script src="/js/init-home.js"></script>
-    <script src="/js/page-init.js"></script>
+    <script>
+        // Cargar imágenes rotatorias del banner desde decorative-images
+        function loadBannerImages() {
+            const bannerBg = document.getElementById('bannerBg');
+            // Buscar imágenes para el banner en decorative-images
+            const bannerImages = [
+                '/decorative-images/banner1.jpg',
+                '/decorative-images/banner2.jpg',
+                '/decorative-images/banner3.jpg'
+            ];
+            
+            bannerImages.forEach(src => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.onerror = function() {
+                    // Si no existe, usar una de full como fallback
+                    this.src = '/full/1.webp';
+                };
+                bannerBg.appendChild(img);
+            });
+        }
+        
+        // Función para obtener 40 imágenes aleatorias
+        function getRandomImages(count) {
+            if (window.publicContent && window.publicContent.length > 0) {
+                // Usar content-data2.js
+                const shuffled = [...window.publicContent].sort(() => 0.5 - Math.random());
+                return shuffled.slice(0, Math.min(count, shuffled.length));
+            } else {
+                // Fallback directo a archivos
+                const images = [];
+                for (let i = 1; i <= count; i++) {
+                    images.push({
+                        full: `/full/${i}.webp`,
+                        thumb: `/full/${i}.webp`
+                    });
+                }
+                return images;
+            }
+        }
+        
+        // Cargar carousel con 40 imágenes aleatorias
+        function loadCarousel() {
+            const carousel = document.getElementById('carousel');
+            const images = getRandomImages(40);
+            
+            images.forEach((img, index) => {
+                const item = document.createElement('div');
+                item.className = 'carousel-item';
+                const imgSrc = img.full || img.thumb || `/full/${index + 1}.webp`;
+                item.innerHTML = `<img src="${imgSrc}" alt="Beach photo ${index + 1}" loading="lazy">`;
+                carousel.appendChild(item);
+            });
+        }
+        
+        // Cargar gallery con 40 imágenes aleatorias diferentes
+        function loadGallery() {
+            const gallery = document.getElementById('gallery');
+            const images = getRandomImages(40);
+            
+            images.forEach((img, index) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                const imgSrc = img.full || img.thumb || `/full/${index + 41}.webp`;
+                item.innerHTML = `<img src="${imgSrc}" alt="Beach photo ${index + 41}" loading="lazy">`;
+                gallery.appendChild(item);
+            });
+        }
+        
+        // Inicializar todo cuando cargue la página
+        window.addEventListener('DOMContentLoaded', function() {
+            loadBannerImages();
+            
+            // Esperar un momento para que content-data2.js se cargue
+            setTimeout(function() {
+                loadCarousel();
+                loadGallery();
+            }, 500);
+        });
+    </script>
 </body>
 </html>
