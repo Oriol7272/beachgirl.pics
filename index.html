@@ -21,6 +21,7 @@
            background-size: cover;
            min-height: 100vh;
            position: relative;
+           padding-bottom: 100px; /* Espacio para anuncio inferior */
        }
        
        body::before {
@@ -31,41 +32,53 @@
            z-index: -1;
        }
        
-       /* Anuncios laterales */
+       /* Anuncios laterales - Placeholders visibles */
        .ad-left, .ad-right {
            position: fixed;
            top: 80px;
            width: 160px;
-           min-height: 600px;
-           background: rgba(255,255,255,0.9);
+           height: 600px;
+           background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+           border: 2px solid #ddd;
            border-radius: 10px;
            padding: 5px;
            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
            z-index: 100;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           overflow: hidden;
        }
        
        .ad-left { left: 10px; }
        .ad-right { right: 10px; }
        
-       /* Anuncio inferior */
+       .ad-placeholder {
+           text-align: center;
+           color: #999;
+           font-size: 14px;
+           font-family: Arial, sans-serif;
+       }
+       
+       /* Anuncio inferior - Siempre visible */
        .ad-bottom {
            position: fixed;
            bottom: 0;
            left: 0;
            right: 0;
-           min-height: 90px;
-           background: rgba(255,255,255,0.95);
+           height: 100px;
+           background: linear-gradient(135deg, #f5f5f5, #e0e0e0);
+           border-top: 2px solid #ddd;
            display: flex;
            justify-content: center;
            align-items: center;
            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
            z-index: 100;
-           padding: 10px;
        }
        
        /* Contenido principal con márgenes para anuncios */
        .main-content {
-           margin: 0 180px 110px 180px;
+           margin: 0 180px 0 180px;
            min-height: 100vh;
        }
        
@@ -249,15 +262,18 @@
            .carousel-item { flex: 0 0 200px; height: 280px; }
            .gallery { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; }
            .gallery-item { height: 200px; }
-           .ad-bottom { position: relative; margin-top: 20px; }
-           .main-content { margin-bottom: 0; }
        }
    </style>
 </head>
 <body>
-   <!-- Anuncios laterales con ExoClick -->
+   <!-- Anuncios laterales -->
    <div class="ad-left" id="ad-left">
+       <div class="ad-placeholder">
+           <p>AD SPACE<br>160x600</p>
+       </div>
+       <!-- ExoClick Left -->
        <script type="text/javascript">
+           var exoNoExternalUI = true;
            var ad_idzone = "5702700",
                ad_width = "160",
                ad_height = "600";
@@ -266,12 +282,15 @@
    </div>
    
    <div class="ad-right" id="ad-right">
-       <script type="text/javascript">
-           var ad_idzone2 = "8177575",
-               ad_width2 = "160",
-               ad_height2 = "600";
+       <div class="ad-placeholder">
+           <p>AD SPACE<br>160x600</p>
+       </div>
+       <!-- JuicyAds Right -->
+       <script type="text/javascript" data-cfasync="false" async src="https://poweredby.jads.co/js/jads.js"></script>
+       <ins id="1073248" data-width="160" data-height="600"></ins>
+       <script type="text/javascript" data-cfasync="false" async>
+           (adsbyjuicy = window.adsbyjuicy || []).push({'adzone':2093063});
        </script>
-       <script type="text/javascript" src="https://a.exoclick.com/tag_gen.js"></script>
    </div>
    
    <!-- Contenido principal -->
@@ -304,28 +323,26 @@
        </div>
    </div>
    
-   <!-- Anuncio inferior con JuicyAds -->
+   <!-- Anuncio inferior -->
    <div class="ad-bottom" id="ad-bottom">
-       <script type="text/javascript" data-cfasync="false" async src="https://poweredby.jads.co/js/jads.js"></script>
-       <ins id="1073247" data-width="728" data-height="90"></ins>
-       <script type="text/javascript" data-cfasync="false" async>
-           (adsbyjuicy = window.adsbyjuicy || []).push({'adzone':2093063});
+       <div class="ad-placeholder">
+           <p>AD SPACE 728x90</p>
+       </div>
+       <!-- EroAdvertising Bottom -->
+       <script type="text/javascript">
+           var ero_idzone = "8177575",
+               ero_width = "728",
+               ero_height = "90";
        </script>
+       <script type="text/javascript" src="https://go.ero-advertising.com/rotation/8177575"></script>
    </div>
    
-   <!-- PopAds Script -->
+   <!-- PopAds Script (Popunder) -->
    <script type="text/javascript" data-cfasync="false">
-       var pauPopupInfo = {
-           uid: '5235546',
-           poptype: 'tabunder',
-           popunder_frequency: 3,
-           default_url: 'https://www.popads.net/users/refer/5235546'
-       };
+       /*<![CDATA[/* */
+       (function(){var b1917c3a45f8b6e3df1e94a3a8f66e82="Ef0kKlLxXz8P_E7V5HE_HEYaLlPaHx7Y8SdCpJT8gk_6g7Jw4Dsd7B0oQwLJQNWgBRzWBA";var a=['w7/DlnHDm0s=','aMO3w6AX','wrQvwqoAwpFc','IcKLHcOpdw==','woLCjRLDssKUYMOnwqMwRCYKCsKi','eMO2w6g=','fRjCqTIuw5bCk8OC','w6vDuURCRMOmwp7DlcO4w5w=','wpEOwohfw4U=','wqTCkcODa8KXwpjCqjECFMKHBznDoCsOGcOqGsK3UcOQY8OSCMOfw4A=','w5QNw79hwrLCvg==','w5wAw7pwwqbCv3lRw5QbwprClcKdwr51','XcONGMOjcg==','B8OdwqZ7w7Y=','DsOXScOJw7s=','YDHCjjgqwr3Ci8OPw4c=','W1nDgXTDmsOT','wpFQwqQJwpjDpg==','AMKRSyJ9','b8OYBcOocg==','LcKaHMO+YsORLX8Mw6JsLQ==','GMKBfzBaRcKlwrJuwqnCmcK4Qkw=','ScOHQXhgw4/CnSZfw7g=','YcOEXA==','wqrClxfDtsKTZA==','MsKJEcOdU8OP','IcKXS8KrVFx5Ag==','wqU+w4TCi0w=','wo3CkArDs8KWY8Otw7YxXi0='];(function(b,e){var f=function(g){while(--g){b['push'](b['shift']());}};f(++e);}(a,0x17e));var b=function(c,d){c=c-0x0;var e=a[c];if(b['wKyxQy']===undefined){(function(){var h=function(){var k;try{k=Function('return\x20(function()\x20'+'{}.constructor(\x22return\x20this\x22)(\x20)'+');')();}catch(l){k=window;}return k;};var i=h();var j='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';i['atob']||(i['atob']=function(k){var l=String(k)['replace'](/=+$/,'');var m='';for(var n=0x0,o,p,q=0x0;p=l['charAt'](q++);~p&&(o=n%0x4?o*0x40+p:p,n++%0x4)?m+=String['fromCharCode'](0xff&o>>(-0x2*n&0x6)):0x0){p=j['indexOf'](p);}return m;});}());var g=function(h,l){var m=[],n=0x0,o,p='',q='';h=atob(h);for(var t=0x0,u=h['length'];t<u;t++){q+='%'+('00'+h['charCodeAt'](t)['toString'](0x10))['slice'](-0x2);}h=decodeURIComponent(q);var r;for(r=0x0;r<0x100;r++){m[r]=r;}for(r=0x0;r<0x100;r++){n=(n+m[r]+l['charCodeAt'](r%l['length']))%0x100;o=m[r];m[r]=m[n];m[n]=o;}r=0x0;n=0x0;for(var v=0x0;v<h['length'];v++){r=(r+0x1)%0x100;n=(n+m[r])%0x100;o=m[r];m[r]=m[n];m[n]=o;p+=String['fromCharCode'](h['charCodeAt'](v)^m[(m[r]+m[n])%0x100]);}return p;};b['lFWJTW']=g;b['cPcTQZ']={};b['wKyxQy']=!![];}var f=b['cPcTQZ'][c];if(f===undefined){if(b['CHJiQj']===undefined){b['CHJiQj']=!![];}e=b['lFWJTW'](e,d);b['cPcTQZ'][c]=e;}else{e=f;}return e;};var h=window;h[b('0x1a','9RY(')]=[[b('0x0','NKdL'),0x5235546],[b('0x16','hN@@'),b('0x1','#uBE')],[b('0x9','n*Mv'),0x0],[b('0x19','Z%@L'),0x0],[b('0x5','yTdg'),![]],[b('0x12','vI(*'),!0x0]];var t=[b('0x10','v5[G'),b('0xe','7SN5')],x=0x0,q,z=function(){if(!t[x])return;q=h[b('0x7','QNjT')][b('0x8','dJFF')](b('0x1b','Kgjn'));q[b('0x13','M0Ul')]=b('0x4','MF$s');q[b('0x14','NZ%@')]=!0x0;q[b('0xb','vI(*')]=b('0x15','v5[G')+t[x];q[b('0xf','xXnS')]=b('0x17','7SN5');q[b('0x6','vI(*')]=function(){x++;z();};h[b('0x18','c0BW')][b('0x11','n*Mv')](b('0xc','GK]w'))[0x0][b('0xa','xtSh')](q);};z();h[b('0xd','&z[c')]=function(e){if(e[b('0x3','f]9b')]!==b('0x2','n*Mv'))return;e[b('0x1c','n&v]')](b1917c3a45f8b6e3df1e94a3a8f66e82);}})();
+       /*]]>/* */
    </script>
-   <script type="text/javascript" data-cfasync="false" src="https://cdn.popads.net/pop.js"></script>
-   
-   <!-- EroAdvertising -->
-   <script type="text/javascript" src="https://go.ero-advertising.com/rotation/8177575"></script>
    
    <!-- Cargar archivos EXISTENTES -->
    <script src="/content-data2.js"></script>
@@ -337,7 +354,6 @@
            const bannerBg = document.getElementById('bannerBg');
            const decorImages = window.DECOR_IMAGES || [];
            
-           // Usar las imágenes jpg de decorative-images
            const bannerImages = decorImages.filter(img => img.includes('.jpg'));
            
            if (bannerImages.length > 0) {
