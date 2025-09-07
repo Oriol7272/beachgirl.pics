@@ -72,41 +72,5 @@
     <script src="/js/bootstrap.js"></script>
     <script src="/js/init-home.js"></script>
     <script src="/js/page-init.js"></script>
-    
-    <!-- Script de inicialización inline -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Esperar a que content-data2 esté cargado
-            setTimeout(function() {
-                // Inicializar carousel con 40 imágenes aleatorias
-                if (window.publicContent && window.publicContent.length > 0) {
-                    const carouselEl = document.getElementById('carousel');
-                    const shuffled = [...window.publicContent].sort(() => 0.5 - Math.random());
-                    const carouselImages = shuffled.slice(0, 40);
-                    
-                    carouselImages.forEach(img => {
-                        const item = document.createElement('div');
-                        item.className = 'carousel-item';
-                        item.innerHTML = '<img src="' + (img.thumb || img.full) + '" alt="' + (img.title || '') + '">';
-                        carouselEl.appendChild(item);
-                    });
-                }
-                
-                // Inicializar gallery con otras 40 imágenes aleatorias
-                if (window.publicContent && window.publicContent.length > 0) {
-                    const galleryEl = document.getElementById('gallery');
-                    const shuffled2 = [...window.publicContent].sort(() => 0.5 - Math.random());
-                    const galleryImages = shuffled2.slice(0, 40);
-                    
-                    galleryImages.forEach(img => {
-                        const item = document.createElement('div');
-                        item.className = 'gallery-item';
-                        item.innerHTML = '<img src="' + (img.thumb || img.full) + '" alt="' + (img.title || '') + '">';
-                        galleryEl.appendChild(item);
-                    });
-                }
-            }, 500);
-        });
-    </script>
 </body>
 </html>
