@@ -308,22 +308,48 @@
     
     <script src="/content-data3.js"></script>
     <script src="/content-data4.js"></script>
+    <script src="https://a.magsrv.com/ad-provider.js"></script>
     
     <script>
-    // Esperar a que los scripts carguen
-    window.addEventListener("DOMContentLoaded", function() {
-        });
-        setTimeout(function() {
-            });
+    // Función para inicializar la galería premium
+    function initPremiumGallery() {
+        const pool1 = window.UNCENSORED_IMAGES_POOL || [];
+        const pool2 = window.UNCENSORED_IMAGES_POOL_2 || [];
+        const allImages = [...pool1, ...pool2];
+        
+        console.log('Total imágenes disponibles:', allImages.length);
+        
+        if (allImages.length === 0) {
+            console.log('Esperando imágenes... reintentando en 1 segundo');
+            setTimeout(initPremiumGallery, 1000);
+            return;
         }
         
-        initPremiumGallery();
-    }, 2000);
-});
+        const gallery = document.getElementById('premium-gallery');
+        const shuffled = [...allImages].sort(() => Math.random() - 0.5);
+        
+        shuffled.slice(0, 100).forEach((img, index) => {
+            const div = document.createElement('div');
+            div.className = 'premium-item';
+            div.onclick = () => purchaseImage(img, index);
+            
+            const imgEl = document.createElement('img');
+            imgEl.src = img.startsWith('/') ? img : '/' + img;
+            imgEl.loading = 'lazy';
+            
+            const badge = document.createElement('div');
+            badge.className = 'paypal-badge';
+            badge.innerHTML = '<svg class="paypal-icon" viewBox="0 0 24 24" fill="#003087"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.72a.765.765 0 0 1 .755-.655h7.416c2.467 0 4.143.361 4.988 1.078.846.715 1.272 1.893 1.272 3.507 0 .938-.139 1.772-.416 2.491-.277.721-.703 1.333-1.273 1.834-.568.501-1.277.884-2.12 1.148-.843.265-1.839.397-2.975.397H9.778l-.682 5.817a.641.641 0 0 1-.634.538h-1.386zm1.428-8.662h2.155c1.605 0 2.76-.257 3.454-.77.695-.514 1.042-1.313 1.042-2.394 0-.806-.254-1.372-.763-1.696-.508-.325-1.352-.487-2.53-.487H9.071l-.567 5.347zM18.487 13.706c0 .775-.137 1.507-.41 2.197a5.378 5.378 0 0 1-1.15 1.766 5.26 5.26 0 0 1-1.764 1.172c-.683.283-1.437.425-2.265.425h-3.59a.64.64 0 0 1-.633-.537l1.416-12.106a.765.765 0 0 1 .755-.655h4.187c1.579 0 2.764.293 3.556.879.791.586 1.187 1.509 1.187 2.769 0 .639-.094 1.218-.281 1.735a3.796 3.796 0 0 1-.801 1.318 3.476 3.476 0 0 1-1.251.863c.646.168 1.149.486 1.509.953.36.468.54 1.088.54 1.863v.358z"/></svg> 0.10€';
+            
+            div.appendChild(imgEl);
+            div.appendChild(badge);
+            gallery.appendChild(div);
+        });
+    }
     
     // Funciones de pago
     function purchaseImage(img, index) {
-        showPayPalButton('image', 0.10, `Imagen ${index + 1}`);
+        showPayPalButton('image', 0.10, 'Imagen ' + (index + 1));
     }
     
     function purchaseBundle() {
@@ -362,7 +388,6 @@
                 return actions.order.capture().then(function(details) {
                     alert('¡Pago completado! Gracias ' + details.payer.name.given_name);
                     closeModal();
-                    // Aquí deberías desbloquear el contenido
                     if (type === 'lifetime') {
                         localStorage.setItem('lifetime_access', 'true');
                         localStorage.setItem('no_ads', 'true');
@@ -410,17 +435,12 @@
         }
     }
     
-    // Inicializar todo
+    // Inicializar todo cuando el DOM esté listo
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('🌴 BeachGirl Premium - Cargado');
+        console.log('🌴 BeachGirl Premium - Iniciando...');
+        setTimeout(initPremiumGallery, 2000);
         setTimeout(initSideAds, 1500);
     });
-    
-    // Cargar AdProvider
-    const adScript = document.createElement('script');
-    adScript.async = true;
-    adScript.src = 'https://a.magsrv.com/ad-provider.js';
-    document.head.appendChild(adScript);
     </script>
 </body>
 </html>
