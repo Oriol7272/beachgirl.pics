@@ -342,14 +342,11 @@
     function initPremiumGallery() {
         // Usar las variables correctas de los archivos
         const pool1 = window.PREMIUM_IMAGES_PART1 || [];
-        // Añadir / al principio de cada ruta si no lo tiene
-        const fixPath = (path) => path.startsWith("/") ? path : "/" + path;
-        const allImages = [...pool1.map(fixPath), ...pool2.map(fixPath)];
         const pool2 = window.PREMIUM_IMAGES_PART2 || [];
+        
         // Añadir / al principio de cada ruta si no lo tiene
-        const fixPath = (path) => path.startsWith("/") ? path : "/" + path;
+        const fixPath = (path) => path.startsWith('/') ? path : '/' + path;
         const allImages = [...pool1.map(fixPath), ...pool2.map(fixPath)];
-        const allImages = [...pool1, ...pool2];
         
         console.log('Pool 1:', pool1.length);
         console.log('Pool 2:', pool2.length);
@@ -370,7 +367,7 @@
             div.onclick = () => purchaseImage(img, index);
             
             const imgEl = document.createElement('img');
-            imgEl.src = img.startsWith('/') ? img : '/' + img;
+            imgEl.src = img;
             imgEl.loading = 'lazy';
             
             const badge = document.createElement('div');
