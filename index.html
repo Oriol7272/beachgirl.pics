@@ -3,11 +3,10 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>BeachGirl.pics - Bienvenido al Paraíso</title>
+   <title>BeachGirl.me - Bienvenido al Paraíso</title>
    <style>
        * { margin: 0; padding: 0; box-sizing: border-box; }
        
-       /* Fuente personalizada desde decorative-images */
        @font-face {
            font-family: 'BeachFont';
            src: url('/decorative-images/SexyBeachy.ttf') format('truetype'),
@@ -21,7 +20,7 @@
            background-size: cover;
            min-height: 100vh;
            position: relative;
-           padding-bottom: 250px; /* Espacio para 2 anuncios inferiores */
+           padding-bottom: 120px;
        }
        
        body::before {
@@ -38,41 +37,30 @@
            top: 80px;
            width: 160px;
            min-height: 600px;
-           background: rgba(255,255,255,0.9);
-           border-radius: 10px;
-           padding: 5px;
-           box-shadow: 0 2px 10px rgba(0,0,0,0.2);
            z-index: 100;
        }
        
        .ad-left { left: 10px; }
        .ad-right { right: 10px; }
        
-       /* Anuncios inferiores */
-       .ad-bottom-container {
+       /* Anuncio inferior */
+       .ad-bottom {
            position: fixed;
            bottom: 0;
            left: 0;
            right: 0;
+           height: 100px;
            background: rgba(255,255,255,0.95);
-           box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
-           z-index: 100;
-           padding: 10px;
-       }
-       
-       .ad-bottom-1, .ad-bottom-2 {
-           width: 100%;
-           max-width: 728px;
-           margin: 5px auto;
-           min-height: 90px;
            display: flex;
            justify-content: center;
            align-items: center;
+           z-index: 100;
+           padding: 5px;
        }
        
-       /* Contenido principal con márgenes para anuncios */
+       /* Contenido principal */
        .main-content {
-           margin: 0 180px 0 180px;
+           margin: 0 180px;
            min-height: 100vh;
        }
        
@@ -244,18 +232,6 @@
            object-fit: cover;
        }
        
-       /* Anuncios entre secciones */
-       .ad-middle {
-           margin: 30px 20px;
-           padding: 20px;
-           background: rgba(255,255,255,0.95);
-           border-radius: 15px;
-           display: flex;
-           justify-content: center;
-           align-items: center;
-           min-height: 100px;
-       }
-       
        @media (max-width: 1200px) {
            .ad-left, .ad-right { display: none; }
            .main-content { margin-left: 20px; margin-right: 20px; }
@@ -268,29 +244,21 @@
            .carousel-item { flex: 0 0 200px; height: 280px; }
            .gallery { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; }
            .gallery-item { height: 200px; }
-           .ad-bottom-container { position: relative; }
-           body { padding-bottom: 0; }
        }
    </style>
 </head>
 <body>
    <!-- Anuncio lateral izquierdo - ExoClick -->
-   <div class="ad-left" id="ad-left">
-       <script type="text/javascript">
-           var ad_idzone = "5702700",
-               ad_width = "160",
-               ad_height = "600";
-       </script>
-       <script type="text/javascript" src="https://a.exoclick.com/ads.js"></script>
+   <div class="ad-left">
+       <ins class="eas6a97888e" data-zoneid="5702700"></ins>
+       <script>(AdProvider=window.AdProvider||[]).push({"serve":{}});</script>
    </div>
    
    <!-- Anuncio lateral derecho - JuicyAds -->
-   <div class="ad-right" id="ad-right">
+   <div class="ad-right">
        <script type="text/javascript" data-cfasync="false" async src="https://poweredby.jads.co/js/jads.js"></script>
        <ins id="1073248" data-width="160" data-height="600"></ins>
-       <script type="text/javascript" data-cfasync="false" async>
-           (adsbyjuicy = window.adsbyjuicy || []).push({'adzone':2093063});
-       </script>
+       <script type="text/javascript" data-cfasync="false" async>(adsbyjuicy=window.adsbyjuicy||[]).push({'adzone':2093063});</script>
    </div>
    
    <!-- Contenido principal -->
@@ -307,7 +275,7 @@
        <div class="banner">
            <div class="banner-bg" id="bannerBg"></div>
            <div class="banner-content">
-               <h1>BEACHGIRL.PICS</h1>
+               <h1>BEACHGIRL.ME</h1>
                <p>Bienvenido al Paraiso</p>
            </div>
        </div>
@@ -317,43 +285,30 @@
            <div class="carousel" id="carousel"></div>
        </div>
        
-       <!-- Anuncio medio entre carousel y gallery -->
-       <div class="ad-middle">
-           <script type="text/javascript">
-               var ero_idzone = "8177575",
-                   ero_width = "728",
-                   ero_height = "90";
-           </script>
-           <script type="text/javascript" src="https://go.ero-advertising.com/rotation/8177575"></script>
-       </div>
-       
        <div class="gallery-section">
            <h2>Explore Gallery</h2>
            <div class="gallery" id="gallery"></div>
        </div>
    </div>
    
-   <!-- Contenedor de anuncios inferiores -->
-   <div class="ad-bottom-container">
-       <!-- Anuncio inferior 1 - ExoClick Banner -->
-       <div class="ad-bottom-1">
-           <script type="text/javascript">
-               var exo_idzone2 = "5702700",
-                   exo_width2 = "728",
-                   exo_height2 = "90";
-           </script>
-           <script type="text/javascript" src="https://a.exoclicksxa.com/tag_gen.js"></script>
-       </div>
-       
-       <!-- Anuncio inferior 2 - JuicyAds Banner -->
-       <div class="ad-bottom-2">
-           <script type="text/javascript" data-cfasync="false" async src="https://poweredby.jads.co/js/jads.js"></script>
-           <ins id="1073249" data-width="728" data-height="90"></ins>
-           <script type="text/javascript" data-cfasync="false" async>
-               (adsbyjuicy = window.adsbyjuicy || []).push({'adzone':2093063});
-           </script>
-       </div>
+   <!-- Anuncio inferior - EroAdvertising -->
+   <div class="ad-bottom">
+       <script type="text/javascript">
+           var ero_adv_id = '8177575';
+           var ero_adv_width = '728';
+           var ero_adv_height = '90';
+       </script>
+       <script type="text/javascript" src="https://ads.ero-advertising.com/manager.js"></script>
    </div>
+   
+   <!-- Scripts de anuncios adicionales -->
+   <script async type="text/javascript" src="https://a.exoclick.com/tag_gen.js"></script>
+   <script type="text/javascript">
+       var ExoLoader = {
+           addZone: {"idzone":"5702700","sub":"[SUBID]"},
+           serve: {"src":"//a.exoclick.com/tag_gen.js"}
+       };
+   </script>
    
    <!-- Cargar archivos EXISTENTES -->
    <script src="/content-data2.js"></script>
