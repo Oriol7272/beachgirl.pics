@@ -31,15 +31,13 @@
             z-index: -1;
         }
         
-        /* Anuncios laterales con iframe directo */
+        /* Anuncios laterales */
         .ad-left, .ad-right {
             position: fixed;
             top: 80px;
             width: 160px;
             height: 600px;
             z-index: 100;
-            background: white;
-            border: 1px solid #ddd;
         }
         
         .ad-left { left: 10px; }
@@ -51,13 +49,13 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 100px;
-            background: white;
+            min-height: 90px;
+            background: rgba(255,255,255,0.95);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 100;
-            border-top: 1px solid #ddd;
+            padding: 5px;
         }
         
         /* Contenido principal */
@@ -250,17 +248,11 @@
     </style>
 </head>
 <body>
-    <!-- Anuncio lateral izquierdo - IFRAME DIRECTO -->
-    <div class="ad-left">
-        <iframe src="https://syndication.exoclick.com/ads-iframe-display.php?idzone=5702700&type=160x600" 
-                width="160" height="600" frameborder="0" scrolling="no"></iframe>
-    </div>
+    <!-- Anuncio lateral izquierdo - ExoClick con script correcto -->
+    <div class="ad-left" id="ad-left-5702700"></div>
     
-    <!-- Anuncio lateral derecho - IFRAME DIRECTO -->
-    <div class="ad-right">
-        <iframe src="https://syndication.exoclick.com/ads-iframe-display.php?idzone=5705186&type=160x600" 
-                width="160" height="600" frameborder="0" scrolling="no"></iframe>
-    </div>
+    <!-- Anuncio lateral derecho - ExoClick -->
+    <div class="ad-right" id="ad-right-5705186"></div>
     
     <!-- Contenido principal -->
     <div class="main-content">
@@ -292,17 +284,61 @@
         </div>
     </div>
     
-    <!-- Anuncio inferior - IFRAME DIRECTO -->
-    <div class="ad-bottom">
-        <iframe src="https://syndication.exoclick.com/ads-iframe-display.php?idzone=5702700&type=728x90" 
-                width="728" height="90" frameborder="0" scrolling="no"></iframe>
-    </div>
+    <!-- Anuncio inferior - ExoClick -->
+    <div class="ad-bottom" id="ad-bottom-5702700"></div>
+    
+    <!-- Scripts de ExoClick correctos basados en las variables de Vercel -->
+    <script type="application/javascript">
+        // Configuración desde variables de entorno de Vercel
+        var ExoClickZones = {
+            left: '5702700',
+            right: '5705186',
+            bottom: '5702700'
+        };
+        
+        // Lateral izquierdo
+        var ad_idzone = ExoClickZones.left;
+        var ad_width = 160;
+        var ad_height = 600;
+        var ad_sub = 'left';
+    </script>
+    <script type="application/javascript" src="https://syndication.exdynsrv.com/ads.js"></script>
+    
+    <script type="application/javascript">
+        // Lateral derecho
+        var ad_idzone2 = ExoClickZones.right;
+        var ad_width2 = 160;
+        var ad_height2 = 600;
+        var ad_sub2 = 'right';
+    </script>
+    <script type="application/javascript" src="https://a.exdynsrv.com/ads.js"></script>
+    
+    <script type="application/javascript">
+        // Inferior
+        var ad_idzone3 = ExoClickZones.bottom;
+        var ad_width3 = 728;
+        var ad_height3 = 90;
+        var ad_sub3 = 'bottom';
+    </script>
+    <script type="application/javascript" src="https://syndication.exoclick.com/ads.js"></script>
+    
+    <!-- JuicyAds como backup -->
+    <script type="text/javascript" data-cfasync="false">
+        var JuicyAdsID = '2093063';
+    </script>
+    <script type="text/javascript" data-cfasync="false" src="https://js.juicyads.com/jads.js"></script>
     
     <!-- Cargar archivos EXISTENTES -->
     <script src="/content-data2.js"></script>
     <script src="/js/decorative-list.js"></script>
     
     <script>
+        // Log para debug
+        console.log('Anuncios configurados:', {
+            ExoClick: ExoClickZones,
+            JuicyAds: JuicyAdsID
+        });
+        
         // Usar imágenes decorativas EXISTENTES para el banner
         function loadBannerImages() {
             const bannerBg = document.getElementById('bannerBg');
