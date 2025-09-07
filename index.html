@@ -1,134 +1,312 @@
-<!doctype html><html lang="es">
+<!DOCTYPE html>
+<html lang="es">
 <head>
-<script>window.__ENV=window.__ENV||{};window.__ENV.EXOCLICK_BOTTOM_ZONE=5717078;</script>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>BeachGirl · Home</title>
-  <link rel="icon" href="/favicon.ico">
-  <link rel="stylesheet" href="/css/bg.css">
-  <script defer src="/js/env-inline.js"></script>
-  <script defer src="/js/decorative-manifest.js"></script>
-  <script defer src="/js/utils.js"></script>
-  <script defer src="/js/content-loader.js"></script>
-  <script defer src="/js/gallery.js"></script>
-  <script defer src="/js/carousel.js"></script>
-  <script defer src="/js/ads.js"></script>
-  <script defer src="/js/chatbot.js"></script>
-  <script defer src="/js/fs-pools.js"></script>
-  <script defer src="/js/bootstrap.js"></script>
-  <script defer src="/content-data1.js"></script>
-  <script defer src="/content-data2.js"></script>
-  <script defer src="/content-data3.js"></script>
-  <script defer src="/content-data4.js"></script>
-  <script defer src="/content-data5.js"></script>
-  <script defer src="/content-data6.js"></script>
-  <script defer src="/js/banner-rotator.js"></script>
-  <script defer src="/js/ads.js"></script>
-  <script defer src="/js/ads-exo-bottom.js"></script>
-
-  <script defer src="/js/ads-popads.js"></script>
-  <script defer src="/js/ads-ero-ctrl.js"></script>
-  <script defer src="/js/ads-debug.js"></script>
-  <script defer src="/js/ads-exo-sides.js"></script>
-  <style>/* BG_ADS_BASE */ .ad-side{position:fixed;top:120px;z-index:9998;width:300px}.ad-side#ad-left{left:8px}.ad-side#ad-right{right:8px}@media(max-width:1200px){.ad-side{display:none}} .ad-box{max-width:300px;margin:16px auto}</style>
-  <style id="ads-sides-css">\n  .ad-side{position:fixed;top:80px;z-index:9999;width:160px;min-height:600px;display:flex;justify-content:center}\n  #ad-left{left:0}\n  #ad-right{right:0}\n  @media (max-width:1200px){ .ad-side{display:none} }\n  </style>\n
-  <style id="ads-core-css">.ad-side{min-width:300px}.ad-box{width:300px;min-height:250px;margin:16px auto;display:block}@media(max-width:1200px){.ad-side{display:none}}</style>
-
-  <style id="ads-fallback-css">\n  .ad-side{min-width:300px}\n  #ad-left,#ad-right{width:300px;min-height:250px;margin:16px auto;display:block}\n  @media(max-width:1200px){#ad-left,#ad-right{display:none}}\n  .house-ad{display:flex;flex-direction:column;align-items:center;justify-content:center;width:300px;height:250px;border-radius:10px;text-decoration:none;box-shadow:0 8px 24px rgba(0,0,0,.15);background:linear-gradient(135deg,#0ea5e9,#6366f1);color:white;font-weight:600;gap:8px}\n  .house-ad strong{font-size:22px;letter-spacing:.3px}\n  .house-ad span{font-size:13px;opacity:.9}\n  </style>\n
-  <style id="ads-bottom-css">\n  .ads-bottom-row{display:grid;grid-template-columns:repeat(2,300px);gap:20px;place-content:center;margin:24px 0}\n  .ad-box{width:300px;min-height:250px}\n  @media(max-width:900px){.ads-bottom-row{grid-template-columns:1fr}.ad-box{margin:0 auto}}\n  /* Desactiva cualquier badge/house anterior */\n  [data-house], .house-ad, .sponsored-badge{display:none!important}\n  </style>\n
-  <script defer src="/js/ads-bottom-row.js"></script>
-  <style id="bg-home-trim">
-    /* ===== HOME: ocultar slots vacíos; mantener laterales y bottom ===== */
-    /* Placeholders/debug vacíos */
-    .ad-placeholder, .ad-box.debug, .ad-debug-frame, .ad-empty, .ad-slot.empty {
-      display:none !important;
-    }
-
-    /* Fila inferior múltiple (si existiera) y tiras */
-    #ad-bottom-row, .ad-bottom-row, #ad-strip, .ad-strip {
-      display:none !important; visibility:hidden !important;
-      height:0 !important; padding:0 !important; margin:0 !important;
-    }
-
-    /* ERO desactivado en HOME (si hubiera contenedor) */
-    #ad-ero, .ad-ero, #ero-container { display:none !important; }
-
-    /* Mantener laterales SIEMPRE visibles */
-    #ad-left, #ad-right { display:block !important; }
-
-    /* Mantener BOTTOM visible (no tocar) */
-    #ad-bottom, .ad-bottom { display:block !important; }
-  </style>
-
-  <style id="bg-cleanup-css">
-    /* Oculta artefacto fino sobre el menú */
-    header + .artifact, .top-artifact, .menu-artifact { display: none !important; }
-    body > .artifact, body > .decorative-line { display: none !important; }
-    body > div[style*="height:1px"], body > div[style*="height:2px"] { display: none !important; }
-
-    /* Mantener visibles SOLO contenedores de anuncios reales */
-    #ad-left, .ad-left, #ad-right, .ad-right, #ad-sticky-bottom, .ad-sticky-bottom {
-      display:block !important; visibility:visible !important;
-    }
-
-    /* Ocultar placeholders vacíos típicos */
-    .ad-placeholder, .ad-bottom-row, .ad-slot-empty, .ad-empty,
-    .ad-row, .bottom-row-ads, .ads-row, .dummy-ad, .ghost-ad {
-      display:none !important; visibility:hidden !important;
-      height:0 !important; margin:0 !important; padding:0 !important; border:0 !important;
-    }
-
-    /* Evitar huecos de layout */
-    .gallery-section, .carousel-section, main, .content-center {
-      margin-bottom: 0 !important; padding-bottom: 0 !important;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeachGirl.pics - Premium Beach Content</title>
+    <style>
+        @font-face {
+            font-family: 'BeachFont';
+            src: url('/decorative-images/font.woff2') format('woff2'),
+                 url('/decorative-images/font.woff') format('woff');
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'BeachFont', cursive, sans-serif;
+            background: url('/decorative-images/paradise-beach.png') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+        }
+        
+        /* Menu Superior */
+        .menu-top {
+            background: rgba(255,255,255,0.95);
+            padding: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .menu-top nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+        
+        .menu-top a {
+            color: #333;
+            text-decoration: none;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s;
+        }
+        
+        .menu-top a:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        /* Banner */
+        .banner {
+            position: relative;
+            height: 400px;
+            margin: 20px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .banner-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .banner-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            animation: rotate 15s infinite;
+        }
+        
+        .banner-bg img:nth-child(1) { animation-delay: 0s; }
+        .banner-bg img:nth-child(2) { animation-delay: 5s; }
+        .banner-bg img:nth-child(3) { animation-delay: 10s; }
+        
+        @keyframes rotate {
+            0%, 33% { opacity: 0; }
+            8%, 25% { opacity: 1; }
+        }
+        
+        .banner-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0,0,0,0.3);
+            color: white;
+            text-align: center;
+        }
+        
+        .banner-content h1 {
+            font-size: 4em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+        }
+        
+        .banner-content p {
+            font-size: 1.5em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        /* Carousel */
+        .carousel-section {
+            margin: 40px 20px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 15px;
+            padding: 20px 0;
+            scroll-behavior: smooth;
+        }
+        
+        .carousel::-webkit-scrollbar {
+            height: 10px;
+        }
+        
+        .carousel::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        
+        .carousel::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 10px;
+        }
+        
+        .carousel-item {
+            flex: 0 0 250px;
+            height: 350px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        
+        .carousel-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Gallery */
+        .gallery-section {
+            margin: 40px 20px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+        
+        .gallery-item {
+            position: relative;
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body>
-<div id="ad-left" class="ad-lateral left"></div>
-<div id="ad-right" class="ad-lateral right"></div>
-<div id="ad-bottom" class="ad-bottom" data-zone="5717078"></div>  <div class="slot-lateral left" id="slot-left"></div>
-  <div class="slot-lateral right" id="slot-right"></div>
-
-  <div class="nav"><div class="container nav-inner">
-    <div class="brand">beachgirl.pics</div>
-    <div class="menu">
-      <a href="/index.html">Home</a>
-      <a href="/premium.html">Premium</a>
-      <a href="/videos.html">Videos</a>
-      <a href="/subscription.html">Subscriptions</a>
-      <a href="/subscription.html#lifetime">Lifetime</a>
+    <!-- Menu Superior -->
+    <div class="menu-top">
+        <nav>
+            <a href="/">HOME</a>
+            <a href="/premium.html">PREMIUM</a>
+            <a href="/videos.html">VIDEOS</a>
+            <a href="/subscription.html">SUBSCRIPTIONS</a>
+        </nav>
     </div>
-  </div></div>
-
-  <section class="banner" id="banner">
-    <div id="decorative-rotator"></div>
-    <div class="banner-inner">
-      <h1>beachgirl.pics</h1>
-      <p>bienvenidos al paraiso</p>
+    
+    <!-- Banner -->
+    <div class="banner">
+        <div class="banner-bg" id="bannerBg"></div>
+        <div class="banner-content">
+            <h1>BEACHGIRL.PICS</h1>
+            <p>Bienvenido al Paraíso</p>
+        </div>
     </div>
-  </section>
-
-  <div class="section"><div class="container">
-    <div class="carousel" id="hero-carousel"><div class="carousel-track"></div></div>
-  </div></div>
-
-  <div class="container">
-    <div class="section">
-      <h2 class="h2">Galería</h2>
-      <div id="home-gallery"></div>
+    
+    <!-- Carousel -->
+    <div class="carousel-section">
+        <h2 style="text-align:center; margin-bottom:20px; color:#333;">Daily Selection</h2>
+        <div class="carousel" id="carousel"></div>
     </div>
-  </div>
-
-  <div class="container"><div class="slot-bottom" id="slot-bottom"></div></div>
-<script>document.addEventListener("DOMContentLoaded",function(){ try{ (window.BG_ADS.initAds||window.BG_ADS.init)(); }catch(e){ console.warn(e);} });</script>  <script src="js/ads-ero-ctrl.js"></script>
-  <script src="js/ads-popads.js"></script>
-<div id="ad-sponsor" class="ad-box ad-sponsor"></div>
-  <!-- BG_ADS_START -->
-  <script src="/js/env-ads-inline.js" defer></script>
-  <script src="/js/ads-exo-common.js" defer></script>
-  <script src="/js/ads-exo-sides.js" defer></script>
-  <script src="/js/ads-exo-bottom.js" defer></script>
-  <script src="/js/ads-ero-ctrl.js" defer></script>
-  <script src="/js/ads-popads.js" defer></script>
+    
+    <!-- Gallery -->
+    <div class="gallery-section">
+        <h2 style="text-align:center; margin-bottom:20px; color:#333;">Explore Gallery</h2>
+        <div class="gallery" id="gallery"></div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="/content-data2.js"></script>
+    <script>
+        // Cargar imágenes rotatorias del banner
+        function loadBannerImages() {
+            const bannerBg = document.getElementById('bannerBg');
+            const bannerImages = [
+                'beach-sunset.jpg',
+                'tropical-paradise.jpg', 
+                'ocean-waves.jpg'
+            ];
+            
+            bannerImages.forEach(img => {
+                const imgEl = document.createElement('img');
+                imgEl.src = '/decorative-images/' + img;
+                imgEl.alt = 'Banner background';
+                bannerBg.appendChild(imgEl);
+            });
+        }
+        
+        // Obtener 40 imágenes aleatorias del pool
+        function getRandomImages(count) {
+            if (typeof window.publicContent === 'undefined') {
+                // Fallback si content-data2 no carga
+                const fallback = [];
+                for (let i = 1; i <= count; i++) {
+                    fallback.push({
+                        thumb: `/full/${i}.webp`,
+                        full: `/full/${i}.webp`,
+                        title: `Beach Photo ${i}`
+                    });
+                }
+                return fallback;
+            }
+            
+            const shuffled = [...window.publicContent].sort(() => 0.5 - Math.random());
+            return shuffled.slice(0, count);
+        }
+        
+        // Cargar carousel
+        function loadCarousel() {
+            const carousel = document.getElementById('carousel');
+            const images = getRandomImages(40);
+            
+            images.forEach((img, index) => {
+                const item = document.createElement('div');
+                item.className = 'carousel-item';
+                item.innerHTML = `
+                    <img src="${img.thumb || img.full}" 
+                         alt="${img.title || 'Beach photo ' + (index + 1)}"
+                         loading="lazy">
+                `;
+                carousel.appendChild(item);
+            });
+        }
+        
+        // Cargar gallery
+        function loadGallery() {
+            const gallery = document.getElementById('gallery');
+            const images = getRandomImages(40);
+            
+            images.forEach((img, index) => {
+                const item = document.createElement('div');
+                item.className = 'gallery-item';
+                item.innerHTML = `
+                    <img src="${img.thumb || img.full}" 
+                         alt="${img.title || 'Beach photo ' + (index + 1)}"
+                         loading="lazy">
+                `;
+                gallery.appendChild(item);
+            });
+        }
+        
+        // Inicializar todo cuando cargue la página
+        window.addEventListener('DOMContentLoaded', function() {
+            loadBannerImages();
+            setTimeout(function() {
+                loadCarousel();
+                loadGallery();
+            }, 100);
+        });
+    </script>
 </body>
 </html>
