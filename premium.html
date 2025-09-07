@@ -81,7 +81,7 @@
         
         /* Menú de ofertas */
         .offers-menu {
-            background: linear-gradient(135deg, #ffd700, #ff6b6b);
+            background: white;
             padding: 20px;
             margin: 20px 0;
             text-align: center;
@@ -104,10 +104,12 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             cursor: pointer;
             transition: transform 0.3s;
+            border: 2px solid #00a8ff;
         }
         
         .offer-item:hover {
             transform: scale(1.05);
+            background: #f0f8ff;
         }
         
         .offer-price {
@@ -206,6 +208,14 @@
             right: 10px;
         }
         
+        /* Anuncio inferior */
+        .ero-ad-container {
+            padding: 10px;
+            margin: 15px 0;
+            text-align: center;
+            min-height: 100px;
+        }
+        
         /* Modal de pago */
         .payment-modal {
             display: none;
@@ -297,6 +307,11 @@
         <div class="gallery-grid" id="premium-gallery"></div>
     </div>
     
+    <!-- Anuncio inferior -->
+    <div class="ero-ad-container">
+        <div id="sp_8182222_node">&nbsp;</div>
+    </div>
+    
     <!-- Modal de pago -->
     <div class="payment-modal" id="payment-modal">
         <div class="modal-content">
@@ -308,20 +323,35 @@
     
     <script src="/content-data3.js"></script>
     <script src="/content-data4.js"></script>
+    
+    <script type="text/javascript" charset="utf-8">
+    if (typeof eaCtrl =="undefined"){ 
+        var eaCtrlRecs=[];
+        var eaCtrl = {add:function(ag){eaCtrlRecs.push(ag)}};
+        var js = document.createElement('script');
+        js.setAttribute("src","//go.easrv.cl/loadeactrl.go?pid=152716&spaceid=8182219&ctrlid=798931");
+        document.head.appendChild(js);
+    }
+    eaCtrl.add({"display":"sp_8182222_node","sid":8182222,"plugin":"banner"});
+    </script>
+    
     <script src="https://a.magsrv.com/ad-provider.js"></script>
     
     <script>
     // Función para inicializar la galería premium
     function initPremiumGallery() {
-        const pool1 = window.UNCENSORED_IMAGES_POOL || [];
-        const pool2 = window.UNCENSORED_IMAGES_POOL_2 || [];
+        // Usar las variables correctas de los archivos
+        const pool1 = window.UNCENSORED_POOL_1 || [];
+        const pool2 = window.UNCENSORED_POOL_2 || [];
         const allImages = [...pool1, ...pool2];
         
+        console.log('Pool 1:', pool1.length);
+        console.log('Pool 2:', pool2.length);
         console.log('Total imágenes disponibles:', allImages.length);
         
         if (allImages.length === 0) {
-            console.log('Esperando imágenes... reintentando en 1 segundo');
-            setTimeout(initPremiumGallery, 1000);
+            console.log('Esperando imágenes... reintentando en 2 segundos');
+            setTimeout(initPremiumGallery, 2000);
             return;
         }
         
@@ -438,7 +468,7 @@
     // Inicializar todo cuando el DOM esté listo
     document.addEventListener('DOMContentLoaded', function() {
         console.log('🌴 BeachGirl Premium - Iniciando...');
-        setTimeout(initPremiumGallery, 2000);
+        setTimeout(initPremiumGallery, 3000);
         setTimeout(initSideAds, 1500);
     });
     </script>
