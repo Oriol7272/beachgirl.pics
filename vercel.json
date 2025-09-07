@@ -1,8 +1,8 @@
 {
-  "name": "beachgirl-pics",
-  "alias": ["beachgirl.me", "www.beachgirl.me"],
-  "public": true,
-  "github": {
-    "enabled": true
-  }
+  "name": "beachgirlpics",
+  "version": 2,
+  "builds": [],
+  "routes": [],
+  "outputDirectory": ".",
+  "framework": null
 }
