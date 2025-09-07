@@ -348,12 +348,8 @@
         const fixPath = (path) => path.startsWith('/') ? path : '/' + path;
         const allImages = [...pool1.map(fixPath), ...pool2.map(fixPath)];
         
-        console.log('Pool 1:', pool1.length);
-        console.log('Pool 2:', pool2.length);
-        console.log('Total imágenes disponibles:', allImages.length);
         
         if (allImages.length === 0) {
-            console.log('Esperando imágenes... reintentando en 2 segundos');
             setTimeout(initPremiumGallery, 2000);
             return;
         }
@@ -470,7 +466,6 @@
     
     // Inicializar todo cuando el DOM esté listo
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('🌴 BeachGirl Premium - Iniciando...');
         setTimeout(initPremiumGallery, 3000);
         setTimeout(initSideAds, 1500);
     });
