@@ -200,31 +200,29 @@
             object-fit: cover;
         }
         
-        /* Anuncios laterales a los lados */
-        .side-ads-container {
-            position: fixed;
-            bottom: 20px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 20px;
-            pointer-events: none;
-            z-index: 100;
-        }
-        
+        /* Anuncios laterales debajo del banner */
         .side-ad-left, .side-ad-right {
-            width: 300px;
-            height: 250px;
+            position: absolute;
+            top: 520px; /* Justo debajo del banner */
+            width: 160px;
+            height: 600px;
             background: rgba(255,255,255,0.95);
             border-radius: 10px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            pointer-events: auto;
             overflow: hidden;
+            z-index: 100;
+        }
+        
+        .side-ad-left {
+            left: 10px;
+        }
+        
+        .side-ad-right {
+            right: 10px;
         }
         
         @media (max-width: 1400px) {
-            .side-ads-container {
+            .side-ad-left, .side-ad-right {
                 display: none;
             }
         }
@@ -259,9 +257,11 @@
         </div>
     </div>
     
+    <!-- Anuncios laterales justo debajo del banner -->
+    <div class="side-ad-left" id="side-ad-left"></div>
+    <div class="side-ad-right" id="side-ad-right"></div>
+    
     <div class="main-wrapper">
-            <div id="sp_8182219_node">&nbsp;</div>
-        </div>
         
         <div class="section">
             <h2>🌺 Galería en Movimiento</h2>
@@ -284,12 +284,6 @@
         <div class="ero-ad-container">
             <div id="sp_8182225_node">&nbsp;</div>
         </div>
-    </div>
-    
-    <!-- Anuncios laterales en las esquinas -->
-    <div class="side-ads-container">
-        <div class="side-ad-left" id="side-ad-left"></div>
-        <div class="side-ad-right" id="side-ad-right"></div>
     </div>
     
     <script src="/content-data2.js"></script>
@@ -435,7 +429,7 @@
     
     // Inicializar todo
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('🌴 BeachGirl.me - Versión final');
+        console.log('🌴 BeachGirl.me - Versión final con laterales');
         initBanner();
         initCarousel();
         initGallery();
