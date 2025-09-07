@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BeachGirl.me - Bienvenido al Paraíso</title>
+    <link rel="icon" href="/favicon.ico">
     <meta name="google-site-verification" content="K4K5jxLup8_F3wDpbUG-Z4riFf_lgVorF62RFCQbnIY" />
     
     <!-- Google tag (gtag.js) -->
@@ -14,7 +15,6 @@
       gtag('js', new Date());
       gtag('config', 'G-13HE3GTF9N');
     </script>
-    <link rel="icon" href="/favicon.ico">
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,7 +34,7 @@
         }
         
         body {
-            padding-bottom: 100px;
+            padding-bottom: 20px;
         }
         
         header {
@@ -48,7 +48,7 @@
         }
         
         nav {
-            max-width: 1100px; /* AMPLIADO */
+            max-width: 1100px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -127,9 +127,8 @@
             text-shadow: 3px 3px 6px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.9);
         }
         
-        /* Contenedor principal AMPLIADO */
         .main-wrapper {
-            max-width: 1100px; /* AMPLIADO hasta el margen */
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 20px;
         }
@@ -151,7 +150,6 @@
             text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
         }
         
-        /* Espacio para anuncios Ero-Advertising */
         .ero-ad-container {
             padding: 20px;
             margin: 30px 0;
@@ -163,6 +161,7 @@
             overflow: hidden;
             height: 200px;
             border-radius: 10px;
+            background: url('/decorative-images/paradise-beach.png') center/cover;
         }
         
         .carousel-track {
@@ -189,6 +188,9 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             gap: 15px;
+            background: url('/decorative-images/paradise-beach.png') center/cover;
+            padding: 20px;
+            border-radius: 10px;
         }
         
         .gallery-item {
@@ -210,30 +212,9 @@
             object-fit: cover;
         }
         
-        /* Anuncios laterales debajo del banner */
-        .side-ad-left, .side-ad-right {
-
-        .side-ad-left-bottom, .side-ad-right-bottom {
-            position: absolute;
-            top: 1140px; /* 520px + 600px + 20px espacio */
-            width: 160px;
-            height: 600px;
-            background: rgba(255,255,255,0.95);
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            overflow: hidden;
-            z-index: 100;
-        }
-
-        .side-ad-left-bottom {
-            left: 10px;
-        }
-
-        .side-ad-right-bottom {
-            right: 10px;
-        }
-            position: absolute;
-            top: 520px; /* Justo debajo del banner */
+        /* Anuncios laterales */
+        .side-ad-left, .side-ad-right, .side-ad-left-bottom, .side-ad-right-bottom {
+            position: fixed;
             width: 160px;
             height: 600px;
             background: rgba(255,255,255,0.95);
@@ -245,54 +226,26 @@
         
         .side-ad-left {
             left: 10px;
+            top: 100px;
         }
         
         .side-ad-right {
-
-        .side-ad-left-bottom, .side-ad-right-bottom {
-            position: absolute;
-            top: 1140px; /* 520px + 600px + 20px espacio */
-            width: 160px;
-            height: 600px;
-            background: rgba(255,255,255,0.95);
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            overflow: hidden;
-            z-index: 100;
+            right: 10px;
+            top: 100px;
         }
-
+        
         .side-ad-left-bottom {
             left: 10px;
+            top: 720px;
         }
-
+        
         .side-ad-right-bottom {
             right: 10px;
-        }
-            right: 10px;
+            top: 720px;
         }
         
         @media (max-width: 1400px) {
             .side-ad-left, .side-ad-right, .side-ad-left-bottom, .side-ad-right-bottom {
-
-        .side-ad-left-bottom, .side-ad-right-bottom {
-            position: absolute;
-            top: 1140px; /* 520px + 600px + 20px espacio */
-            width: 160px;
-            height: 600px;
-            background: rgba(255,255,255,0.95);
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            overflow: hidden;
-            z-index: 100;
-        }
-
-        .side-ad-left-bottom {
-            left: 10px;
-        }
-
-        .side-ad-right-bottom {
-            right: 10px;
-        }
                 display: none;
             }
         }
@@ -327,7 +280,7 @@
         </div>
     </div>
     
-    <!-- Anuncios laterales justo debajo del banner -->
+    <!-- Anuncios laterales -->
     <div class="side-ad-left" id="side-ad-left"></div>
     <div class="side-ad-right" id="side-ad-right"></div>
     <div class="side-ad-left-bottom" id="side-ad-left-bottom"></div>
@@ -342,7 +295,6 @@
             </div>
         </div>
         
-        <!-- Anuncio Ero-Advertising 2 -->
         <div class="ero-ad-container">
             <div id="sp_8182222_node">&nbsp;</div>
         </div>
@@ -352,7 +304,6 @@
             <div class="gallery" id="gallery"></div>
         </div>
         
-        <!-- Anuncio Ero-Advertising 3 -->
         <div class="ero-ad-container">
             <div id="sp_8182225_node">&nbsp;</div>
         </div>
@@ -360,7 +311,6 @@
     
     <script src="/content-data2.js"></script>
     
-    <!-- Scripts de Ero-Advertising -->
     <script type="text/javascript" charset="utf-8">
     if (typeof eaCtrl =="undefined"){ 
         var eaCtrlRecs=[];
@@ -374,13 +324,14 @@
     </script>
     
     <script>
-    // Banner rotatorio
+    // Banner rotatorio con TODAS las imágenes
     const bannerImages = [
         '/decorative-images/1115ae7d-909f-4760-a3a1-037a05ad9931.jpg',
         '/decorative-images/1618cbb2-8dd1-4127-99d9-d9f30536de72.jpg',
         '/decorative-images/49830c0a-2fd8-439c-a583-029a0b39c4d6.jpg',
         '/decorative-images/4bfb7a8b-b81e-49d7-a160-90b834d0b751.jpg',
-        '/decorative-images/81f55fd4-b0df-49f4-9020-cbb0f5042c08.jpg'
+        '/decorative-images/81f55fd4-b0df-49f4-9020-cbb0f5042c08.jpg',
+        '/decorative-images/f062cb22-c99b-4dfa-9a79-572e98c6e75e.jpg'
     ];
     
     function initBanner() {
@@ -402,7 +353,6 @@
         }, 5000);
     }
     
-    // Carousel automático
     let carouselPosition = 0;
     function initCarousel() {
         const carousel = document.getElementById('carousel');
@@ -440,7 +390,6 @@
         }, 2000);
     }
     
-    // Gallery
     function initGallery() {
         const gallery = document.getElementById('gallery');
         const images = window.FULL_IMAGES_POOL || [];
@@ -462,9 +411,9 @@
         });
     }
     
-    // Anuncios laterales (ExoClick)
+    // Inicializar TODOS los anuncios laterales
     function initSideAds() {
-        // Anuncio lateral izquierdo
+        // Anuncio lateral superior izquierdo
         const leftAd = document.getElementById('side-ad-left');
         if (leftAd) {
             const ins = document.createElement('ins');
@@ -476,7 +425,7 @@
             leftAd.appendChild(ins);
         }
         
-        // Anuncio lateral derecho
+        // Anuncio lateral superior derecho
         const rightAd = document.getElementById('side-ad-right');
         if (rightAd) {
             const ins = document.createElement('ins');
@@ -488,35 +437,53 @@
             rightAd.appendChild(ins);
         }
         
+        // Anuncio lateral inferior izquierdo
+        const leftAdBottom = document.getElementById('side-ad-left-bottom');
+        if (leftAdBottom) {
+            const insLB = document.createElement('ins');
+            insLB.className = 'eas6a97888e2';
+            insLB.setAttribute('data-zoneid', '5696330');
+            insLB.style.display = 'block';
+            insLB.style.width = '100%';
+            insLB.style.height = '100%';
+            leftAdBottom.appendChild(insLB);
+        }
+        
+        // Anuncio lateral inferior derecho
+        const rightAdBottom = document.getElementById('side-ad-right-bottom');
+        if (rightAdBottom) {
+            const insRB = document.createElement('ins');
+            insRB.className = 'eas6a97888e2';
+            insRB.setAttribute('data-zoneid', '5705188');
+            insRB.style.display = 'block';
+            insRB.style.width = '100%';
+            insRB.style.height = '100%';
+            rightAdBottom.appendChild(insRB);
+        }
+        
         // Activar AdProvider para ExoClick
         if (window.AdProvider) {
             window.AdProvider.push({"serve": {}});
         }
     }
     
-    // PopAds
     window._pop = window._pop || [];
     window._pop.push(['siteId', 5226758]);
     window._pop.push(['minBid', 0]);
     
-    // Inicializar todo
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('🌴 BeachGirl.me - Versión final con laterales');
+        console.log('🌴 BeachGirl.me - Versión completa con 4 laterales');
         initBanner();
         initCarousel();
         initGallery();
-        
-        // Esperar para cargar anuncios de ExoClick
         setTimeout(initSideAds, 1500);
     });
     
-    // Cargar AdProvider
     const adScript = document.createElement('script');
     adScript.async = true;
     adScript.src = 'https://a.magsrv.com/ad-provider.js';
     document.head.appendChild(adScript);
     
-    // PopAds
     setTimeout(() => {
         const pa = document.createElement('script');
         pa.async = true;
