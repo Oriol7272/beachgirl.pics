@@ -71,7 +71,6 @@
             font-size: 24px;
         }
         
-        /* Carousel */
         .carousel {
             overflow-x: auto;
             padding: 10px 0;
@@ -97,7 +96,6 @@
             display: block;
         }
         
-        /* Gallery */
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -124,13 +122,6 @@
             display: block;
         }
         
-        .loading {
-            text-align: center;
-            padding: 20px;
-            color: #666;
-        }
-        
-        /* Scrollbar */
         .carousel::-webkit-scrollbar {
             height: 8px;
         }
@@ -163,178 +154,88 @@
         <div class="section">
             <h2>🌺 Carousel - 40 Imágenes</h2>
             <div class="carousel">
-                <div class="carousel-inner" id="carousel">
-                    <div class="loading">Cargando carousel...</div>
-                </div>
+                <div class="carousel-inner" id="carousel"></div>
             </div>
         </div>
         
         <div class="section">
             <h2>🏖️ Gallery - 40 Imágenes</h2>
-            <div class="gallery" id="gallery">
-                <div class="loading">Cargando gallery...</div>
-            </div>
+            <div class="gallery" id="gallery"></div>
         </div>
     </div>
     
-    <!-- Cargar content-data2.js ANTES del script principal -->
     <script src="/content-data2.js"></script>
-    
     <script>
-    // SOLUCIÓN: Buscar las imágenes en TODAS las variables posibles
-    function findImages() {
-        console.log('Buscando imágenes...');
-        
-        // Posibles ubicaciones de las imágenes
-        const possibleLocations = [
-            window.contentData?.images,
-            window.contentData?.full,
-            window.publicContent?.images,
-            window.publicContent?.full,
-            window.PUBLIC_CONTENT?.images,
-            window.PUBLIC_CONTENT?.full,
-            window.images,
-            window.fullImages
-        ];
-        
-        // También buscar en todas las propiedades de window
-        for (let prop in window) {
-            if (prop.toLowerCase().includes('content') || 
-                prop.toLowerCase().includes('image') ||
-                prop.toLowerCase().includes('full')) {
-                console.log('Encontrada propiedad:', prop, typeof window[prop]);
-                
-                if (Array.isArray(window[prop])) {
-                    console.log('  -> Es un array con', window[prop].length, 'elementos');
-                    if (window[prop].length > 50) {
-                        return window[prop];
-                    }
-                }
-                
-                if (typeof window[prop] === 'object' && window[prop] !== null) {
-                    if (window[prop].images && Array.isArray(window[prop].images)) {
-                        console.log('  -> Tiene propiedad images con', window[prop].images.length, 'elementos');
-                        return window[prop].images;
-                    }
-                    if (window[prop].full && Array.isArray(window[prop].full)) {
-                        console.log('  -> Tiene propiedad full con', window[prop].full.length, 'elementos');
-                        return window[prop].full;
-                    }
-                }
-            }
-        }
-        
-        // Buscar en las ubicaciones conocidas
-        for (let location of possibleLocations) {
-            if (location && Array.isArray(location) && location.length > 0) {
-                console.log('Imágenes encontradas en:', location.length);
-                return location;
-            }
-        }
-        
-        return null;
-    }
-    
     function loadImages() {
-        const images = findImages();
+        console.log('Cargando imágenes desde FULL_IMAGES_POOL...');
         
-        if (!images) {
-            console.error('No se encontraron imágenes después de buscar en todas partes');
-            // Reintentar en 1 segundo
-            setTimeout(loadImages, 1000);
+        // FULL_IMAGES_POOL ya existe y tiene las imágenes
+        const images = window.FULL_IMAGES_POOL;
+        
+        if (!images || !Array.isArray(images)) {
+            console.error('FULL_IMAGES_POOL no encontrado');
+            setTimeout(loadImages, 500);
             return;
         }
         
         console.log('✅ Encontradas', images.length, 'imágenes');
         
-        // CAROUSEL
+        // CAROUSEL - 40 imágenes
         const carousel = document.getElementById('carousel');
         if (carousel) {
-            carousel.innerHTML = ''; // Limpiar loading
+            carousel.innerHTML = '';
             
             for (let i = 0; i < Math.min(40, images.length); i++) {
                 const div = document.createElement('div');
                 div.className = 'carousel-item';
                 const img = document.createElement('img');
                 
-                // Manejar si es string o objeto
-                const imageSrc = typeof images[i] === 'string' 
-                    ? '/full/' + images[i] 
-                    : '/full/' + (images[i].filename || images[i].name || images[i]);
-                    
-                img.src = imageSrc;
+                // Las imágenes ya tienen la ruta completa, NO añadir /full/ extra
+                const imagePath = images[i].startsWith('/') ? images[i] : '/' + images[i];
+                img.src = imagePath;
                 img.loading = 'lazy';
                 img.alt = 'Beach ' + (i + 1);
-                img.onerror = function() {
-                    console.error('Error cargando:', imageSrc);
-                };
                 
                 div.appendChild(img);
                 carousel.appendChild(div);
             }
-            console.log('✅ Carousel cargado con', Math.min(40, images.length), 'imágenes');
+            console.log('✅ Carousel cargado');
         }
         
-        // GALLERY
+        // GALLERY - otras 40 imágenes
         const gallery = document.getElementById('gallery');
         if (gallery) {
-            gallery.innerHTML = ''; // Limpiar loading
+            gallery.innerHTML = '';
             
-            // Usar diferentes imágenes (empezar desde 40)
-            const startIndex = Math.min(40, images.length);
-            for (let i = 0; i < Math.min(40, images.length - startIndex); i++) {
+            // Mezclar las imágenes para mostrar diferentes
+            const shuffled = [...images].sort(() => Math.random() - 0.5);
+            
+            for (let i = 0; i < Math.min(40, shuffled.length); i++) {
                 const div = document.createElement('div');
                 div.className = 'gallery-item';
                 const img = document.createElement('img');
                 
-                const index = startIndex + i;
-                const imageSrc = typeof images[index] === 'string' 
-                    ? '/full/' + images[index]
-                    : '/full/' + (images[index].filename || images[index].name || images[index]);
-                    
-                img.src = imageSrc;
+                // Las imágenes ya tienen la ruta completa
+                const imagePath = shuffled[i].startsWith('/') ? shuffled[i] : '/' + shuffled[i];
+                img.src = imagePath;
                 img.loading = 'lazy';
-                img.alt = 'Beach Gallery ' + (i + 1);
-                img.onerror = function() {
-                    console.error('Error cargando:', imageSrc);
-                };
+                img.alt = 'Gallery ' + (i + 1);
                 
                 div.appendChild(img);
                 gallery.appendChild(div);
             }
-            
-            // Si no hay suficientes imágenes diferentes, usar las mismas
-            if (gallery.children.length < 40) {
-                for (let i = gallery.children.length; i < 40 && i < images.length; i++) {
-                    const div = document.createElement('div');
-                    div.className = 'gallery-item';
-                    const img = document.createElement('img');
-                    
-                    const imageSrc = typeof images[i] === 'string' 
-                        ? '/full/' + images[i]
-                        : '/full/' + (images[i].filename || images[i].name || images[i]);
-                        
-                    img.src = imageSrc;
-                    img.loading = 'lazy';
-                    img.alt = 'Beach Gallery ' + (i + 1);
-                    
-                    div.appendChild(img);
-                    gallery.appendChild(div);
-                }
-            }
-            
-            console.log('✅ Gallery cargada con', gallery.children.length, 'imágenes');
+            console.log('✅ Gallery cargada');
         }
     }
     
-    // Intentar cargar cuando el DOM esté listo
+    // Cargar cuando el DOM esté listo
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', loadImages);
     } else {
         loadImages();
     }
     
-    // También intentar cuando la ventana cargue completamente
+    // También intentar cuando la ventana cargue
     window.addEventListener('load', function() {
         if (document.querySelectorAll('.carousel-item').length === 0) {
             loadImages();
