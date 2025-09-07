@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BeachGirl.me - Bienvenido al Paraíso</title>
+    <meta name="google-site-verification" content="K4K5jxLup8_F3wDpbUG-Z4riFf_lgVorF62RFCQbnIY" />
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-13HE3GTF9N"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-13HE3GTF9N');
+    </script>
     <link rel="icon" href="/favicon.ico">
     
     <style>
@@ -202,6 +212,26 @@
         
         /* Anuncios laterales debajo del banner */
         .side-ad-left, .side-ad-right {
+
+        .side-ad-left-bottom, .side-ad-right-bottom {
+            position: absolute;
+            top: 1140px; /* 520px + 600px + 20px espacio */
+            width: 160px;
+            height: 600px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            overflow: hidden;
+            z-index: 100;
+        }
+
+        .side-ad-left-bottom {
+            left: 10px;
+        }
+
+        .side-ad-right-bottom {
+            right: 10px;
+        }
             position: absolute;
             top: 520px; /* Justo debajo del banner */
             width: 160px;
@@ -218,11 +248,51 @@
         }
         
         .side-ad-right {
+
+        .side-ad-left-bottom, .side-ad-right-bottom {
+            position: absolute;
+            top: 1140px; /* 520px + 600px + 20px espacio */
+            width: 160px;
+            height: 600px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            overflow: hidden;
+            z-index: 100;
+        }
+
+        .side-ad-left-bottom {
+            left: 10px;
+        }
+
+        .side-ad-right-bottom {
+            right: 10px;
+        }
             right: 10px;
         }
         
         @media (max-width: 1400px) {
-            .side-ad-left, .side-ad-right {
+            .side-ad-left, .side-ad-right, .side-ad-left-bottom, .side-ad-right-bottom {
+
+        .side-ad-left-bottom, .side-ad-right-bottom {
+            position: absolute;
+            top: 1140px; /* 520px + 600px + 20px espacio */
+            width: 160px;
+            height: 600px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            overflow: hidden;
+            z-index: 100;
+        }
+
+        .side-ad-left-bottom {
+            left: 10px;
+        }
+
+        .side-ad-right-bottom {
+            right: 10px;
+        }
                 display: none;
             }
         }
@@ -260,6 +330,8 @@
     <!-- Anuncios laterales justo debajo del banner -->
     <div class="side-ad-left" id="side-ad-left"></div>
     <div class="side-ad-right" id="side-ad-right"></div>
+    <div class="side-ad-left-bottom" id="side-ad-left-bottom"></div>
+    <div class="side-ad-right-bottom" id="side-ad-right-bottom"></div>
     
     <div class="main-wrapper">
         
