@@ -6,8 +6,7 @@
 
 @font-face {
     font-family: 'SexyBeachy';
-    src: url('/decorative-images/SexyBeachy.ttf') format('truetype'),
-         url('/decorative-images/SexyBeachy.otf') format('opentype');
+    src: url('/decorative-images/SexyBeachy.ttf') format('truetype');
     font-display: swap;
 }
 
@@ -16,14 +15,6 @@ body {
     background: url('/decorative-images/paradise-beach.png') center/cover fixed;
     min-height: 100vh;
     padding-bottom: 100px;
-}
-
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.3);
-    z-index: -1;
 }
 
 header {
@@ -70,7 +61,7 @@ nav {
     color: white;
 }
 
-/* Banner principal */
+/* Banner SIN FONDO NEGRO */
 .main-banner {
     position: relative;
     height: 500px;
@@ -103,34 +94,33 @@ nav {
     transform: translate(-50%, -50%);
     text-align: center;
     z-index: 2;
-    background: rgba(0,0,0,0.7);
-    padding: 50px 80px;
-    border-radius: 20px;
-    backdrop-filter: blur(10px);
+    /* SIN FONDO NEGRO - Solo sombra en el texto */
 }
 
 .banner-content h1 {
     font-size: 72px;
     color: white;
     margin-bottom: 20px;
-    text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+    text-shadow: 4px 4px 8px rgba(0,0,0,0.8), 
+                 2px 2px 4px rgba(0,0,0,0.9),
+                 0 0 20px rgba(0,0,0,0.8);
     letter-spacing: 3px;
 }
 
 .banner-content p {
     font-size: 32px;
     color: #ffd700;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.8),
+                 2px 2px 4px rgba(0,0,0,0.9),
+                 0 0 15px rgba(0,0,0,0.8);
 }
 
-/* Container con margen para anuncios laterales */
 .container {
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* Secciones */
 .section {
     background: rgba(255,255,255,0.95);
     backdrop-filter: blur(10px);
@@ -148,7 +138,6 @@ nav {
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
-/* Carousel automático */
 .carousel-container {
     position: relative;
     overflow: hidden;
@@ -175,7 +164,6 @@ nav {
     object-fit: cover;
 }
 
-/* Gallery */
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -201,25 +189,38 @@ nav {
     object-fit: cover;
 }
 
-/* ANUNCIOS */
-.ad-lateral {
+/* ANUNCIOS SIN SOLAPAMIENTO */
+.ad-container-left {
     position: fixed;
+    left: 10px;
+    top: 100px;
+    width: 160px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 100;
+}
+
+.ad-lateral {
+    width: 160px;
+    height: 250px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+}
+
+#ad-right {
+    position: fixed;
+    right: 10px;
     top: 100px;
     width: 160px;
     height: 600px;
     background: rgba(255,255,255,0.95);
     border-radius: 8px;
-    z-index: 100;
     overflow: hidden;
     box-shadow: 0 3px 15px rgba(0,0,0,0.2);
-}
-
-#ad-left {
-    left: 10px;
-}
-
-#ad-right {
-    right: 10px;
+    z-index: 100;
 }
 
 .ad-horizontal {
@@ -246,15 +247,8 @@ nav {
     box-shadow: 0 -3px 15px rgba(0,0,0,0.2);
 }
 
-/* Responsive */
 @media (max-width: 1300px) {
-    .ad-lateral {
-        width: 120px;
-    }
-}
-
-@media (max-width: 1200px) {
-    .ad-lateral {
+    .ad-container-left, #ad-right {
         display: none !important;
     }
 }
@@ -270,10 +264,6 @@ nav {
     
     .banner-content p {
         font-size: 24px;
-    }
-    
-    .banner-content {
-        padding: 30px 40px;
     }
     
     .carousel-item {

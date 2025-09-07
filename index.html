@@ -9,11 +9,26 @@
     
     <!-- Ad Provider -->
     <script async src="https://a.magsrv.com/ad-provider.js"></script>
+    
+    <!-- PopAds Config ANTES del script -->
+    <script>
+    var _pop = _pop || [];
+    _pop.push(['siteId', 5226758]);
+    _pop.push(['minBid', 0]);
+    _pop.push(['popundersPerIP', 1]);
+    _pop.push(['delayBetween', 3600]);
+    </script>
+    <script async src="//c1.popads.net/pop.js"></script>
 </head>
 <body>
-    <!-- Anuncios laterales -->
-    <div id="ad-left" class="ad-lateral"></div>
-    <div id="ad-right" class="ad-lateral"></div>
+    <!-- Contenedor de anuncios izquierdos (3 anuncios separados) -->
+    <div class="ad-container-left">
+        <div id="ad-left-1" class="ad-lateral"></div>
+        <div id="ad-left-2" class="ad-lateral"></div>
+    </div>
+    
+    <!-- Anuncio derecho -->
+    <div id="ad-right"></div>
     
     <!-- Header -->
     <header>
@@ -28,7 +43,7 @@
         </nav>
     </header>
     
-    <!-- Banner principal con imágenes rotativas -->
+    <!-- Banner principal SIN FONDO NEGRO -->
     <div class="main-banner">
         <div class="banner-bg" id="banner-bg"></div>
         <div class="banner-content">
@@ -72,16 +87,17 @@
     <script>
     // Configuración
     const CONFIG = {
-        CAROUSEL_SPEED: 2000,  // 2 segundos por imagen
-        BANNER_SPEED: 5000,    // 5 segundos por imagen del banner
+        CAROUSEL_SPEED: 2000,
+        BANNER_SPEED: 5000,
         AD_ZONES: {
-            left: '5696328',
-            right: '5705186', 
+            lateral1: '5696328',
+            lateral2: '5705186',
+            right: '5717078',
             horizontal: '5717078'
         }
     };
     
-    // Imágenes del banner
+    // Banner rotatorio
     const bannerImages = [
         '/decorative-images/1115ae7d-909f-4760-a3a1-037a05ad9931.jpg',
         '/decorative-images/1618cbb2-8dd1-4127-99d9-d9f30536de72.jpg',
@@ -90,7 +106,6 @@
         '/decorative-images/81f55fd4-b0df-49f4-9020-cbb0f5042c08.jpg'
     ];
     
-    // Banner rotatorio
     function initBanner() {
         const bannerBg = document.getElementById('banner-bg');
         let currentIndex = 0;
@@ -112,7 +127,6 @@
     
     // Carousel automático
     let carouselPosition = 0;
-    let carouselImages = [];
     
     function initCarousel() {
         const carousel = document.getElementById('carousel');
@@ -123,8 +137,7 @@
             return;
         }
         
-        // Crear elementos del carousel (duplicar para loop infinito)
-        carouselImages = [...images.slice(0, 40), ...images.slice(0, 40)];
+        const carouselImages = [...images.slice(0, 40), ...images.slice(0, 40)];
         
         carouselImages.forEach(img => {
             const div = document.createElement('div');
@@ -136,15 +149,13 @@
             carousel.appendChild(div);
         });
         
-        // Mover carousel cada 2 segundos
         setInterval(() => {
-            carouselPosition -= 215; // 200px + 15px gap
+            carouselPosition -= 215;
             
-            // Reset cuando llegue a la mitad (para loop infinito)
             if (Math.abs(carouselPosition) >= (215 * 40)) {
                 carousel.style.transition = 'none';
                 carouselPosition = 0;
-                carousel.style.transform = `translateX(0)`;
+                carousel.style.transform = 'translateX(0)';
                 setTimeout(() => {
                     carousel.style.transition = 'transform 0.5s ease';
                 }, 50);
@@ -154,7 +165,7 @@
         }, CONFIG.CAROUSEL_SPEED);
     }
     
-    // Gallery estática
+    // Gallery
     function initGallery() {
         const gallery = document.getElementById('gallery');
         const images = window.FULL_IMAGES_POOL || [];
@@ -164,7 +175,6 @@
             return;
         }
         
-        // Mezclar y mostrar 40 imágenes
         const shuffled = [...images].sort(() => Math.random() - 0.5);
         
         shuffled.slice(0, 40).forEach(img => {
@@ -181,7 +191,7 @@
     // Montar anuncios
     function mountAd(elementId, zoneId) {
         const element = document.getElementById(elementId);
-        if (!element) return;
+        if (!element || !zoneId) return;
         
         const ins = document.createElement('ins');
         ins.className = 'eas6a97888e2';
@@ -190,17 +200,20 @@
         ins.style.width = '100%';
         ins.style.height = '100%';
         element.appendChild(ins);
+        
+        console.log('Anuncio montado:', elementId, 'zona:', zoneId);
     }
     
     // Inicializar anuncios
     function initAds() {
-        // Laterales (solo desktop)
-        if (window.innerWidth > 1200) {
-            mountAd('ad-left', CONFIG.AD_ZONES.left);
+        // Anuncios laterales izquierdos (2 separados)
+        if (window.innerWidth > 1300) {
+            mountAd('ad-left-1', CONFIG.AD_ZONES.lateral1);
+            mountAd('ad-left-2', CONFIG.AD_ZONES.lateral2);
             mountAd('ad-right', CONFIG.AD_ZONES.right);
         }
         
-        // Horizontales
+        // Anuncios horizontales
         mountAd('ad-banner-bottom', CONFIG.AD_ZONES.horizontal);
         mountAd('ad-carousel-bottom', CONFIG.AD_ZONES.horizontal);
         mountAd('ad-bottom', CONFIG.AD_ZONES.horizontal);
@@ -208,19 +221,8 @@
         // Activar AdProvider
         if (window.AdProvider) {
             window.AdProvider.push({"serve": {}});
+            console.log('AdProvider activado');
         }
-    }
-    
-    // PopAds
-    function initPopAds() {
-        window._pop = window._pop || [];
-        window._pop.push(['siteId', 5226758]);
-        window._pop.push(['minBid', 0]);
-        
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = '//c1.popads.net/pop.js';
-        document.body.appendChild(script);
     }
     
     // Inicializar todo
@@ -230,8 +232,8 @@
         initCarousel();
         initGallery();
         initAds();
-        initPopAds();
         console.log('✅ Todo inicializado');
+        console.log('✅ PopAds configurado con siteId:', 5226758);
     });
     
     // Reintentar AdProvider
