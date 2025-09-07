@@ -3,144 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BeachGirl.me</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            min-height: 100vh;
-        }
-        
-        header {
-            background: rgba(255,255,255,0.95);
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 28px;
-            font-weight: bold;
-            color: #764ba2;
-        }
-        
-        .menu {
-            display: flex;
-            gap: 20px;
-        }
-        
-        .menu a {
-            text-decoration: none;
-            color: #333;
-            padding: 8px 15px;
-            border-radius: 5px;
-            transition: all 0.3s;
-        }
-        
-        .menu a:hover {
-            background: #764ba2;
-            color: white;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-        
-        .section {
-            background: white;
-            padding: 30px;
-            margin-bottom: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-        
-        h2 {
-            margin-bottom: 20px;
-            color: #333;
-            font-size: 24px;
-        }
-        
-        .carousel {
-            overflow-x: auto;
-            padding: 10px 0;
-        }
-        
-        .carousel-inner {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .carousel-item {
-            flex: 0 0 180px;
-            height: 180px;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-        }
-        
-        .carousel-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 15px;
-        }
-        
-        .gallery-item {
-            aspect-ratio: 1;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-        
-        .gallery-item:hover {
-            transform: scale(1.05);
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        
-        .carousel::-webkit-scrollbar {
-            height: 8px;
-        }
-        
-        .carousel::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 10px;
-        }
-        
-        .carousel::-webkit-scrollbar-thumb {
-            background: #764ba2;
-            border-radius: 10px;
-        }
-    </style>
+    <title>BeachGirl.me - Bienvenido al Paraíso</title>
+    <link rel="icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/main.css">
+    
+    <!-- Ad Provider -->
+    <script async src="https://a.magsrv.com/ad-provider.js"></script>
 </head>
 <body>
+    <!-- Anuncios laterales -->
+    <div id="ad-left" class="ad-lateral"></div>
+    <div id="ad-right" class="ad-lateral"></div>
+    
+    <!-- Header -->
     <header>
         <nav>
-            <div class="logo">🌴 BeachGirl.me</div>
+            <div class="logo">🌴 BeachGirl</div>
             <div class="menu">
                 <a href="/">Home</a>
                 <a href="/premium.html">Premium</a>
@@ -150,95 +28,216 @@
         </nav>
     </header>
     
+    <!-- Banner principal con imágenes rotativas -->
+    <div class="main-banner">
+        <div class="banner-bg" id="banner-bg"></div>
+        <div class="banner-content">
+            <h1>beachgirl.me</h1>
+            <p>Bienvenido al Paraíso</p>
+        </div>
+    </div>
+    
+    <!-- Anuncio bajo el banner -->
+    <div class="container">
+        <div class="ad-horizontal" id="ad-banner-bottom"></div>
+    </div>
+    
+    <!-- Carousel automático -->
     <div class="container">
         <div class="section">
-            <h2>🌺 Carousel - 40 Imágenes</h2>
-            <div class="carousel">
-                <div class="carousel-inner" id="carousel"></div>
+            <h2>🌺 Galería en Movimiento</h2>
+            <div class="carousel-container">
+                <div class="carousel-track" id="carousel"></div>
             </div>
         </div>
-        
+    </div>
+    
+    <!-- Anuncio bajo el carousel -->
+    <div class="container">
+        <div class="ad-horizontal" id="ad-carousel-bottom"></div>
+    </div>
+    
+    <!-- Gallery principal -->
+    <div class="container">
         <div class="section">
-            <h2>🏖️ Gallery - 40 Imágenes</h2>
+            <h2>🏖️ Galería Principal</h2>
             <div class="gallery" id="gallery"></div>
         </div>
     </div>
     
+    <!-- Anuncio inferior fijo -->
+    <div id="ad-bottom"></div>
+    
     <script src="/content-data2.js"></script>
     <script>
-    function loadImages() {
-        console.log('Cargando imágenes desde FULL_IMAGES_POOL...');
+    // Configuración
+    const CONFIG = {
+        CAROUSEL_SPEED: 2000,  // 2 segundos por imagen
+        BANNER_SPEED: 5000,    // 5 segundos por imagen del banner
+        AD_ZONES: {
+            left: '5696328',
+            right: '5705186', 
+            horizontal: '5717078'
+        }
+    };
+    
+    // Imágenes del banner
+    const bannerImages = [
+        '/decorative-images/1115ae7d-909f-4760-a3a1-037a05ad9931.jpg',
+        '/decorative-images/1618cbb2-8dd1-4127-99d9-d9f30536de72.jpg',
+        '/decorative-images/49830c0a-2fd8-439c-a583-029a0b39c4d6.jpg',
+        '/decorative-images/4bfb7a8b-b81e-49d7-a160-90b834d0b751.jpg',
+        '/decorative-images/81f55fd4-b0df-49f4-9020-cbb0f5042c08.jpg'
+    ];
+    
+    // Banner rotatorio
+    function initBanner() {
+        const bannerBg = document.getElementById('banner-bg');
+        let currentIndex = 0;
         
-        // FULL_IMAGES_POOL ya existe y tiene las imágenes
-        const images = window.FULL_IMAGES_POOL;
+        bannerImages.forEach((src, i) => {
+            const img = document.createElement('img');
+            img.src = src;
+            img.className = i === 0 ? 'active' : '';
+            bannerBg.appendChild(img);
+        });
         
-        if (!images || !Array.isArray(images)) {
-            console.error('FULL_IMAGES_POOL no encontrado');
-            setTimeout(loadImages, 500);
+        setInterval(() => {
+            const imgs = bannerBg.querySelectorAll('img');
+            imgs[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % imgs.length;
+            imgs[currentIndex].classList.add('active');
+        }, CONFIG.BANNER_SPEED);
+    }
+    
+    // Carousel automático
+    let carouselPosition = 0;
+    let carouselImages = [];
+    
+    function initCarousel() {
+        const carousel = document.getElementById('carousel');
+        const images = window.FULL_IMAGES_POOL || [];
+        
+        if (images.length === 0) {
+            setTimeout(initCarousel, 500);
             return;
         }
         
-        console.log('✅ Encontradas', images.length, 'imágenes');
+        // Crear elementos del carousel (duplicar para loop infinito)
+        carouselImages = [...images.slice(0, 40), ...images.slice(0, 40)];
         
-        // CAROUSEL - 40 imágenes
-        const carousel = document.getElementById('carousel');
-        if (carousel) {
-            carousel.innerHTML = '';
+        carouselImages.forEach(img => {
+            const div = document.createElement('div');
+            div.className = 'carousel-item';
+            const imgEl = document.createElement('img');
+            imgEl.src = img.startsWith('/') ? img : '/' + img;
+            imgEl.loading = 'lazy';
+            div.appendChild(imgEl);
+            carousel.appendChild(div);
+        });
+        
+        // Mover carousel cada 2 segundos
+        setInterval(() => {
+            carouselPosition -= 215; // 200px + 15px gap
             
-            for (let i = 0; i < Math.min(40, images.length); i++) {
-                const div = document.createElement('div');
-                div.className = 'carousel-item';
-                const img = document.createElement('img');
-                
-                // Las imágenes ya tienen la ruta completa, NO añadir /full/ extra
-                const imagePath = images[i].startsWith('/') ? images[i] : '/' + images[i];
-                img.src = imagePath;
-                img.loading = 'lazy';
-                img.alt = 'Beach ' + (i + 1);
-                
-                div.appendChild(img);
-                carousel.appendChild(div);
+            // Reset cuando llegue a la mitad (para loop infinito)
+            if (Math.abs(carouselPosition) >= (215 * 40)) {
+                carousel.style.transition = 'none';
+                carouselPosition = 0;
+                carousel.style.transform = `translateX(0)`;
+                setTimeout(() => {
+                    carousel.style.transition = 'transform 0.5s ease';
+                }, 50);
+            } else {
+                carousel.style.transform = `translateX(${carouselPosition}px)`;
             }
-            console.log('✅ Carousel cargado');
-        }
-        
-        // GALLERY - otras 40 imágenes
+        }, CONFIG.CAROUSEL_SPEED);
+    }
+    
+    // Gallery estática
+    function initGallery() {
         const gallery = document.getElementById('gallery');
-        if (gallery) {
-            gallery.innerHTML = '';
-            
-            // Mezclar las imágenes para mostrar diferentes
-            const shuffled = [...images].sort(() => Math.random() - 0.5);
-            
-            for (let i = 0; i < Math.min(40, shuffled.length); i++) {
-                const div = document.createElement('div');
-                div.className = 'gallery-item';
-                const img = document.createElement('img');
-                
-                // Las imágenes ya tienen la ruta completa
-                const imagePath = shuffled[i].startsWith('/') ? shuffled[i] : '/' + shuffled[i];
-                img.src = imagePath;
-                img.loading = 'lazy';
-                img.alt = 'Gallery ' + (i + 1);
-                
-                div.appendChild(img);
-                gallery.appendChild(div);
-            }
-            console.log('✅ Gallery cargada');
+        const images = window.FULL_IMAGES_POOL || [];
+        
+        if (images.length === 0) {
+            setTimeout(initGallery, 500);
+            return;
+        }
+        
+        // Mezclar y mostrar 40 imágenes
+        const shuffled = [...images].sort(() => Math.random() - 0.5);
+        
+        shuffled.slice(0, 40).forEach(img => {
+            const div = document.createElement('div');
+            div.className = 'gallery-item';
+            const imgEl = document.createElement('img');
+            imgEl.src = img.startsWith('/') ? img : '/' + img;
+            imgEl.loading = 'lazy';
+            div.appendChild(imgEl);
+            gallery.appendChild(div);
+        });
+    }
+    
+    // Montar anuncios
+    function mountAd(elementId, zoneId) {
+        const element = document.getElementById(elementId);
+        if (!element) return;
+        
+        const ins = document.createElement('ins');
+        ins.className = 'eas6a97888e2';
+        ins.setAttribute('data-zoneid', zoneId);
+        ins.style.display = 'block';
+        ins.style.width = '100%';
+        ins.style.height = '100%';
+        element.appendChild(ins);
+    }
+    
+    // Inicializar anuncios
+    function initAds() {
+        // Laterales (solo desktop)
+        if (window.innerWidth > 1200) {
+            mountAd('ad-left', CONFIG.AD_ZONES.left);
+            mountAd('ad-right', CONFIG.AD_ZONES.right);
+        }
+        
+        // Horizontales
+        mountAd('ad-banner-bottom', CONFIG.AD_ZONES.horizontal);
+        mountAd('ad-carousel-bottom', CONFIG.AD_ZONES.horizontal);
+        mountAd('ad-bottom', CONFIG.AD_ZONES.horizontal);
+        
+        // Activar AdProvider
+        if (window.AdProvider) {
+            window.AdProvider.push({"serve": {}});
         }
     }
     
-    // Cargar cuando el DOM esté listo
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', loadImages);
-    } else {
-        loadImages();
+    // PopAds
+    function initPopAds() {
+        window._pop = window._pop || [];
+        window._pop.push(['siteId', 5226758]);
+        window._pop.push(['minBid', 0]);
+        
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = '//c1.popads.net/pop.js';
+        document.body.appendChild(script);
     }
     
-    // También intentar cuando la ventana cargue
+    // Inicializar todo
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('🌴 BeachGirl.me iniciando...');
+        initBanner();
+        initCarousel();
+        initGallery();
+        initAds();
+        initPopAds();
+        console.log('✅ Todo inicializado');
+    });
+    
+    // Reintentar AdProvider
     window.addEventListener('load', function() {
-        if (document.querySelectorAll('.carousel-item').length === 0) {
-            loadImages();
+        if (window.AdProvider) {
+            window.AdProvider.push({"serve": {}});
         }
     });
     </script>

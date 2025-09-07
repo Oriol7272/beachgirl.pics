@@ -4,8 +4,15 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'SexyBeachy';
+    src: url('/decorative-images/SexyBeachy.ttf') format('truetype'),
+         url('/decorative-images/SexyBeachy.otf') format('opentype');
+    font-display: swap;
+}
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'SexyBeachy', cursive, Arial, sans-serif;
     background: url('/decorative-images/paradise-beach.png') center/cover fixed;
     min-height: 100vh;
     padding-bottom: 100px;
@@ -14,10 +21,7 @@ body {
 body::before {
     content: "";
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: rgba(0,0,0,0.3);
     z-index: -1;
 }
@@ -25,11 +29,11 @@ body::before {
 header {
     background: rgba(255,255,255,0.95);
     backdrop-filter: blur(10px);
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
     position: sticky;
     top: 0;
     z-index: 1000;
-    padding: 15px 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 nav {
@@ -42,9 +46,9 @@ nav {
 }
 
 .logo {
-    font-size: 28px;
+    font-size: 32px;
     color: #00a8ff;
-    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
 }
 
 .menu {
@@ -55,36 +59,28 @@ nav {
 .menu a {
     color: #333;
     text-decoration: none;
+    font-size: 20px;
     padding: 8px 15px;
     border-radius: 5px;
     transition: all 0.3s;
 }
 
-.menu a:hover, .menu a.active {
-    background: #00a8ff;
+.menu a:hover {
+    background: linear-gradient(135deg, #00a8ff, #0077be);
     color: white;
 }
 
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.banner {
+/* Banner principal */
+.main-banner {
     position: relative;
-    height: 400px;
-    margin-bottom: 30px;
+    height: 500px;
+    margin-bottom: 20px;
     overflow: hidden;
-    background: rgba(0,0,0,0.5);
 }
 
 .banner-bg {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
 }
 
 .banner-bg img {
@@ -97,7 +93,7 @@ nav {
 }
 
 .banner-bg img.active {
-    opacity: 0.7;
+    opacity: 1;
 }
 
 .banner-content {
@@ -108,58 +104,69 @@ nav {
     text-align: center;
     z-index: 2;
     background: rgba(0,0,0,0.7);
-    padding: 40px;
+    padding: 50px 80px;
     border-radius: 20px;
+    backdrop-filter: blur(10px);
 }
 
-.banner h1 {
-    font-size: 48px;
+.banner-content h1 {
+    font-size: 72px;
     color: white;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 6px rgba(0,0,0,0.5);
+    letter-spacing: 3px;
 }
 
-.banner p {
-    font-size: 24px;
+.banner-content p {
+    font-size: 32px;
     color: #ffd700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
-.content-section {
+/* Container con margen para anuncios laterales */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Secciones */
+.section {
     background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
     padding: 30px;
+    margin-bottom: 20px;
     border-radius: 15px;
-    margin-bottom: 30px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
 }
 
-.content-section h2 {
-    font-size: 28px;
+.section h2 {
+    font-size: 32px;
     color: #00a8ff;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
 }
 
-.carousel {
-    overflow-x: auto;
-    padding: 10px 0;
+/* Carousel automático */
+.carousel-container {
+    position: relative;
+    overflow: hidden;
+    height: 200px;
 }
 
 .carousel-track {
     display: flex;
     gap: 15px;
+    transition: transform 0.5s ease;
 }
 
 .carousel-item {
-    flex: 0 0 180px;
-    height: 180px;
+    flex: 0 0 200px;
+    height: 200px;
     border-radius: 10px;
     overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.3s;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
-}
-
-.carousel-item:hover {
-    transform: scale(1.05);
+    box-shadow: 0 3px 15px rgba(0,0,0,0.3);
 }
 
 .carousel-item img {
@@ -168,9 +175,10 @@ nav {
     object-fit: cover;
 }
 
-.gallery-grid {
+/* Gallery */
+.gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 15px;
 }
 
@@ -178,9 +186,9 @@ nav {
     aspect-ratio: 1;
     border-radius: 10px;
     overflow: hidden;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.3);
     cursor: pointer;
     transition: transform 0.3s;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
 }
 
 .gallery-item:hover {
@@ -193,15 +201,17 @@ nav {
     object-fit: cover;
 }
 
+/* ANUNCIOS */
 .ad-lateral {
     position: fixed;
     top: 100px;
     width: 160px;
     height: 600px;
-    background: white;
+    background: rgba(255,255,255,0.95);
     border-radius: 8px;
     z-index: 100;
     overflow: hidden;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.2);
 }
 
 #ad-left {
@@ -213,13 +223,13 @@ nav {
 }
 
 .ad-horizontal {
-    background: white;
+    background: rgba(255,255,255,0.95);
     padding: 20px;
-    margin: 30px auto;
-    max-width: 728px;
+    margin: 20px auto;
     border-radius: 10px;
     text-align: center;
     min-height: 90px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.2);
 }
 
 #ad-bottom {
@@ -228,34 +238,50 @@ nav {
     left: 0;
     right: 0;
     height: 90px;
-    background: white;
+    background: rgba(255,255,255,0.98);
     z-index: 9999;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: 0 -3px 15px rgba(0,0,0,0.2);
+}
+
+/* Responsive */
+@media (max-width: 1300px) {
+    .ad-lateral {
+        width: 120px;
+    }
 }
 
 @media (max-width: 1200px) {
     .ad-lateral {
-        display: none;
+        display: none !important;
     }
 }
 
 @media (max-width: 768px) {
-    .banner {
-        height: 300px;
+    .main-banner {
+        height: 350px;
     }
     
-    .banner h1 {
-        font-size: 36px;
+    .banner-content h1 {
+        font-size: 48px;
+    }
+    
+    .banner-content p {
+        font-size: 24px;
+    }
+    
+    .banner-content {
+        padding: 30px 40px;
     }
     
     .carousel-item {
-        flex: 0 0 140px;
-        height: 140px;
+        flex: 0 0 150px;
+        height: 150px;
     }
     
-    .gallery-grid {
+    .gallery {
         grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     }
     
