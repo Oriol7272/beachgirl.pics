@@ -200,8 +200,8 @@
             object-fit: cover;
         }
         
-        /* Anuncios inferiores a los lados */
-        .bottom-ads-container {
+        /* Anuncios laterales a los lados */
+        .side-ads-container {
             position: fixed;
             bottom: 20px;
             left: 0;
@@ -213,7 +213,7 @@
             z-index: 100;
         }
         
-        .bottom-ad-left, .bottom-ad-right {
+        .side-ad-left, .side-ad-right {
             width: 300px;
             height: 250px;
             background: rgba(255,255,255,0.95);
@@ -224,7 +224,7 @@
         }
         
         @media (max-width: 1400px) {
-            .bottom-ads-container {
+            .side-ads-container {
                 display: none;
             }
         }
@@ -260,8 +260,6 @@
     </div>
     
     <div class="main-wrapper">
-        <!-- Anuncio Ero-Advertising 1 -->
-        <div class="ero-ad-container">
             <div id="sp_8182219_node">&nbsp;</div>
         </div>
         
@@ -288,10 +286,10 @@
         </div>
     </div>
     
-    <!-- Anuncios inferiores en las esquinas -->
-    <div class="bottom-ads-container">
-        <div class="bottom-ad-left" id="bottom-ad-left"></div>
-        <div class="bottom-ad-right" id="bottom-ad-right"></div>
+    <!-- Anuncios laterales en las esquinas -->
+    <div class="side-ads-container">
+        <div class="side-ad-left" id="side-ad-left"></div>
+        <div class="side-ad-right" id="side-ad-right"></div>
     </div>
     
     <script src="/content-data2.js"></script>
@@ -305,7 +303,6 @@
         js.setAttribute("src","//go.easrv.cl/loadeactrl.go?pid=152716&spaceid=8182219&ctrlid=798931");
         document.head.appendChild(js);
     }
-    eaCtrl.add({"display":"sp_8182219_node","sid":8182219,"plugin":"banner"});
     eaCtrl.add({"display":"sp_8182222_node","sid":8182222,"plugin":"banner"});
     eaCtrl.add({"display":"sp_8182225_node","sid":8182225,"plugin":"banner"});
     </script>
@@ -399,10 +396,10 @@
         });
     }
     
-    // Anuncios inferiores (ExoClick)
-    function initBottomAds() {
-        // Anuncio inferior izquierdo
-        const leftAd = document.getElementById('bottom-ad-left');
+    // Anuncios laterales (ExoClick)
+    function initSideAds() {
+        // Anuncio lateral izquierdo
+        const leftAd = document.getElementById('side-ad-left');
         if (leftAd) {
             const ins = document.createElement('ins');
             ins.className = 'eas6a97888e2';
@@ -413,8 +410,8 @@
             leftAd.appendChild(ins);
         }
         
-        // Anuncio inferior derecho
-        const rightAd = document.getElementById('bottom-ad-right');
+        // Anuncio lateral derecho
+        const rightAd = document.getElementById('side-ad-right');
         if (rightAd) {
             const ins = document.createElement('ins');
             ins.className = 'eas6a97888e2';
@@ -444,7 +441,7 @@
         initGallery();
         
         // Esperar para cargar anuncios de ExoClick
-        setTimeout(initBottomAds, 1500);
+        setTimeout(initSideAds, 1500);
     });
     
     // Cargar AdProvider
