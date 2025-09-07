@@ -15,7 +15,6 @@
             font-display: swap;
         }
         
-        /* Fondo SIEMPRE paradise-beach */
         html, body {
             font-family: 'SexyBeachy', cursive, Arial, sans-serif;
             background: url('/decorative-images/paradise-beach.png') center/cover fixed;
@@ -25,7 +24,10 @@
             margin: 0;
         }
         
-        /* Header transparente */
+        body {
+            padding-bottom: 100px; /* Espacio para anuncio inferior */
+        }
+        
         header {
             background: rgba(255,255,255,0.9);
             backdrop-filter: blur(10px);
@@ -37,7 +39,7 @@
         }
         
         nav {
-            max-width: 800px; /* MÁS ESTRECHO */
+            max-width: 800px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -69,7 +71,6 @@
             color: white;
         }
         
-        /* Banner sin fondo */
         .main-banner {
             position: relative;
             height: 400px;
@@ -108,26 +109,21 @@
             font-size: 64px;
             color: white;
             margin-bottom: 15px;
-            text-shadow: 4px 4px 8px rgba(0,0,0,0.9), 
-                         0 0 30px rgba(0,0,0,0.9),
-                         2px 2px 4px rgba(0,0,0,1);
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.9), 0 0 30px rgba(0,0,0,0.9);
         }
         
         .banner-content p {
             font-size: 28px;
             color: #ffd700;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.9),
-                         0 0 20px rgba(0,0,0,0.9);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.9);
         }
         
-        /* Container MÁS ESTRECHO */
         .main-wrapper {
-            max-width: 800px; /* ESTRECHO para dejar espacio a anuncios */
+            max-width: 800px;
             margin: 0 auto;
             padding: 0 20px;
         }
         
-        /* Secciones con transparencia */
         .section {
             background: rgba(255,255,255,0.85);
             backdrop-filter: blur(10px);
@@ -145,7 +141,19 @@
             text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
         }
         
-        /* Carousel */
+        /* Anuncio horizontal integrado */
+        .ad-slot-horizontal {
+            background: rgba(255,255,255,0.9);
+            padding: 15px;
+            margin: 20px auto;
+            border-radius: 10px;
+            min-height: 90px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+        }
+        
         .carousel-container {
             overflow: hidden;
             height: 180px;
@@ -171,7 +179,6 @@
             object-fit: cover;
         }
         
-        /* Gallery */
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -196,38 +203,35 @@
             object-fit: cover;
         }
         
-        /* ANUNCIOS - LIMPIAR Y RESETEAR */
-        .ads-cleanup {
-            display: none !important;
-        }
-        
-        /* Solo UN anuncio por lado */
-        .ad-side-left {
+        /* ANUNCIOS LATERALES - POSICIONAMIENTO CONTROLADO */
+        #single-ad-left {
             position: fixed;
             left: 20px;
             top: 100px;
             width: 160px;
             height: 600px;
-            background: rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.95);
             border-radius: 8px;
             overflow: hidden;
             z-index: 50;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
         }
         
-        .ad-side-right {
+        #single-ad-right {
             position: fixed;
             right: 20px;
             top: 100px;
             width: 160px;
             height: 600px;
-            background: rgba(255,255,255,0.9);
+            background: rgba(255,255,255,0.95);
             border-radius: 8px;
             overflow: hidden;
             z-index: 50;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
         }
         
-        /* Anuncio inferior */
-        .ad-bottom-bar {
+        /* Anuncio inferior fijo */
+        #single-ad-bottom {
             position: fixed;
             bottom: 0;
             left: 0;
@@ -238,57 +242,36 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            box-shadow: 0 -3px 15px rgba(0,0,0,0.2);
         }
         
-        /* Ocultar en móvil */
         @media (max-width: 1200px) {
-            .ad-side-left, .ad-side-right {
+            #single-ad-left, #single-ad-right {
                 display: none;
             }
-            
             .main-wrapper {
                 max-width: 100%;
             }
         }
         
         @media (max-width: 768px) {
-            .main-banner {
-                height: 300px;
-            }
-            
-            .banner-content h1 {
-                font-size: 42px;
-            }
-            
-            .banner-content p {
-                font-size: 20px;
-            }
-            
-            .carousel-item {
-                flex: 0 0 140px;
-                height: 140px;
-            }
-            
-            .gallery {
-                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            }
-            
-            .ad-bottom-bar {
-                height: 60px;
-            }
+            .main-banner { height: 300px; }
+            .banner-content h1 { font-size: 42px; }
+            .banner-content p { font-size: 20px; }
+            .carousel-item { flex: 0 0 140px; height: 140px; }
+            .gallery { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+            #single-ad-bottom { height: 60px; }
+            body { padding-bottom: 70px; }
         }
     </style>
+    
+    <!-- Ad Provider - Solo UNA vez -->
+    <script async src="https://a.magsrv.com/ad-provider.js"></script>
 </head>
 <body>
-    <!-- Limpiar anuncios anteriores -->
-    <div id="ad-left" class="ads-cleanup"></div>
-    <div id="ad-right" class="ads-cleanup"></div>
-    <div id="ad-left-1" class="ads-cleanup"></div>
-    <div id="ad-left-2" class="ads-cleanup"></div>
-    
-    <!-- NUEVOS anuncios - SOLO UNO POR LADO -->
-    <div class="ad-side-left" id="new-ad-left"></div>
-    <div class="ad-side-right" id="new-ad-right"></div>
+    <!-- UN SOLO anuncio por lado -->
+    <div id="single-ad-left"></div>
+    <div id="single-ad-right"></div>
     
     <header>
         <nav>
@@ -302,7 +285,6 @@
         </nav>
     </header>
     
-    <!-- Banner -->
     <div class="main-banner">
         <div class="banner-bg" id="banner-bg"></div>
         <div class="banner-content">
@@ -311,9 +293,10 @@
         </div>
     </div>
     
-    <!-- Contenido principal ESTRECHO -->
     <div class="main-wrapper">
-        <!-- Carousel -->
+        <!-- Anuncio horizontal 1 -->
+        <div class="ad-slot-horizontal" id="ad-slot-1"></div>
+        
         <div class="section">
             <h2>🌺 Galería en Movimiento</h2>
             <div class="carousel-container">
@@ -321,23 +304,29 @@
             </div>
         </div>
         
-        <!-- Gallery -->
+        <!-- Anuncio horizontal 2 -->
+        <div class="ad-slot-horizontal" id="ad-slot-2"></div>
+        
         <div class="section">
             <h2>🏖️ Galería Principal</h2>
             <div class="gallery" id="gallery"></div>
         </div>
     </div>
     
-    <!-- Anuncio inferior -->
-    <div class="ad-bottom-bar" id="new-ad-bottom"></div>
+    <!-- UN SOLO anuncio inferior -->
+    <div id="single-ad-bottom"></div>
     
     <script src="/content-data2.js"></script>
     <script>
-    // Limpiar anuncios viejos
-    document.querySelectorAll('.ads-cleanup').forEach(el => {
-        el.innerHTML = '';
-        el.style.display = 'none';
-    });
+    // Configuración de zonas
+    const AD_CONFIG = {
+        left: '5696328',      // Lateral izquierdo
+        right: '5705186',     // Lateral derecho
+        horizontal: '5717078' // Horizontales
+    };
+    
+    // Variable para controlar que solo se inicialicen una vez
+    let adsInitialized = false;
     
     // Banner rotatorio
     const bannerImages = [
@@ -365,7 +354,7 @@
         }, 5000);
     }
     
-    // Carousel
+    // Carousel automático
     let carouselPosition = 0;
     function initCarousel() {
         const carousel = document.getElementById('carousel');
@@ -425,16 +414,82 @@
         });
     }
     
-    // Inicializar
+    // Función para montar UN SOLO anuncio
+    function mountSingleAd(elementId, zoneId) {
+        const element = document.getElementById(elementId);
+        if (!element || !zoneId) {
+            console.warn('No se puede montar anuncio:', elementId);
+            return;
+        }
+        
+        // Limpiar cualquier contenido previo
+        element.innerHTML = '';
+        
+        // Crear nuevo anuncio
+        const ins = document.createElement('ins');
+        ins.className = 'eas6a97888e2';
+        ins.setAttribute('data-zoneid', zoneId);
+        ins.style.display = 'block';
+        ins.style.width = '100%';
+        ins.style.height = '100%';
+        element.appendChild(ins);
+        
+        console.log('✓ Anuncio montado:', elementId, '→ zona:', zoneId);
+    }
+    
+    // Inicializar anuncios UNA SOLA VEZ
+    function initAdsControlled() {
+        if (adsInitialized) {
+            console.log('Anuncios ya inicializados, evitando duplicados');
+            return;
+        }
+        
+        console.log('Inicializando anuncios de forma controlada...');
+        
+        // Montar anuncios individuales
+        if (window.innerWidth > 1200) {
+            mountSingleAd('single-ad-left', AD_CONFIG.left);
+            mountSingleAd('single-ad-right', AD_CONFIG.right);
+        }
+        
+        mountSingleAd('ad-slot-1', AD_CONFIG.horizontal);
+        mountSingleAd('ad-slot-2', AD_CONFIG.horizontal);
+        mountSingleAd('single-ad-bottom', AD_CONFIG.horizontal);
+        
+        // Activar AdProvider UNA SOLA VEZ
+        if (window.AdProvider) {
+            window.AdProvider.push({"serve": {}});
+            console.log('✓ AdProvider activado');
+        }
+        
+        adsInitialized = true;
+    }
+    
+    // PopAds
+    window._pop = window._pop || [];
+    window._pop.push(['siteId', 5226758]);
+    window._pop.push(['minBid', 0]);
+    
+    // Inicializar todo
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('BeachGirl.me - Iniciando versión limpia');
+        console.log('🌴 BeachGirl.me - Iniciando con control de anuncios');
+        
         initBanner();
         initCarousel();
         initGallery();
         
-        // NO inicializar anuncios por ahora para evitar duplicados
-        console.log('Layout estrecho sin anuncios duplicados');
+        // Esperar un poco antes de inicializar anuncios
+        setTimeout(initAdsControlled, 1000);
     });
+    
+    // PopAds script
+    setTimeout(() => {
+        const pa = document.createElement('script');
+        pa.async = true;
+        pa.src = '//c1.popads.net/pop.js';
+        document.body.appendChild(pa);
+        console.log('✓ PopAds cargado');
+    }, 2000);
     </script>
 </body>
 </html>
