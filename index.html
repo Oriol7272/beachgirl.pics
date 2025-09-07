@@ -3,23 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BeachGirl.me - Bienvenido al Paraíso</title>
-    <link rel="icon" href="/favicon.ico">
-    <link rel="stylesheet" href="/css/main.css">
-    
-    <!-- ExoClick Ad Provider -->
-    <script async src="https://a.magsrv.com/ad-provider.js"></script>
+    <title>BeachGirl.me</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            min-height: 100vh;
+        }
+        
+        header {
+            background: white;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .menu {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .menu a {
+            text-decoration: none;
+            color: #666;
+            padding: 5px 10px;
+        }
+        
+        .menu a:hover {
+            color: #000;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        /* Carousel */
+        .carousel {
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+        
+        .carousel-inner {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .carousel-item {
+            flex: 0 0 150px;
+            height: 150px;
+            background: #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Gallery */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 10px;
+        }
+        
+        .gallery-item {
+            aspect-ratio: 1;
+            background: #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Anuncios simples */
+        .ad-space {
+            background: #f9f9f9;
+            border: 1px dashed #ccc;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+            min-height: 90px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Anuncios laterales -->
-    <div id="ad-left" class="ad-lateral"></div>
-    <div id="ad-right" class="ad-lateral"></div>
-    
     <header>
         <nav>
-            <div class="logo">🌴 BeachGirl</div>
+            <div class="logo">🌴 BeachGirl.me</div>
             <div class="menu">
-                <a href="/" class="active">Home</a>
+                <a href="/">Home</a>
                 <a href="/premium.html">Premium</a>
                 <a href="/videos.html">Videos</a>
                 <a href="/subscription.html">Subscriptions</a>
@@ -27,168 +135,73 @@
         </nav>
     </header>
     
-    <div class="banner">
-        <div class="banner-bg" id="banner-bg"></div>
-        <div class="banner-content">
-            <h1>beachgirl.me</h1>
-            <p>Bienvenido al Paraíso</p>
-        </div>
-    </div>
-    
     <div class="container">
-        <!-- Anuncio horizontal 1 -->
-        <div class="ad-horizontal" id="ad-banner"></div>
-        
-        <!-- Carousel -->
-        <div class="content-section">
-            <h2>🌺 Galería Destacada</h2>
+        <div class="section">
+            <h2>Carousel</h2>
             <div class="carousel">
-                <div class="carousel-track" id="carousel-track"></div>
+                <div class="carousel-inner" id="carousel"></div>
             </div>
         </div>
         
-        <!-- Anuncio horizontal 2 -->
-        <div class="ad-horizontal" id="ad-middle"></div>
+        <div class="ad-space">Espacio para anuncio</div>
         
-        <!-- Gallery -->
-        <div class="content-section">
-            <h2>🏖️ Galería Principal</h2>
-            <div class="gallery-grid" id="gallery-grid"></div>
+        <div class="section">
+            <h2>Gallery</h2>
+            <div class="gallery" id="gallery"></div>
         </div>
     </div>
     
-    <!-- Anuncio inferior -->
-    <div id="ad-bottom"></div>
-    
     <script src="/content-data2.js"></script>
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('🌴 BeachGirl.me iniciando...');
-        
-        // ZONAS CORRECTAS DE EXOCLICK
-        // Estas son las que FUNCIONAN en beachgirl.me
-        const ZONES = {
-            lateral1: '5696328',  // Zona que funciona
-            lateral2: '5705186',  // Zona que funciona
-            horizontal: '5717078' // Zona que funciona
-        };
-        
-        // Banner rotatorio
-        const bannerImages = [
-            '/decorative-images/1115ae7d-909f-4760-a3a1-037a05ad9931.jpg',
-            '/decorative-images/1618cbb2-8dd1-4127-99d9-d9f30536de72.jpg',
-            '/decorative-images/49830c0a-2fd8-439c-a583-029a0b39c4d6.jpg'
-        ];
-        
-        const bannerBg = document.getElementById('banner-bg');
-        let bannerIndex = 0;
-        
-        if (bannerBg) {
-            bannerImages.forEach((src, i) => {
-                const img = document.createElement('img');
-                img.src = src;
-                img.className = i === 0 ? 'active' : '';
-                bannerBg.appendChild(img);
-            });
-            
-            setInterval(() => {
-                const imgs = bannerBg.querySelectorAll('img');
-                if (imgs.length) {
-                    imgs[bannerIndex].classList.remove('active');
-                    bannerIndex = (bannerIndex + 1) % imgs.length;
-                    imgs[bannerIndex].classList.add('active');
-                }
-            }, 5000);
-        }
-        
-        // CARGAR CAROUSEL
-        const carouselTrack = document.getElementById('carousel-track');
-        if (carouselTrack && window.contentData && window.contentData.images) {
-            console.log('Cargando carousel con', window.contentData.images.length, 'imágenes');
-            
-            // Mezclar y tomar 40
-            const images = [...window.contentData.images];
-            for (let i = images.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [images[i], images[j]] = [images[j], images[i]];
-            }
-            
-            images.slice(0, 40).forEach(img => {
-                const div = document.createElement('div');
-                div.className = 'carousel-item';
-                div.innerHTML = '<img src="/full/' + img + '" loading="lazy" alt="Beach">';
-                carouselTrack.appendChild(div);
-            });
-        }
-        
-        // CARGAR GALLERY
-        const galleryGrid = document.getElementById('gallery-grid');
-        if (galleryGrid && window.contentData && window.contentData.images) {
-            console.log('Cargando gallery');
-            
-            // Mezclar de nuevo y tomar otras 40
-            const images = [...window.contentData.images];
-            for (let i = images.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [images[i], images[j]] = [images[j], images[i]];
-            }
-            
-            images.slice(0, 40).forEach(img => {
-                const div = document.createElement('div');
-                div.className = 'gallery-item';
-                div.innerHTML = '<img src="/full/' + img + '" loading="lazy" alt="Beach">';
-                galleryGrid.appendChild(div);
-            });
-        }
-        
-        // ANUNCIOS - Usar zonas que FUNCIONAN
-        function mountAd(elementId, zoneId) {
-            const element = document.getElementById(elementId);
-            if (!element || !zoneId) return;
-            
-            const ins = document.createElement('ins');
-            ins.className = 'eas6a97888e2';
-            ins.setAttribute('data-zoneid', zoneId);
-            ins.style.display = 'block';
-            ins.style.width = '100%';
-            ins.style.height = '100%';
-            element.appendChild(ins);
-            
-            console.log('Anuncio montado:', elementId, 'con zona', zoneId);
-        }
-        
-        // Montar anuncios con las zonas CORRECTAS
-        if (window.innerWidth > 1200) {
-            mountAd('ad-left', ZONES.lateral1);
-            mountAd('ad-right', ZONES.lateral2);
-        }
-        mountAd('ad-banner', ZONES.horizontal);
-        mountAd('ad-middle', ZONES.horizontal);
-        mountAd('ad-bottom', ZONES.horizontal);
-        
-        // Activar AdProvider
-        if (window.AdProvider) {
-            window.AdProvider.push({"serve": {}});
-            console.log('✅ AdProvider activado');
-        }
-        
-        // PopAds
-        window._pop = window._pop || [];
-        window._pop.push(['siteId', 5226758]);
-        window._pop.push(['minBid', 0]);
-        
-        const pa = document.createElement('script');
-        pa.async = true;
-        pa.src = '//c1.popads.net/pop.js';
-        document.body.appendChild(pa);
-        
-        console.log('✅ Todo inicializado correctamente');
-    });
-    
-    // Reintentar AdProvider cuando cargue
+    // Esperar a que cargue content-data2.js
     window.addEventListener('load', function() {
-        if (window.AdProvider) {
-            window.AdProvider.push({"serve": {}});
+        console.log('Iniciando carga de imágenes...');
+        
+        // Verificar que contentData existe
+        if (typeof window.contentData !== 'undefined' && window.contentData.images) {
+            const images = window.contentData.images;
+            console.log('Encontradas', images.length, 'imágenes');
+            
+            // CAROUSEL - Primeras 40 imágenes
+            const carousel = document.getElementById('carousel');
+            if (carousel) {
+                for (let i = 0; i < Math.min(40, images.length); i++) {
+                    const div = document.createElement('div');
+                    div.className = 'carousel-item';
+                    const img = document.createElement('img');
+                    img.src = '/full/' + images[i];
+                    img.loading = 'lazy';
+                    div.appendChild(img);
+                    carousel.appendChild(div);
+                }
+                console.log('Carousel cargado con', Math.min(40, images.length), 'imágenes');
+            }
+            
+            // GALLERY - Siguientes 40 imágenes
+            const gallery = document.getElementById('gallery');
+            if (gallery) {
+                for (let i = 0; i < Math.min(40, images.length); i++) {
+                    const div = document.createElement('div');
+                    div.className = 'gallery-item';
+                    const img = document.createElement('img');
+                    // Usar diferentes imágenes que el carousel
+                    const index = (i + 40) % images.length;
+                    img.src = '/full/' + images[index];
+                    img.loading = 'lazy';
+                    div.appendChild(img);
+                    gallery.appendChild(div);
+                }
+                console.log('Gallery cargada con', Math.min(40, images.length), 'imágenes');
+            }
+        } else {
+            console.error('No se encontró contentData o images');
+            
+            // Intentar de nuevo en 1 segundo
+            setTimeout(function() {
+                if (window.contentData && window.contentData.images) {
+                    location.reload(); // Recargar para intentar de nuevo
+                }
+            }, 1000);
         }
     });
     </script>
