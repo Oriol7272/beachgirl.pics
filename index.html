@@ -283,8 +283,6 @@
     <!-- Anuncios laterales -->
     <div class="side-ad-left" id="side-ad-left"></div>
     <div class="side-ad-right" id="side-ad-right"></div>
-    <div class="side-ad-left-bottom" id="side-ad-left-bottom"></div>
-    <div class="side-ad-right-bottom" id="side-ad-right-bottom"></div>
     
     <div class="main-wrapper">
         
@@ -438,28 +436,8 @@
         }
         
         // Anuncio lateral inferior izquierdo
-        const leftAdBottom = document.getElementById('side-ad-left-bottom');
-        if (leftAdBottom) {
-            const insLB = document.createElement('ins');
-            insLB.className = 'eas6a97888e2';
-            insLB.setAttribute('data-zoneid', '5696330');
-            insLB.style.display = 'block';
-            insLB.style.width = '100%';
-            insLB.style.height = '100%';
-            leftAdBottom.appendChild(insLB);
-        }
         
         // Anuncio lateral inferior derecho
-        const rightAdBottom = document.getElementById('side-ad-right-bottom');
-        if (rightAdBottom) {
-            const insRB = document.createElement('ins');
-            insRB.className = 'eas6a97888e2';
-            insRB.setAttribute('data-zoneid', '5705188');
-            insRB.style.display = 'block';
-            insRB.style.width = '100%';
-            insRB.style.height = '100%';
-            rightAdBottom.appendChild(insRB);
-        }
         
         // Activar AdProvider para ExoClick
         if (window.AdProvider) {
