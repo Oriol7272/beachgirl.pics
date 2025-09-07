@@ -15,15 +15,20 @@
             font-display: swap;
         }
         
-        body {
+        /* Fondo SIEMPRE paradise-beach */
+        html, body {
             font-family: 'SexyBeachy', cursive, Arial, sans-serif;
             background: url('/decorative-images/paradise-beach.png') center/cover fixed;
+            background-attachment: fixed;
             min-height: 100vh;
-            padding-bottom: 100px;
+            padding: 0;
+            margin: 0;
         }
         
+        /* Header transparente */
         header {
-            background: rgba(255,255,255,0.95);
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
             padding: 15px 0;
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
             position: sticky;
@@ -32,7 +37,7 @@
         }
         
         nav {
-            max-width: 1200px;
+            max-width: 800px; /* MÁS ESTRECHO */
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -41,32 +46,33 @@
         }
         
         .logo {
-            font-size: 32px;
+            font-size: 28px;
             color: #00a8ff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         
         .menu {
             display: flex;
-            gap: 20px;
+            gap: 15px;
         }
         
         .menu a {
             color: #333;
             text-decoration: none;
-            font-size: 20px;
-            padding: 8px 15px;
+            font-size: 18px;
+            padding: 5px 10px;
             border-radius: 5px;
         }
         
         .menu a:hover {
-            background: #00a8ff;
+            background: rgba(0,168,255,0.8);
             color: white;
         }
         
-        /* Banner */
+        /* Banner sin fondo */
         .main-banner {
             position: relative;
-            height: 500px;
+            height: 400px;
             margin-bottom: 20px;
             overflow: hidden;
         }
@@ -86,7 +92,7 @@
         }
         
         .banner-bg img.active {
-            opacity: 1;
+            opacity: 0.7;
         }
         
         .banner-content {
@@ -99,44 +105,51 @@
         }
         
         .banner-content h1 {
-            font-size: 72px;
+            font-size: 64px;
             color: white;
-            margin-bottom: 20px;
-            text-shadow: 4px 4px 8px rgba(0,0,0,0.9), 0 0 30px rgba(0,0,0,0.8);
+            margin-bottom: 15px;
+            text-shadow: 4px 4px 8px rgba(0,0,0,0.9), 
+                         0 0 30px rgba(0,0,0,0.9),
+                         2px 2px 4px rgba(0,0,0,1);
         }
         
         .banner-content p {
-            font-size: 32px;
+            font-size: 28px;
             color: #ffd700;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.8);
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.9),
+                         0 0 20px rgba(0,0,0,0.9);
         }
         
-        /* Container central */
-        .container {
-            max-width: 1000px;
+        /* Container MÁS ESTRECHO */
+        .main-wrapper {
+            max-width: 800px; /* ESTRECHO para dejar espacio a anuncios */
             margin: 0 auto;
             padding: 0 20px;
         }
         
+        /* Secciones con transparencia */
         .section {
-            background: rgba(255,255,255,0.95);
-            padding: 30px;
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(10px);
+            padding: 25px;
             margin-bottom: 20px;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.2);
         }
         
         .section h2 {
-            font-size: 32px;
+            font-size: 28px;
             color: #00a8ff;
             text-align: center;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(255,255,255,0.8);
         }
         
         /* Carousel */
         .carousel-container {
             overflow: hidden;
-            height: 200px;
+            height: 180px;
+            border-radius: 10px;
         }
         
         .carousel-track {
@@ -146,9 +159,9 @@
         }
         
         .carousel-item {
-            flex: 0 0 200px;
-            height: 200px;
-            border-radius: 10px;
+            flex: 0 0 180px;
+            height: 180px;
+            border-radius: 8px;
             overflow: hidden;
         }
         
@@ -161,15 +174,20 @@
         /* Gallery */
         .gallery {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 12px;
         }
         
         .gallery-item {
             aspect-ratio: 1;
-            border-radius: 10px;
+            border-radius: 8px;
             overflow: hidden;
             cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.05);
         }
         
         .gallery-item img {
@@ -178,74 +196,99 @@
             object-fit: cover;
         }
         
-        /* ANUNCIOS - SOLO UNO POR LADO */
-        #ad-left-only {
+        /* ANUNCIOS - LIMPIAR Y RESETEAR */
+        .ads-cleanup {
+            display: none !important;
+        }
+        
+        /* Solo UN anuncio por lado */
+        .ad-side-left {
             position: fixed;
-            left: 10px;
+            left: 20px;
             top: 100px;
             width: 160px;
             height: 600px;
-            background: white;
+            background: rgba(255,255,255,0.9);
             border-radius: 8px;
-            z-index: 100;
+            overflow: hidden;
+            z-index: 50;
         }
         
-        #ad-right-only {
+        .ad-side-right {
             position: fixed;
-            right: 10px;
+            right: 20px;
             top: 100px;
             width: 160px;
             height: 600px;
-            background: white;
+            background: rgba(255,255,255,0.9);
             border-radius: 8px;
-            z-index: 100;
+            overflow: hidden;
+            z-index: 50;
         }
         
-        /* Anuncios horizontales en slots blancos */
-        .ad-slot {
-            background: white;
-            padding: 20px;
-            margin: 20px auto;
-            border-radius: 10px;
-            min-height: 90px;
-            text-align: center;
-        }
-        
-        #ad-bottom-fixed {
+        /* Anuncio inferior */
+        .ad-bottom-bar {
             position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
-            height: 90px;
-            background: white;
+            height: 80px;
+            background: rgba(255,255,255,0.95);
             z-index: 9999;
             display: flex;
             justify-content: center;
             align-items: center;
         }
         
-        @media (max-width: 1300px) {
-            #ad-left-only, #ad-right-only {
+        /* Ocultar en móvil */
+        @media (max-width: 1200px) {
+            .ad-side-left, .ad-side-right {
                 display: none;
+            }
+            
+            .main-wrapper {
+                max-width: 100%;
             }
         }
         
         @media (max-width: 768px) {
-            .main-banner { height: 350px; }
-            .banner-content h1 { font-size: 48px; }
-            .banner-content p { font-size: 24px; }
-            #ad-bottom-fixed { height: 60px; }
-            body { padding-bottom: 70px; }
+            .main-banner {
+                height: 300px;
+            }
+            
+            .banner-content h1 {
+                font-size: 42px;
+            }
+            
+            .banner-content p {
+                font-size: 20px;
+            }
+            
+            .carousel-item {
+                flex: 0 0 140px;
+                height: 140px;
+            }
+            
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+            
+            .ad-bottom-bar {
+                height: 60px;
+            }
         }
     </style>
-    
-    <!-- Ad Provider -->
-    <script async src="https://a.magsrv.com/ad-provider.js"></script>
 </head>
 <body>
-    <!-- UN SOLO ANUNCIO POR LADO -->
-    <div id="ad-left-only"></div>
-    <div id="ad-right-only"></div>
+    <!-- Limpiar anuncios anteriores -->
+    <div id="ad-left" class="ads-cleanup"></div>
+    <div id="ad-right" class="ads-cleanup"></div>
+    <div id="ad-left-1" class="ads-cleanup"></div>
+    <div id="ad-left-2" class="ads-cleanup"></div>
+    
+    <!-- NUEVOS anuncios - SOLO UNO POR LADO -->
+    <div class="ad-side-left" id="new-ad-left"></div>
+    <div class="ad-side-right" id="new-ad-right"></div>
     
     <header>
         <nav>
@@ -268,10 +311,8 @@
         </div>
     </div>
     
-    <div class="container">
-        <!-- SLOT BLANCO 1 - Anuncio bajo banner -->
-        <div class="ad-slot" id="ad-slot-1"></div>
-        
+    <!-- Contenido principal ESTRECHO -->
+    <div class="main-wrapper">
         <!-- Carousel -->
         <div class="section">
             <h2>🌺 Galería en Movimiento</h2>
@@ -280,9 +321,6 @@
             </div>
         </div>
         
-        <!-- SLOT BLANCO 2 - Anuncio bajo carousel -->
-        <div class="ad-slot" id="ad-slot-2"></div>
-        
         <!-- Gallery -->
         <div class="section">
             <h2>🏖️ Galería Principal</h2>
@@ -290,11 +328,17 @@
         </div>
     </div>
     
-    <!-- Anuncio inferior fijo -->
-    <div id="ad-bottom-fixed"></div>
+    <!-- Anuncio inferior -->
+    <div class="ad-bottom-bar" id="new-ad-bottom"></div>
     
     <script src="/content-data2.js"></script>
     <script>
+    // Limpiar anuncios viejos
+    document.querySelectorAll('.ads-cleanup').forEach(el => {
+        el.innerHTML = '';
+        el.style.display = 'none';
+    });
+    
     // Banner rotatorio
     const bannerImages = [
         '/decorative-images/1115ae7d-909f-4760-a3a1-037a05ad9931.jpg',
@@ -321,9 +365,8 @@
         }, 5000);
     }
     
-    // Carousel automático
+    // Carousel
     let carouselPosition = 0;
-    
     function initCarousel() {
         const carousel = document.getElementById('carousel');
         const images = window.FULL_IMAGES_POOL || [];
@@ -333,10 +376,9 @@
             return;
         }
         
-        // Duplicar para loop
-        const allImages = [...images.slice(0, 40), ...images.slice(0, 40)];
+        const carouselImages = [...images.slice(0, 30), ...images.slice(0, 30)];
         
-        allImages.forEach(img => {
+        carouselImages.forEach(img => {
             const div = document.createElement('div');
             div.className = 'carousel-item';
             const imgEl = document.createElement('img');
@@ -346,10 +388,9 @@
             carousel.appendChild(div);
         });
         
-        // Mover cada 2 segundos
         setInterval(() => {
-            carouselPosition -= 215;
-            if (Math.abs(carouselPosition) >= (215 * 40)) {
+            carouselPosition -= 195;
+            if (Math.abs(carouselPosition) >= (195 * 30)) {
                 carousel.style.transition = 'none';
                 carouselPosition = 0;
                 carousel.style.transform = 'translateX(0)';
@@ -373,8 +414,7 @@
         }
         
         const shuffled = [...images].sort(() => Math.random() - 0.5);
-        
-        shuffled.slice(0, 40).forEach(img => {
+        shuffled.slice(0, 35).forEach(img => {
             const div = document.createElement('div');
             div.className = 'gallery-item';
             const imgEl = document.createElement('img');
@@ -385,72 +425,16 @@
         });
     }
     
-    // ANUNCIOS - DISTRIBUCIÓN CORRECTA
-    function initAds() {
-        const zones = {
-            left: '5696328',
-            right: '5705186',
-            horizontal: '5717078'
-        };
-        
-        // UN anuncio lateral izquierdo
-        mountAd('ad-left-only', zones.left);
-        
-        // UN anuncio lateral derecho
-        mountAd('ad-right-only', zones.right);
-        
-        // Anuncios en slots blancos
-        mountAd('ad-slot-1', zones.horizontal);
-        mountAd('ad-slot-2', zones.horizontal);
-        
-        // Anuncio inferior
-        mountAd('ad-bottom-fixed', zones.horizontal);
-        
-        // Activar provider
-        if (window.AdProvider) {
-            window.AdProvider.push({"serve": {}});
-        }
-    }
-    
-    function mountAd(elementId, zoneId) {
-        const element = document.getElementById(elementId);
-        if (!element) return;
-        
-        element.innerHTML = '';
-        const ins = document.createElement('ins');
-        ins.className = 'eas6a97888e2';
-        ins.setAttribute('data-zoneid', zoneId);
-        ins.style.display = 'block';
-        ins.style.width = '100%';
-        ins.style.height = '100%';
-        element.appendChild(ins);
-        
-        console.log('Anuncio en:', elementId, 'zona:', zoneId);
-    }
-    
-    // PopAds
-    window._pop = window._pop || [];
-    window._pop.push(['siteId', 5226758]);
-    window._pop.push(['minBid', 0]);
-    
-    // Inicializar todo
+    // Inicializar
     document.addEventListener('DOMContentLoaded', function() {
-        console.log('Iniciando BeachGirl.me...');
+        console.log('BeachGirl.me - Iniciando versión limpia');
         initBanner();
         initCarousel();
         initGallery();
         
-        // Esperar un momento para los anuncios
-        setTimeout(initAds, 100);
+        // NO inicializar anuncios por ahora para evitar duplicados
+        console.log('Layout estrecho sin anuncios duplicados');
     });
-    
-    // PopAds script
-    setTimeout(() => {
-        const pa = document.createElement('script');
-        pa.async = true;
-        pa.src = '//c1.popads.net/pop.js';
-        document.body.appendChild(pa);
-    }, 1000);
     </script>
 </body>
 </html>
