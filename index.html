@@ -6,13 +6,23 @@
    <title>BeachGirl.pics - Bienvenido al Paraíso</title>
    <style>
        * { margin: 0; padding: 0; box-sizing: border-box; }
-       @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+       
+       /* Fuente personalizada desde decorative-images */
+       @font-face {
+           font-family: 'BeachFont';
+           src: url('/decorative-images/SexyBeachy.ttf') format('truetype'),
+                url('/decorative-images/SexyBeachy.otf') format('opentype');
+           font-display: swap;
+       }
+       
        body {
-           font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+           font-family: 'BeachFont', cursive, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
            background: url('/decorative-images/paradise-beach.png') no-repeat center center fixed;
            background-size: cover;
            min-height: 100vh;
+           position: relative;
        }
+       
        body::before {
            content: '';
            position: fixed;
@@ -20,6 +30,49 @@
            background: rgba(0, 0, 0, 0.3);
            z-index: -1;
        }
+       
+       /* Anuncios laterales */
+       .ad-left, .ad-right {
+           position: fixed;
+           top: 80px;
+           width: 160px;
+           background: rgba(255,255,255,0.9);
+           border-radius: 10px;
+           padding: 10px;
+           box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+           z-index: 100;
+       }
+       
+       .ad-left { left: 10px; }
+       .ad-right { right: 10px; }
+       
+       .ad-left iframe, .ad-right iframe {
+           width: 100%;
+           height: 600px;
+           border: none;
+       }
+       
+       /* Anuncio inferior */
+       .ad-bottom {
+           position: fixed;
+           bottom: 0;
+           left: 0;
+           right: 0;
+           height: 90px;
+           background: rgba(255,255,255,0.95);
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+           z-index: 100;
+       }
+       
+       /* Contenido principal con márgenes para anuncios */
+       .main-content {
+           margin: 0 180px 100px 180px;
+           min-height: 100vh;
+       }
+       
        .menu-top {
            background: rgba(255, 255, 255, 0.95);
            padding: 15px 0;
@@ -28,6 +81,7 @@
            top: 0;
            z-index: 1000;
        }
+       
        .menu-top nav {
            display: flex;
            justify-content: center;
@@ -35,33 +89,38 @@
            max-width: 1200px;
            margin: 0 auto;
        }
+       
        .menu-top a {
            text-decoration: none;
            color: #333;
            font-weight: 600;
-           font-size: 18px;
-           font-family: 'Pacifico', cursive;
-           letter-spacing: 1px;
+           font-size: 22px;
+           font-family: 'BeachFont', cursive;
+           letter-spacing: 2px;
            transition: all 0.3s;
            padding: 8px 16px;
            border-radius: 25px;
        }
+       
        .menu-top a:hover {
            background: linear-gradient(135deg, #667eea, #764ba2);
            color: white;
            transform: translateY(-2px);
        }
+       
        .banner {
            height: 500px;
            position: relative;
            overflow: hidden;
            margin-bottom: 40px;
        }
+       
        .banner-bg {
            position: absolute;
            top: 0; left: 0;
            width: 100%; height: 100%;
        }
+       
        .banner-bg img {
            position: absolute;
            width: 100%; height: 100%;
@@ -69,13 +128,16 @@
            opacity: 0;
            animation: rotateImages 12s infinite;
        }
+       
        .banner-bg img:nth-child(1) { animation-delay: 0s; }
        .banner-bg img:nth-child(2) { animation-delay: 4s; }
        .banner-bg img:nth-child(3) { animation-delay: 8s; }
+       
        @keyframes rotateImages {
            0%, 33.33% { opacity: 0; }
            8.33%, 25% { opacity: 1; }
        }
+       
        .banner-content {
            position: relative;
            z-index: 2;
@@ -88,17 +150,22 @@
            color: white;
            text-align: center;
        }
+       
        .banner-content h1 {
-           font-family: 'Pacifico', cursive;
-           font-size: 5em;
+           font-family: 'BeachFont', cursive;
+           font-size: 6em;
            text-shadow: 3px 3px 6px rgba(0,0,0,0.7);
            margin-bottom: 20px;
+           letter-spacing: 3px;
        }
+       
        .banner-content p {
-           font-family: 'Pacifico', cursive;
-           font-size: 2em;
+           font-family: 'BeachFont', cursive;
+           font-size: 3em;
            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+           letter-spacing: 2px;
        }
+       
        .carousel-section, .gallery-section {
            margin: 40px 20px;
            background: rgba(255,255,255,0.95);
@@ -106,13 +173,16 @@
            padding: 30px;
            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
        }
+       
        .carousel-section h2, .gallery-section h2 {
-           font-family: 'Pacifico', cursive;
+           font-family: 'BeachFont', cursive;
            text-align: center;
-           font-size: 2.5em;
+           font-size: 3em;
            margin-bottom: 30px;
            color: #333;
+           letter-spacing: 2px;
        }
+       
        .carousel {
            display: flex;
            overflow-x: auto;
@@ -120,9 +190,11 @@
            padding: 20px 0;
            scroll-behavior: smooth;
        }
+       
        .carousel::-webkit-scrollbar { height: 10px; }
        .carousel::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 10px; }
        .carousel::-webkit-scrollbar-thumb { background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 10px; }
+       
        .carousel-item {
            flex: 0 0 280px;
            height: 380px;
@@ -132,19 +204,23 @@
            transition: transform 0.3s;
            cursor: pointer;
        }
+       
        .carousel-item:hover {
            transform: scale(1.05) translateY(-10px);
        }
+       
        .carousel-item img {
            width: 100%;
            height: 100%;
            object-fit: cover;
        }
+       
        .gallery {
            display: grid;
            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
            gap: 25px;
        }
+       
        .gallery-item {
            height: 350px;
            border-radius: 15px;
@@ -153,15 +229,23 @@
            transition: all 0.3s;
            cursor: pointer;
        }
+       
        .gallery-item:hover {
            transform: translateY(-10px);
            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
        }
+       
        .gallery-item img {
            width: 100%;
            height: 100%;
            object-fit: cover;
        }
+       
+       @media (max-width: 1200px) {
+           .ad-left, .ad-right { display: none; }
+           .main-content { margin-left: 20px; margin-right: 20px; }
+       }
+       
        @media (max-width: 768px) {
            .menu-top nav { flex-wrap: wrap; gap: 15px; }
            .banner-content h1 { font-size: 3em; }
@@ -173,47 +257,91 @@
    </style>
 </head>
 <body>
-   <div class="menu-top">
-       <nav>
-           <a href="/">HOME</a>
-           <a href="/premium.html">PREMIUM</a>
-           <a href="/videos.html">VIDEOS</a>
-           <a href="/subscription.html">SUBSCRIPTIONS</a>
-       </nav>
+   <!-- Anuncios laterales -->
+   <div class="ad-left" id="ad-left">
+       <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXX" data-ad-slot="XXXXXXX"></ins>
    </div>
    
-   <div class="banner">
-       <div class="banner-bg" id="bannerBg"></div>
-       <div class="banner-content">
-           <h1>BEACHGIRL.PICS</h1>
-           <p>Bienvenido al Paraíso</p>
+   <div class="ad-right" id="ad-right">
+       <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXX" data-ad-slot="XXXXXXX"></ins>
+   </div>
+   
+   <!-- Contenido principal -->
+   <div class="main-content">
+       <div class="menu-top">
+           <nav>
+               <a href="/">HOME</a>
+               <a href="/premium.html">PREMIUM</a>
+               <a href="/videos.html">VIDEOS</a>
+               <a href="/subscription.html">SUBSCRIPTIONS</a>
+           </nav>
+       </div>
+       
+       <div class="banner">
+           <div class="banner-bg" id="bannerBg"></div>
+           <div class="banner-content">
+               <h1>BEACHGIRL.PICS</h1>
+               <p>Bienvenido al Paraiso</p>
+           </div>
+       </div>
+       
+       <div class="carousel-section">
+           <h2>Daily Selection</h2>
+           <div class="carousel" id="carousel"></div>
+       </div>
+       
+       <div class="gallery-section">
+           <h2>Explore Gallery</h2>
+           <div class="gallery" id="gallery"></div>
        </div>
    </div>
    
-   <div class="carousel-section">
-       <h2>Daily Selection</h2>
-       <div class="carousel" id="carousel"></div>
-   </div>
-   
-   <div class="gallery-section">
-       <h2>Explore Gallery</h2>
-       <div class="gallery" id="gallery"></div>
+   <!-- Anuncio inferior -->
+   <div class="ad-bottom" id="ad-bottom">
+       <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXX" data-ad-slot="XXXXXXX"></ins>
    </div>
    
    <!-- Cargar archivos EXISTENTES -->
    <script src="/content-data2.js"></script>
    <script src="/js/decorative-list.js"></script>
    
+   <!-- Scripts de anuncios (usar tus IDs reales de las variables de entorno) -->
    <script>
+       // Configuración de anuncios desde variables de entorno
+       const JUICY_ZONE = '2093063';
+       const ERO_ZONE = '8177575';
+       const EXOCLICK_ZONE = '5702700';
+       const POPADS_SITE_ID = '5235546';
+       
+       // Cargar scripts de anuncios
+       function loadAds() {
+           // JuicyAds
+           const juicyScript = document.createElement('script');
+           juicyScript.src = `//adserver.juicyads.com/js/jads.js`;
+           juicyScript.async = true;
+           document.head.appendChild(juicyScript);
+           
+           // ExoClick
+           const exoScript = document.createElement('script');
+           exoScript.src = `//a.exoclick.com/tag_gen.js?site_id=${EXOCLICK_ZONE}`;
+           exoScript.async = true;
+           document.head.appendChild(exoScript);
+           
+           // PopAds
+           const popScript = document.createElement('script');
+           popScript.src = `//c1.popads.net/pop.js`;
+           popScript.async = true;
+           document.head.appendChild(popScript);
+       }
+       
        // Usar imágenes decorativas EXISTENTES para el banner
        function loadBannerImages() {
            const bannerBg = document.getElementById('bannerBg');
-           const decorImages = window.DECOR_IMAGES || window.DECORATIVE_IMAGES || [];
+           const decorImages = window.DECOR_IMAGES || [];
            
-           // Filtrar solo las imágenes jpg del banner
+           // Usar las imágenes jpg de decorative-images
            const bannerImages = decorImages.filter(img => img.includes('.jpg'));
            
-           // Si hay imágenes, usar las primeras 3
            if (bannerImages.length > 0) {
                bannerImages.slice(0, 3).forEach(src => {
                    const img = document.createElement('img');
@@ -260,11 +388,11 @@
        
        // Inicializar cuando cargue la página
        window.addEventListener('DOMContentLoaded', function() {
-           // Esperar a que carguen los scripts externos
            setTimeout(function() {
                loadBannerImages();
                loadCarousel();
                loadGallery();
+               loadAds();
            }, 100);
        });
    </script>
