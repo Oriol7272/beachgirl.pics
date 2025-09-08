@@ -363,10 +363,8 @@
     <script>
     // Función para inicializar la galería de videos
     function initVideoGallery() {
-        console.log("Buscando videos en:", window);
-        console.log("Variables disponibles:", Object.keys(window).filter(k => k.includes("VIDEO") || k.includes("PREMIUM")));
         // Usar la variable correcta del archivo content-data5.js
-        const videos = window.PREMIUM_VIDEOS_POOL || window.UNCENSORED_VIDEOS_POOL || window.PREMIUM_VIDEOS || [];
+        const videos = window.PREMIUM_VIDEOS_POOL || [];
         
         if (videos.length === 0) {
             setTimeout(initVideoGallery, 2000);
