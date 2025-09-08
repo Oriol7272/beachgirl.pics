@@ -293,8 +293,9 @@
             .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
         }
     </style>
+    <link rel="stylesheet" href="ocean-theme.css">
 </head>
-<body>
+<body class="parallax-bg">
     <div id="first-time-discount" style="background: linear-gradient(90deg, #001f3f, #0074D9); color: white; text-align: center; padding: 10px; display: none;">
         🎁 Primera compra: 20% DESCUENTO - Código: BEACH20
         <button onclick="this.parentElement.style.display='none'" style="margin-left: 20px; background: #7FDBFF; border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer;">✕</button>
@@ -320,19 +321,19 @@
     <!-- Menú de ofertas -->
     <div class="offers-menu">
         <div class="offers-container">
-            <div class="offer-item" onclick="purchaseBundle()">
+            <div class="offer-item ocean-card water-ripple" onclick="purchaseBundle()">
                 <div class="offer-price">1€</div>
                 <div class="offer-desc">Pack 5 Videos</div>
             </div>
-            <div class="offer-item" onclick="subscribeMonthly()">
+            <div class="offer-item ocean-card water-ripple" onclick="subscribeMonthly()">
                 <div class="offer-price">14.99€</div>
                 <div class="offer-desc">Suscripción Mensual</div>
             </div>
-            <div class="offer-item" onclick="subscribeAnnual()">
+            <div class="offer-item ocean-card water-ripple" onclick="subscribeAnnual()">
                 <div class="offer-price">49.99€</div>
                 <div class="offer-desc">Suscripción Anual</div>
             </div>
-            <div class="offer-item" onclick="purchaseLifetime()">
+            <div class="offer-item ocean-card water-ripple" onclick="purchaseLifetime()">
                 <div class="offer-price">100€</div>
                 <div class="offer-desc">Acceso Vitalicio</div>
                 <div class="lifetime-badge">¡SIN ANUNCIOS!</div>
@@ -346,7 +347,7 @@
     
     <!-- Galería de Videos -->
     <div class="video-gallery">
-        <div class="gallery-grid" id="video-gallery"></div>
+        <div class="gallery-grid tide-grid" id="video-gallery"></div>
     </div>
     
     <!-- Anuncio inferior -->
