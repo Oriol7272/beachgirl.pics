@@ -1,8 +1,7 @@
 // Sistema de suscripciones temporales
 const temporalPlans = {
-    day: { price: 4.99, hours: 24, description: "Acceso 24 horas" },
-    weekend: { price: 9.99, hours: 72, description: "Fin de semana completo" },
-    week: { price: 19.99, hours: 168, description: "7 días de acceso" }
+    day: { price: 2.99, hours: 24, description: "Acceso 24 horas" },
+    weekend: { price: 7.99, hours: 72, description: "Fin de semana completo" },
 };
 
 // Watermark dinámico
@@ -16,7 +15,7 @@ function addWatermark(element, userId) {
         font-size: 12px;
         pointer-events: none;
         user-select: none;
-        z-index: 9999;
+        z-index: 7.99;
     `;
     watermark.textContent = `ID: ${userId || 'PREVIEW'}`;
     element.appendChild(watermark);
