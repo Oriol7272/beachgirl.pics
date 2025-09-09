@@ -304,6 +304,8 @@
     </script>
     <script src="/languages.js"></script>
     <link rel="stylesheet" href="email-languages.css">
+<link rel="stylesheet" href="final-styles.css">
+<script src="languages-complete.js"></script>
 </head>
 <body class="parallax-bg">
     <div id="first-time-discount" style="background: linear-gradient(90deg, #001f3f, #0074D9); color: white; text-align: center; padding: 10px; display: none;">
@@ -317,21 +319,33 @@
         }
     </script>
     <header>
-        <nav>
-            <div class="logo">🌴 BeachGirl</div>
-            <div class="menu">
-        <div class="language-selector">
-            <button class="lang-btn" onclick="changeLanguage('es')">ES</button>
-            <button class="lang-btn" onclick="changeLanguage('en')">EN</button>
-            <button class="lang-btn" onclick="changeLanguage('fr')">FR</button>
+    <nav>
+        <div class="logo">🌴 BeachGirl</div>
+        <div class="menu">
+            <a href="/" data-translate="home">Inicio</a>
+            <a href="/premium.html" data-translate="premium">Premium</a>
+            <a href="/videos.html" data-translate="videos">Videos</a>
+            <a href="/subscription.html" data-translate="subscriptions">Suscripciones</a>
         </div>
-                <a href="/">Home</a>
-                <a href="/premium.html">Premium</a>
-                <a href="/videos.html">Videos</a>
-                <a href="/subscription.html">Subscriptions</a>
-            </div>
-        </nav>
+        <div class="language-selector">
+            <button class="lang-btn" data-lang="es" onclick="changeLanguage('es')">ES</button>
+            <button class="lang-btn" data-lang="en" onclick="changeLanguage('en')">EN</button>
+            <button class="lang-btn" data-lang="fr" onclick="changeLanguage('fr')">FR</button>
+            <button class="lang-btn" data-lang="de" onclick="changeLanguage('de')">DE</button>
+            <button class="lang-btn" data-lang="it" onclick="changeLanguage('it')">IT</button>
+            <button class="lang-btn" data-lang="pt" onclick="changeLanguage('pt')">PT</button>
+        </div>
+    </nav>
     </header>
+
+<!-- Email Capture -->
+<div class="email-capture-bar">
+    <form id="email-form" onsubmit="handleEmailSubmit(event)">
+        <span data-translate="emailTitle">Recibe contenido exclusivo diario</span>
+        <input type="email" placeholder="tu@email.com" data-translate-placeholder="emailPlaceholder" required>
+        <button type="submit" data-translate="subscribe">Suscribir</button>
+    </form>
+</div>
     
     <!-- Menú de ofertas -->
     <div class="offers-menu">
