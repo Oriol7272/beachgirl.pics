@@ -328,20 +328,20 @@
         <div class="offers-container">
             <div class="offer-item ocean-card water-ripple" onclick="purchaseBundle()">
                 <div class="offer-price">0.80€</div>
-                <div class="offer-desc">Pack 10 Imágenes</div>
+                <div class="offer-desc" data-translate="packImages">Pack 10 Imágenes</div>
             </div>
             <div class="offer-item ocean-card water-ripple" onclick="subscribeMonthly()">
                 <div class="offer-price">14.99€</div>
-                <div class="offer-desc">Suscripción Mensual</div>
+                <div class="offer-desc" data-translate="monthly">Suscripción Mensual</div>
             </div>
             <div class="offer-item ocean-card water-ripple" onclick="subscribeAnnual()">
                 <div class="offer-price">49.99€</div>
-                <div class="offer-desc">Suscripción Anual</div>
+                <div class="offer-desc" data-translate="annual">Suscripción Anual</div>
             </div>
             <div class="offer-item ocean-card water-ripple" onclick="purchaseLifetime()">
                 <div class="offer-price">100€</div>
-                <div class="offer-desc">Acceso Vitalicio</div>
-                <div class="lifetime-badge">¡SIN ANUNCIOS!</div>
+                <div class="offer-desc" data-translate="lifetime">Acceso Vitalicio</div>
+                <div class="lifetime-badge"><span data-translate="noAds">¡SIN ANUNCIOS!</span></div>
             </div>
         </div>
     </div>
@@ -363,9 +363,9 @@
     <!-- Modal de pago -->
     <div class="payment-modal" id="payment-modal">
         <div class="modal-content">
-            <h2>Procesando pago...</h2>
+            <h2<span data-translate="processing">Procesando pago...</span></h2>
             <div id="paypal-button-container"></div>
-            <button class="close-modal" onclick="closeModal()">Cancelar</button>
+            <button class="close-modal" onclick="closeModal()"><<span data-translate="cancel">Cancelar</span></button>
         </div>
     </div>
     
