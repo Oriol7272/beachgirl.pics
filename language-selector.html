@@ -1,8 +1,21 @@
 <!-- Añadir a todos los headers -->
 <div class="language-selector">
-    <button class="lang-btn active" onclick="changeLanguage('es')">ES</button>
-    <button class="lang-btn" onclick="changeLanguage('en')">EN</button>
-    <button class="lang-btn" onclick="changeLanguage('fr')">FR</button>
+    <div class="language-dropdown">
+        <button class="lang-current" onclick="toggleDropdown()">
+            <span id="current-lang">🇪🇸 ES</span>
+            <svg viewBox="0 0 12 8" fill="currentColor">
+                <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none"/>
+            </svg>
+        </button>
+        <div class="lang-options" id="lang-options">
+            <button onclick="setLanguage('es')">🇪🇸 Español</button>
+            <button onclick="setLanguage('en')">🇬🇧 English</button>
+            <button onclick="setLanguage('fr')">🇫🇷 Français</button>
+            <button onclick="setLanguage('de')">🇩🇪 Deutsch</button>
+            <button onclick="setLanguage('it')">🇮🇹 Italiano</button>
+            <button onclick="setLanguage('pt')">🇵🇹 Português</button>
+        </div>
+    </div>
 </div>
 
 <style>

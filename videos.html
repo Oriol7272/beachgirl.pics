@@ -304,9 +304,9 @@
     </script>
     <link rel="stylesheet" href="email-languages.css">
 <link rel="stylesheet" href="final-styles.css">
-<link rel="stylesheet" href="language-dropdown.css">
 <script src="language-dropdown.js"></script>
-<script src="language-system.js"></script>
+<link rel="stylesheet" href="language-dropdown-improved.css">
+<script src="language-system-complete.js"></script>
 </head>
 <body class="parallax-bg">
     <div id="first-time-discount" style="background: linear-gradient(90deg, #001f3f, #0074D9); color: white; text-align: center; padding: 10px; display: none;">
@@ -328,14 +328,24 @@
             <a href="/videos.html" data-translate="videos">Videos</a>
             <a href="/subscription.html" data-translate="subscriptions">Suscripciones</a>
         </div>
-        <div class="language-selector">
-            <button class="lang-btn" data-lang="es" onclick="changeLanguage('es')">ES</button>
-            <button class="lang-btn" data-lang="en" onclick="changeLanguage('en')">EN</button>
-            <button class="lang-btn" data-lang="fr" onclick="changeLanguage('fr')">FR</button>
-            <button class="lang-btn" data-lang="de" onclick="changeLanguage('de')">DE</button>
-            <button class="lang-btn" data-lang="it" onclick="changeLanguage('it')">IT</button>
-            <button class="lang-btn" data-lang="pt" onclick="changeLanguage('pt')">PT</button>
+<div class="language-selector">
+    <div class="language-dropdown">
+        <button class="lang-current" onclick="toggleDropdown()">
+            <span id="current-lang">🇪🇸 ES</span>
+            <svg viewBox="0 0 12 8" fill="currentColor">
+                <path d="M1 1l5 5 5-5" stroke="currentColor" stroke-width="2" fill="none"/>
+            </svg>
+        </button>
+        <div class="lang-options" id="lang-options">
+            <button onclick="setLanguage('es')">🇪🇸 Español</button>
+            <button onclick="setLanguage('en')">🇬🇧 English</button>
+            <button onclick="setLanguage('fr')">🇫🇷 Français</button>
+            <button onclick="setLanguage('de')">🇩🇪 Deutsch</button>
+            <button onclick="setLanguage('it')">🇮🇹 Italiano</button>
+            <button onclick="setLanguage('pt')">🇵🇹 Português</button>
         </div>
+    </div>
+</div>
     </nav>
     </header>
 
@@ -343,7 +353,7 @@
 <div class="email-capture-bar">
     <form id="email-form" onsubmit="handleEmailSubmit(event)">
         <span data-translate="emailTitle">Recibe contenido exclusivo diario</span>
-        <input type="email" placeholder="tu@email.com" data-translate-placeholder="emailPlaceholder" required>
+        <input type="email" placeholder="tu@email.com" data-translate-placeholder="emailPlaceholder" data-translate-placeholder="emailPlaceholder" required>
         <button type="submit" data-translate="subscribe">Suscribir</button>
     </form>
 </div>
@@ -549,7 +559,7 @@
         <div class="email-container">
             <h3 data-translate="dailyUpdates">🌊 Recibe actualizaciones diarias</h3>
             <form id="email-form" onsubmit="handleEmailSubmit(event)">
-                <input type="email" placeholder="tu@email.com" data-translate-placeholder="emailPlaceholder" required>
+                <input type="email" placeholder="tu@email.com" data-translate-placeholder="emailPlaceholder" data-translate-placeholder="emailPlaceholder" required>
                 <button type="submit" data-translate="subscribe">Suscribir</button>
             </form>
         </div>
