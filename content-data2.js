@@ -4,7 +4,6 @@
  * Provides banner and teaser management
  */
 
-console.log("📦 Cargando módulo content-data2.js - Imágenes públicas (127 archivos)...");
 
 const FULL_IMAGES_POOL = [
     "full/0Tc8Vtd0mEIvNHZwYGBq.webp",
@@ -135,7 +134,6 @@ const FULL_IMAGES_POOL = [
     "full/zx83JCzdTKNfyKUY6Djs.webp"
 ];
 
-console.log("✅ 127 imágenes públicas cargadas desde /full/");
 
 // Exportar globalmente
 window.FULL_IMAGES_POOL = FULL_IMAGES_POOL;
@@ -144,8 +142,6 @@ window.FULL_IMAGES_POOL = FULL_IMAGES_POOL;
 window.BANNER_IMAGES = FULL_IMAGES_POOL.slice(0, 10);
 window.TEASER_IMAGES = FULL_IMAGES_POOL.slice(10, 20);
 
-console.log('✅ Módulo content-data2.js cargado correctamente - 127 ARCHIVOS COMPLETOS');
-console.log('📊 Estadísticas de contenido público:', {
     total: FULL_IMAGES_POOL.length,
     banners: window.BANNER_IMAGES.length,
     teasers: window.TEASER_IMAGES.length
