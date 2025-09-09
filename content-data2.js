@@ -143,6 +143,6 @@ window.BANNER_IMAGES = FULL_IMAGES_POOL.slice(0, 10);
 window.TEASER_IMAGES = FULL_IMAGES_POOL.slice(10, 20);
 
     total: FULL_IMAGES_POOL.length,
-    banners: window.BANNER_IMAGES.length,
+    banners? window.BANNER_IMAGES.length,
     teasers: window.TEASER_IMAGES.length
 });
