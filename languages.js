@@ -1,4 +1,4 @@
-// Sistema de traducción
+// Sistema de idiomas
 const translations = {
     es: {
         home: "Inicio",
@@ -8,15 +8,13 @@ const translations = {
         newBadge: "NUEVO",
         emailPlaceholder: "tu@email.com",
         subscribe: "Suscribir",
-        dailyUpdates: "Recibe actualizaciones diarias",
+        dailyUpdates: "🌊 Recibe actualizaciones diarias",
         packImages: "Pack 10 Imágenes",
         packVideos: "Pack 5 Videos",
         monthly: "Mensual",
         annual: "Anual",
         lifetime: "Acceso Vitalicio",
-        noAds: "¡SIN ANUNCIOS!",
-        dayAccess: "Acceso 24 horas",
-        weekendAccess: "Fin de semana (72h)"
+        noAds: "¡SIN ANUNCIOS!"
     },
     en: {
         home: "Home",
@@ -26,15 +24,13 @@ const translations = {
         newBadge: "NEW",
         emailPlaceholder: "your@email.com",
         subscribe: "Subscribe",
-        dailyUpdates: "Get daily updates",
+        dailyUpdates: "🌊 Get daily updates",
         packImages: "10 Images Pack",
         packVideos: "5 Videos Pack",
         monthly: "Monthly",
         annual: "Annual",
         lifetime: "Lifetime Access",
-        noAds: "NO ADS!",
-        dayAccess: "24 hours access",
-        weekendAccess: "Weekend (72h)"
+        noAds: "NO ADS!"
     },
     fr: {
         home: "Accueil",
@@ -44,36 +40,36 @@ const translations = {
         newBadge: "NOUVEAU",
         emailPlaceholder: "votre@email.com",
         subscribe: "S'abonner",
-        dailyUpdates: "Recevez des mises à jour quotidiennes",
+        dailyUpdates: "🌊 Recevez des mises à jour",
         packImages: "Pack 10 Images",
         packVideos: "Pack 5 Vidéos",
         monthly: "Mensuel",
         annual: "Annuel",
         lifetime: "Accès à vie",
-        noAds: "PAS DE PUBS!",
-        dayAccess: "Accès 24 heures",
-        weekendAccess: "Week-end (72h)"
+        noAds: "PAS DE PUBS!"
     }
 };
 
-// Obtener idioma guardado o detectar del navegador
 function getCurrentLanguage() {
-    return localStorage.getItem('language') || 
-           navigator.language.substring(0, 2) || 
-           'en';
+    return localStorage.getItem('language') || 'es';
 }
 
-// Cambiar idioma
 function changeLanguage(lang) {
     localStorage.setItem('language', lang);
     applyTranslations(lang);
+    
+    // Actualizar botones activos
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.textContent === lang.toUpperCase()) {
+            btn.classList.add('active');
+        }
+    });
 }
 
-// Aplicar traducciones
 function applyTranslations(lang) {
-    const t = translations[lang] || translations['en'];
+    const t = translations[lang] || translations['es'];
     
-    // Actualizar elementos con data-translate
     document.querySelectorAll('[data-translate]').forEach(el => {
         const key = el.getAttribute('data-translate');
         if (t[key]) {
@@ -81,7 +77,6 @@ function applyTranslations(lang) {
         }
     });
     
-    // Actualizar placeholders
     document.querySelectorAll('[data-translate-placeholder]').forEach(el => {
         const key = el.getAttribute('data-translate-placeholder');
         if (t[key]) {
@@ -90,8 +85,21 @@ function applyTranslations(lang) {
     });
 }
 
-// Inicializar al cargar
+// Email handler
+function handleEmailSubmit(event) {
+    event.preventDefault();
+    const email = event.target.querySelector('input[type="email"]').value;
+    
+    // Guardar localmente
+    localStorage.setItem('subscriber_email', email);
+    
+    // Aquí irá la integración con SendGrid cuando configures el backend
+    alert('¡Gracias por suscribirte! / Thanks for subscribing! / Merci!');
+    event.target.reset();
+}
+
+// Inicializar
 document.addEventListener('DOMContentLoaded', () => {
-    const currentLang = getCurrentLanguage();
-    applyTranslations(currentLang);
+    const lang = getCurrentLanguage();
+    changeLanguage(lang);
 });

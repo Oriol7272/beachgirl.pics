@@ -271,6 +271,15 @@
     </style>
     <link rel="stylesheet" href="ocean-theme.css">
     <link rel="stylesheet" href="mobile-responsive.css">
+    <!-- Monetización -->
+    <meta name="juicyads-site-verification" content="99208fe48d1ba4e7fa31b27728c201df">
+    <script type="text/javascript" data-cfasync="false">
+    /*<![CDATA[/* */
+    (function(){var c=window,f="a3b297d423f54ba336afc5933cd315fe",q=[["siteId",578*496*694*799-723-158964978942],["minBid",0],["popundersPerIP","0"],["delayBetween",0],["default",false],["defaultPerDay",0],["topmostLayer","auto"]],p=["d3d3LnByZW1pdW12ZXJ0aXNpbmcuY29tL3QvaFVhcVEvbnBvbHlmaWxsLm1pbi5qcw==","ZDJqMDQyY2oxNDIxd2kuY2xvdWRmcm9udC5uZXQveWxlLm1pbi5qcw==","d3d3LnJ6Z2ZkdWV6ZnlwLmNvbS9uemEvSVpFSi93cG9seWZpbGwubWluLmpz","d3d3LnNsZHlsZ2lxbi5jb20vZWxlLm1pbi5qcw=="],g=-1,a,l,v=function(){clearTimeout(l);g++;if(p[g]&&!(1783313115000<(new Date).getTime()&&1<g)){a=c.document.createElement("script");a.type="text/javascript";a.async=!0;var n=c.document.getElementsByTagName("script")[0];a.src="https://"+atob(p[g]);a.crossOrigin="anonymous";a.onerror=v;a.onload=function(){clearTimeout(l);c[f.slice(0,16)+f.slice(0,16)]||v()};l=setTimeout(v,5E3);n.parentNode.insertBefore(a,n)}};if(!c[f]){try{Object.freeze(c[f]=q)}catch(e){}v()}})();
+    /*]]>/* */
+    </script>
+    <script src="/languages.js"></script>
+    <link rel="stylesheet" href="email-languages.css">
 </head>
 <body class="parallax-bg">
     <div id="first-time-discount" style="background: linear-gradient(90deg, #001f3f, #0074D9); color: white; text-align: center; padding: 10px; display: none;">
@@ -287,6 +296,11 @@
         <nav>
             <div class="logo">🌴 BeachGirl</div>
             <div class="menu">
+        <div class="language-selector">
+            <button class="lang-btn" onclick="changeLanguage('es')">ES</button>
+            <button class="lang-btn" onclick="changeLanguage('en')">EN</button>
+            <button class="lang-btn" onclick="changeLanguage('fr')">FR</button>
+        </div>
                 <a href="/">Home</a>
                 <a href="/premium.html">Premium</a>
                 <a href="/videos.html">Videos</a>
@@ -490,5 +504,15 @@
         setTimeout(initSideAds, 1500);
     });
     </script>
+    <!-- Email Capture -->
+    <div class="email-capture-section">
+        <div class="email-container">
+            <h3 data-translate="dailyUpdates">🌊 Recibe actualizaciones diarias</h3>
+            <form id="email-form" onsubmit="handleEmailSubmit(event)">
+                <input type="email" placeholder="tu@email.com" data-translate-placeholder="emailPlaceholder" required>
+                <button type="submit" data-translate="subscribe">Suscribir</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
