@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>BeachGirl.pics - Bienvenido al Paraíso</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>beachgirl.pics - Bienvenido al Paraíso</title>
     <meta name="description" content="BeachGirl Premium - Exclusive beach photography and videos. Special discount for new members!">
     <meta name="keywords" content="beach girls, summer photos, bikini content, beach photography, exclusive content, premium beach photos">
     <meta name="robots" content="index, follow">
@@ -18,16 +18,400 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
     
-    <!-- CSS -->
+    <!-- CSS existente -->
     <link rel="stylesheet" href="/css/site.css">
     
-    <!-- Environment variables -->
+    <!-- Scripts existentes en orden correcto -->
     <script src="/js/env.js"></script>
-    
-    <!-- Decorative images list -->
     <script src="/js/decorative-list.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Dancing Script', 'Caveat', cursive;
+            background: url('/decorative-images/paradise-beach.png') center/cover fixed;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            color: #001f3f;
+        }
+        
+        /* Top strip */
+        .top-strip {
+            background: linear-gradient(90deg, #001f3f, #0074D9);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            font-size: 14px;
+            position: relative;
+            z-index: 1000;
+        }
+        
+        .plan-pill {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin: 0 8px;
+            font-weight: 600;
+        }
+        
+        .buy-btn {
+            background: #0074D9;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            margin-left: 16px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        /* Navigation */
+        .topbar {
+            background: rgba(0, 31, 63, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .menu {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .menu a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .menu a:hover,
+        .menu a.active {
+            color: #7FDBFF;
+            text-shadow: 0 0 10px rgba(127, 219, 255, 0.5);
+        }
+        
+        .menu a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #7FDBFF;
+            border-radius: 2px;
+        }
+        
+        /* Language selector */
+        .language-selector select {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        
+        /* Banner section con imágenes rotatorias */
+        .banner-section {
+            position: relative;
+            height: 60vh;
+            min-height: 400px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .banner-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .rotating-images {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: all 1s ease-in-out;
+            opacity: 0.3;
+        }
+        
+        .banner-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            color: white;
+        }
+        
+        .site-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+            background: linear-gradient(45deg, #7FDBFF, #0074D9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .site-subtitle {
+            font-family: 'Caveat', cursive;
+            font-size: 2rem;
+            font-weight: 400;
+            margin: 0;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+            color: #7FDBFF;
+        }
+        
+        /* Main content */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .section-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        /* Carousel */
+        .carousel-section {
+            margin-bottom: 60px;
+        }
+        
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+        }
+        
+        .carousel-wrapper {
+            display: flex;
+            transition: transform 0.3s ease;
+            gap: 15px;
+        }
+        
+        .carousel-item {
+            flex: 0 0 calc(25% - 12px);
+            aspect-ratio: 3/4;
+            border-radius: 10px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .carousel-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,116,217,0.8);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 20;
+        }
+        
+        .carousel-btn:hover {
+            background: rgba(0,116,217,1);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carousel-btn.prev { left: 10px; }
+        .carousel-btn.next { right: 10px; }
+        
+        /* Gallery */
+        .gallery-section {
+            margin-bottom: 60px;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 3/4;
+            border-radius: 15px;
+            overflow: hidden;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .view-btn {
+            background: #0074D9;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .view-btn:hover {
+            background: #7FDBFF;
+            transform: scale(1.05);
+        }
+        
+        .load-more-btn {
+            background: linear-gradient(45deg, #0074D9, #7FDBFF);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+        }
+        
+        .load-more-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,116,217,0.3);
+        }
+        
+        /* Sidebar ads */
+        .sidebar-fixed {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 160px;
+            z-index: 100;
+        }
+        
+        .sidebar-left { left: 20px; }
+        .sidebar-right { right: 20px; }
+        
+        .ad-slot {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            margin-bottom: 20px;
+            border-radius: 10px;
+            min-height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 12px;
+        }
+        
+        /* Bottom sticky ad */
+        .ad-sticky-bottom {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0,31,63,0.95);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .site-title { font-size: 2.5rem; }
+            .site-subtitle { font-size: 1.5rem; }
+            .nav-container { flex-direction: column; gap: 15px; }
+            .menu { gap: 15px; }
+            .menu a { font-size: 16px; }
+            .carousel-item { flex: 0 0 calc(50% - 8px); }
+            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+            .sidebar-fixed { display: none; }
+            .main-container { padding: 20px 10px; }
+            .banner-section { height: 40vh; min-height: 300px; }
+        }
+        
+        @media (max-width: 480px) {
+            .carousel-item { flex: 0 0 calc(100% - 8px); }
+            .topbar { padding: 10px 0; }
+            .top-strip { font-size: 12px; }
+            .plan-pill { margin: 0 4px; padding: 2px 8px; }
+        }
+    </style>
 </head>
-<body class="paradise-theme">
+<body>
     <!-- Top subscription strip -->
     <div class="top-strip">
         <span class="plan-pill">Lifetime 100 EUR</span>
@@ -43,28 +427,27 @@
     <!-- Navigation Menu -->
     <header class="topbar">
         <nav class="nav-container">
-            <a href="/" class="nav-link active">Home</a>
-            <a href="/premium" class="nav-link">Premium</a>
-            <a href="/videos" class="nav-link">Videos</a>
-            <a href="/subscription" class="nav-link">Subscriptions</a>
+            <div class="menu">
+                <a href="/" class="active">Home</a>
+                <a href="/premium">Premium</a>
+                <a href="/videos">Videos</a>
+                <a href="/subscription">Subscriptions</a>
+            </div>
+            
+            <!-- Language selector -->
+            <div class="language-selector">
+                <select id="language-select">
+                    <option value="es">🇪🇸 Español</option>
+                    <option value="en">🇺🇸 English</option>
+                    <option value="fr">🇫🇷 Français</option>
+                    <option value="de">🇩🇪 Deutsch</option>
+                    <option value="it">🇮🇹 Italiano</option>
+                </select>
+            </div>
         </nav>
-        
-        <!-- Language selector -->
-        <div class="language-selector">
-            <select id="language-select">
-                <option value="es">🇪🇸 Español</option>
-                <option value="en">🇺🇸 English</option>
-                <option value="fr">🇫🇷 Français</option>
-                <option value="de">🇩🇪 Deutsch</option>
-                <option value="it">🇮🇹 Italiano</option>
-            </select>
-        </div>
     </header>
 
-    <!-- Paradise background -->
-    <div class="paradise-background"></div>
-
-    <!-- Main banner -->
+    <!-- Main banner con imágenes rotatorias de decorative-images -->
     <section class="banner-section">
         <div class="banner-container">
             <div class="rotating-images" id="banner-rotator">
@@ -79,7 +462,7 @@
 
     <!-- Main content -->
     <main class="main-container">
-        <!-- Carousel section -->
+        <!-- Carousel section con 40 imágenes aleatorias de full/ -->
         <section class="carousel-section">
             <h2 class="section-title">Destacadas del Día</h2>
             <div class="carousel-container">
@@ -91,7 +474,7 @@
             </div>
         </section>
 
-        <!-- Gallery section -->
+        <!-- Gallery section con 40 imágenes aleatorias de full/ -->
         <section class="gallery-section">
             <h2 class="section-title">Galería Completa</h2>
             <div class="gallery-grid" id="main-gallery">
@@ -103,7 +486,7 @@
         </section>
     </main>
 
-    <!-- Sidebar ads -->
+    <!-- Sidebar ads (TODOS los anuncios) -->
     <aside class="sidebar-fixed sidebar-left" id="side-ads-left">
         <div class="ad-slot" data-net="juicy"></div>
         <div class="ad-slot" data-net="exo"></div>
@@ -121,17 +504,7 @@
         <div class="ad-slot" data-net="popads"></div>
     </div>
 
-    <!-- PayPal modal -->
-    <div id="paypal-modal" class="hidden">
-        <div id="paypal-modal-bg">
-            <div id="paypal-modal-card">
-                <button id="paypal-modal-close" aria-label="close">×</button>
-                <div id="paypal-modal-target"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Scripts de contenido (ORDEN IMPORTANTE) -->
+    <!-- Scripts de contenido (ORDEN CRÍTICO) -->
     <script src="/content-data1.js"></script>
     <script src="/content-data2.js"></script>
     <script src="/content-data3.js"></script>
@@ -139,11 +512,6 @@
     <script src="/content-data5.js"></script>
     <script src="/content-data6.js"></script>
 
-    <!-- Scripts funcionales -->
-    <script src="/js/i18n.js"></script>
-    <script src="/js/paywall.js"></script>
-    <script src="/js/unified-content.js"></script>
-    
     <!-- Crisp Chat -->
     <script>
         window.$crisp=[];
@@ -167,32 +535,19 @@
         function initializeBeachGirl() {
             console.log('🏖️ Inicializando BeachGirl.pics...');
             
-            // Configurar el fondo paradise
-            setupParadiseBackground();
-            
-            // Configurar las imágenes rotatorias del banner
+            // Configurar las imágenes rotatorias del banner desde decorative-images
             setupBannerRotator();
             
-            // Inicializar carrusel con 40 imágenes aleatorias
+            // Inicializar carrusel con 40 imágenes aleatorias de full/
             initializeCarousel();
             
-            // Inicializar galería con 40 imágenes aleatorias
+            // Inicializar galería con 40 imágenes aleatorias de full/
             initializeGallery();
             
             // Configurar selector de idiomas
             setupLanguageSelector();
             
-            // Inicializar anuncios
-            initializeAds();
-            
             console.log('✅ BeachGirl.pics inicializado correctamente');
-        }
-
-        function setupParadiseBackground() {
-            const background = document.querySelector('.paradise-background');
-            if (background) {
-                background.style.backgroundImage = 'url(/decorative-images/paradise-beach.png)';
-            }
         }
 
         function setupBannerRotator() {
@@ -232,7 +587,7 @@
             const carousel = document.getElementById('main-carousel');
             if (!carousel) return;
 
-            // Obtener 40 imágenes aleatorias de la carpeta full
+            // Obtener 40 imágenes aleatorias de la carpeta full desde content-data2.js
             const fullImages = window.FULL_IMAGES_POOL || [];
             const shuffledImages = shuffleArray([...fullImages]);
             const carouselImages = shuffledImages.slice(0, 40);
@@ -258,7 +613,7 @@
             const gallery = document.getElementById('main-gallery');
             if (!gallery) return;
 
-            // Obtener 40 imágenes aleatorias diferentes al carrusel
+            // Obtener 40 imágenes aleatorias diferentes al carrusel de full/
             const fullImages = window.FULL_IMAGES_POOL || [];
             const shuffledImages = shuffleArray([...fullImages]);
             const galleryImages = shuffledImages.slice(40, 80); // Diferentes al carrusel
@@ -314,14 +669,9 @@
 
             select.addEventListener('change', function() {
                 const lang = this.value;
-                // Aquí se implementaría el cambio de idioma
                 console.log('Cambio de idioma a:', lang);
+                // Aquí se implementaría el cambio de idioma
             });
-        }
-
-        function initializeAds() {
-            // Los anuncios se cargan desde los scripts externos
-            console.log('🎯 Inicializando anuncios...');
         }
 
         function shuffleArray(array) {
