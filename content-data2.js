@@ -1,14 +1,14 @@
 /**
- * content-data2.js - Public Images Module v5.0.0 FIXED
- * Solo archivos VERIFICADOS que existen en el servidor
+ * content-data2.js - Public Images Module v5.0 FINAL
+ * Solo archivos VERIFICADOS que existen (basado en logs HTTP 200)
  */
 
 const FULL_IMAGES_POOL = [
-    // Archivos verificados con 200 OK en la consola
+    // Archivos verificados con HTTP 200 en tu última consola
     "full/0456996c-b56e-42ef-9049-56b1a1ae2646.webp",
-    "full/0Tc8Vtd0mEIvNHZwYGBq.webp",
     "full/0lySugcO4Pp4pEZKvz9U.webp",
     "full/0nSaCJQxbVw4BDrhnhHO.webp",
+    "full/0Tc8Vtd0mEIvNHZwYGBq.webp",
     "full/13TXvyRVZ7LtvAOx7kme.webp",
     "full/18VQaczW5kdfdiqUVasH.webp",
     "full/1dEu25K0mS3zxRlXRjHR.webp",
@@ -52,13 +52,12 @@ const FULL_IMAGES_POOL = [
     "full/IXCJwuZEjxFfPTinm4Cq.webp",
     "full/Jc4OmrYPCcAkzNGKXhE1.webp",
     "full/K6AqNa8lHyPw8rujRCux.webp",
-    "full/K6PnUKojASfrNdaGJJSV.webp",
     "full/KRGZrnrhKdEiv6bUM0B8.webp",
     "full/KSft2d50fGqVzjnvaQsP.webp",
     "full/KSIgono33EvDrKQDut47.webp",
     "full/lXpckkGACDNcXPAHEQqu.webp",
-    "full/McOBxMX6PoUZbroTTgP4.webp",
     "full/mFuqtladZr2hO3Tszm3m.webp",
+    "full/McOBxMX6PoUZbroTTgP4.webp",
     "full/nJvZXk80qguZvwOeSai6.webp",
     "full/nm6YKc38NLqwGPaNiDhc.webp",
     "full/NqO93fUipM4zuYSCRSt5.webp",
@@ -98,5 +97,3 @@ const FULL_IMAGES_POOL = [
 window.FULL_IMAGES_POOL = FULL_IMAGES_POOL;
 window.BANNER_IMAGES = FULL_IMAGES_POOL.slice(0, 10);
 window.TEASER_IMAGES = FULL_IMAGES_POOL.slice(10, 20);
-
-// Sin console.log para mantener la consola limpia
