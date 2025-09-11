@@ -1,8 +1,12 @@
 {
-  "name": "beachgirlpics",
-  "version": 2,
-  "builds": [],
-  "routes": [],
-  "outputDirectory": ".",
-  "framework": null
+  "git": {
+    "deploymentEnabled": {
+      "main": false,
+      "stable": true
+    }
+  },
+  "github": {
+    "enabled": true,
+    "autoAlias": true
+  }
 }
