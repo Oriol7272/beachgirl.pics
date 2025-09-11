@@ -1,0 +1,15 @@
+name: Backup Stable
+on:
+  push:
+    branches: [stable]
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          TAG="backup-$(date +%Y%m%d-%H%M%S)"
+          git tag "$TAG"
+          git push origin "$TAG" || true

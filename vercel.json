@@ -1,12 +1,5 @@
 {
-  "git": {
-    "deploymentEnabled": {
-      "main": false,
-      "stable": true
-    }
-  },
-  "github": {
-    "enabled": true,
-    "autoAlias": true
-  }
+  "buildCommand": null,
+  "outputDirectory": ".",
+  "framework": null
 }
