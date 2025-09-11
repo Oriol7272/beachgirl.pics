@@ -1,0 +1,42 @@
+name: Backup Stable Deploy
+
+on:
+  push:
+    branches: [stable]
+
+jobs:
+  create-backup-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Configure Git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+      
+      - name: Create backup tag
+        run: |
+          TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+          TAG="backup-stable-${TIMESTAMP}"
+          git tag -a "$TAG" -m "Backup automático de stable - $(date '+%Y-%m-%d %H:%M:%S')"
+          git push origin "$TAG"
+          echo "✓ Backup tag creado: $TAG"
+      
+      - name: Clean old backup tags (keep last 20)
+        run: |
+          # Listar todos los tags de backup, ordenados por fecha
+          TAGS=$(git tag -l "backup-stable-*" --sort=-version:refname)
+          COUNT=$(echo "$TAGS" | wc -l)
+          
+          # Si hay más de 20, eliminar los más antiguos
+          if [ "$COUNT" -gt 20 ]; then
+            echo "Limpiando tags antiguos (manteniendo últimos 20)..."
+            echo "$TAGS" | tail -n +21 | while read -r tag; do
+              git push origin --delete "$tag" || true
+              echo "Eliminado: $tag"
+            done
+          fi
