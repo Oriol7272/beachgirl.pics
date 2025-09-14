@@ -1,16 +1,14 @@
 /**
- * content-data2.js - Public Images Module v4.1.0 UPDATED
- * Contains all public/full images (127 files) - COMPLETE LIST
- * Provides banner and teaser management
+ * content-data2.js - Public Images Module v5.0 FINAL
+ * Solo archivos VERIFICADOS que existen (basado en logs HTTP 200)
  */
 
-console.log("📦 Cargando módulo content-data2.js - Imágenes públicas (127 archivos)...");
-
 const FULL_IMAGES_POOL = [
+    // Archivos verificados con HTTP 200 en tu última consola
     "full/0456996c-b56e-42ef-9049-56b1a1ae2646.webp",
-    "full/0Tc8Vtd0mEIvNHZwYGBq.webp",
     "full/0lySugcO4Pp4pEZKvz9U.webp",
     "full/0nSaCJQxbVw4BDrhnhHO.webp",
+    "full/0Tc8Vtd0mEIvNHZwYGBq.webp",
     "full/13TXvyRVZ7LtvAOx7kme.webp",
     "full/18VQaczW5kdfdiqUVasH.webp",
     "full/1dEu25K0mS3zxRlXRjHR.webp",
@@ -35,8 +33,14 @@ const FULL_IMAGES_POOL = [
     "full/AHKAq0biFDUtkxlx7TCu.webp",
     "full/ANhHtA0GivBfeAo6dvJG.webp",
     "full/AwKXjDqrJMTKNvB84iRy.webp",
-    "full/CTyCcna8JSPObRQpulKJ.webp",
+    "full/bikini.webp",
+    "full/bikini3.webp",
+    "full/bikini5.webp",
+    "full/bikbanner2.webp",
+    "full/buxNTxdJrOaiUnp3CCgW.webp",
     "full/CmxJm1VLBBhvZoUwxWTJ.webp",
+    "full/cRNjL0pgJXBWVxKdsFON.webp",
+    "full/CTyCcna8JSPObRQpulKJ.webp",
     "full/CuX7zQzCBToIMKBYVcA8.webp",
     "full/D3QdNfIR9B8YKPIYl0Hg.webp",
     "full/FElwiy3A7OtgubeV9Qsh.webp",
@@ -49,83 +53,36 @@ const FULL_IMAGES_POOL = [
     "full/Jc4OmrYPCcAkzNGKXhE1.webp",
     "full/K6AqNa8lHyPw8rujRCux.webp",
     "full/KRGZrnrhKdEiv6bUM0B8.webp",
-    "full/KSIgono33EvDrKQDut47.webp",
     "full/KSft2d50fGqVzjnvaQsP.webp",
-    "full/McOBxMX6PoUZbroTTgP4.webp",
-    "full/NDGfqsuUip0F4dU9wgVL.webp",
-    "full/NDH6z4lZlrQn9bJrR8sl.webp",
-    "full/NqO93fUipM4zuYSCRSt5.webp",
-    "full/NzzddX28psM9wi68V6CK.webp",
-    "full/PYxGx0lKZ43QPf1qdvLZ.webp",
-    "full/QrxqDwp4XM84wYYND3uT.webp",
-    "full/RwJSQRDcYLUL3itNeBsI.webp",
-    "full/SPz0O8J0T6G5uVWIoDzQ.webp",
-    "full/Sinoseup.webp",
-    "full/Sinportada.webp",
-    "full/Sintulo.webp",
-    "full/Siulo.webp",
-    "full/SjBLvi1GzPoLQ1P50c46.webp",
-    "full/Sütulo3.webp",
-    "full/TVuPPIBhFDMDCmBdsceB.webp",
-    "full/TobOdyqnZJAURlf9gAMN.webp",
-    "full/TrDWwizZldJ8aKtrTcG1.webp",
-    "full/UY3djnFnYQxf0fCsdlnM.webp",
-    "full/V9GKbtJQTNaM8l93aw36.webp",
-    "full/VRSLM5s8qnZxP1QVoodG.webp",
-    "full/W9CK51Mronx3uf5hfQ3U.webp",
-    "full/WuoJZZ1KY40aGXaYQ3Md.webp",
-    "full/XdVpvijn3dM2vO9l7gDo.webp",
-    "full/YKgqQquc9tAsRWIrAmAC.webp",
-    "full/Z1PRTgXZcRtlo6S85wI6.webp",
-    "full/ZYIL77u1RSeFdP5wkciw.webp",
-    "full/ZyCZwfSUvhPNt480NIda.webp",
-    "full/aYu9xiAT1TlEG6wvm34K.webp",
-    "full/backbikini.webp",
-    "full/bikback2.webp",
-    "full/bikbanner.webp",
-    "full/bikbanner2.webp",
-    "full/bikini.webp",
-    "full/bikini3.webp",
-    "full/bikini5.webp",
-    "full/buxNTxdJrOaiUnp3CCgW.webp",
-    "full/cRNjL0pgJXBWVxKdsFON.webp",
-    "full/dy1ftClNZHFt9B49BTEp.webp",
-    "full/edLlsnFaeB1b2IIz0ZfU.webp",
-    "full/eh5N2OaEJgk0paLySHvU.webp",
-    "full/f0D2KiSpjpCMZplrZTut.webp",
-    "full/fI2l2bTRfnxfGmRrsiWc.webp",
-    "full/fY0jj2fqRxuZBKRIgcPT.webp",
-    "full/gNncVGzxclrLja7UdRZz.webp",
-    "full/hEus9oo2ED2ofExFZwrO.webp",
-    "full/hxxXN7wkWVNaytlNJnWi.webp",
-    "full/i9FeoaoF6cHVtVzqkjwQ.webp",
-    "full/j6QQvBGsx56JEmd2x6Lb.webp",
-    "full/jIcLZTpAQWe6dfKiyoAN.webp",
-    "full/jJaZUgqOEgXYWCFljYz3.webp",
-    "full/jTSyAJInaPJl7z7HJD4a.webp",
-    "full/kSifqxFJOiBwilLR65bV.webp",
-    "full/kZcyiAnC5K1YAXKulB2e.webp",
-    "full/kr5FiUdTaiQ7imq1xHlH.webp",
+    "full/KSIgono33EvDrKQDut47.webp",
     "full/lXpckkGACDNcXPAHEQqu.webp",
     "full/mFuqtladZr2hO3Tszm3m.webp",
+    "full/McOBxMX6PoUZbroTTgP4.webp",
     "full/nJvZXk80qguZvwOeSai6.webp",
     "full/nm6YKc38NLqwGPaNiDhc.webp",
+    "full/NqO93fUipM4zuYSCRSt5.webp",
+    "full/NzzddX28psM9wi68V6CK.webp",
     "full/owPT3Y4puK3dRHWNsj47.webp",
     "full/psZEFLlVAhAiq10uJ8qd.webp",
+    "full/Q0MiJGqtUpfaOEJhLrnz.webp",
+    "full/Q8YO7MENrALjcQdZRGxv.webp",
     "full/qLDeRznPthcmYSmggfbm.webp",
     "full/qhK8inhLxacOs8w7mRbE.webp",
     "full/qxIzW9ZMuhkEY6dmGKSv.webp",
-    "full/sMAD8T2U7A3aMQjxsUdd.webp",
+    "full/S4H14jh2mOOA0Ox6U7U6.webp",
     "full/sda0bXv4LRWxnW49KPWT.webp",
     "full/sfz7eFmqHWlf6wrpTDD9.webp",
+    "full/sMAD8T2U7A3aMQjxsUdd.webp",
     "full/t9WqMZxXkmUTMrq3d13l.webp",
     "full/tMxzKdT8rjZm3gpe0StS.webp",
+    "full/TFndjJgjmgdAJ8NNJHy5.webp",
     "full/tQ41YocTwqSnd8mFsDc5.webp",
     "full/tQInulLfQHQTFNIK6yEV.webp",
     "full/tzico6mUJuc7Lz8HYdEF.webp",
-    "full/uMSW2oj0qrbVEmIEotZ1.webp",
     "full/ufXYerfLKedF1f6OYNhd.webp",
+    "full/uMSW2oj0qrbVEmIEotZ1.webp",
     "full/wrs60TS7VJQlmWbyKKUu.webp",
+    "full/WuoJZZ1KY40aGXaYQ3Md.webp",
     "full/xhQTgYHiVAYbnYrKIsOq.webp",
     "full/yqTobCZL2AABmmNJ7EPU.webp",
     "full/zNzTQ476q4sOPWRaVPEw.webp",
@@ -136,18 +93,7 @@ const FULL_IMAGES_POOL = [
     "full/zx83JCzdTKNfyKUY6Djs.webp"
 ];
 
-console.log("✅ 127 imágenes públicas cargadas desde /full/");
-
 // Exportar globalmente
 window.FULL_IMAGES_POOL = FULL_IMAGES_POOL;
-
-// Crear arrays de banners y teasers simples
 window.BANNER_IMAGES = FULL_IMAGES_POOL.slice(0, 10);
 window.TEASER_IMAGES = FULL_IMAGES_POOL.slice(10, 20);
-
-console.log('✅ Módulo content-data2.js cargado correctamente - 127 ARCHIVOS COMPLETOS');
-console.log('📊 Estadísticas de contenido público:', {
-    total: FULL_IMAGES_POOL.length,
-    banners: window.BANNER_IMAGES.length,
-    teasers: window.TEASER_IMAGES.length
-});
