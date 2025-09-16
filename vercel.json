@@ -1,44 +1,20 @@
 {
-  "name": "beachgirlpics",
-  "version": 2,
-  "builds": [],
+  "buildCommand": false,
+  "outputDirectory": ".",
+  "framework": null,
   "routes": [
     {
-      "src": "/premium",
-      "dest": "/premium.html"
-    },
-    {
-      "src": "/videos", 
-      "dest": "/videos.html"
-    },
-    {
-      "src": "/subscription",
-      "dest": "/subscription.html"
+      "src": "/(.*)",
+      "headers": {
+        "Cache-Control": "public, max-age=3600"
+      }
     }
   ],
-  "headers": [
+  "redirects": [
     {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "Cache-Control",
-          "value": "public, max-age=31536000, immutable"
-        },
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        },
-        {
-          "key": "X-XSS-Protection",
-          "value": "1; mode=block"
-        }
-      ]
+      "source": "/",
+      "destination": "/age-verification.html",
+      "statusCode": 302
     }
-  ],
-  "outputDirectory": ".",
-  "framework": null
+  ]
 }
